@@ -1,0 +1,11 @@
+{
+  "name": "@man/project-timeline-widget",
+  "version": "0.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "staffbase": {
+    "element": "project-timeline-widget",
+    "bundle": "dist/project-timeline-widget.js"
+  }
+}
