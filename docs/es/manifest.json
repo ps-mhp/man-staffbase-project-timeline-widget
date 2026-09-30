@@ -1,0 +1,49 @@
+{
+  "title": "Plan del proyecto",
+  "summary": "Un plan de proyecto como línea temporal: niveles con hitos y periodos, fechas clave y dependencias — infinitamente ampliables, filtrables y descargables como una hoja de cálculo Excel.",
+  "icon": "📅",
+  "pages": [
+    {
+      "id": "overview",
+      "title": "Resumen",
+      "file": "overview.md"
+    },
+    {
+      "id": "usage",
+      "title": "Paso a paso",
+      "file": "usage.md"
+    },
+    {
+      "id": "settings",
+      "title": "Escenarios",
+      "file": "settings.md"
+    },
+    {
+      "id": "faq",
+      "title": "Preguntas frecuentes",
+      "file": "faq.md"
+    }
+  ],
+  "examples": [
+    {
+      "title": "Plan de ejemplo con la línea Today y exportación de Excel",
+      "attributes": {
+        "show-today": "true",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ]
+    },
+    {
+      "title": "Sin la línea actual y sin exportación",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "false"
+      },
+      "resolve": [
+        "plan"
+      ]
+    }
+  ]
+}

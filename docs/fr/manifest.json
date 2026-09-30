@@ -1,0 +1,49 @@
+{
+  "title": "Plan de projet",
+  "summary": "Un plan de projet comme une chronologie : des niveaux avec des étapes et des périodes, des dates clés et des dépendances — zoomables à l’infini, filtrables et téléchargeables sous forme de tableau Excel.",
+  "icon": "📅",
+  "pages": [
+    {
+      "id": "overview",
+      "title": "Aperçu",
+      "file": "overview.md"
+    },
+    {
+      "id": "usage",
+      "title": "Étape par étape",
+      "file": "usage.md"
+    },
+    {
+      "id": "settings",
+      "title": "Décors",
+      "file": "settings.md"
+    },
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "file": "faq.md"
+    }
+  ],
+  "examples": [
+    {
+      "title": "Plan d’exemple avec la ligne Today et l’export Excel",
+      "attributes": {
+        "show-today": "true",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ]
+    },
+    {
+      "title": "Sans la ligne actuelle et sans exportation",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "false"
+      },
+      "resolve": [
+        "plan"
+      ]
+    }
+  ]
+}

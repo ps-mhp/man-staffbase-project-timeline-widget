@@ -1,0 +1,49 @@
+{
+  "title": "Plan projektu",
+  "summary": "Plan projektu jako oś czasu: poziomy z kamieniami milowymi i okresami, kluczowymi datami i zależnościami — nieskończenie powiększalne, filtrowalne i do pobrania jako arkusz Excel.",
+  "icon": "📅",
+  "pages": [
+    {
+      "id": "overview",
+      "title": "Przegląd",
+      "file": "overview.md"
+    },
+    {
+      "id": "usage",
+      "title": "Krok po kroku",
+      "file": "usage.md"
+    },
+    {
+      "id": "settings",
+      "title": "Ustawienia",
+      "file": "settings.md"
+    },
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "file": "faq.md"
+    }
+  ],
+  "examples": [
+    {
+      "title": "Przykładowy plan z linią Today i eksportem Excel",
+      "attributes": {
+        "show-today": "true",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ]
+    },
+    {
+      "title": "Bez dzisiejszej linii i bez eksportu",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "false"
+      },
+      "resolve": [
+        "plan"
+      ]
+    }
+  ]
+}

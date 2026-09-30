@@ -1,0 +1,49 @@
+{
+  "title": "Plano do projeto",
+  "summary": "Um plano de projeto como linha do tempo: níveis com marcos e períodos, datas-chave e dependências — infinitamente ampliáveis, filtráveis e baixáveis como uma planilha Excel.",
+  "icon": "📅",
+  "pages": [
+    {
+      "id": "overview",
+      "title": "Visão geral",
+      "file": "overview.md"
+    },
+    {
+      "id": "usage",
+      "title": "Passo a passo",
+      "file": "usage.md"
+    },
+    {
+      "id": "settings",
+      "title": "Configurações",
+      "file": "settings.md"
+    },
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "file": "faq.md"
+    }
+  ],
+  "examples": [
+    {
+      "title": "Plano de exemplo com linha Today e exportação em Excel",
+      "attributes": {
+        "show-today": "true",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ]
+    },
+    {
+      "title": "Sem a linha atual e sem exportação",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "false"
+      },
+      "resolve": [
+        "plan"
+      ]
+    }
+  ]
+}

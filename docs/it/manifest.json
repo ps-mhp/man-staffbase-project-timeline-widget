@@ -1,0 +1,49 @@
+{
+  "title": "Piano del progetto",
+  "summary": "Un piano di progetto come tempistica: livelli con tappe e periodi, date chiave e dipendenze — infinitamente zoomabili, filtrabili e scaricabili come foglio di calcolo Excel.",
+  "icon": "📅",
+  "pages": [
+    {
+      "id": "overview",
+      "title": "Panoramica",
+      "file": "overview.md"
+    },
+    {
+      "id": "usage",
+      "title": "Passo dopo passo",
+      "file": "usage.md"
+    },
+    {
+      "id": "settings",
+      "title": "Impostazioni",
+      "file": "settings.md"
+    },
+    {
+      "id": "faq",
+      "title": "Domande frequenti",
+      "file": "faq.md"
+    }
+  ],
+  "examples": [
+    {
+      "title": "Piano di esempio con la riga Today ed esportazione Excel",
+      "attributes": {
+        "show-today": "true",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ]
+    },
+    {
+      "title": "Senza linea attuale e senza esportazione",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "false"
+      },
+      "resolve": [
+        "plan"
+      ]
+    }
+  ]
+}

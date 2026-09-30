@@ -1,0 +1,49 @@
+{
+  "title": "Projectplan",
+  "summary": "Een projectplan als tijdlijn: niveaus met mijlpalen en periodes, belangrijke data en afhankelijkheden — oneindig inzoombaar, filterbaar en downloadbaar als een Excel-spreadsheet.",
+  "icon": "📅",
+  "pages": [
+    {
+      "id": "overview",
+      "title": "Overzicht",
+      "file": "overview.md"
+    },
+    {
+      "id": "usage",
+      "title": "Stap voor stap",
+      "file": "usage.md"
+    },
+    {
+      "id": "settings",
+      "title": "Instellingen",
+      "file": "settings.md"
+    },
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "file": "faq.md"
+    }
+  ],
+  "examples": [
+    {
+      "title": "Voorbeeldplan met de Vandaag-regel en Excel-export",
+      "attributes": {
+        "show-today": "true",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ]
+    },
+    {
+      "title": "Zonder vandaag lijn en zonder export",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "false"
+      },
+      "resolve": [
+        "plan"
+      ]
+    }
+  ]
+}
