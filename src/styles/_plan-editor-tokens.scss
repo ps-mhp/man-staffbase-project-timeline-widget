@@ -1,0 +1,53 @@
+/*!
+ * Copyright 2026, MHP Management und IT-Beratung GmbH and contributors.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Die eigenen Töne und die Abwehr des Plan-Editors, geteilt von seinen
+// beiden Stylesheets. Die Töne sind dieselben wie die der Rückfrage in
+// `@shared/config-modal`, damit „Verwerfen“ dort und „Löschen“ hier gleich
+// warnen.
+
+$danger: #c0392b;
+$danger-strong: #a93226;
+$warning-surface: #fff7ed;
+$warning-border: #fed7aa;
+
+// Der Hintergrund eines Editor-Knopfs in jedem Zustand.
+//
+// Das Stylesheet der Staffbase-App färbt jeden Knopf blau, sobald er Fokus
+// hat, überfahren oder gedrückt wird:
+//
+//   button:focus{background-color:rgba(0,164,253,.8)}
+//   .mouse .button:hover,.mouse button:hover{background-color:rgba(0,164,253,.8)}
+//   .mouse button:active{background-color:#4495cb}
+//
+// `.mouse button:hover` (0,2,1) sticht jede einfache Klassenregel (0,1,0)
+// aus; der gewählte Reiter stand deshalb grellblau im Dialog. Die Regeln hier
+// hängen unter `.man-pt-editor` (0,3,0) und setzen den Hintergrund für alle
+// Zustände aus zwei Variablen, die jede Knopfart selbst belegt:
+// `--pt-button-bg` in Ruhe, Fokus und beim Drücken, `--pt-button-bg-hover`
+// beim Überfahren. So steht der Hintergrund an einer Stelle, und keine
+// Knopfart muss die Zustände der App einzeln nachbauen.
+@mixin studio-button-states {
+  @at-root .man-pt-editor #{&} {
+    &,
+    &:focus,
+    &:active,
+    &:hover {
+      background-color: var(--pt-button-bg);
+    }
+
+    &:hover:not(:disabled) {
+      background-color: var(--pt-button-bg-hover, var(--pt-button-bg));
+    }
+  }
+}

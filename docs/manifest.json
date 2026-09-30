@@ -1,11 +1,23 @@
 {
-  "title": "project-timeline-widget",
-  "summary": "TODO: Ein Satz, was dieses Widget für Redakteure tut.",
-  "icon": "🧩",
+  "title": "Projektplan",
+  "summary": "Ein Projektplan als Zeitstrahl: Ebenen mit Meilensteinen und Zeiträumen, Stichtage und Abhängigkeiten — stufenlos zoombar, filterbar und als Excel-Tabelle herunterladbar.",
+  "icon": "📅",
   "pages": [
     { "id": "overview", "title": "Übersicht", "file": "overview.md" },
     { "id": "usage", "title": "Schritt für Schritt", "file": "usage.md" },
     { "id": "settings", "title": "Einstellungen", "file": "settings.md" },
     { "id": "faq", "title": "FAQ", "file": "faq.md" }
+  ],
+  "examples": [
+    {
+      "title": "Beispielplan mit Heute-Linie und Excel-Export",
+      "attributes": { "show-today": "true", "allow-export": "true" },
+      "resolve": ["plan"]
+    },
+    {
+      "title": "Ohne Heute-Linie und ohne Export",
+      "attributes": { "show-today": "false", "allow-export": "false" },
+      "resolve": ["plan"]
+    }
   ]
 }

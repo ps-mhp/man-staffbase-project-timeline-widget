@@ -1,0 +1,133 @@
+/*!
+ * Copyright 2026, MHP Management und IT-Beratung GmbH and contributors.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Die Übersicht: ein Streifen über den ganzen Gesamtzeitraum, darauf der
+// sichtbare Ausschnitt als Fenster. Die Farben der Striche kommen aus den
+// Kategorien des Plans und stehen deshalb inline am Element, nicht hier.
+
+@use "@shared/stylings/man-tokens" as *;
+
+.man-pt-overview {
+  position: relative;
+  box-sizing: border-box;
+  height: 40px;
+  background: man("surface-sunken");
+  border-radius: 0;
+  // Ein Finger zieht waagerecht das Fenster; senkrecht bleibt die Seite
+  // scrollbar, sonst säße man auf dem Telefon über dem Streifen fest.
+  touch-action: pan-y;
+  // Beim Ziehen würde der Browser sonst Text und Striche markieren.
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+
+// Spuren und Stichtage liegen unter dem Fenster und nehmen keinen Zeiger
+// an: jeder Druck auf den Streifen gilt dem Ausschnitt, nicht einem Strich.
+.man-pt-overview__tracks,
+.man-pt-overview__deadlines {
+  position: absolute;
+  inset: man("space-1") 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.man-pt-overview__tracks {
+  display: flex;
+  flex-direction: column;
+  // Eine Haarlinie zwischen den Spuren; so dünn wie ein Rand der Marke.
+  gap: man("border-width");
+}
+
+.man-pt-overview__track {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  background: man("grey-100");
+}
+
+.man-pt-overview__mark {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+// Ein Zeitraum wird bei einem Plan über Jahre schnell schmaler als ein
+// Pixel; verschwinden soll er trotzdem nicht.
+.man-pt-overview__mark--bar {
+  min-width: 1px;
+}
+
+// Meilenstein und Stichtag sind Zeitpunkte: ein Strich, mittig auf dem Tag.
+.man-pt-overview__mark--milestone,
+.man-pt-overview__mark--deadline {
+  width: 2px;
+  margin-left: -1px;
+}
+
+.man-pt-overview__window {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  // Mittig auf den Ausschnitt gesetzt, damit die Mindestbreite nach beiden
+  // Seiten gleich übersteht, statt das Fenster nach rechts zu verschieben.
+  transform: translateX(-50%);
+  // Zwischen den beiden 8-px-Griffen muss noch Fläche zum Verschieben bleiben,
+  // auch wenn der Ausschnitt auf wenige Pixel des Streifens schrumpft.
+  min-width: 24px;
+  border: man("cta-border-width") solid man("border-strong");
+  border-radius: 0;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    box-shadow: man("focus");
+  }
+}
+
+// Die Griffe an den Kanten ändern die Breite des Ausschnitts und damit den Zoom.
+.man-pt-overview__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: ew-resize;
+
+  // Die Kerbe zeigt, dass sich hier etwas anfassen lässt.
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 12px;
+    transform: translate(-50%, -50%);
+    background: man("border-strong");
+  }
+}
+
+.man-pt-overview__handle--start {
+  left: 0;
+}
+
+.man-pt-overview__handle--end {
+  right: 0;
+}

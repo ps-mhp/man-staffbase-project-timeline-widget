@@ -1,0 +1,389 @@
+/*!
+ * Copyright 2026, MHP Management und IT-Beratung GmbH and contributors.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Der Plan-Editor im Redaktionsdialog. Bewusst in der Palette des
+// Staffbase-Studios (@shared/stylings/editor-chrome) und nicht in der Marke:
+// diese Flächen sehen nur Redakteur:innen. Die Vorschau darin bringt ihr
+// eigenes Stylesheet mit und sieht aus wie auf der Seite. Formular und Listen
+// stehen in `plan-editor-forms.scss`.
+
+@use "@shared/stylings/editor-chrome" as chrome;
+@use "@shared/stylings/man-tokens" as tokens;
+@use "plan-editor-tokens" as local;
+
+// Der Rahmen: Kopf und Fußleiste stehen, dazwischen rollt der Inhalt.
+// `position: relative`, weil die Rückfragen als Schicht über dem ganzen
+// Editor liegen und kein Portal nehmen dürfen (siehe `confirm-dialog.tsx`).
+.man-pt-editor {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  font-family: inherit;
+  font-size: 13px;
+  // Die App setzt `body{line-height:1}`. Bei 12 px Schrift schnitt der Rand
+  // des Dialogs (`overflow: hidden`) damit die Punkte über dem „Ü“ von
+  // „Überschrift“ ab.
+  line-height: 1.4;
+  color: chrome.$text;
+}
+
+.man-pt-editor__header {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: flex-end;
+  padding: 0 16px 12px;
+  border-bottom: 1px solid chrome.$border;
+}
+
+.man-pt-editor__title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: chrome.$text-strong;
+}
+
+.man-pt-editor__heading-field {
+  flex: 1 1 280px;
+  max-width: 480px;
+}
+
+.man-pt-editor__count {
+  margin: 0 0 6px auto;
+  color: chrome.$text-muted;
+  font-variant-numeric: tabular-nums;
+}
+
+// Rollt als Ganzes: Vorschau, Reiter und Formular zusammen. Getrennt
+// rollende Spalten liessen die Vorschau auf kleinen Bildschirmen unter den
+// Knöpfen verschwinden, ohne dass man sie wieder hervorholen könnte.
+.man-pt-editor__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+// Die Fussleiste liegt ausserhalb des rollenden Bereichs und bleibt deshalb
+// immer sichtbar.
+.man-pt-editor__footer {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+  justify-content: flex-end;
+  padding: 12px 16px 0;
+  border-top: 1px solid chrome.$border;
+  background: chrome.$surface;
+}
+
+// --- Meldungen ----
+
+.man-pt-editor__warning {
+  margin: 0;
+  padding: 8px 12px;
+  color: chrome.$text-warning;
+  background: local.$warning-surface;
+  border: 1px solid local.$warning-border;
+  border-radius: chrome.$radius-control;
+}
+
+.man-pt-editor__hint {
+  margin: 0;
+  font-size: 12px;
+  line-height: 18px;
+  color: chrome.$text-muted;
+}
+
+.man-pt-editor__error {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 18px;
+  color: local.$danger;
+}
+
+.man-pt-editor__meta {
+  font-size: 12px;
+  color: chrome.$text-muted;
+}
+
+.man-pt-editor__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// --- Leerzustand ----
+
+.man-pt-editor__empty {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  max-width: 560px;
+  margin: 32px auto;
+  padding: 24px;
+  background: chrome.$surface-muted;
+  border: 1px dashed chrome.$border-hover;
+  border-radius: chrome.$radius-panel;
+}
+
+.man-pt-editor__empty-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: chrome.$text-strong;
+}
+
+// --- Vorschau ----
+
+.man-pt-editor__preview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: chrome.$surface-panel;
+  border: 1px solid chrome.$border;
+  border-radius: chrome.$radius-panel;
+}
+
+.man-pt-editor__preview-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+}
+
+.man-pt-editor__preview-head .man-pt-editor__actions {
+  margin-left: auto;
+}
+
+// Eine eigene Stapelebene: die Vorschau hebt ihre Achse per `z-index` über
+// die Ebenen, und ohne diese Grenze stand die Achse auch über der Rückfrage
+// beim Löschen — am 30.09.2026 im Dev-Harness gesehen.
+.man-pt-editor__preview-body {
+  isolation: isolate;
+  min-width: 0;
+  background: chrome.$surface;
+}
+
+.man-pt-editor__preview-body[hidden] {
+  display: none;
+}
+
+// Ein Knopf, der wie eine Überschrift aussieht und den Zustand mit einem
+// Pfeil zeigt; `aria-expanded` sagt dem Screenreader dasselbe.
+.man-pt-editor__disclosure {
+  @include tokens.man-outshine-host {
+    display: inline-flex;
+    width: auto;
+    margin: 0;
+  }
+
+  @include local.studio-button-states;
+
+  --pt-button-bg: transparent;
+  --pt-button-bg-hover: #{chrome.$surface-hover};
+
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  // Die App gibt jedem Knopf `min-height: 40px`; die Zeile der Vorschau
+  // wäre sonst höher als ihr Inhalt.
+  min-height: 0;
+  padding: 2px 4px;
+  font: inherit;
+  font-weight: 600;
+  color: chrome.$text-strong;
+  border: 0;
+  border-radius: chrome.$radius-small;
+  cursor: pointer;
+
+  &::before {
+    content: "▸";
+    display: inline-block;
+    transition: transform chrome.$transition;
+  }
+
+  &[aria-expanded="true"]::before {
+    transform: rotate(90deg);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: chrome.$focus-ring;
+  }
+}
+
+// --- Reiter ----
+
+.man-pt-editor__tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.man-pt-editor__tablist {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid chrome.$border;
+}
+
+.man-pt-editor__tab {
+  @include tokens.man-outshine-host {
+    display: inline-flex;
+    width: auto;
+    margin: 0 0 -1px;
+  }
+
+  @include local.studio-button-states;
+
+  --pt-button-bg: transparent;
+  --pt-button-bg-hover: #{chrome.$surface-hover};
+
+  display: inline-flex;
+  min-height: 0;
+  padding: 8px 14px;
+  font: inherit;
+  color: chrome.$text-muted;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  transition:
+    color chrome.$transition,
+    border-color chrome.$transition;
+
+  &:hover {
+    color: chrome.$text-strong;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: chrome.$focus-ring;
+  }
+}
+
+.man-pt-editor__tab--active {
+  font-weight: 600;
+  color: chrome.$accent-text;
+  border-bottom-color: chrome.$accent;
+}
+
+.man-pt-editor__tabpanel {
+  padding-top: 16px;
+}
+
+// --- Knöpfe ----
+
+.man-pt-editor__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.man-pt-editor__button {
+  @include tokens.man-outshine-host {
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0;
+  }
+
+  @include local.studio-button-states;
+
+  --pt-button-bg: #{chrome.$surface};
+  --pt-button-bg-hover: #{chrome.$surface-hover};
+
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  min-height: chrome.$control-height-sm;
+  padding: 4px 10px;
+  font: inherit;
+  color: chrome.$text;
+  border: 1px solid chrome.$border;
+  border-radius: chrome.$radius-control;
+  cursor: pointer;
+  transition:
+    background-color chrome.$transition,
+    border-color chrome.$transition;
+
+  &:hover:not(:disabled) {
+    border-color: chrome.$border-hover;
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: chrome.$focus-border;
+    box-shadow: chrome.$focus-ring;
+  }
+
+  &:disabled {
+    color: chrome.$text-state;
+    cursor: default;
+    opacity: 0.6;
+  }
+}
+
+// Die Abarten belegen nur die Variablen; den Hintergrund setzt
+// `studio-button-states` für alle Zustände.
+.man-pt-editor__button--primary {
+  --pt-button-bg: #{chrome.$accent};
+  --pt-button-bg-hover: #{chrome.$accent-strong};
+
+  color: chrome.$surface;
+  border-color: chrome.$accent-strong;
+
+  &:hover:not(:disabled) {
+    border-color: chrome.$accent-stronger;
+  }
+}
+
+.man-pt-editor__button--danger {
+  --pt-button-bg-hover: #{local.$danger};
+
+  color: local.$danger;
+
+  &:hover:not(:disabled) {
+    color: chrome.$surface;
+    border-color: local.$danger-strong;
+  }
+}
+
+// In der Rückfrage ist Löschen die Handlung, um die es geht — dort voll gefüllt.
+.man-pt-editor__dialog .man-pt-editor__button--danger {
+  --pt-button-bg: #{local.$danger};
+  --pt-button-bg-hover: #{local.$danger-strong};
+
+  color: chrome.$surface;
+  border-color: local.$danger-strong;
+}
+
+.man-pt-editor__button--icon {
+  min-width: chrome.$control-height-sm;
+  padding: 4px 6px;
+}

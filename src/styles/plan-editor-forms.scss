@@ -1,0 +1,379 @@
+/*!
+ * Copyright 2026, MHP Management und IT-Beratung GmbH and contributors.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Formular und Listen des Plan-Editors: Eingaben, Kästchen, die Listen der
+// Einträge, Ebenen und Kategorien samt Farbfeldern und die Rückfrage beim
+// Löschen. Ein eigenes Stylesheet neben `plan-editor.scss`, nicht ein
+// Sass-Partial: das Live-Reload von `serve.mjs` übersetzt jede geänderte
+// Datei für sich und schickt sie an genau die `useHotStyle`-Stelle mit
+// ihrem Namen — die Änderung an einem Partial käme nirgends an.
+
+@use "@shared/stylings/editor-chrome" as chrome;
+@use "@shared/stylings/man-tokens" as tokens;
+@use "plan-editor-tokens" as local;
+
+// --- Felder ----
+
+.man-pt-editor__field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.man-pt-editor__label {
+  display: block;
+  margin: 0 0 4px;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: chrome.$text-strong;
+}
+
+.man-pt-editor__input,
+.man-pt-editor__textarea,
+.man-pt-editor__select {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: chrome.$control-height;
+  padding: 5px 8px;
+  font: inherit;
+  color: chrome.$text-body;
+  background: chrome.$surface;
+  border: 1px solid chrome.$border-input;
+  border-radius: chrome.$radius-input;
+
+  &:focus-visible {
+    outline: none;
+    border-color: chrome.$focus-border;
+    box-shadow: chrome.$focus-ring;
+  }
+
+  &[aria-invalid="true"] {
+    border-color: local.$danger;
+  }
+}
+
+.man-pt-editor__textarea {
+  min-height: 72px;
+  resize: vertical;
+}
+
+// Die App nimmt jeder Auswahlliste den Pfeil:
+//   .contenteditable,button,input,select,textarea{-webkit-appearance:none;…;appearance:none}
+// Ohne ihn sähe eine Auswahl aus wie ein Textfeld.
+.man-pt-editor__select {
+  -webkit-appearance: auto;
+  appearance: auto;
+}
+
+.man-pt-editor__check {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+}
+
+// Die App zieht jedes Eingabefeld auf volle Breite:
+//   .editable,input,textarea{width:100%;padding:5px;…;background:#eee}
+// `input[type=checkbox]` nimmt sie davon aus, Optionsfelder nicht — die
+// Auswahl in der Rückfrage stünde sonst über die ganze Zeile.
+.man-pt-editor .man-pt-editor__check input {
+  flex: 0 0 auto;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.man-pt-editor__deps,
+.man-pt-editor__colors {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.man-pt-editor__deps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.man-pt-editor__checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 200px;
+  margin: 0;
+  padding: 6px 8px;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid chrome.$border;
+  border-radius: chrome.$radius-control;
+}
+
+.man-pt-editor__check-title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+// --- Einträge: Liste und Formular ----
+
+.man-pt-editor__entries {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  .man-pt-editor__entries {
+    grid-template-columns: 340px minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.man-pt-editor__items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.man-pt-editor__add {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.man-pt-editor__list {
+  max-height: 480px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  background: chrome.$surface;
+  border: 1px solid chrome.$border;
+  border-radius: chrome.$radius-control;
+}
+
+.man-pt-editor__list-item {
+  @include tokens.man-outshine-host {
+    display: flex;
+    width: 100%;
+    margin: 0;
+  }
+
+  @include local.studio-button-states;
+
+  --pt-button-bg: transparent;
+  --pt-button-bg-hover: #{chrome.$surface-hover};
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  min-height: 0;
+  padding: 8px 10px;
+  font: inherit;
+  text-align: start;
+  color: chrome.$text-body;
+  border: 0;
+  border-bottom: 1px solid chrome.$border;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color chrome.$transition;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset chrome.$focus-ring;
+  }
+}
+
+.man-pt-editor__list li:last-child .man-pt-editor__list-item {
+  border-bottom: 0;
+}
+
+.man-pt-editor__list-item--active {
+  --pt-button-bg: #{chrome.$accent-selection};
+
+  box-shadow: inset 3px 0 0 chrome.$accent;
+}
+
+.man-pt-editor__list-title {
+  font-weight: 600;
+}
+
+.man-pt-editor__detail {
+  min-width: 0;
+}
+
+.man-pt-editor__form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: chrome.$surface;
+  border: 1px solid chrome.$border;
+  border-radius: chrome.$radius-panel;
+}
+
+.man-pt-editor__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+// --- Ebenen und Kategorien ----
+
+.man-pt-editor__entities {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 720px;
+}
+
+.man-pt-editor__entity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.man-pt-editor__entity {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 12px;
+  background: chrome.$surface;
+  border: 1px solid chrome.$border;
+  border-radius: chrome.$radius-control;
+}
+
+.man-pt-editor__entity-head {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.man-pt-editor__entity-head > .man-pt-editor__meta {
+  flex: 0 0 auto;
+  min-width: 80px;
+  line-height: chrome.$control-height;
+}
+
+.man-pt-editor__entity-name {
+  flex: 1 1 auto;
+}
+
+.man-pt-editor__swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+// Echte Optionsfelder, nur anders gezeichnet: Pfeiltasten und Vorlesen
+// bringt der Browser mit.
+//
+// Unter `.man-pt-editor`, weil die App Optionsfelder ausdrücklich wieder zu
+// nativen Kreisen macht und damit eine einfache Klasse aussticht:
+//   input[type=radio]{-webkit-appearance:radio;-moz-appearance:radio;appearance:radio}
+// (0,1,1 gegen 0,1,0) — die Farbfelder standen als leere Kreise da.
+.man-pt-editor .man-pt-editor__swatch {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgb(0 0 0 / 15%);
+  border-radius: chrome.$radius-small;
+  cursor: pointer;
+
+  &:checked {
+    box-shadow:
+      0 0 0 2px chrome.$surface,
+      0 0 0 4px chrome.$text-strong;
+  }
+
+  &:focus-visible {
+    outline: 2px solid chrome.$accent;
+    outline-offset: 4px;
+  }
+}
+
+.man-pt-editor__hex {
+  max-width: 160px;
+}
+
+// --- Rückfrage ----
+
+.man-pt-editor__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(15 23 32 / 45%);
+}
+
+.man-pt-editor__dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(440px, 90%);
+  padding: 18px 20px;
+  background: chrome.$surface;
+  border-radius: chrome.$radius-panel;
+  box-shadow: chrome.$shadow-dialog;
+}
+
+.man-pt-editor__dialog-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: chrome.$text-strong;
+}
+
+.man-pt-editor__dialog-message {
+  margin: 0;
+  color: chrome.$text-caption;
+}
+
+.man-pt-editor__dialog-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.man-pt-editor__choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+
+  .man-pt-editor__select {
+    width: auto;
+    min-width: 160px;
+  }
+}
+
+.man-pt-editor__dialog-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}

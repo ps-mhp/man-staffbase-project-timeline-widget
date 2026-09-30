@@ -1,0 +1,1087 @@
+/*!
+ * Copyright 2026, MHP Management und IT-Beratung GmbH and contributors.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@use "@shared/stylings/man-tokens" as *;
+
+// Der Projektplan auf der Seite. Farben, Schriften und Rundungen kommen aus
+// den MAN-Tokens; die Farbe eines Eintrags kommt als `--pt-color` aus den
+// Daten, die Schrift darauf als `--pt-ink` (siehe `color.ts`).
+//
+// Maße, die auch `lane-layout.ts` kennt (Symbol 14 px, Balken 22 px,
+// Beschriftung 13/16 px, Leiste 8 px), muessen hier dieselben bleiben — das
+// Layout rechnet mit ihnen, bevor etwas im DOM steht.
+
+.man-pt {
+  --pt-heads: 168px;
+  --pt-axis-row: 24px;
+  --pt-surface: #{man("surface")};
+  --pt-sunken: #{man("surface-sunken")};
+  --pt-text: #{man("text")};
+  --pt-muted: #{man("text-muted")};
+  --pt-border: #{man("border")};
+  --pt-grid: #{man("border-subtle")};
+  --pt-strong: #{man("border-strong")};
+  --pt-accent: #{man("red")};
+  --pt-duration: #{man("duration")};
+
+  position: relative;
+  display: grid;
+  gap: 12px;
+  color: var(--pt-text);
+  font: 300 14px/21px #{man("font-body")};
+}
+
+.man-pt *,
+.man-pt *::before,
+.man-pt *::after {
+  box-sizing: border-box;
+}
+
+.man-pt [hidden] {
+  display: none !important;
+}
+
+.man-pt__visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+}
+
+// --- Kopf -------------------------------------------------------------------
+
+.man-pt__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+}
+
+.man-pt__title {
+  @include man-outshine-host {
+    margin: 0 !important;
+    @include man-type("h3", true);
+    color: var(--pt-text) !important;
+  }
+}
+
+.man-pt__stand {
+  @include man-outshine-host {
+    margin: 0 !important;
+    @include man-type("caption", true);
+    color: var(--pt-muted) !important;
+  }
+}
+
+// --- Knöpfe -----------------------------------------------------------------
+//
+// Mit Nachdruck: `onetruck-css` macht aus jedem blanken `button` im
+// Inhaltsbereich einen Handlungsknopf ueber die volle Breite (Vorfall
+// 10.09.2026 im Hotspot-Widget).
+
+.man-pt__button {
+  @include man-outshine-host {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: 36px !important;
+    margin: 0 !important;
+    padding: 0 12px !important;
+    border: 1px solid #{man("cta-border")} !important;
+    border-radius: 0 !important;
+    background: var(--pt-surface) !important;
+    color: var(--pt-text) !important;
+    font: 600 13px/1 #{man("font-head")} !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: var(--pt-strong) !important;
+    }
+
+    &:focus-visible {
+      outline: none !important;
+      box-shadow: #{man("focus")} !important;
+    }
+
+    &.is-active,
+    &.is-open {
+      border-color: var(--pt-strong) !important;
+      background: var(--pt-strong) !important;
+      color: #{man("white")} !important;
+    }
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.5;
+    }
+  }
+}
+
+.man-pt__button--icon {
+  @include man-outshine-host {
+    width: 36px !important;
+    padding: 0 !important;
+    font-size: 18px !important;
+  }
+}
+
+.man-pt__button--primary {
+  @include man-outshine-host {
+    border-color: var(--pt-accent) !important;
+    background: var(--pt-accent) !important;
+    color: #{man("white")} !important;
+
+    &:hover {
+      border-color: #{man("red-hover")} !important;
+      background: #{man("red-hover")} !important;
+    }
+  }
+}
+
+.man-pt__button--quiet {
+  @include man-outshine-host {
+    border-color: transparent !important;
+    background: transparent !important;
+    text-decoration: underline !important;
+  }
+}
+
+.man-pt__link-button {
+  @include man-outshine-host {
+    display: inline !important;
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    color: #{man("link")} !important;
+    font: inherit !important;
+    text-align: left !important;
+    text-decoration: underline !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+
+    &:hover {
+      color: #{man("link-hover")} !important;
+    }
+
+    &:focus-visible {
+      outline: none !important;
+      box-shadow: #{man("focus")} !important;
+    }
+  }
+}
+
+// --- Werkzeugleiste ---------------------------------------------------------
+
+.man-pt__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.man-pt__search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.man-pt__input,
+.man-pt__select {
+  @include man-outshine-host {
+    height: 36px !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    border: 1px solid #{man("cta-border")} !important;
+    border-radius: 0 !important;
+    background: var(--pt-surface) !important;
+    color: var(--pt-text) !important;
+    font: 300 14px/1 #{man("font-body")} !important;
+    box-shadow: none !important;
+
+    &:focus-visible {
+      outline: none !important;
+      box-shadow: #{man("focus")} !important;
+    }
+  }
+}
+
+.man-pt__input {
+  @include man-outshine-host {
+    width: 220px !important;
+  }
+}
+
+.man-pt__match-count {
+  color: var(--pt-muted);
+  font-size: 13px;
+}
+
+.man-pt__match-count:empty {
+  display: none;
+}
+
+.man-pt__zoom,
+.man-pt__switch {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.man-pt__disclosure {
+  position: relative;
+}
+
+.man-pt__panel {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 300px;
+  padding: 16px;
+  border: 1px solid var(--pt-border);
+  background: var(--pt-surface);
+  box-shadow: #{man("elevation-overlay")};
+}
+
+.man-pt__filter-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.man-pt__filter-section {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.man-pt__filter-heading,
+.man-pt__field-label {
+  @include man-outshine-host {
+    margin: 0 0 2px !important;
+    padding: 0 !important;
+    @include man-type("eyebrow", true);
+    color: var(--pt-muted) !important;
+    letter-spacing: #{man("track-label")} !important;
+    text-transform: uppercase !important;
+  }
+}
+
+.man-pt__check,
+.man-pt__radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.man-pt__check input,
+.man-pt__radio input {
+  accent-color: var(--pt-strong);
+}
+
+.man-pt__period {
+  display: grid;
+  gap: 8px;
+}
+
+.man-pt__period-part {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.man-pt__period-part > legend {
+  width: 100%;
+}
+
+.man-pt__more {
+  display: grid;
+  gap: 8px;
+}
+
+// --- Legende ----------------------------------------------------------------
+
+.man-pt__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.man-pt__legend-entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 13px;
+}
+
+.man-pt__legend-dot {
+  display: inline-block;
+  flex: none;
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
+  border-radius: #{man("radius-round")};
+  background: var(--pt-color);
+  vertical-align: middle;
+}
+
+.man-pt__legend-entry .man-pt__legend-dot,
+.man-pt__chip .man-pt__legend-dot {
+  margin-right: 0;
+}
+
+.man-pt__chip {
+  @include man-outshine-host {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: 28px !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    border: 1px solid var(--pt-border) !important;
+    border-radius: 0 !important;
+    background: var(--pt-surface) !important;
+    color: var(--pt-text) !important;
+    font: 300 13px/1 #{man("font-body")} !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--pt-strong) !important;
+    }
+
+    &:focus-visible {
+      outline: none !important;
+      box-shadow: #{man("focus")} !important;
+    }
+
+    // Ausgeblendet: blass und durchgestrichen — nicht nur blasser, damit der
+    // Zustand auch ohne Farbwahrnehmung erkennbar ist.
+    &.is-off {
+      color: var(--pt-muted) !important;
+      text-decoration: line-through !important;
+    }
+  }
+}
+
+.man-pt__chip.is-off .man-pt__legend-dot {
+  background: transparent;
+  box-shadow: inset 0 0 0 2px var(--pt-color);
+}
+
+.man-pt__chip--reset {
+  @include man-outshine-host {
+    border-style: dashed !important;
+  }
+}
+
+// --- Bühne ------------------------------------------------------------------
+
+.man-pt__stage {
+  display: grid;
+  grid-template-columns: var(--pt-heads) minmax(0, 1fr);
+  border-top: 1px solid var(--pt-strong);
+  border-bottom: 1px solid var(--pt-border);
+}
+
+// In der Editor-Vorschau ist die Bühne begrenzt und scrollt selbst: sonst
+// schöbe ein langer Plan das Formular weit nach unten. Zoom und Übersicht
+// bleiben dabei stehen, die Achse klebt oben in der Bühne.
+.man-pt--editor .man-pt__stage {
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+// Achse und Ecke bleiben beim Scrollen der Seite oben. Das traegt nur, weil
+// kein Vorfahr `overflow: hidden` hat — die Zeitflaeche schneidet mit `clip`.
+.man-pt__corner,
+.man-pt__axis-host {
+  position: sticky;
+  z-index: 4;
+  top: 0;
+  height: calc(var(--pt-axis-row) * 2);
+  border-bottom: 1px solid var(--pt-border);
+  background: var(--pt-surface);
+}
+
+.man-pt__corner {
+  border-right: 1px solid var(--pt-border);
+}
+
+.man-pt__axis-host {
+  overflow-x: clip;
+}
+
+.man-pt__axis {
+  position: relative;
+  height: 100%;
+}
+
+.man-pt__axis-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--pt-axis-row);
+}
+
+.man-pt__axis-row--upper {
+  top: 0;
+  border-bottom: 1px solid var(--pt-grid);
+}
+
+.man-pt__axis-row--lower {
+  top: var(--pt-axis-row);
+}
+
+.man-pt__axis-cell {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid var(--pt-grid);
+}
+
+.man-pt__axis-row--upper .man-pt__axis-cell {
+  border-left-color: var(--pt-border);
+}
+
+.man-pt__axis-label {
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  padding: 0 6px;
+  color: var(--pt-muted);
+  font: 300 12px/var(--pt-axis-row) #{man("font-body")};
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.man-pt__axis-row--upper .man-pt__axis-label {
+  color: var(--pt-text);
+  font: 600 13px/var(--pt-axis-row) #{man("font-head")};
+}
+
+.man-pt__today-tag {
+  position: absolute;
+  z-index: 1;
+  bottom: 2px;
+  padding: 0 4px;
+  transform: translateX(-50%);
+  background: var(--pt-strong);
+  color: #{man("white")};
+  font: 600 11px/16px #{man("font-head")};
+}
+
+.man-pt__heads {
+  position: relative;
+  height: var(--pt-body-height);
+  border-right: 1px solid var(--pt-border);
+  transition: height var(--pt-duration);
+}
+
+.man-pt__lane-head {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 8px 12px 4px;
+  border-top: 1px solid var(--pt-border);
+  transition:
+    top var(--pt-duration),
+    height var(--pt-duration);
+}
+
+.man-pt__lane-head:first-child {
+  border-top: 0;
+}
+
+.man-pt__lane-head--deadlines {
+  padding-left: 28px;
+  background: var(--pt-sunken);
+}
+
+// Trennen statt Brechen mitten im Wort: „Launche|s" war auf dem Telefon die Folge von `anywhere`.
+.man-pt__lane-title {
+  min-width: 0;
+  font: 600 13px/16px #{man("font-head")};
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.man-pt__lane-toggle {
+  @include man-outshine-host {
+    display: grid !important;
+    place-items: center !important;
+    flex: none !important;
+    width: 20px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: 16px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: none !important;
+      box-shadow: #{man("focus")} !important;
+    }
+  }
+}
+
+.man-pt__lane-chevron {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--pt-text);
+  border-bottom: 2px solid var(--pt-text);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform var(--pt-duration);
+}
+
+[aria-expanded="false"] > .man-pt__lane-chevron {
+  transform: rotate(-45deg);
+}
+
+// Die Zeitflaeche: waagerecht abgeschnitten, senkrecht offen. `pan-y` laesst
+// dem Browser das senkrechte Scrollen der Seite; waagerecht wischen gehoert
+// dem Plan.
+.man-pt__body {
+  position: relative;
+  height: var(--pt-body-height);
+  overflow-x: clip;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  transition: height var(--pt-duration);
+}
+
+.man-pt__body:active {
+  cursor: grabbing;
+}
+
+.man-pt__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.man-pt__grid {
+  stroke: var(--pt-grid);
+  stroke-width: 1;
+}
+
+.man-pt__grid--strong,
+.man-pt__lane-rule {
+  stroke: var(--pt-border);
+}
+
+.man-pt__deadline-line {
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+}
+
+.man-pt__today-line {
+  stroke: var(--pt-strong);
+  stroke-width: 2;
+}
+
+.man-pt__dependency {
+  fill: none;
+  stroke: var(--pt-muted);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+
+.man-pt__dependency.is-active {
+  stroke: var(--pt-text);
+  stroke-width: 1.5;
+}
+
+.man-pt__dependency.is-faded,
+.man-pt__deadline-line.is-dimmed {
+  opacity: 0.25;
+}
+
+.man-pt__arrowhead {
+  fill: var(--pt-muted);
+}
+
+.man-pt__connector {
+  position: absolute;
+  height: 8px;
+  background: color-mix(in srgb, var(--pt-color) 25%, transparent);
+  pointer-events: none;
+  transition: top var(--pt-duration);
+}
+
+// --- Einträge ---------------------------------------------------------------
+
+.man-pt__item {
+  @include man-outshine-host {
+    position: absolute !important;
+    display: block !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--pt-text) !important;
+    font: 300 13px/16px #{man("font-body")} !important;
+    text-align: left !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    transition: top var(--pt-duration);
+
+    &:focus-visible {
+      outline: 2px solid var(--pt-strong) !important;
+      outline-offset: 2px !important;
+    }
+  }
+}
+
+.man-pt__milestone {
+  @include man-outshine-host {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+.man-pt__deadline {
+  @include man-outshine-host {
+    width: 12px !important;
+    height: 12px !important;
+  }
+}
+
+.man-pt__symbol {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--pt-color);
+}
+
+.man-pt__milestone--diamond .man-pt__symbol {
+  transform: rotate(45deg) scale(0.78);
+}
+
+.man-pt__milestone--triangle .man-pt__symbol,
+.man-pt__deadline .man-pt__symbol {
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.man-pt__milestone--circle .man-pt__symbol {
+  border-radius: #{man("radius-round")};
+}
+
+// Vorlaeufig: blass gefuellt mit kraeftigem Rand — „tbd" der Vorlage.
+.man-pt__milestone.is-tentative .man-pt__symbol {
+  background: color-mix(in srgb, var(--pt-color) 30%, #{man("white")});
+  box-shadow: inset 0 0 0 2px var(--pt-color);
+}
+
+.man-pt__bar-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--pt-color);
+}
+
+.man-pt__bar--arrow .man-pt__bar-fill {
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+}
+
+.man-pt__bar.is-tentative .man-pt__bar-fill {
+  border: 2px dashed var(--pt-color);
+  background: color-mix(in srgb, var(--pt-color) 30%, #{man("white")});
+}
+
+.man-pt__bar-text {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 0 6px;
+  color: var(--pt-ink);
+  line-height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.man-pt__bar.is-tentative .man-pt__bar-text {
+  color: var(--pt-text);
+}
+
+.man-pt__label {
+  position: absolute;
+  display: -webkit-box;
+  overflow: hidden;
+  padding: 0 1px;
+  background: #{man-alpha("white", 0.85)};
+  color: var(--pt-text);
+  font: 300 13px/16px #{man("font-body")};
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--pt-lines, 3);
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.man-pt__label--center {
+  text-align: center;
+}
+
+.man-pt__label--start {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.man-pt__item:hover .man-pt__label {
+  text-decoration: underline;
+}
+
+.man-pt__item.is-selected .man-pt__symbol,
+.man-pt__item.is-selected .man-pt__bar-fill {
+  box-shadow:
+    0 0 0 2px var(--pt-surface),
+    0 0 0 4px var(--pt-strong);
+}
+
+.man-pt__item.is-related .man-pt__symbol,
+.man-pt__item.is-related .man-pt__bar-fill {
+  box-shadow:
+    0 0 0 2px var(--pt-surface),
+    0 0 0 3px var(--pt-muted);
+}
+
+// Der angesprungene Suchtreffer: in der Hausfarbe, damit er sich von der
+// Auswahl (dunkel) unterscheidet.
+.man-pt__item.is-current .man-pt__symbol,
+.man-pt__item.is-current .man-pt__bar-fill {
+  box-shadow:
+    0 0 0 2px var(--pt-surface),
+    0 0 0 4px var(--pt-accent);
+}
+
+.man-pt__item.is-dimmed {
+  opacity: 0.25;
+}
+
+.man-pt__hint {
+  position: absolute;
+  z-index: 5;
+  top: 8px;
+  left: 50%;
+  margin: 0;
+  padding: 6px 10px;
+  transform: translateX(-50%);
+  background: #{man("surface-invers")};
+  color: #{man("white")};
+  font-size: 13px;
+  pointer-events: none;
+}
+
+// --- Details ----------------------------------------------------------------
+
+.man-pt__details {
+  position: absolute;
+  z-index: 30;
+  width: 320px;
+  max-width: calc(100% - 16px);
+  padding: 16px;
+  border: 1px solid var(--pt-border);
+  background: var(--pt-surface);
+  box-shadow: #{man("elevation-overlay")};
+}
+
+.man-pt__details:focus {
+  outline: none;
+}
+
+.man-pt__details-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.man-pt__details-title {
+  @include man-outshine-host {
+    margin: 0 !important;
+    @include man-type("h4", true);
+    color: var(--pt-text) !important;
+  }
+}
+
+.man-pt__details-meta,
+.man-pt__details-term,
+.man-pt__details-description {
+  margin: 8px 0 0;
+}
+
+.man-pt__details-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+}
+
+.man-pt__details-meta .man-pt__legend-dot {
+  margin-right: 0;
+}
+
+.man-pt__details-term {
+  font-weight: 600;
+}
+
+.man-pt__details-facts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 12px;
+  margin: 8px 0 0;
+}
+
+.man-pt__details-facts dt {
+  color: var(--pt-muted);
+}
+
+.man-pt__details-facts dd {
+  margin: 0;
+}
+
+.man-pt__details-description {
+  white-space: pre-line;
+}
+
+.man-pt__details-links {
+  margin-top: 8px;
+}
+
+.man-pt__details-links ul {
+  margin: 2px 0 0;
+  padding-left: 18px;
+}
+
+.man-pt__details-key {
+  color: var(--pt-muted);
+}
+
+.man-pt__tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 6px;
+  border: 1px dashed var(--pt-muted);
+  color: var(--pt-muted);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.man-pt__sheet-backdrop,
+.man-pt__dialog-backdrop {
+  position: fixed;
+  z-index: 2147483000;
+  inset: 0;
+  background: #{man("overlay")};
+}
+
+.man-pt__details--sheet {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  max-width: none;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+// --- Export-Dialog ----------------------------------------------------------
+
+.man-pt__dialog-backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.man-pt__dialog {
+  display: grid;
+  gap: 16px;
+  width: min(440px, 100%);
+  padding: 24px;
+  background: var(--pt-surface);
+  box-shadow: #{man("elevation-overlay")};
+  color: var(--pt-text);
+  font: 300 14px/21px #{man("font-body")};
+}
+
+.man-pt__dialog-title {
+  @include man-outshine-host {
+    margin: 0 !important;
+    @include man-type("h4", true);
+    color: var(--pt-text) !important;
+  }
+}
+
+.man-pt__dialog-options {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.man-pt__dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.man-pt__error {
+  margin: 0;
+  color: #{man("error")};
+}
+
+// --- Liste und Leerzustand --------------------------------------------------
+
+.man-pt__list-wrap {
+  overflow-x: auto;
+}
+
+.man-pt__list {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.man-pt__list th,
+.man-pt__list td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--pt-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.man-pt__list thead th {
+  border-bottom: 1px solid var(--pt-strong);
+  font: 600 13px/16px #{man("font-head")};
+}
+
+.man-pt__list tbody th {
+  font-weight: 600;
+}
+
+.man-pt__list-term {
+  white-space: nowrap;
+}
+
+.man-pt__empty {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 16px;
+  background: var(--pt-sunken);
+}
+
+.man-pt__empty p {
+  margin: 0;
+}
+
+// --- Schmale Bildschirme ----------------------------------------------------
+//
+// Deckungsgleich mit `NARROW_QUERY` in `use-narrow-viewport.ts`.
+
+@media (max-width: 767px) {
+  .man-pt {
+    --pt-heads: 96px;
+  }
+
+  .man-pt__lane-head {
+    gap: 2px;
+    padding: 10px 4px 10px 2px;
+  }
+
+  .man-pt__search {
+    flex: 1 1 100%;
+  }
+
+  .man-pt__input {
+    @include man-outshine-host {
+      width: 100% !important;
+      flex: 1 !important;
+    }
+  }
+
+  .man-pt__panel {
+    position: fixed;
+    z-index: 2147483000;
+    top: auto;
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    min-width: 0;
+    max-height: 70vh;
+    overflow: auto;
+  }
+
+  .man-pt__lane-title {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .man-pt *,
+  .man-pt *::before,
+  .man-pt *::after {
+    transition: none !important;
+  }
+}
