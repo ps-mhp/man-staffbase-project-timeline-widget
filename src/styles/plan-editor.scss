@@ -239,6 +239,26 @@
   color: chrome.$text-strong;
 }
 
+// Die Galerie braucht Platz für Karten nebeneinander; schmal stehen sie
+// untereinander.
+.man-pt-editor__empty--gallery {
+  align-items: stretch;
+  max-width: 760px;
+}
+
+.man-pt-editor__templates {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: local.$space-m;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.man-pt-editor__templates-item {
+  margin: 0;
+  padding: 0;
+}
 
 // --- Vorschau ----
 

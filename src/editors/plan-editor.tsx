@@ -44,6 +44,7 @@ import type { PlanEditorValue } from "../plan-editor-injector";
 import { CategoryEditor } from "./category-editor";
 import { EditorHeader } from "./editor-header";
 import { EditorTabs, TabDefinition } from "./editor-tabs";
+import { EmptyState } from "./empty-state";
 import { EntriesTab } from "./entries-tab";
 import { useEntriesView } from "./entries-view";
 import { LaneEditor } from "./lane-editor";
@@ -52,7 +53,7 @@ import {
   clearStartView,
   setStartView,
   startEmpty,
-  startWithExample,
+  startWithTemplate,
 } from "./plan-structure-edits";
 import { PREVIEW, defaultPreviewHeight, previewSpace } from "./editor-layout";
 import { PlanPreview } from "./plan-preview";
@@ -86,44 +87,6 @@ function droppedMessage(dropped: number): string {
 
 const sameViewport = (a: Viewport | null, b: Viewport): boolean =>
   a !== null && a.start === b.start && a.end === b.end;
-
-function EmptyState({
-  onExample,
-  onEmpty,
-}: {
-  onExample: () => void;
-  onEmpty: () => void;
-}): ReactElement {
-  const headingId = useId();
-  return (
-    <section className="man-pt-editor__empty" aria-labelledby={headingId}>
-      <h3 id={headingId} className="man-pt-editor__empty-title">
-        Der Plan ist noch leer
-      </h3>
-      <p className="man-pt-editor__hint">
-        Der Beispielplan bringt drei Ebenen, sieben Kategorien und jede Art von
-        Eintrag mit — nach der Vorlage „Sales Truck Launch“. Er lässt sich
-        danach frei umbauen.
-      </p>
-      <div className="man-pt-editor__actions">
-        <button
-          type="button"
-          className="man-pt-editor__button man-pt-editor__button--primary"
-          onClick={onExample}
-        >
-          Mit Beispielplan beginnen
-        </button>
-        <button
-          type="button"
-          className="man-pt-editor__button"
-          onClick={onEmpty}
-        >
-          Leer beginnen
-        </button>
-      </div>
-    </section>
-  );
-}
 
 export function PlanEditor({
   value,
@@ -256,7 +219,7 @@ export function PlanEditor({
       <div ref={mainRef} className="man-pt-editor__main">
         {empty ? (
           <EmptyState
-            onExample={() => begin(startWithExample(plan))}
+            onTemplate={(template) => begin(startWithTemplate(plan, template))}
             onEmpty={() => begin(startEmpty(plan))}
           />
         ) : (

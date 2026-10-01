@@ -9,7 +9,7 @@
    selbst, bildschirmfüllend; er verdeckt dabei auch die Leiste des Studios.
 3. Ein leerer Plan bietet zwei Wege an: **Leer beginnen** legt eine Ebene
    „Ebene 1“ an; wer lieber von einer fertigen Vorlage ausgeht, folgt dem
-   Abschnitt „Mit dem Beispielplan beginnen“.
+   Abschnitt „Mit einer Vorlage beginnen“.
 4. Tragen Sie in der Kopfleiste des Plan-Editors unter **Überschrift**
    optional einen Titel für den Plan ein. Er steht über dem Plan und gibt der
    Excel-Datei ihren Namen.
@@ -23,15 +23,23 @@
    **Excel-Export anbieten**; beide sind vorab eingeschaltet.
 10. Speichern Sie die Seite und prüfen Sie das Ergebnis in der Vorschau.
 
-## Mit dem Beispielplan beginnen
+## Mit einer Vorlage beginnen
 
 1. Öffnen Sie die Einstellungen eines Widgets, dessen Plan noch leer ist.
-2. Klicken Sie im Plan-Editor auf **Mit Beispielplan beginnen**. Der Editor
-   füllt sich mit der Überschrift „Sales Truck Launch“, drei Ebenen, sieben
-   Kategorien und Einträgen nach dem Vorbild des Sales-Truck-Launch-Plans.
-3. Passen Sie Überschrift, Ebenen, Kategorien und Einträge an Ihr Projekt an
+2. Klicken Sie im Plan-Editor auf **Mit Vorlage beginnen**. Der Editor zeigt
+   die Vorlagen als Karten, jede mit Vorschaubild, Beschreibung und dem, was
+   sie mitbringt:
+   - **Produkt-Roadmap** — mehrere Jahre und Produktlinien nach dem Vorbild
+     des Plans „Sales Truck Launch“: drei Ebenen, sieben Kategorien und jede
+     Art von Eintrag.
+   - **Terminverschiebung** — ein verschobener Termin über wenige Monate:
+     alter und neuer Termin als Stichtage, je betroffener Funktion eine Ebene.
+3. Klicken Sie auf die passende Karte. Der Editor füllt sich mit der Vorlage;
+   eine schon eingegebene Überschrift bleibt. **Zurück** führt ohne Änderung
+   zu den beiden Wegen zurück.
+4. Passen Sie Überschrift, Ebenen, Kategorien und Einträge an Ihr Projekt an
    oder löschen Sie, was Sie nicht brauchen.
-4. Klicken Sie oben rechts auf **Übernehmen** und speichern Sie die Seite.
+5. Klicken Sie oben rechts auf **Übernehmen** und speichern Sie die Seite.
 
 ## Den Plan-Editor einrichten
 

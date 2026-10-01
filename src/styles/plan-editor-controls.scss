@@ -119,6 +119,92 @@
   padding: 4px 6px;
 }
 
+// --- Karten der Vorlagenwahl ----
+
+// Eine Karte ist ein Knopf: dieselbe Abwehr gegen die Knopfregeln der App
+// wie `__button`, nur flächig und linksbündig.
+.man-pt-editor__template {
+  @include tokens.man-outshine-host {
+    display: flex;
+    width: 100%;
+    margin: 0;
+  }
+  @include local.studio-button-states;
+
+  --pt-button-bg: #{chrome.$surface};
+  --pt-button-bg-hover: #{chrome.$accent-surface-soft};
+
+  display: flex;
+  flex-direction: column;
+  gap: local.$space-s;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  padding: local.$space-m;
+  font: inherit;
+  text-align: left;
+  white-space: normal;
+  color: chrome.$text;
+  border: 1px solid chrome.$border;
+  border-radius: chrome.$radius-panel;
+  cursor: pointer;
+  transition:
+    background-color chrome.$transition,
+    border-color chrome.$transition;
+
+  &:hover:not(:disabled) {
+    border-color: chrome.$accent-border;
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: chrome.$focus-border;
+    box-shadow: chrome.$focus-ring;
+  }
+}
+
+.man-pt-editor__template-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: chrome.$surface-muted;
+  border: local.$hairline;
+  border-radius: chrome.$radius-small;
+}
+
+.man-pt-editor__thumb-rule {
+  stroke: chrome.$border-soft;
+  stroke-width: 1;
+}
+
+.man-pt-editor__thumb-deadline {
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+}
+
+.man-pt-editor__template-title {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  color: chrome.$text-strong;
+}
+
+.man-pt-editor__template-description {
+  display: block;
+  font-size: 12px;
+  line-height: 18px;
+  color: chrome.$text-muted;
+}
+
+.man-pt-editor__template-facts {
+  display: block;
+  margin-top: auto;
+  font-size: 11px;
+  line-height: 16px;
+  color: chrome.$text-caption;
+}
+
 // --- Reiter ----
 
 .man-pt-editor__tablist {

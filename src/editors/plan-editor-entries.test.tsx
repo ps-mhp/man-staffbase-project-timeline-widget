@@ -14,8 +14,8 @@
 import * as React from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 
-import { examplePlan } from "../example-plan";
 import { LIMITS, Plan, todayIso } from "../plan-model";
+import { PLAN_TEMPLATES } from "../plan-templates";
 import { Harness, emptyPlan, lastPlan } from "./plan-editor.fixture";
 import { mockTimelineProps } from "./project-timeline.mock";
 import { findItem, testPlan } from "./test-plan.fixture";
@@ -119,7 +119,7 @@ describe("PlanEditor: Einträge und Beginn", () => {
     );
   });
 
-  it("beginnt einen leeren Plan mit dem Beispielplan", () => {
+  it("zeigt zum Beginnen mit einer Vorlage alle Vorlagen zur Wahl", () => {
     const onChange = jest.fn();
     render(
       <Harness
@@ -129,13 +129,60 @@ describe("PlanEditor: Einträge und Beginn", () => {
     );
     expect(screen.queryByRole("tablist")).not.toBeInTheDocument();
     fireEvent.click(
-      screen.getByRole("button", { name: "Mit Beispielplan beginnen" }),
+      screen.getByRole("button", { name: "Mit Vorlage beginnen" }),
     );
-    expect(lastPlan(onChange)).toEqual({
-      ...examplePlan(),
-      updatedAt: todayIso(),
-    });
-    expect(screen.getByRole("tab", { name: "Einträge" })).toHaveFocus();
+    const gallery = screen.getByRole("list", { name: "Vorlagen" });
+    const cards = within(gallery).getAllByRole("button");
+    expect(cards).toHaveLength(PLAN_TEMPLATES.length);
+    for (const template of PLAN_TEMPLATES) {
+      expect(
+        within(gallery).getByRole("button", { name: template.title }),
+      ).toHaveAccessibleDescription(expect.stringContaining(template.description));
+    }
+    // Die Wahl allein ändert den Plan noch nicht.
+    expect(onChange).not.toHaveBeenCalled();
+    expect(cards[0]).toHaveFocus();
+  });
+
+  it.each(PLAN_TEMPLATES.map((template) => [template.title, template] as const))(
+    "beginnt einen leeren Plan mit der Vorlage „%s“",
+    (title, template) => {
+      const onChange = jest.fn();
+      render(
+        <Harness
+          initial={{ plan: emptyPlan(), dropped: 0 }}
+          onChange={onChange}
+        />,
+      );
+      fireEvent.click(
+        screen.getByRole("button", { name: "Mit Vorlage beginnen" }),
+      );
+      fireEvent.click(screen.getByRole("button", { name: title }));
+      expect(lastPlan(onChange)).toEqual({
+        ...template.create(),
+        updatedAt: todayIso(),
+      });
+      expect(screen.getByRole("tab", { name: "Einträge" })).toHaveFocus();
+    },
+  );
+
+  it("kehrt aus der Vorlagenwahl ohne Änderung zurück", () => {
+    const onChange = jest.fn();
+    render(
+      <Harness
+        initial={{ plan: emptyPlan(), dropped: 0 }}
+        onChange={onChange}
+      />,
+    );
+    fireEvent.click(
+      screen.getByRole("button", { name: "Mit Vorlage beginnen" }),
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Zurück" }));
+    expect(screen.queryByRole("list", { name: "Vorlagen" })).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Mit Vorlage beginnen" }),
+    ).toHaveFocus();
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   it("beginnt einen leeren Plan leer mit einer Ebene", () => {

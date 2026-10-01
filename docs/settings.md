@@ -38,7 +38,7 @@ Doppelklick stellt die Vorgabe wieder her; der Browser merkt sich die Größen).
 | Vorschau | Derselbe Zeitstrahl wie auf der Seite, mit Zoom, ohne Filter und Export. Ein Klick auf einen Eintrag wählt ihn im Reiter „Einträge“ aus und holt ihn in der Liste in Sicht. Ein Klick auf **Vorschau** klappt sie ein; ausgeklappt hat sie wieder die zuletzt gezogene Höhe. |
 | Diesen Ausschnitt als Startansicht | Speichert den sichtbaren Ausschnitt der Vorschau, monatsgenau, als Ansicht beim Laden der Seite. |
 | Startansicht entfernen | Löscht die Startansicht; das Widget zeigt beim Laden wieder den ganzen Plan. |
-| Mit Beispielplan beginnen | Nur bei leerem Plan: füllt den Editor mit einer Überschrift, drei Ebenen, sieben Kategorien und Beispiel-Einträgen. |
+| Mit Vorlage beginnen | Nur bei leerem Plan: zeigt die Vorlagen zur Wahl („Produkt-Roadmap“, „Terminverschiebung“). Ein Klick auf eine Karte füllt den Editor mit ihr; **Zurück** kehrt ohne Änderung zurück. |
 | Leer beginnen | Nur bei leerem Plan: legt eine Ebene „Ebene 1“ an. |
 
 ### Reiter „Einträge“

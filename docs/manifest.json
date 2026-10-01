@@ -15,6 +15,12 @@
       "resolve": ["plan"]
     },
     {
+      "title": "Terminverschiebung eines Software-Releases",
+      "attributes": { "show-today": "false", "allow-export": "true" },
+      "resolve": ["plan"],
+      "variant": "postponement"
+    },
+    {
       "title": "Ohne Heute-Linie und ohne Export",
       "attributes": { "show-today": "false", "allow-export": "false" },
       "resolve": ["plan"]

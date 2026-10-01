@@ -12,7 +12,7 @@
  */
 
 import { DARK_INK, LIGHT_INK, contrast, inkFor } from "./color";
-import { examplePlan } from "./example-plan";
+import { PLAN_TEMPLATES } from "./plan-templates";
 
 describe("inkFor", () => {
   it.each([
@@ -26,8 +26,8 @@ describe("inkFor", () => {
     expect(inkFor(background)).toBe(ink);
   });
 
-  it("erreicht auf jeder Farbe des Beispielplans 4,5 : 1", () => {
-    for (const { color } of examplePlan().categories) {
+  it("erreicht auf jeder Farbe jeder Vorlage 4,5 : 1", () => {
+    for (const { color } of PLAN_TEMPLATES.flatMap((template) => template.create().categories)) {
       expect(contrast(color, inkFor(color))).toBeGreaterThanOrEqual(4.5);
     }
   });

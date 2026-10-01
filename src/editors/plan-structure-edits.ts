@@ -19,7 +19,6 @@
  */
 
 import { Viewport, formatIsoMonth, monthOfDay } from "../calendar";
-import { examplePlan } from "../example-plan";
 import {
   Category,
   LIMITS,
@@ -31,6 +30,7 @@ import {
   isLaneItem,
   newId,
 } from "../plan-model";
+import type { PlanTemplate } from "../plan-templates";
 import { nameKey } from "./entity-names";
 import {
   Created,
@@ -323,12 +323,16 @@ export function clearStartView(plan: Plan, now: Date = new Date()): Plan {
 }
 
 /**
- * Ersetzt einen leeren Plan durch den Beispielplan. Was die Redaktion schon
+ * Ersetzt einen leeren Plan durch eine Vorlage. Was die Redaktion schon
  * eingegeben hat — die Überschrift — und Unbekanntes aus späteren Versionen
  * bleiben.
  */
-export function startWithExample(plan: Plan, now: Date = new Date()): Plan {
-  const example = examplePlan();
+export function startWithTemplate(
+  plan: Plan,
+  template: PlanTemplate,
+  now: Date = new Date(),
+): Plan {
+  const example = template.create();
   const withTitle = withOptional(example, "title", plan.title ?? example.title);
   return touch(withOptional(withTitle, "unknown", plan.unknown), now);
 }

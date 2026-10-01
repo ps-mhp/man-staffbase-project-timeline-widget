@@ -12,8 +12,11 @@
  */
 
 /**
- * Das Live-Beispiel für das Dokumentations-Widget: der Beispielplan nach der
- * Vorlage, derselbe, mit dem der leere Editor anbietet zu beginnen.
+ * Die Live-Beispiele für das Dokumentations-Widget: der Beispielplan nach der
+ * Vorlage — und je `variant` im Manifest die Vorlage mit dieser `id` aus
+ * `plan-templates.ts`, dieselbe, die der leere Editor anbietet. Eine unbekannte oder fehlende
+ * Variante (ältere Dokumentations-Widgets reichen kein Beispiel durch) zeigt
+ * den Beispielplan.
  *
  * Über einen Resolver statt als festes Attribut im Manifest, weil der Plan
  * verpackt (`b64:…`) gespeichert wird: im Manifest stünde ein unlesbarer,
@@ -26,10 +29,12 @@ import { registerDocsExamples } from "@shared/docs/register-docs-examples";
 import { PLAN_ATTRIBUTE } from "./configuration-schema";
 import { examplePlan } from "./example-plan";
 import { encodePlanAttribute } from "./plan-model";
+import { findTemplate } from "./plan-templates";
 
 // Der Name steht hier als Literal statt aus `translation-provider.ts`: dieses
 // Bündel lädt das Dokumentations-Widget eigens, und der Import zöge die ganze
 // Übersetzung mit hinein.
-registerDocsExamples("project-timeline-widget", async () => ({
-  [PLAN_ATTRIBUTE]: encodePlanAttribute(examplePlan()),
-}));
+registerDocsExamples("project-timeline-widget", async (example) => {
+  const plan = findTemplate(example?.variant)?.create() ?? examplePlan();
+  return { [PLAN_ATTRIBUTE]: encodePlanAttribute(plan) };
+});

@@ -58,6 +58,7 @@ const BUTTONS: readonly [string, string][] = [
   ["man-pt-editor__tab", controlsCss],
   ["man-pt-editor__disclosure", controlsCss],
   ["man-pt-editor__pill", controlsCss],
+  ["man-pt-editor__template", controlsCss],
   ["man-pt-editor__list-item", listsCss],
 ];
 
@@ -101,7 +102,7 @@ describe("Stylesheets des Plan-Editors", () => {
   // der App — genau der Rückfall, den die Variable verhindern soll.
   it("setzt an keinem Knopf den Hintergrund an der Variable vorbei", () => {
     const buttonRule =
-      /\.man-pt-editor__(button|tab|disclosure|list-item|pill)(?![\w-])/;
+      /\.man-pt-editor__(button|tab|disclosure|list-item|pill|template)(?![\w-])/;
     const bypasses = SHEETS.flatMap(rules)
       .filter((rule) =>
         rule.selectors.some((selector) => buttonRule.test(selector)),

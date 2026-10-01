@@ -12,8 +12,8 @@
  */
 
 import { dayFromParts } from "../calendar";
-import { examplePlan } from "../example-plan";
 import { LIMITS, Plan } from "../plan-model";
+import { PLAN_TEMPLATES } from "../plan-templates";
 import {
   CATEGORY_PALETTE,
   addCategory,
@@ -32,7 +32,7 @@ import {
   renameLane,
   setStartView,
   startEmpty,
-  startWithExample,
+  startWithTemplate,
   updateCategory,
   viewFromViewport,
 } from "./plan-structure-edits";
@@ -236,13 +236,17 @@ describe("Startansicht", () => {
 });
 
 describe("Beginn eines leeren Plans", () => {
-  it("beginnt mit dem Beispielplan", () => {
-    const plan = startWithExample(
-      { version: 1, lanes: [], categories: [], items: [] },
-      NOW,
-    );
-    expect(plan).toEqual({ ...examplePlan(), updatedAt: TODAY });
-  });
+  it.each(PLAN_TEMPLATES.map((template) => [template.id, template] as const))(
+    "beginnt mit der Vorlage „%s“",
+    (_id, template) => {
+      const plan = startWithTemplate(
+        { version: 1, lanes: [], categories: [], items: [] },
+        template,
+        NOW,
+      );
+      expect(plan).toEqual({ ...template.create(), updatedAt: TODAY });
+    },
+  );
 
   it("beginnt leer mit einer Ebene", () => {
     const plan = startEmpty(
@@ -253,7 +257,7 @@ describe("Beginn eines leeren Plans", () => {
     expect(plan.updatedAt).toBe(TODAY);
   });
 
-  it("behält beim Beispielplan die schon eingegebene Überschrift", () => {
+  it("behält bei einer Vorlage die schon eingegebene Überschrift", () => {
     const empty: Plan = {
       version: 1,
       title: "Mein Plan",
@@ -261,7 +265,9 @@ describe("Beginn eines leeren Plans", () => {
       categories: [],
       items: [],
     };
-    expect(startWithExample(empty, NOW).title).toBe("Mein Plan");
+    expect(startWithTemplate(empty, PLAN_TEMPLATES[1], NOW).title).toBe(
+      "Mein Plan",
+    );
     expect(startEmpty(empty, NOW).title).toBe("Mein Plan");
   });
 
@@ -273,7 +279,9 @@ describe("Beginn eines leeren Plans", () => {
       items: [],
       unknown: { theme: "dark" },
     };
-    expect(startWithExample(empty, NOW).unknown).toEqual({ theme: "dark" });
+    expect(startWithTemplate(empty, PLAN_TEMPLATES[1], NOW).unknown).toEqual({
+      theme: "dark",
+    });
     expect(startEmpty(empty, NOW).unknown).toEqual({ theme: "dark" });
   });
 });
