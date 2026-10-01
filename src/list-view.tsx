@@ -19,11 +19,13 @@
  * nur nach Termin sortiert.
  */
 
-import React, { CSSProperties, ReactElement } from "react";
+import React, { ReactElement } from "react";
 
 import { formatShortDate } from "./format";
 import { Plan, PlanItem } from "./plan-model";
 import { PlanRow, rowsByDate } from "./plan-rows";
+import { SymbolGlyph } from "./symbol-glyph";
+import { DEFAULT_SYMBOL, symbolOf } from "./symbols";
 
 export interface ListViewProps {
   plan: Plan;
@@ -41,6 +43,7 @@ function term(row: PlanRow, locale: string): string {
 export function ListView({ plan, items, locale, matches }: ListViewProps): ReactElement {
   const shown = matches === null ? items : items.filter((item) => matches.has(item.id));
   const rows = rowsByDate(plan, shown);
+  const symbols = new Map(shown.map((item) => [item.id, symbolOf(plan, item)]));
   return (
     <div className="man-pt__list-wrap">
       <table className="man-pt__list">
@@ -63,7 +66,7 @@ export function ListView({ plan, items, locale, matches }: ListViewProps): React
                 {row.tentative && <span className="man-pt__tag">vorläufig</span>}
               </th>
               <td>
-                <span className="man-pt__legend-dot" style={{ "--pt-color": row.color } as CSSProperties} aria-hidden="true" />
+                <SymbolGlyph symbol={symbols.get(row.id) ?? DEFAULT_SYMBOL} color={row.color} className="man-pt__legend-symbol" />
                 {row.category === "" ? "Ohne Kategorie" : row.category}
               </td>
               <td>{row.lane}</td>

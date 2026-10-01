@@ -11,12 +11,9 @@
  * limitations under the License.
  */
 
-// Formular und Listen des Plan-Editors: Eingaben, Kästchen, die Listen der
-// Einträge, Ebenen und Kategorien samt Farbfeldern und die Rückfrage beim
-// Löschen. Ein eigenes Stylesheet neben `plan-editor.scss`, nicht ein
-// Sass-Partial: das Live-Reload von `serve.mjs` übersetzt jede geänderte
-// Datei für sich und schickt sie an genau die `useHotStyle`-Stelle mit
-// ihrem Namen — die Änderung an einem Partial käme nirgends an.
+// Die Felder des Plan-Editors: Eingaben, Auswahl, Kästchen, Farbfelder,
+// Vorgänger, das Auswahlfeld mit Vorschlägen und die Inhalte der
+// Unterreiter im Formular.
 
 @use "@shared/stylings/editor-chrome" as chrome;
 @use "@shared/stylings/man-tokens" as tokens;
@@ -79,7 +76,7 @@
 
 .man-pt-editor__check {
   display: inline-flex;
-  gap: 8px;
+  gap: local.$space-s;
   align-items: center;
   cursor: pointer;
 }
@@ -127,161 +124,13 @@
   min-width: 0;
 }
 
-// --- Einträge: Liste und Formular ----
-
-.man-pt-editor__entries {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-
-@media (min-width: 900px) {
-  .man-pt-editor__entries {
-    grid-template-columns: 340px minmax(0, 1fr);
-    align-items: start;
-  }
-}
-
-.man-pt-editor__items {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-width: 0;
-}
-
-.man-pt-editor__add {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.man-pt-editor__list {
-  max-height: 480px;
-  margin: 0;
-  padding: 0;
-  overflow-y: auto;
-  list-style: none;
-  background: chrome.$surface;
-  border: 1px solid chrome.$border;
-  border-radius: chrome.$radius-control;
-}
-
-.man-pt-editor__list-item {
-  @include tokens.man-outshine-host {
-    display: flex;
-    width: 100%;
-    margin: 0;
-  }
-
-  @include local.studio-button-states;
-
-  --pt-button-bg: transparent;
-  --pt-button-bg-hover: #{chrome.$surface-hover};
-
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  width: 100%;
-  min-height: 0;
-  padding: 8px 10px;
-  font: inherit;
-  text-align: start;
-  color: chrome.$text-body;
-  border: 0;
-  border-bottom: 1px solid chrome.$border;
-  border-radius: 0;
-  cursor: pointer;
-  transition: background-color chrome.$transition;
-
-  &:focus-visible {
-    outline: none;
-    box-shadow: inset chrome.$focus-ring;
-  }
-}
-
-.man-pt-editor__list li:last-child .man-pt-editor__list-item {
-  border-bottom: 0;
-}
-
-.man-pt-editor__list-item--active {
-  --pt-button-bg: #{chrome.$accent-selection};
-
-  box-shadow: inset 3px 0 0 chrome.$accent;
-}
-
-.man-pt-editor__list-title {
-  font-weight: 600;
-}
-
-.man-pt-editor__detail {
-  min-width: 0;
-}
-
-.man-pt-editor__form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 16px;
-  background: chrome.$surface;
-  border: 1px solid chrome.$border;
-  border-radius: chrome.$radius-panel;
-}
-
-.man-pt-editor__row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-}
-
-// --- Ebenen und Kategorien ----
-
-.man-pt-editor__entities {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 720px;
-}
-
-.man-pt-editor__entity-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.man-pt-editor__entity {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px 12px;
-  background: chrome.$surface;
-  border: 1px solid chrome.$border;
-  border-radius: chrome.$radius-control;
-}
-
-.man-pt-editor__entity-head {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-}
-
-.man-pt-editor__entity-head > .man-pt-editor__meta {
-  flex: 0 0 auto;
-  min-width: 80px;
-  line-height: chrome.$control-height;
-}
-
-.man-pt-editor__entity-name {
-  flex: 1 1 auto;
-}
+// --- Farbfelder ----
 
 .man-pt-editor__swatches {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: repeat(6, 24px);
+  gap: local.$space-s;
+  margin: 4px 0 local.$space-m;
 }
 
 // Echte Optionsfelder, nur anders gezeichnet: Pfeiltasten und Vorlesen
@@ -319,61 +168,88 @@
   max-width: 160px;
 }
 
-// --- Rückfrage ----
+// --- Formen ----
 
-.man-pt-editor__scrim {
+.man-pt-editor__symbols-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.man-pt-editor__symbols {
+  display: grid;
+  grid-template-columns: repeat(4, local.$row-control);
+  gap: local.$space-xs;
+}
+
+// Die gewählte Form: Ton und Akzentrand, wie die gewählte Listenzeile.
+.man-pt-editor__symbol--checked {
+  --pt-button-bg: #{chrome.$accent-selection};
+  --pt-button-bg-hover: #{chrome.$accent-selection};
+
+  border-color: chrome.$accent;
+}
+
+// Wie der Eintrag aussieht und woher das kommt — unter „Kategorie“.
+.man-pt-editor__look {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.man-pt-editor__look-chip {
+  display: inline-block;
+  width: 12px;
+  height: 8px;
+}
+
+// --- Auswahlfeld mit Vorschlägen ----
+
+.man-pt-editor__combobox {
+  position: relative;
+}
+
+// Platz für den Pfeil rechts im Feld.
+.man-pt-editor .man-pt-editor__combobox-input {
+  padding-right: 32px;
+}
+
+.man-pt-editor__combobox-toggle {
+  --pt-button-bg: transparent;
+
   position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgb(15 23 32 / 45%);
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  min-height: 0;
+  border: 0;
 }
 
-.man-pt-editor__dialog {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: min(440px, 90%);
-  padding: 18px 20px;
-  background: chrome.$surface;
-  border-radius: chrome.$radius-panel;
-  box-shadow: chrome.$shadow-dialog;
+// Der Pfeil aus Rändern — ein Zeichen jenseits von ASCII brächte ein
+// Byte-Order-Mark ins Stylesheet (siehe den Umschalter der Vorschau).
+.man-pt-editor__chevron {
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid currentColor;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
 }
 
-.man-pt-editor__dialog-title {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: chrome.$text-strong;
-}
+// --- Formular ----
 
-.man-pt-editor__dialog-message {
-  margin: 0;
-  color: chrome.$text-caption;
-}
-
-.man-pt-editor__dialog-choices {
+.man-pt-editor__form-panel {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: local.$space-m;
+  max-width: 880px;
 }
 
-.man-pt-editor__choice {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-
-  .man-pt-editor__select {
-    width: auto;
-    min-width: 160px;
-  }
+.man-pt-editor__form-panel[hidden] {
+  display: none;
 }
 
-.man-pt-editor__dialog-actions {
-  display: flex;
-  gap: 8px;
-  justify-content: flex-end;
+.man-pt-editor__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: local.$space-m;
 }

@@ -22,6 +22,9 @@ import {
   matchesSearch,
   scheduleLabel,
   seriesInLane,
+  countDependents,
+  kindCounts,
+  visibleItems,
 } from "./plan-queries";
 
 const plan: Plan = {
@@ -32,17 +35,58 @@ const plan: Plan = {
   ],
   categories: [{ id: "c1", title: "Général", color: "#E40045" }],
   items: [
-    { id: "b1", kind: "bar", lane: "l2", title: "TMS1", start: "2028-01-01", end: "2030-06-30", series: "TMS" },
-    { id: "m2", kind: "milestone", lane: "l2", title: "SOP B", date: "2026-01-15", series: "TG Assist" },
-    { id: "d1", kind: "deadline", category: "c1", title: "Euro 7", date: "2027-07-01" },
-    { id: "m1", kind: "milestone", lane: "l1", title: "Bauma", date: "2025-04-07", description: "Messe in München" },
-    { id: "m3", kind: "milestone", lane: "l2", title: "SOP A", date: "2026-01-15", series: "TG Assist" },
+    {
+      id: "b1",
+      kind: "bar",
+      lane: "l2",
+      title: "TMS1",
+      start: "2028-01-01",
+      end: "2030-06-30",
+      series: "TMS",
+    },
+    {
+      id: "m2",
+      kind: "milestone",
+      lane: "l2",
+      title: "SOP B",
+      date: "2026-01-15",
+      series: "TG Assist",
+    },
+    {
+      id: "d1",
+      kind: "deadline",
+      category: "c1",
+      title: "Euro 7",
+      date: "2027-07-01",
+    },
+    {
+      id: "m1",
+      kind: "milestone",
+      lane: "l1",
+      title: "Bauma",
+      date: "2025-04-07",
+      description: "Messe in München",
+    },
+    {
+      id: "m3",
+      kind: "milestone",
+      lane: "l2",
+      title: "SOP A",
+      date: "2026-01-15",
+      series: "TG Assist",
+    },
   ],
 };
 
 describe("itemsByDate", () => {
   it("sortiert nach Beginn, bei Gleichstand nach Titel", () => {
-    expect(itemsByDate(plan.items).map((item) => item.id)).toEqual(["m1", "m3", "m2", "d1", "b1"]);
+    expect(itemsByDate(plan.items).map((item) => item.id)).toEqual([
+      "m1",
+      "m3",
+      "m2",
+      "d1",
+      "b1",
+    ]);
   });
 });
 
@@ -70,7 +114,11 @@ describe("seriesInLane", () => {
 
 describe("dependencyCandidates", () => {
   it("bietet andere Meilensteine und Zeiträume an, keine Stichtage und nicht sich selbst", () => {
-    expect(dependencyCandidates(plan, "m2").map((item) => item.id)).toEqual(["m1", "m3", "b1"]);
+    expect(dependencyCandidates(plan, "m2").map((item) => item.id)).toEqual([
+      "m1",
+      "m3",
+      "b1",
+    ]);
   });
 });
 
@@ -94,6 +142,43 @@ describe("Beschriftung", () => {
 
   it("nennt den Termin, bei Zeiträumen von–bis", () => {
     expect(scheduleLabel(plan.items[3], "de-DE")).toBe("07.04.2025");
-    expect(scheduleLabel(plan.items[0], "de-DE")).toBe("01.01.2028 – 30.06.2030");
+    expect(scheduleLabel(plan.items[0], "de-DE")).toBe(
+      "01.01.2028 – 30.06.2030",
+    );
+  });
+});
+
+describe("Arten", () => {
+  it("zeigt je Art die passenden Einträge nach Termin", () => {
+    expect(visibleItems(plan, "milestone", "").map((item) => item.id)).toEqual([
+      "m1",
+      "m3",
+      "m2",
+    ]);
+    expect(
+      visibleItems(plan, "milestone", "sop").map((item) => item.id),
+    ).toEqual(["m3", "m2"]);
+  });
+
+  it("zählt je Art, bei aktiver Suche nur die Treffer", () => {
+    expect(kindCounts(plan, "")).toEqual({ milestone: 3, bar: 1, deadline: 1 });
+    expect(kindCounts(plan, "euro")).toEqual({
+      milestone: 0,
+      bar: 0,
+      deadline: 1,
+    });
+  });
+
+  it("zählt die Einträge, die einen Eintrag als Vorgänger nennen", () => {
+    const linked: Plan = {
+      ...plan,
+      items: plan.items.map((item) =>
+        item.id === "b1" || item.id === "m2"
+          ? { ...item, dependsOn: ["m1"] }
+          : item,
+      ),
+    };
+    expect(countDependents(linked, "m1")).toBe(2);
+    expect(countDependents(linked, "b1")).toBe(0);
   });
 });

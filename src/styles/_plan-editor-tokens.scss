@@ -11,8 +11,10 @@
  * limitations under the License.
  */
 
-// Die eigenen Töne und die Abwehr des Plan-Editors, geteilt von seinen
-// beiden Stylesheets. Die Töne sind dieselben wie die der Rückfrage in
+@use "@shared/stylings/editor-chrome" as chrome;
+
+// Die eigenen Töne, Maße und die Abwehr des Plan-Editors, geteilt von
+// seinen Stylesheets. Die Töne sind dieselben wie die der Rückfrage in
 // `@shared/config-modal`, damit „Verwerfen“ dort und „Löschen“ hier gleich
 // warnen.
 
@@ -20,6 +22,40 @@ $danger: #c0392b;
 $danger-strong: #a93226;
 $warning-surface: #fff7ed;
 $warning-border: #fed7aa;
+
+// Abstände: nur diese vier, damit alle Bereiche gleich atmen. Knapp
+// gehalten — der Platz gehört dem Inhalt.
+$space-xs: 4px;
+$space-s: 8px;
+$space-m: 12px;
+$space-l: 16px;
+
+// Die Fluchtlinie: der waagerechte Innenabstand aller Köpfe, Reiter, Zeilen
+// und Formulare. Eine Variable statt Einzelwerten, damit der Text der
+// Hauptreiter, die erste Pille, die Listenzeilen und die Felder an derselben
+// Kante stehen. Reiter ziehen ihren eigenen Innenabstand davon ab, damit ihr
+// Text — nicht ihr Rand — auf der Linie steht.
+$gutter: var(--pt-ed-gutter);
+$tab-pad: var(--pt-ed-tab-pad);
+$tab-inset: calc(var(--pt-ed-gutter) - var(--pt-ed-tab-pad));
+
+// Maße der Shell. Flach und bündig: Bereiche stoßen aneinander und sind nur
+// durch Haarlinien getrennt, ohne Karten, Rundungen und Außenabstände.
+$bar-height: 48px;
+$head-height: 40px;
+$bar-control: 32px;
+$row-control: 28px;
+$list-width: 340px;
+$hairline: 1px solid chrome.$border;
+// Breite der Griffzone eines Ziehgriffs; sichtbar ist nur die Haarlinie in
+// ihrer Mitte. Dieselbe Zahl steht in `editors/editor-layout.ts`
+// (`SPLITTER_SIZE`).
+$splitter: 7px;
+$rows-max-width: 800px;
+// Die Vorschau bekommt eine feste Höhe; der Zeitstrahl füllt sie und rollt
+// nur seine Bühne. Genug für drei Ebenen, nie mehr als gut die Hälfte des
+// Bildschirms — der Arbeitsbereich darunter braucht den Rest.
+$preview-height: clamp(300px, 38vh, 520px);
 
 // Der Hintergrund eines Editor-Knopfs in jedem Zustand.
 //

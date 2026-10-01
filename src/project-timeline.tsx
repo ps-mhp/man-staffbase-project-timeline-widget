@@ -25,12 +25,14 @@
  */
 
 import React, { KeyboardEvent, ReactElement, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 import { useHotStyle } from "@shared/hot-style";
 
 import { DayRange, Viewport, parseIsoDate, todayDay } from "./calendar";
 import { CategoryLegend } from "./category-legend";
 import { ExportDialog } from "./export-dialog";
+import { HelpDialog } from "./help-dialog";
 import { formatDate } from "./format";
 import { ItemDetails } from "./item-details";
 import { placeLayout, prepareLayout } from "./lane-layout";
@@ -61,6 +63,7 @@ import { TimelineStage } from "./timeline-stage";
 import { TimelineToolbar, TimelineView } from "./timeline-toolbar";
 import { Measure, createMeasure } from "./text-measure";
 import { useElementWidth } from "./use-element-width";
+import { useExpanded } from "./use-expanded";
 import { useNarrowViewport } from "./use-narrow-viewport";
 import { useRovingFocus } from "./use-roving-focus";
 import { useTimelineGestures, useViewport } from "./use-viewport";
@@ -78,6 +81,11 @@ export interface ProjectTimelineProps {
   selectedId?: string | null;
   onSelectItem?: (id: string) => void;
   onViewportChange?: (viewport: Viewport) => void;
+  /**
+   * Nur Editor: wohin die Zoom-Steuerung gerendert wird, etwa in die
+   * Kopfzeile der Vorschau neben „Vorschau". Fehlt es, steht sie über dem Plan.
+   */
+  toolbarTarget?: HTMLElement | null;
 }
 
 /** Um so viel zoomen die Knöpfe und die Tasten + und −. */
@@ -125,6 +133,7 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
   const [detailsId, setDetailsId] = useState<string | null>(null);
   const [anchor, setAnchor] = useState<{ x: number; y: number; width: number; height: number } | null>(null);
   const [exportOpen, setExportOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
   const [hint, setHint] = useState(false);
   const [matchIndex, setMatchIndex] = useState(-1);
   /** Ob der letzte Anstoß ein Zeiger war — dann holt ein Fokus den Eintrag nicht in den Ausschnitt. */
@@ -132,7 +141,9 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
 
   const rootRef = useRef<HTMLElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
-  const width = useElementWidth(bodyRef, plan.items.length > 0);
+  const expanded = useExpanded(rootRef);
+  // Neu messen, wenn die Fläche entsteht oder die Vollbild-Ebene sie umhängt.
+  const width = useElementWidth(bodyRef, `${plan.items.length > 0}|${expanded.mode}`);
   const measure = useLabelMeasure();
 
   const filter = isEditor ? EMPTY_FILTER : filterState;
@@ -140,6 +151,7 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
   // Mit Rand, damit Einträge an den Enden ganz erscheinen; der Rand hängt an der Breite.
   const world = useMemo(() => padViewport(worldOf(plan, filter.period) ?? FALLBACK_WORLD, width), [plan, filter.period, width]);
   const lanes = useMemo(() => visibleLanesOf(plan, filter), [plan, filter]);
+  const allLanesCollapsed = lanes.length > 0 && lanes.every((lane) => collapsed.has(lane.id));
   const items = useMemo(() => filterItems(plan, filter), [plan, filter]);
   const matches = useMemo(() => matchesOf(plan, items, filter.query), [plan, items, filter.query]);
   const dimmed = useMemo(() => dimmedOf(items, matches), [items, matches]);
@@ -193,6 +205,15 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
   useEffect(() => {
     viewportListener.current?.(unpadViewport({ start: settledStart, end: settledEnd }, width));
   }, [settledStart, settledEnd, width]);
+
+  // Nach dem Umschalten steht der Fokus wieder auf dem Knopf — als Ebene wird
+  // der ganze Abschnitt neu gebaut, und der Fokus fiele sonst ins Leere.
+  const expandedBefore = useRef(expanded.mode);
+  useEffect(() => {
+    if (expandedBefore.current === expanded.mode) return;
+    expandedBefore.current = expanded.mode;
+    rootRef.current?.querySelector<HTMLElement>("[data-expand-toggle]")?.focus({ preventScroll: true });
+  }, [expanded.mode]);
 
   useEffect(() => {
     if (!hint) return;
@@ -293,6 +314,7 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
       "=": () => controller.zoomBy(ZOOM_STEP),
       "-": () => controller.zoomBy(1 / ZOOM_STEP),
       "0": () => controller.fit(),
+      "?": () => setHelpOpen(true),
     };
     if (event.shiftKey && (event.key === "ArrowLeft" || event.key === "ArrowRight")) {
       event.preventDefault();
@@ -343,16 +365,70 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
   const detailsItem = detailsId === null ? undefined : byId.get(detailsId);
   const filtersActive = activeFilterCount(filter);
 
-  return (
+  const toolbar = (compact: boolean) => (
+        <TimelineToolbar
+        compact={compact}
+          mode={mode}
+          narrow={narrow}
+          locale={locale}
+          query={filter.query}
+          matchCount={matches?.size ?? 0}
+          matchPosition={currentMatch === null ? null : matchIndex + 1}
+          onQuery={(query) => {
+            setMatchIndex(-1);
+            updateFilter({ query });
+          }}
+          onNextMatch={nextMatch}
+          lanes={plan.lanes}
+          hiddenLanes={filter.hiddenLanes}
+          onToggleLane={(id) => updateFilter({ hiddenLanes: toggle(filter.hiddenLanes, id) })}
+          period={filter.period}
+          extent={extent}
+          onPeriod={(period) => updateFilter({ period })}
+          activeFilterCount={filtersActive}
+          onResetFilters={() => setFilter(EMPTY_FILTER)}
+          legend={legend}
+          onZoomIn={() => controller.zoomBy(ZOOM_STEP)}
+          onZoomOut={() => controller.zoomBy(1 / ZOOM_STEP)}
+          onFit={() => controller.fit()}
+          view={view}
+          onView={setView}
+          allowExport={allowExport && !isEditor}
+          onExport={() => setExportOpen(true)}
+          onHelp={isEditor ? undefined : () => setHelpOpen(true)}
+          onToggleExpanded={isEditor ? undefined : expanded.toggle}
+          expanded={expanded.mode !== null}
+        />
+  );
+  // Im Editor sitzt die Zoom-Steuerung in der Kopfzeile der Vorschau; `.man-pt`
+  // um sie herum, weil sie dort außerhalb dieses Abschnitts steht und sonst
+  // die Farben (`--pt-*`) nicht erbte.
+  const externalToolbar = isEditor && props.toolbarTarget ? props.toolbarTarget : null;
+
+  const sectionClass = [
+    "man-pt",
+    isEditor ? "man-pt--editor" : "",
+    expanded.mode !== null ? "man-pt--expanded" : "",
+    expanded.mode === "overlay" ? "man-pt--overlay" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const content = (
     <section
       ref={rootRef}
       lang={locale}
-      className={`man-pt${isEditor ? " man-pt--editor" : ""}`}
+      className={sectionClass}
       onPointerDownCapture={() => {
         pointerInput.current = true;
       }}
       onKeyDownCapture={() => {
         pointerInput.current = false;
+      }}
+      // Als Ebene beendet Esc das Vollbild; im echten Vollbild tut das der
+      // Browser. Dialoge und Details fangen ihr Esc vorher selbst ab.
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && expanded.mode === "overlay" && !event.defaultPrevented) expanded.exit();
       }}
       aria-label={title || "Projektplan"}
     >
@@ -365,35 +441,9 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
         </header>
       )}
 
-      <TimelineToolbar
-        mode={mode}
-        narrow={narrow}
-        locale={locale}
-        query={filter.query}
-        matchCount={matches?.size ?? 0}
-        matchPosition={currentMatch === null ? null : matchIndex + 1}
-        onQuery={(query) => {
-          setMatchIndex(-1);
-          updateFilter({ query });
-        }}
-        onNextMatch={nextMatch}
-        lanes={plan.lanes}
-        hiddenLanes={filter.hiddenLanes}
-        onToggleLane={(id) => updateFilter({ hiddenLanes: toggle(filter.hiddenLanes, id) })}
-        period={filter.period}
-        extent={extent}
-        onPeriod={(period) => updateFilter({ period })}
-        activeFilterCount={filtersActive}
-        onResetFilters={() => setFilter(EMPTY_FILTER)}
-        legend={legend}
-        onZoomIn={() => controller.zoomBy(ZOOM_STEP)}
-        onZoomOut={() => controller.zoomBy(1 / ZOOM_STEP)}
-        onFit={() => controller.fit()}
-        view={view}
-        onView={setView}
-        allowExport={allowExport && !isEditor}
-        onExport={() => setExportOpen(true)}
-      />
+      {externalToolbar === null && toolbar(false)}
+      {externalToolbar !== null &&
+        createPortal(<div className="man-pt man-pt--controls">{toolbar(true)}</div>, externalToolbar)}
 
       {!(narrow && !isEditor) && legend}
 
@@ -425,7 +475,13 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
           focusId={roving.focusId}
           bodyRef={bodyRef}
           hint={hint}
+          allLanesCollapsed={allLanesCollapsed}
           onToggleLane={(id) => setCollapsed((current) => new Set(toggle([...current], id)))}
+          onToggleAllLanes={
+            lanes.length > 1
+              ? () => setCollapsed(allLanesCollapsed ? new Set() : new Set(plan.lanes.map((lane) => lane.id)))
+              : undefined
+          }
           onActivate={activate}
           onFocusItem={(id) => {
             roving.setFocusId(id);
@@ -463,6 +519,8 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
         />
       )}
 
+      {helpOpen && <HelpDialog plan={plan} allowExport={allowExport} onClose={() => setHelpOpen(false)} />}
+
       {exportOpen && (
         <ExportDialog
           counts={{ view: exportItems(plan, filter, controller.viewport, "view").length, all: plan.items.length }}
@@ -472,6 +530,8 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
       )}
     </section>
   );
+
+  return expanded.mode === "overlay" ? createPortal(content, document.body) : content;
 }
 
 /** Der Button eines Eintrags; über `dataset`, weil `CSS.escape` nicht überall bereitsteht. */

@@ -12,20 +12,26 @@
  */
 
 /**
- * Der Reiter „Einträge“: links die Liste, rechts das Formular des gewählten.
+ * Der Reiter „Einträge“: links die Liste, rechts das Formular des gewählten —
+ * zwei Bereiche, die jeder für sich rollen, dazwischen ein Ziehgriff.
  *
  * Hier liegt, was Liste und Formular gemeinsam angeht — anlegen, duplizieren,
  * löschen samt der Auswahl und des Fokus danach.
  */
 
 import * as React from "react";
-import { ReactElement, useRef, useState } from "react";
+import { CSSProperties, ReactElement, useId, useRef, useState } from "react";
 
-import { ItemKind, Plan } from "../plan-model";
+import { Plan } from "../plan-model";
+import { LIST, listSpace } from "./editor-layout";
+import type { EntriesView } from "./entries-view";
 import { ItemForm } from "./item-form";
-import { ItemList } from "./item-list";
+import { FocusRequest, ItemList } from "./item-list";
+import { Pane, PaneEmpty } from "./pane";
 import { addItem, duplicateItem, removeItem } from "./plan-edits";
-import { EDITOR_LOCALE } from "./plan-queries";
+import { EDITOR_LOCALE, visibleItems } from "./plan-queries";
+import { Splitter } from "./splitter";
+import { useSplitSize } from "./use-split-size";
 
 export interface EntriesTabProps {
   plan: Plan;
@@ -34,10 +40,30 @@ export interface EntriesTabProps {
   onPlanChange: (plan: Plan) => void;
   /** Das Datum neuer Einträge: die Mitte der Vorschau, sonst heute. */
   newDate: () => string;
+  view: EntriesView;
+  onViewChange: (patch: Partial<EntriesView>) => void;
 }
 
-export function EntriesTab({ plan, selectedId, onSelect, onPlanChange, newDate }: EntriesTabProps): ReactElement {
-  const searchRef = useRef<HTMLInputElement>(null);
+export function EntriesTab({
+  plan,
+  selectedId,
+  onSelect,
+  onPlanChange,
+  newDate,
+  view,
+  onViewChange,
+}: EntriesTabProps): ReactElement {
+  const entriesRef = useRef<HTMLDivElement>(null);
+  const listId = useId();
+  const listWidth = useSplitSize({
+    storageKey: LIST.storageKey,
+    fallback: () => LIST.fallback,
+    min: LIST.min,
+    reserve: LIST.reserve,
+    observe: entriesRef,
+    measure: () => listSpace(entriesRef.current),
+  });
+  const [focusRequest, setFocusRequest] = useState<FocusRequest | null>(null);
   // Der Eintrag, dessen Titel beim Erscheinen den Fokus bekommt: nur ein
   // gerade angelegter. Wer einen bestehenden wählt, will erst lesen.
   const [focusId, setFocusId] = useState<string | null>(null);
@@ -45,57 +71,88 @@ export function EntriesTab({ plan, selectedId, onSelect, onPlanChange, newDate }
 
   const selected = plan.items.find((item) => item.id === selectedId);
 
+  // Nach dem Anlegen: „Allgemein“, Fokus im Titel. Die Suche weicht, sonst
+  // stünde der neue Eintrag nicht in der Liste.
   const created = (next: Plan, id: string | null): void => {
     if (id === null) return;
     onPlanChange(next);
     onSelect(id);
     setFocusId(id);
-  };
-
-  const add = (kind: ItemKind): void => {
-    const result = addItem(plan, kind, newDate());
-    created(result.plan, result.id);
-  };
-
-  const duplicate = (id: string): void => {
-    const result = duplicateItem(plan, id);
-    created(result.plan, result.id);
+    onViewChange({ formTab: "general", query: "" });
   };
 
   const remove = (id: string): void => {
-    // Das Formular verschwindet mit dem Eintrag, und mit ihm der Fokus. Die
-    // Suche ist der nächste sinnvolle Halt: von dort geht es in die Liste.
-    searchRef.current?.focus();
+    const order = visibleItems(plan, view.kind, view.query).map(
+      (item) => item.id,
+    );
+    const index = order.indexOf(id);
+    const neighbor =
+      index === -1 ? null : (order[index + 1] ?? order[index - 1] ?? null);
     onPlanChange(removeItem(plan, id));
-    onSelect(null);
+    if (selectedId === id) onSelect(neighbor);
+    setFocusRequest({ id: neighbor });
   };
 
   return (
-    <div className="man-pt-editor__entries">
+    // Die Breite als Variable, nicht als `width`: unter 900 px stehen Liste
+    // und Formular untereinander, und dort soll das Stylesheet sie übergehen.
+    <div
+      ref={entriesRef}
+      className="man-pt-editor__entries"
+      style={{ "--pt-list-width": `${listWidth.size}px` } as CSSProperties}
+    >
       <ItemList
+        id={listId}
         plan={plan}
         selectedId={selectedId}
         locale={EDITOR_LOCALE}
+        kind={view.kind}
+        onKindChange={(kind) => onViewChange({ kind })}
+        query={view.query}
+        onQueryChange={(query) => onViewChange({ query })}
         onSelect={onSelect}
-        onAdd={add}
-        searchRef={searchRef}
+        onAdd={() => {
+          const result = addItem(plan, view.kind, newDate());
+          created(result.plan, result.id);
+        }}
+        onRemove={remove}
+        focusRequest={focusRequest}
+        onFocusDone={() => setFocusRequest(null)}
       />
-      <div className="man-pt-editor__detail">
-        {selected === undefined ? (
-          <p className="man-pt-editor__hint">Links einen Eintrag wählen oder einen neuen anlegen.</p>
-        ) : (
-          <ItemForm
-            key={selected.id}
-            plan={plan}
-            item={selected}
-            locale={EDITOR_LOCALE}
-            onPlanChange={onPlanChange}
-            onDuplicate={() => duplicate(selected.id)}
-            onRemove={() => remove(selected.id)}
-            autoFocusTitle={selected.id === focusId}
-          />
-        )}
-      </div>
+      <Splitter
+        orientation="vertical"
+        label="Breite der Liste ändern"
+        controls={listId}
+        split={listWidth}
+      />
+      {selected === undefined ? (
+        // Die leere zweite Zeile hält die Linien auf der Höhe der Liste.
+        <Pane
+          className="man-pt-editor__form"
+          title="Kein Eintrag gewählt"
+          toolbar={null}
+        >
+          <PaneEmpty>
+            Links einen Eintrag wählen oder einen neuen anlegen.
+          </PaneEmpty>
+        </Pane>
+      ) : (
+        <ItemForm
+          key={selected.id}
+          plan={plan}
+          item={selected}
+          locale={EDITOR_LOCALE}
+          onPlanChange={onPlanChange}
+          onDuplicate={() => {
+            const result = duplicateItem(plan, selected.id);
+            created(result.plan, result.id);
+          }}
+          onRemove={() => remove(selected.id)}
+          tab={view.formTab}
+          onTabChange={(formTab) => onViewChange({ formTab })}
+          autoFocusTitle={selected.id === focusId}
+        />
+      )}
     </div>
   );
 }

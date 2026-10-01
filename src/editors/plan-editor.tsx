@@ -12,39 +12,65 @@
  */
 
 /**
- * Der Redaktionsdialog des Projektplans.
+ * Der Redaktionsdialog des Projektplans, im Vollbild.
  *
- * Setzt die Teile zusammen: Vorschau, Reiter für Einträge, Ebenen und
- * Kategorien, Leerzustand, Fußleiste. Fachlichen Zustand außer Auswahl,
- * Reiter und letztem Ausschnitt trägt er nicht — der Plan steckt im Entwurf
- * des Dialogs (`value`), und jede Änderung geht über die reinen Funktionen in
- * `plan-edits.ts`.
+ * Von oben: Kopfleiste mit Überschrift, Zähler und „Übernehmen“ · Hinweis auf
+ * verworfene Einträge · Hauptbereich mit Vorschau und Arbeitsbereich (Reiter
+ * für Einträge, Ebenen und Kategorien). Jede Stufe reicht ihre Höhe per
+ * `min-height: 0` nach unten durch, damit am Ende jeder Bereich selbst rollt:
+ * das Modal um den Editor rollt absichtlich nicht.
+ *
+ * Fachlichen Zustand außer Auswahl, Reiter und letztem Ausschnitt trägt er
+ * nicht — der Plan steckt im Entwurf des Dialogs (`value`), und jede Änderung
+ * geht über die reinen Funktionen in `plan-edits.ts`.
  */
 
 import * as React from "react";
-import { ReactElement, useCallback, useEffect, useId, useRef, useState } from "react";
+import {
+  ReactElement,
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from "react";
 
 import { FieldModalContentProps } from "@shared/config-modal";
 import { useHotStyle } from "@shared/hot-style";
 
 import { Viewport } from "../calendar";
-import { LIMITS, Plan } from "../plan-model";
+import { Plan } from "../plan-model";
 import type { PlanEditorValue } from "../plan-editor-injector";
 import { CategoryEditor } from "./category-editor";
+import { EditorHeader } from "./editor-header";
 import { EditorTabs, TabDefinition } from "./editor-tabs";
 import { EntriesTab } from "./entries-tab";
+import { useEntriesView } from "./entries-view";
 import { LaneEditor } from "./lane-editor";
-import { DraftField } from "./draft-field";
-import { clearStartView, newItemDate, setStartView, setTitle, startEmpty, startWithExample } from "./plan-edits";
+import { newItemDate, setTitle } from "./plan-edits";
+import {
+  clearStartView,
+  setStartView,
+  startEmpty,
+  startWithExample,
+} from "./plan-structure-edits";
+import { PREVIEW, defaultPreviewHeight, previewSpace } from "./editor-layout";
 import { PlanPreview } from "./plan-preview";
+import { Splitter } from "./splitter";
+import { useSplitSize } from "./use-split-size";
 import planEditorCss from "../styles/plan-editor.scss";
+import planEditorControlsCss from "../styles/plan-editor-controls.scss";
 import planEditorFormsCss from "../styles/plan-editor-forms.scss";
+import planEditorListsCss from "../styles/plan-editor-lists.scss";
+import planEditorOverlaysCss from "../styles/plan-editor-overlays.scss";
 
 // Ein Alias statt `interface … extends … {}`: eine leere Schnittstelle wäre
 // nach der hiesigen ESLint-Regel `no-empty-object-type` ein Fehler.
 export type PlanEditorProps = FieldModalContentProps<PlanEditorValue>;
 
 type EditorTab = "items" | "lanes" | "categories";
+
+const WIDGET = "project-timeline-widget";
 
 const TABS: readonly TabDefinition<EditorTab>[] = [
   { id: "items", label: "Einträge" },
@@ -61,7 +87,13 @@ function droppedMessage(dropped: number): string {
 const sameViewport = (a: Viewport | null, b: Viewport): boolean =>
   a !== null && a.start === b.start && a.end === b.end;
 
-function EmptyState({ onExample, onEmpty }: { onExample: () => void; onEmpty: () => void }): ReactElement {
+function EmptyState({
+  onExample,
+  onEmpty,
+}: {
+  onExample: () => void;
+  onEmpty: () => void;
+}): ReactElement {
   const headingId = useId();
   return (
     <section className="man-pt-editor__empty" aria-labelledby={headingId}>
@@ -69,14 +101,23 @@ function EmptyState({ onExample, onEmpty }: { onExample: () => void; onEmpty: ()
         Der Plan ist noch leer
       </h3>
       <p className="man-pt-editor__hint">
-        Der Beispielplan bringt drei Ebenen, sieben Kategorien und jede Art von Eintrag mit — nach der Vorlage
-        „Sales Truck Launch“. Er lässt sich danach frei umbauen.
+        Der Beispielplan bringt drei Ebenen, sieben Kategorien und jede Art von
+        Eintrag mit — nach der Vorlage „Sales Truck Launch“. Er lässt sich
+        danach frei umbauen.
       </p>
       <div className="man-pt-editor__actions">
-        <button type="button" className="man-pt-editor__button man-pt-editor__button--primary" onClick={onExample}>
+        <button
+          type="button"
+          className="man-pt-editor__button man-pt-editor__button--primary"
+          onClick={onExample}
+        >
           Mit Beispielplan beginnen
         </button>
-        <button type="button" className="man-pt-editor__button" onClick={onEmpty}>
+        <button
+          type="button"
+          className="man-pt-editor__button"
+          onClick={onEmpty}
+        >
           Leer beginnen
         </button>
       </div>
@@ -84,22 +125,62 @@ function EmptyState({ onExample, onEmpty }: { onExample: () => void; onEmpty: ()
   );
 }
 
-export function PlanEditor({ value, onChange, onSave, onClose }: PlanEditorProps): ReactElement {
-  const css = useHotStyle(planEditorCss, "project-timeline-widget", "styles/plan-editor.scss");
-  const formsCss = useHotStyle(planEditorFormsCss, "project-timeline-widget", "styles/plan-editor-forms.scss");
+export function PlanEditor({
+  value,
+  onChange,
+  onSave,
+  onClose,
+  dirty,
+}: PlanEditorProps): ReactElement {
+  const sheets = [
+    useHotStyle(planEditorCss, WIDGET, "styles/plan-editor.scss"),
+    useHotStyle(
+      planEditorControlsCss,
+      WIDGET,
+      "styles/plan-editor-controls.scss",
+    ),
+    useHotStyle(planEditorFormsCss, WIDGET, "styles/plan-editor-forms.scss"),
+    useHotStyle(planEditorListsCss, WIDGET, "styles/plan-editor-lists.scss"),
+    useHotStyle(
+      planEditorOverlaysCss,
+      WIDGET,
+      "styles/plan-editor-overlays.scss",
+    ),
+  ];
   const { plan, dropped } = value;
   const rootRef = useRef<HTMLDivElement>(null);
   const [tab, setTab] = useState<EditorTab>("items");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [viewport, setViewport] = useState<Viewport | null>(null);
   const [focusTabs, setFocusTabs] = useState(false);
+  const [previewOpen, setPreviewOpen] = useState(true);
+  const mainRef = useRef<HTMLDivElement>(null);
+  const previewRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const stageId = useId();
+  const empty = plan.lanes.length === 0 && plan.items.length === 0;
+
+  // Eingeklappt merkt sich die Vorschau ihre Höhe; ausgeklappt kehrt sie zu ihr zurück.
+  const previewHeight = useSplitSize({
+    storageKey: PREVIEW.storageKey,
+    fallback: defaultPreviewHeight,
+    min: PREVIEW.min,
+    reserve: PREVIEW.reserve,
+    observe: mainRef,
+    measure: () =>
+      previewSpace(mainRef.current, previewRef.current, stageRef.current),
+    remeasureKey: previewOpen && !empty,
+  });
 
   const changePlan = (next: Plan): void => onChange({ plan: next, dropped });
 
   // Beständig, damit eine Vorschau, die in einem Effekt meldet, nicht bei
   // jedem Rendern neu meldet — und ein gleicher Ausschnitt rendert nichts neu.
   const onViewportChange = useCallback(
-    (next: Viewport) => setViewport((previous) => (sameViewport(previous, next) ? previous : next)),
+    (next: Viewport) =>
+      setViewport((previous) =>
+        sameViewport(previous, next) ? previous : next,
+      ),
     [],
   );
   const onSelectItem = useCallback((id: string) => {
@@ -111,7 +192,9 @@ export function PlanEditor({ value, onChange, onSave, onClose }: PlanEditorProps
   // gehört dann auf die Reiter, die an ihre Stelle treten.
   useEffect(() => {
     if (!focusTabs) return;
-    rootRef.current?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]')?.focus();
+    rootRef.current
+      ?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]')
+      ?.focus();
     setFocusTabs(false);
   }, [focusTabs]);
 
@@ -131,8 +214,10 @@ export function PlanEditor({ value, onChange, onSave, onClose }: PlanEditorProps
     onSave();
   };
 
-  const empty = plan.lanes.length === 0 && plan.items.length === 0;
-  const selected = plan.items.some((item) => item.id === selectedId) ? selectedId : null;
+  const selected = plan.items.some((item) => item.id === selectedId)
+    ? selectedId
+    : null;
+  const [entriesView, setEntriesView] = useEntriesView(plan, selected);
 
   const panel =
     tab === "items" ? (
@@ -142,6 +227,8 @@ export function PlanEditor({ value, onChange, onSave, onClose }: PlanEditorProps
         onSelect={setSelectedId}
         onPlanChange={changePlan}
         newDate={() => newItemDate(viewport)}
+        view={entriesView}
+        onViewChange={setEntriesView}
       />
     ) : tab === "lanes" ? (
       <LaneEditor plan={plan} onPlanChange={changePlan} />
@@ -151,53 +238,64 @@ export function PlanEditor({ value, onChange, onSave, onClose }: PlanEditorProps
 
   return (
     <div ref={rootRef} className="man-pt-editor">
-      <style>{css}</style>
-      <style>{formsCss}</style>
-      <div className="man-pt-editor__header">
-        <h2 className="man-pt-editor__title">Projektplan</h2>
-        {/* Die Überschrift steht im Plan, nicht in einem eigenen Attribut —
-            siehe `Plan.title`. Leer steht über dem Plan keine. */}
-        <DraftField
-          label="Überschrift"
-          value={plan.title ?? ""}
-          normalize={(text) => text.trim()}
-          onCommit={(title) => changePlan(setTitle(plan, title))}
-          className="man-pt-editor__heading-field"
-        />
-        <p className="man-pt-editor__count">{`${plan.items.length} / ${LIMITS.items} Einträge`}</p>
-      </div>
-      <div className="man-pt-editor__body">
-        {dropped > 0 && (
-          <p className="man-pt-editor__warning" role="alert">
-            {droppedMessage(dropped)}
-          </p>
-        )}
+      {sheets.map((sheet, index) => (
+        <style key={index}>{sheet}</style>
+      ))}
+      <EditorHeader
+        plan={plan}
+        dirty={dirty}
+        onTitleChange={(title) => changePlan(setTitle(plan, title))}
+        onCancel={onClose}
+        onSave={save}
+      />
+      {dropped > 0 && (
+        <p className="man-pt-editor__notice" role="alert">
+          {droppedMessage(dropped)}
+        </p>
+      )}
+      <div ref={mainRef} className="man-pt-editor__main">
         {empty ? (
-          <EmptyState onExample={() => begin(startWithExample(plan))} onEmpty={() => begin(startEmpty(plan))} />
+          <EmptyState
+            onExample={() => begin(startWithExample(plan))}
+            onEmpty={() => begin(startEmpty(plan))}
+          />
         ) : (
           <>
             <PlanPreview
               plan={plan}
+              open={previewOpen}
+              onToggle={() => setPreviewOpen(!previewOpen)}
+              stageHeight={previewHeight.size}
+              stageId={stageId}
+              rootRef={previewRef}
+              stageRef={stageRef}
               selectedId={selected}
               viewport={viewport}
               onSelectItem={onSelectItem}
               onViewportChange={onViewportChange}
-              onSetStartView={() => viewport !== null && changePlan(setStartView(plan, viewport))}
+              onSetStartView={() =>
+                viewport !== null && changePlan(setStartView(plan, viewport))
+              }
               onClearStartView={() => changePlan(clearStartView(plan))}
             />
-            <EditorTabs tabs={TABS} active={tab} onChange={setTab} label="Bereiche des Plans">
+            {previewOpen && (
+              <Splitter
+                orientation="horizontal"
+                label="Höhe der Vorschau ändern"
+                controls={stageId}
+                split={previewHeight}
+              />
+            )}
+            <EditorTabs
+              tabs={TABS}
+              active={tab}
+              onChange={setTab}
+              label="Bereiche des Plans"
+            >
               {panel}
             </EditorTabs>
           </>
         )}
-      </div>
-      <div className="man-pt-editor__footer">
-        <button type="button" className="man-pt-editor__button" onClick={onClose}>
-          Abbrechen
-        </button>
-        <button type="button" className="man-pt-editor__button man-pt-editor__button--primary" onClick={save}>
-          Übernehmen
-        </button>
       </div>
     </div>
   );

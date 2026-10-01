@@ -20,12 +20,29 @@
 
 import { shortTermText } from "../item-text";
 import { matchesQuery } from "../plan-filter";
-import { LaneItem, Plan, PlanItem, isLaneItem, itemEndDay, itemStartDay } from "../plan-model";
+import {
+  ItemKind,
+  LaneItem,
+  Plan,
+  PlanItem,
+  isLaneItem,
+  itemEndDay,
+  itemStartDay,
+} from "../plan-model";
 import { ALL_LANES_LABEL } from "../plan-rows";
 
 // Dieselben Wörter wie auf der Seite und im Export — aus einer Quelle, damit
 // Editor, Liste und Excel nie verschieden heißen.
 export { ALL_LANES_LABEL, KIND_LABELS } from "../plan-rows";
+
+export const ITEM_KINDS: readonly ItemKind[] = ["milestone", "bar", "deadline"];
+
+/** Die Mehrzahl — für die Pillen über der Liste und ihre Leerzustände. */
+export const KIND_PLURALS: Readonly<Record<ItemKind, string>> = {
+  milestone: "Meilensteine",
+  bar: "Zeiträume",
+  deadline: "Stichtage",
+};
 
 /**
  * Die Sprache des Editors. Seine Bedienelemente sprechen Deutsch wie in allen
@@ -33,37 +50,68 @@ export { ALL_LANES_LABEL, KIND_LABELS } from "../plan-rows";
  */
 export const EDITOR_LOCALE = "de-DE";
 
-const collator = new Intl.Collator("de", { sensitivity: "base", numeric: true });
+const collator = new Intl.Collator("de", {
+  sensitivity: "base",
+  numeric: true,
+});
 
 /** Nach Beginn, dann Ende, dann Titel — dieselbe Reihenfolge wie auf der Zeitachse. */
 export function itemsByDate(items: readonly PlanItem[]): PlanItem[] {
   return [...items].sort(
     (a, b) =>
-      itemStartDay(a) - itemStartDay(b) || itemEndDay(a) - itemEndDay(b) || collator.compare(a.title, b.title),
+      itemStartDay(a) - itemStartDay(b) ||
+      itemEndDay(a) - itemEndDay(b) ||
+      collator.compare(a.title, b.title),
   );
 }
 
 /** Durchsucht Titel, Beschreibung, Serie, Ebene und Kategorie wie die Suche auf der Seite. */
-export function matchesSearch(plan: Plan, item: PlanItem, query: string): boolean {
+export function matchesSearch(
+  plan: Plan,
+  item: PlanItem,
+  query: string,
+): boolean {
   return matchesQuery(plan, item, query);
 }
 
 /** Die Serien einer Ebene, je einmal — eine Serie gilt nur innerhalb ihrer Ebene. */
 export function seriesInLane(plan: Plan, laneId: string): string[] {
   const names = plan.items
-    .filter((item): item is LaneItem => isLaneItem(item) && item.lane === laneId)
+    .filter(
+      (item): item is LaneItem => isLaneItem(item) && item.lane === laneId,
+    )
     .map((item) => item.series)
     .filter((series): series is string => series !== undefined);
   return [...new Set(names)].sort(collator.compare);
 }
 
+/** Die Serien einer Ebene mit der Zahl ihrer Einträge — die Vorschläge im Feld „Serie“. */
+export function seriesSuggestions(
+  plan: Plan,
+  laneId: string,
+): { value: string; count: number }[] {
+  const counts = new Map<string, number>();
+  for (const item of plan.items) {
+    if (!isLaneItem(item) || item.lane !== laneId || item.series === undefined)
+      continue;
+    counts.set(item.series, (counts.get(item.series) ?? 0) + 1);
+  }
+  return seriesInLane(plan, laneId).map((value) => ({
+    value,
+    count: counts.get(value) ?? 0,
+  }));
+}
+
 /** Mögliche Vorgänger: alle anderen Meilensteine und Zeiträume. Stichtage sind nie Vorgänger. */
 export function dependencyCandidates(plan: Plan, itemId: string): LaneItem[] {
-  return itemsByDate(plan.items.filter((item) => isLaneItem(item) && item.id !== itemId)) as LaneItem[];
+  return itemsByDate(
+    plan.items.filter((item) => isLaneItem(item) && item.id !== itemId),
+  ) as LaneItem[];
 }
 
 export function countInLane(plan: Plan, laneId: string): number {
-  return plan.items.filter((item) => isLaneItem(item) && item.lane === laneId).length;
+  return plan.items.filter((item) => isLaneItem(item) && item.lane === laneId)
+    .length;
 }
 
 export function countInCategory(plan: Plan, categoryId: string): number {
@@ -82,4 +130,37 @@ export function laneLabel(plan: Plan, item: PlanItem): string {
 /** „07.04.2025“ bzw. „01.01.2028 – 30.06.2030“. */
 export function scheduleLabel(item: PlanItem, locale: string): string {
   return shortTermText(item, locale);
+}
+
+/** Die Einträge einer Art, die zur Suche passen, nach Termin — so wie die Liste sie zeigt. */
+export function visibleItems(
+  plan: Plan,
+  kind: ItemKind,
+  query: string,
+): PlanItem[] {
+  return itemsByDate(plan.items).filter(
+    (item) => item.kind === kind && matchesSearch(plan, item, query),
+  );
+}
+
+/** Je Art die Zahl der Einträge, die zur Suche passen; ohne Suche alle. */
+export function kindCounts(
+  plan: Plan,
+  query: string,
+): Record<ItemKind, number> {
+  const counts: Record<ItemKind, number> = {
+    milestone: 0,
+    bar: 0,
+    deadline: 0,
+  };
+  for (const item of plan.items) {
+    if (matchesSearch(plan, item, query)) counts[item.kind] += 1;
+  }
+  return counts;
+}
+
+/** Wie viele Einträge den Eintrag `id` als Vorgänger nennen. */
+export function countDependents(plan: Plan, id: string): number {
+  return plan.items.filter((item) => item.dependsOn?.includes(id) === true)
+    .length;
 }

@@ -18,7 +18,13 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { DraftField, requireText } from "./draft-field";
 
 /** Hält den Modellwert wie der Editor: nur gültige Eingaben kommen an. */
-function Harness({ initial, onCommit }: { initial: string; onCommit: jest.Mock }): React.ReactElement {
+function Harness({
+  initial,
+  onCommit,
+}: {
+  initial: string;
+  onCommit: jest.Mock;
+}): React.ReactElement {
   const [value, setValue] = useState(initial);
   return (
     <>
@@ -43,7 +49,9 @@ describe("DraftField", () => {
   it("gibt eine gültige Eingabe sofort weiter", () => {
     const onCommit = jest.fn();
     render(<Harness initial="Bauma" onCommit={onCommit} />);
-    fireEvent.change(screen.getByLabelText("Titel"), { target: { value: "IAA" } });
+    fireEvent.change(screen.getByLabelText("Titel"), {
+      target: { value: "IAA" },
+    });
     expect(onCommit).toHaveBeenCalledWith("IAA");
     expect(screen.getByTestId("model")).toHaveTextContent("IAA");
   });
@@ -69,7 +77,10 @@ describe("DraftField", () => {
 
   it("ist ohne Fehler nicht als ungültig markiert", () => {
     render(<Harness initial="Bauma" onCommit={jest.fn()} />);
-    expect(screen.getByLabelText("Titel")).not.toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByLabelText("Titel")).not.toHaveAttribute(
+      "aria-invalid",
+      "true",
+    );
   });
 
   it("gibt bereinigt weiter und lässt den Entwurf stehen", () => {
@@ -89,13 +100,22 @@ describe("DraftField", () => {
       );
     }
     render(<Trimmed />);
-    fireEvent.change(screen.getByLabelText("Serie"), { target: { value: "TG " } });
+    fireEvent.change(screen.getByLabelText("Serie"), {
+      target: { value: "TG " },
+    });
     expect(onCommit).toHaveBeenCalledWith("TG");
     expect(screen.getByLabelText("Serie")).toHaveValue("TG ");
   });
 
   it("rendert auf Wunsch ein mehrzeiliges Feld", () => {
-    render(<DraftField label="Beschreibung" value="Zeile" multiline onCommit={jest.fn()} />);
+    render(
+      <DraftField
+        label="Beschreibung"
+        value="Zeile"
+        multiline
+        onCommit={jest.fn()}
+      />,
+    );
     expect(screen.getByLabelText("Beschreibung").tagName).toBe("TEXTAREA");
   });
 });

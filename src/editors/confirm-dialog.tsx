@@ -22,9 +22,17 @@
  */
 
 import * as React from "react";
-import { KeyboardEvent, ReactElement, ReactNode, useEffect, useId, useRef } from "react";
+import {
+  KeyboardEvent,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useId,
+  useRef,
+} from "react";
 
-const FOCUSABLE = "button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])";
+const FOCUSABLE =
+  "button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])";
 
 export interface ConfirmDialogProps {
   title: string;
@@ -60,10 +68,15 @@ export function ConfirmDialog({
   useEffect(() => {
     // Woher der Fokus kam — dorthin gehört er beim Schließen zurück, sonst
     // stünde er am Anfang des Dialogs und die Tastaturbedienung begänne von vorn.
-    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const opener =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
     // Gibt es eine Auswahl, ist sie das Erste, was zu entscheiden ist; sonst
     // steht der Fokus auf dem harmlosen Knopf, damit Enter nichts löscht.
-    const choice = dialogRef.current?.querySelector<HTMLElement>(".man-pt-editor__dialog-choices " + FOCUSABLE);
+    const choice = dialogRef.current?.querySelector<HTMLElement>(
+      ".man-pt-editor__dialog-choices " + FOCUSABLE,
+    );
     (choice ?? cancelRef.current)?.focus();
     return () => {
       if (opener !== null && opener.isConnected) opener.focus();
@@ -73,7 +86,8 @@ export function ConfirmDialog({
 
   /** Hält den Fokus im Dialog; sonst wanderte er in den Editor dahinter. */
   const trapTab = (event: KeyboardEvent<HTMLDivElement>): void => {
-    const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? [];
+    const focusable =
+      dialogRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? [];
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
     if (first === undefined || last === undefined) return;
@@ -112,12 +126,23 @@ export function ConfirmDialog({
         <p id={messageId} className="man-pt-editor__dialog-message">
           {message}
         </p>
-        {children !== undefined && <div className="man-pt-editor__dialog-choices">{children}</div>}
+        {children !== undefined && (
+          <div className="man-pt-editor__dialog-choices">{children}</div>
+        )}
         <div className="man-pt-editor__dialog-actions">
-          <button ref={cancelRef} type="button" className="man-pt-editor__button" onClick={onCancel}>
+          <button
+            ref={cancelRef}
+            type="button"
+            className="man-pt-editor__button"
+            onClick={onCancel}
+          >
             Abbrechen
           </button>
-          <button type="button" className="man-pt-editor__button man-pt-editor__button--danger" onClick={onConfirm}>
+          <button
+            type="button"
+            className="man-pt-editor__button man-pt-editor__button--danger"
+            onClick={onConfirm}
+          >
             {confirmLabel}
           </button>
         </div>

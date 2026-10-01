@@ -17,7 +17,11 @@ import { fireEvent, render, screen } from "@testing-library/react";
 
 import { ConfirmDialog } from "./confirm-dialog";
 
-function Harness({ withChoice = false }: { withChoice?: boolean }): React.ReactElement {
+function Harness({
+  withChoice = false,
+}: {
+  withChoice?: boolean;
+}): React.ReactElement {
   const [open, setOpen] = useState(false);
   return (
     <>

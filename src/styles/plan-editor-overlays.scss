@@ -1,0 +1,198 @@
+/*!
+ * Copyright 2026, MHP Management und IT-Beratung GmbH and contributors.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Was über dem Editor liegt: verankerte Popover (Rückfrage beim Löschen,
+// neue Ebene oder Kategorie), die Vorschlagsliste des Auswahlfelds und die
+// modale Rückfrage. Keine Portale — siehe `confirm-dialog.tsx`.
+
+@use "@shared/stylings/editor-chrome" as chrome;
+@use "plan-editor-tokens" as local;
+
+// --- Popover ----
+
+// Verankert am Element, das es öffnet (`.man-pt-editor__anchor`), und nach
+// oben gekippt, wenn es unten abgeschnitten würde (`anchored-popover.tsx`).
+.man-pt-editor__anchor {
+  position: relative;
+}
+
+// `fixed` in Bildschirmkoordinaten, gesetzt von `anchored-popover.tsx`: so
+// schneidet kein rollender Bereich es ab. Wird es begrenzt (`max-height`),
+// rollt es selbst.
+.man-pt-editor__popover {
+  position: fixed;
+  z-index: 5;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: local.$space-s;
+  width: max-content;
+  max-width: 320px;
+  padding: local.$space-m;
+  text-align: start;
+  white-space: normal;
+  background: chrome.$surface;
+  border: 1px solid chrome.$border-menu;
+  border-radius: chrome.$radius-small;
+  box-shadow: chrome.$shadow-menu;
+}
+
+// Ein offenes Popover gehoert ueber alles, was im Dokument nach ihm kommt. Am
+// 30.09.2026 lief im Studio die Trennlinie der naechsten Listenzeile durch die
+// Knoepfe der Loesch-Rueckfrage: die Werkzeughuelle bildete damals mit
+// `transform` eine eigene Stapelebene. Die ist weg; die Zeile bzw. der Anker,
+// der das Popover traegt, hebt sich trotzdem, damit keine kuenftige
+// Stapelebene es wieder unter spaetere Zeilen schiebt.
+.man-pt-editor__list-row:has(.man-pt-editor__popover),
+.man-pt-editor__anchor:has(> .man-pt-editor__popover) {
+  z-index: 6;
+}
+
+// Am Auswahlfeld feste Breite; ausgerichtet wird in `anchored-popover.tsx`.
+.man-pt-editor__create {
+  width: 280px;
+}
+
+.man-pt-editor__popover-title {
+  margin: 0;
+  font-weight: 600;
+  color: chrome.$text-strong;
+}
+
+.man-pt-editor__popover-actions {
+  display: flex;
+  gap: local.$space-s;
+  justify-content: flex-end;
+}
+
+// --- Rückfrage ----
+
+.man-pt-editor__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(15 23 32 / 45%);
+}
+
+.man-pt-editor__dialog {
+  display: flex;
+  flex-direction: column;
+  gap: local.$space-m;
+  width: min(440px, 90%);
+  padding: local.$space-l;
+  background: chrome.$surface;
+  border-radius: chrome.$radius-small;
+  box-shadow: chrome.$shadow-dialog;
+}
+
+.man-pt-editor__dialog-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: chrome.$text-strong;
+}
+
+.man-pt-editor__dialog-message {
+  margin: 0;
+  color: chrome.$text-caption;
+}
+
+.man-pt-editor__dialog-choices {
+  display: flex;
+  flex-direction: column;
+  gap: local.$space-s;
+}
+
+.man-pt-editor__choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: local.$space-s;
+  align-items: center;
+
+  .man-pt-editor__select {
+    width: auto;
+    min-width: 160px;
+  }
+}
+
+.man-pt-editor__dialog-actions {
+  display: flex;
+  gap: local.$space-s;
+  justify-content: flex-end;
+}
+
+// --- Vorschlagsliste ----
+
+// Höchstens etwa acht Vorschläge hoch, darüber rollt sie selbst; sie kippt
+// nach oben, wenn unten kein Platz ist (`combobox.tsx`).
+.man-pt-editor__listbox {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  max-height: 8 * 30px;
+  margin: 0;
+  padding: local.$space-xs 0;
+  overflow-y: auto;
+  list-style: none;
+  background: chrome.$surface;
+  border: 1px solid chrome.$border-menu;
+  border-radius: chrome.$radius-small;
+  box-shadow: chrome.$shadow-menu;
+}
+
+.man-pt-editor__listbox[hidden] {
+  display: none;
+}
+
+.man-pt-editor__listbox--below {
+  top: calc(100% + 2px);
+}
+
+.man-pt-editor__listbox--above {
+  bottom: calc(100% + 2px);
+}
+
+.man-pt-editor__option {
+  min-height: 30px;
+  padding: 6px local.$space-m;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: chrome.$text-body;
+  cursor: pointer;
+
+  &:hover {
+    background: chrome.$surface-hover;
+  }
+}
+
+.man-pt-editor__option--active {
+  background: chrome.$accent-selection;
+  box-shadow: inset 2px 0 0 chrome.$accent;
+}
+
+.man-pt-editor__option--none,
+.man-pt-editor__option--create {
+  color: chrome.$accent-text;
+}
+
+.man-pt-editor__match {
+  padding: 0;
+  font-weight: 600;
+  color: inherit;
+  background: transparent;
+}

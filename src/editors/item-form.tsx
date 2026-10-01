@@ -12,24 +12,44 @@
  */
 
 /**
- * Das Formular des gewählten Eintrags.
+ * Das Formular des gewählten Eintrags. Im festen Kopf stehen Titel, Art und
+ * die Handlungen, darunter die Unterreiter Allgemein · Einordnung · Termin ·
+ * Abhängigkeiten; nur ihr Inhalt rollt.
  *
- * Jede gültige Eingabe landet sofort im Plan, damit die Vorschau darüber
- * mitgeht. Ungültiges bleibt im Feld stehen (`DraftField`); der Plan behält
- * dann den letzten gültigen Wert.
+ * Alle Unterreiter bleiben gemountet und nur verborgen: sonst gingen beim
+ * Wechsel Entwürfe und Feldfehler verloren. Hält ein Reiter eine ungültige
+ * Eingabe, zeigt er einen Marker — der Fehler läge sonst unsichtbar hinter
+ * einem anderen Reiter.
  */
 
 import * as React from "react";
-import { ReactElement, ReactNode, useId } from "react";
+import { ReactElement, useEffect, useId, useState } from "react";
 
-import { ItemKind, LIMITS, Plan, PlanItem, isLaneItem } from "../plan-model";
+import { LIMITS, Plan, PlanItem, isLaneItem } from "../plan-model";
+import { DeleteConfirm } from "./delete-confirm";
 import { DependencyField } from "./dependency-field";
-import { DraftField, requireText } from "./draft-field";
-import { changeKind, updateItem, withOptional } from "./plan-edits";
-import { KIND_LABELS, seriesInLane } from "./plan-queries";
-import { ScheduleFields } from "./schedule-fields";
+import { TabList, TabPanel } from "./editor-tabs";
+import { FieldValidityContext, useGroupValidity } from "./field-validity";
+import { GeneralFields, PlacementFields, TermFields } from "./item-form-panels";
+import { updateItem, withOptional } from "./plan-edits";
+import { Pane } from "./pane";
+import { KIND_LABELS, countDependents } from "./plan-queries";
 
-const KINDS: readonly ItemKind[] = ["milestone", "bar", "deadline"];
+export type FormTab = "general" | "placement" | "term" | "dependencies";
+
+const FORM_TABS: readonly FormTab[] = [
+  "general",
+  "placement",
+  "term",
+  "dependencies",
+];
+
+const FORM_TAB_LABELS: Readonly<Record<FormTab, string>> = {
+  general: "Allgemein",
+  placement: "Einordnung",
+  term: "Termin",
+  dependencies: "Abhängigkeiten",
+};
 
 export interface ItemFormProps {
   plan: Plan;
@@ -37,33 +57,13 @@ export interface ItemFormProps {
   locale: string;
   onPlanChange: (plan: Plan) => void;
   onDuplicate: () => void;
+  /** Nach der Rückfrage: der Eintrag soll weg. */
   onRemove: () => void;
+  /** Der Unterreiter; er bleibt beim Wechsel zu einem anderen Eintrag. */
+  tab: FormTab;
+  onTabChange: (tab: FormTab) => void;
   /** Setzt den Fokus in den Titel — nach dem Anlegen will man ihn als Erstes ändern. */
   autoFocusTitle?: boolean;
-}
-
-function SelectField({
-  label,
-  value,
-  onChange,
-  children,
-}: {
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-  children: ReactNode;
-}): ReactElement {
-  const id = useId();
-  return (
-    <div className="man-pt-editor__field">
-      <label className="man-pt-editor__label" htmlFor={id}>
-        {label}
-      </label>
-      <select id={id} className="man-pt-editor__select" value={value} onChange={(event) => onChange(event.target.value)}>
-        {children}
-      </select>
-    </div>
-  );
 }
 
 export function ItemForm({
@@ -73,106 +73,127 @@ export function ItemForm({
   onPlanChange,
   onDuplicate,
   onRemove,
+  tab,
+  onTabChange,
   autoFocusTitle = false,
 }: ItemFormProps): ReactElement {
-  const update = (next: PlanItem): void => onPlanChange(updateItem(plan, next));
-  const needsLane = plan.lanes.length === 0;
+  const base = useId();
+  const [confirming, setConfirming] = useState(false);
+  const validity = useGroupValidity(FORM_TABS);
+  // Stichtage haben keine Vorgänger und deshalb keinen Reiter dafür.
+  const available = FORM_TABS.filter(
+    (entry) => entry !== "dependencies" || isLaneItem(item),
+  );
+  const active = available.includes(tab) ? tab : "general";
+  useEffect(() => {
+    if (active !== tab) onTabChange(active);
+  }, [active, tab, onTabChange]);
 
+  const predecessors = item.dependsOn?.length ?? 0;
+  const tabs = available.map((id) => ({
+    id,
+    label:
+      id === "dependencies" && predecessors > 0
+        ? `${FORM_TAB_LABELS[id]} (${predecessors})`
+        : FORM_TAB_LABELS[id],
+    invalid: validity.invalid.has(id),
+  }));
+
+  const actions = (
+    <>
+      <button
+        type="button"
+        className="man-pt-editor__button"
+        disabled={plan.items.length >= LIMITS.items}
+        onClick={onDuplicate}
+      >
+        Duplizieren
+      </button>
+      <div className="man-pt-editor__anchor">
+        <button
+          type="button"
+          className="man-pt-editor__button man-pt-editor__button--danger"
+          aria-haspopup="dialog"
+          aria-expanded={confirming}
+          onClick={() => setConfirming(!confirming)}
+        >
+          Löschen
+        </button>
+        {confirming && (
+          <DeleteConfirm
+            title={item.title}
+            dependents={countDependents(plan, item.id)}
+            onConfirm={onRemove}
+            onCancel={() => setConfirming(false)}
+          />
+        )}
+      </div>
+    </>
+  );
+
+  const panel = (id: FormTab, content: ReactElement): ReactElement => (
+    <TabPanel
+      key={id}
+      base={base}
+      tab={id}
+      active={active === id}
+      className="man-pt-editor__form-panel"
+    >
+      <FieldValidityContext.Provider value={validity.reporters[id]}>
+        {content}
+      </FieldValidityContext.Provider>
+    </TabPanel>
+  );
+
+  const shared = { plan, item, onPlanChange };
   return (
     // Kein `<form>`: Enter in einem Feld löste sonst ein Absenden aus, das
     // hier niemand erwartet — gespeichert wird nur über „Übernehmen“.
-    <section className="man-pt-editor__form" aria-label={`Eintrag „${item.title}“`}>
-      <SelectField
-        label="Art"
-        value={item.kind}
-        onChange={(kind) => onPlanChange(changeKind(plan, item.id, kind as ItemKind))}
-      >
-        {KINDS.map((kind) => (
-          // Ohne Ebene kann ein Stichtag weder Meilenstein noch Zeitraum werden:
-          // beide brauchen eine Ebene, in der sie stehen.
-          <option key={kind} value={kind} disabled={kind !== "deadline" && needsLane}>
-            {KIND_LABELS[kind]}
-          </option>
-        ))}
-      </SelectField>
-
-      <DraftField
-        label="Titel"
-        value={item.title}
-        validate={requireText("Bitte einen Titel angeben.")}
-        onCommit={(title) => update({ ...item, title })}
-        autoFocus={autoFocusTitle}
-      />
-      <DraftField
-        label="Beschreibung"
-        value={item.description ?? ""}
-        multiline
-        // Nur Leerraum ist keine Beschreibung; das Lesen verwürfe sie ohnehin.
-        normalize={(text) => (text.trim() === "" ? "" : text)}
-        onCommit={(text) => update(withOptional(item, "description", text === "" ? undefined : text))}
-      />
-
-      <div className="man-pt-editor__row">
-        {isLaneItem(item) && (
-          <SelectField label="Ebene" value={item.lane} onChange={(lane) => update({ ...item, lane })}>
-            {plan.lanes.map((lane) => (
-              <option key={lane.id} value={lane.id}>
-                {lane.title}
-              </option>
-            ))}
-          </SelectField>
-        )}
-        <SelectField
-          label="Kategorie"
-          value={item.category ?? ""}
-          onChange={(category) => update(withOptional(item, "category", category === "" ? undefined : category))}
-        >
-          <option value="">Ohne Kategorie</option>
-          {plan.categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.title}
-            </option>
-          ))}
-        </SelectField>
-      </div>
-
-      <ScheduleFields
-        item={item}
-        seriesSuggestions={isLaneItem(item) ? seriesInLane(plan, item.lane) : []}
-        onChange={update}
-      />
-
-      <label className="man-pt-editor__check">
-        <input
-          type="checkbox"
-          checked={item.tentative === true}
-          onChange={(event) => update(withOptional(item, "tentative", event.target.checked ? true : undefined))}
+    <Pane
+      label={`Eintrag „${item.title}“`}
+      className="man-pt-editor__form"
+      title={item.title}
+      hint={KIND_LABELS[item.kind]}
+      actions={actions}
+      toolbar={
+        <TabList
+          base={base}
+          tabs={tabs}
+          active={active}
+          onChange={onTabChange}
+          label="Felder des Eintrags"
+          variant="sub"
+          allPanels
         />
-        Vorläufig
-      </label>
-
-      {isLaneItem(item) && (
-        <DependencyField
-          plan={plan}
-          item={item}
-          locale={locale}
-          onChange={(ids) => update(withOptional(item, "dependsOn", ids.length > 0 ? ids : undefined))}
-        />
+      }
+    >
+      {panel(
+        "general",
+        <GeneralFields {...shared} autoFocusTitle={autoFocusTitle} />,
       )}
-
-      <div className="man-pt-editor__actions">
-        <button
-          type="button"
-          className="man-pt-editor__button"
-          disabled={plan.items.length >= LIMITS.items}
-          onClick={onDuplicate}
-        >
-          Duplizieren
-        </button>
-        <button type="button" className="man-pt-editor__button man-pt-editor__button--danger" onClick={onRemove}>
-          Löschen
-        </button>
-      </div>
-    </section>
+      {panel("placement", <PlacementFields {...shared} />)}
+      {panel("term", <TermFields {...shared} />)}
+      {isLaneItem(item) &&
+        panel(
+          "dependencies",
+          <DependencyField
+            plan={plan}
+            item={item}
+            locale={locale}
+            onChange={(ids) =>
+              onPlanChange(
+                updateItem(
+                  plan,
+                  withOptional(
+                    item,
+                    "dependsOn",
+                    ids.length > 0 ? ids : undefined,
+                  ),
+                ),
+              )
+            }
+          />,
+        )}
+    </Pane>
   );
 }

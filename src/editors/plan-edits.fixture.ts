@@ -17,7 +17,12 @@
  * `plan-edits.structure.test.ts`.
  */
 
-import { encodePlanAttribute, Plan, PlanItem, readPlanAttribute } from "../plan-model";
+import {
+  encodePlanAttribute,
+  Plan,
+  PlanItem,
+  readPlanAttribute,
+} from "../plan-model";
 
 // Lokale Mitternacht, weil `todayIso` das Datum an der Uhr der Redaktion abliest.
 export const NOW = new Date(2026, 8, 30);
@@ -42,7 +47,6 @@ export const basePlan = (): Plan => ({
       category: "c1",
       title: "Bauma",
       date: "2025-04-07",
-      symbol: "square",
       series: "Messen",
     },
     {
@@ -56,12 +60,26 @@ export const basePlan = (): Plan => ({
       arrow: true,
       dependsOn: ["m1"],
     },
-    { id: "d1", kind: "deadline", category: "c1", title: "Euro 7", date: "2027-07-01" },
-    { id: "m2", kind: "milestone", lane: "l2", title: "SOP", date: "2026-01-15", dependsOn: ["m1", "b1"] },
+    {
+      id: "d1",
+      kind: "deadline",
+      category: "c1",
+      title: "Euro 7",
+      date: "2027-07-01",
+    },
+    {
+      id: "m2",
+      kind: "milestone",
+      lane: "l2",
+      title: "SOP",
+      date: "2026-01-15",
+      dependsOn: ["m1", "b1"],
+    },
   ],
 });
 
-export const itemById = (plan: Plan, id: string): PlanItem | undefined => plan.items.find((item) => item.id === id);
+export const itemById = (plan: Plan, id: string): PlanItem | undefined =>
+  plan.items.find((item) => item.id === id);
 
 /** Das Modell bleibt gültig: was der Editor schreibt, liest das Widget ohne Verlust zurück. */
 export const expectReadable = (plan: Plan): void => {
@@ -69,4 +87,3 @@ export const expectReadable = (plan: Plan): void => {
   expect(dropped).toBe(0);
   expect(back).toEqual(plan);
 };
-

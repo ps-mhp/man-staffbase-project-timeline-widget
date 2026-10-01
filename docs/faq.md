@@ -35,12 +35,37 @@ bliebe man beim Scrollen am Plan hängen. Zum Zoomen halten Sie die Strg-Taste
 (Mac: ⌘) gedrückt und drehen dabei am Mausrad. Der Hinweis erscheint nur
 einmal.
 
-**Frage:** Im Plan-Editor steht „Noch keine Einträge — die Vorschau erscheint
-mit dem ersten Eintrag.“
+**Frage:** Im Plan-Editor steht „Die Vorschau erscheint mit dem ersten
+Eintrag.“
 
 Antwort: Der Plan hat noch keinen Eintrag, deshalb gibt es nichts zu zeigen.
-Legen Sie im Reiter **Einträge** unter **Hinzufügen** einen Meilenstein,
-Zeitraum oder Stichtag an, oder klicken Sie auf **Mit Beispielplan beginnen**.
+Wählen Sie im Reiter **Einträge** über der Liste eine Art und legen Sie mit
+**+** einen Eintrag an.
+
+**Frage:** Der Plan-Editor verdeckt den ganzen Bildschirm, auch die Leiste
+des Studios.
+
+Antwort: Das ist gewollt: Vorschau, Liste und Formular brauchen Platz. Sie
+verlassen den Editor oben rechts über **Übernehmen** oder **Abbrechen**; danach
+ist der Konfigurationsdialog wieder zu sehen, und **Plan bearbeiten …** öffnet
+den Editor erneut.
+
+**Frage:** Die Vorschau nimmt mir zu viel Platz weg.
+
+Antwort: Ziehen Sie die schmale Leiste unter der Vorschau nach oben, oder
+klappen Sie die Vorschau mit einem Klick auf **Vorschau** ganz ein. Ebenso
+lässt sich die Eintragsliste an der Leiste zwischen Liste und Formular
+schmaler oder breiter ziehen. Ein Doppelklick auf eine Leiste stellt die
+ursprüngliche Größe wieder her. Der Browser merkt sich die Größen; in einem
+privaten Fenster gelten beim nächsten Öffnen wieder die Vorgaben.
+
+**Frage:** Wo erfahren Leser:innen, was die Zeichen im Plan bedeuten?
+
+**Antwort:** Über den Knopf **Hilfe** in der Werkzeugleiste (auf schmalen
+Bildschirmen ein **?**). Der Reiter **Legende** zeigt jedes Zeichen als kleines
+Muster mit Erklärung und die Kategorien dieses Plans; der Reiter **Bedienung**
+erklärt Zoomen, Verschieben, Filter und alle Tastenkürzel. Steht der Fokus im
+Plan, öffnet auch die Taste **?** die Hilfe.
 
 **Frage:** Wie zoome ich?
 
@@ -58,7 +83,15 @@ Antwort: Entweder ist in den Einstellungen des Widgets **Excel-Export
 anbieten** ausgeschaltet, oder der Bildschirm ist schmal (unter 768 Pixel
 Breite): dann steht **Exportieren** im Menü **Mehr** der Werkzeugleiste.
 
-**Frage:** Was bedeutet ein gestrichelter Rand oder ein Symbol, das nur als
+**Frage:** Wo stelle ich die Form eines Meilensteins ein?
+
+Antwort: An seiner Kategorie, nicht am Meilenstein: im Reiter **Kategorien**
+über den Formknopf neben dem Farbfeld. Zur Wahl stehen Raute, Dreieck, Dreieck mit der Spitze nach unten, Quadrat, Kreis, Sechseck, Stern oder Kreuz. Alle
+Meilensteine einer Kategorie tragen dieselbe Form und Farbe — so erkennt man
+die Kategorie im Zeitstrahl auch ohne Farbe. Meilensteine ohne Kategorie
+erscheinen als graue Raute.
+
+**Frage:** Was bedeutet ein gestrichelter Rand oder eine Form, die nur als
 Umriss erscheint?
 
 Antwort: Der Eintrag ist als **vorläufig** markiert — sein Termin steht noch
@@ -110,12 +143,33 @@ zeigt oben rechts, wie viele Einträge der Plan schon trägt. Für sehr große
 Vorhaben empfiehlt es sich, den Plan auf mehrere Widgets aufzuteilen, etwa
 eines je Baureihe.
 
-**Frage:** Unter **Hinzufügen** lassen sich **Meilenstein** und **Zeitraum**
+**Frage:** Der Knopf **+** lässt sich bei **Meilensteine** und **Zeiträume**
 nicht anklicken.
 
 Antwort: Der Plan hat keine Ebene mehr, und ohne Ebene hat ein Meilenstein
-oder Zeitraum keinen Platz; der Plan-Editor weist darunter darauf hin. Legen Sie im Reiter **Ebenen** über **Neue
-Ebene** mindestens eine an. Stichtage lassen sich auch ohne Ebene anlegen.
+oder Zeitraum keinen Platz; der Plan-Editor weist darunter darauf hin. Legen
+Sie im Reiter **Ebenen** über **Neue Ebene** mindestens eine an. Stichtage lassen sich auch ohne Ebene anlegen.
+
+**Frage:** Wo ist der Papierkorb in der Eintragsliste?
+
+Antwort: Er erscheint, wenn Sie mit der Maus über eine Zeile fahren oder eine
+Zeile per Tastatur den Fokus hat; auf Touch-Geräten ist er immer zu sehen.
+Gelöscht wird erst nach der Rückfrage. Hängen andere Einträge vom gelöschten
+ab, nennt die Rückfrage ihre Zahl; ihre Verbindungen werden entfernt.
+
+**Frage:** Beim Anlegen einer Ebene oder Kategorie steht „Eine Ebene „X“ gibt
+es schon.“ bzw. „Eine Kategorie „X“ gibt es schon.“
+
+Antwort: Jeder Name darf nur einmal vorkommen, sonst wären Ebenen und
+Kategorien in Auswahlfeldern, Legende und Excel-Export nicht zu
+unterscheiden. Groß- und Kleinschreibung und Leerzeichen am Rand zählen dabei
+nicht. Wählen Sie einen anderen Namen oder nehmen Sie die vorhandene Ebene.
+
+**Frage:** Ein Reiter im Formular trägt einen roten Punkt.
+
+Antwort: Ein Feld in diesem Reiter hält eine ungültige Eingabe, etwa ein
+leeres Datum. Der Plan behält dort den letzten gültigen Wert. Öffnen Sie den
+Reiter und korrigieren Sie das Feld; dann verschwindet der Punkt.
 
 **Frage:** Im Formular steht „Bitte einen Titel angeben.“, „Bitte einen
 Namen angeben.“, „Bitte ein Datum angeben.“, „Bitte ein gültiges Datum

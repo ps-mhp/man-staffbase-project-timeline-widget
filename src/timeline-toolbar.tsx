@@ -59,6 +59,13 @@ export interface TimelineToolbarProps {
   onView: (view: TimelineView) => void;
   allowExport: boolean;
   onExport: () => void;
+  /** Kleinere Knöpfe, etwa in der Kopfzeile der Editor-Vorschau. */
+  compact?: boolean;
+  /** Öffnet die Hilfe; nur auf der Seite. */
+  onHelp?: () => void;
+  /** Schaltet das Vollbild um; nur auf der Seite. */
+  onToggleExpanded?: () => void;
+  expanded?: boolean;
 }
 
 function matchText(query: string, count: number, position: number | null): string {
@@ -136,16 +143,17 @@ function FilterPanel(props: TimelineToolbarProps): ReactElement {
   );
 }
 
-function ZoomButtons(props: Pick<TimelineToolbarProps, "onZoomIn" | "onZoomOut" | "onFit">): ReactElement {
+function ZoomButtons(props: Pick<TimelineToolbarProps, "onZoomIn" | "onZoomOut" | "onFit" | "compact">): ReactElement {
+  const button = `man-pt__button${props.compact ? " man-pt__button--compact" : ""}`;
   return (
     <div className="man-pt__zoom" role="group" aria-label="Zoom">
-      <button type="button" className="man-pt__button man-pt__button--icon" aria-label="Verkleinern" onClick={props.onZoomOut}>
+      <button type="button" className={`${button} man-pt__button--icon`} aria-label="Verkleinern" onClick={props.onZoomOut}>
         −
       </button>
-      <button type="button" className="man-pt__button man-pt__button--icon" aria-label="Vergrößern" onClick={props.onZoomIn}>
+      <button type="button" className={`${button} man-pt__button--icon`} aria-label="Vergrößern" onClick={props.onZoomIn}>
         +
       </button>
-      <button type="button" className="man-pt__button" onClick={props.onFit}>
+      <button type="button" className={button} onClick={props.onFit}>
         Alles zeigen
       </button>
     </div>
@@ -183,6 +191,35 @@ export function TimelineToolbar(props: TimelineToolbarProps): ReactElement {
   const exportButton = props.allowExport && (
     <button type="button" className="man-pt__button" onClick={props.onExport}>
       Exportieren
+    </button>
+  );
+
+  const helpButton = props.onHelp !== undefined && (
+    <button
+      type="button"
+      className={`man-pt__button man-pt__button--help${props.narrow ? " man-pt__button--icon" : ""}`}
+      aria-label={props.narrow ? "Hilfe" : undefined}
+      aria-haspopup="dialog"
+      onClick={props.onHelp}
+    >
+      <span className="man-pt__help-icon" aria-hidden="true">
+        ?
+      </span>
+      {!props.narrow && "Hilfe"}
+    </button>
+  );
+
+  const expandLabel = props.expanded ? "Vollbild beenden" : "Vollbild";
+  const expandButton = props.onToggleExpanded !== undefined && (
+    <button
+      type="button"
+      data-expand-toggle=""
+      className={`man-pt__button${props.narrow ? " man-pt__button--icon" : ""}`}
+      aria-label={props.narrow ? expandLabel : undefined}
+      onClick={props.onToggleExpanded}
+    >
+      <ExpandIcon expanded={props.expanded === true} />
+      {!props.narrow && expandLabel}
     </button>
   );
 
@@ -229,6 +266,20 @@ export function TimelineToolbar(props: TimelineToolbarProps): ReactElement {
           {exportButton}
         </>
       )}
+      {expandButton}
+      {helpButton}
     </div>
+  );
+}
+
+/** Vier Ecken nach außen (öffnen) bzw. nach innen (schließen). */
+function ExpandIcon({ expanded }: { expanded: boolean }): ReactElement {
+  const d = expanded
+    ? "M6 1v5H1M10 1v5h5M6 15v-5H1M10 15v-5h5"
+    : "M1 6V1h5M15 6V1h-5M1 10v5h5M15 10v5h-5";
+  return (
+    <svg className="man-pt__icon" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path d={d} fill="none" stroke="currentColor" strokeWidth="1.75" />
+    </svg>
   );
 }

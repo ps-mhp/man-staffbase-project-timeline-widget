@@ -39,6 +39,16 @@ export interface PlanEditorValue {
   dropped: number;
 }
 
+const FULL_SCREEN_PANEL: React.CSSProperties = {
+  width: "100vw",
+  height: "100vh",
+  maxWidth: "none",
+  maxHeight: "none",
+  padding: 0,
+  borderRadius: 0,
+  boxShadow: "none",
+};
+
 export function startPlanEditorInjector(): () => void {
   return startFieldModalInjector<PlanEditorValue>({
     fieldKey: PLAN_ATTRIBUTE,
@@ -49,8 +59,10 @@ export function startPlanEditorInjector(): () => void {
     render: (props) => React.createElement(PlanEditor, props),
     modalTestId: "plan-editor-modal",
     reopenTestId: "plan-editor-reopen",
-    // Breiter als der Punkte-Editor: Liste und Formular stehen nebeneinander,
-    // und die Vorschau braucht Breite, um mehr als ein Jahr zu zeigen.
-    panelStyle: { maxWidth: "1280px" },
+    // Vollbild: Vorschau, Liste und Formular brauchen Breite und Höhe, und
+    // ein Plan mit Hunderten Einträgen ist Arbeit für eine ganze Sitzung. Die
+    // Leiste des Staffbase-Studios darüber verschwindet dabei — gewollt, der
+    // Dialog ist ohnehin modal. Rahmen und Abstand zeichnet der Editor selbst.
+    panelStyle: FULL_SCREEN_PANEL,
   });
 }

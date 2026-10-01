@@ -30,11 +30,11 @@ const read = (element: HTMLElement): number => {
 };
 
 /**
- * @param mounted ob das Element gerade im DOM steht. Erscheint es erst später
- * — der Plan hatte beim ersten Aufbau keine Einträge —, muss die Messung neu
- * ansetzen; die Ref selbst ändert sich dabei nicht und löste nichts aus.
+ * @param remountKey ändert sich, wenn das Element neu entsteht — der Plan hatte
+ * beim ersten Aufbau keine Einträge, oder die Vollbild-Ebene hängt ihn um. Die
+ * Ref selbst ändert sich dabei nicht und löste nichts aus.
  */
-export function useElementWidth(ref: RefObject<HTMLElement | null>, mounted: boolean = true): number {
+export function useElementWidth(ref: RefObject<HTMLElement | null>, remountKey: unknown = true): number {
   const [width, setWidth] = useState(FALLBACK_WIDTH);
 
   useLayoutEffect(() => {
@@ -50,7 +50,7 @@ export function useElementWidth(ref: RefObject<HTMLElement | null>, mounted: boo
     }
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
-  }, [ref, mounted]);
+  }, [ref, remountKey]);
 
   return width;
 }

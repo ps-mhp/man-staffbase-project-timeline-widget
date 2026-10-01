@@ -22,7 +22,7 @@
 import * as React from "react";
 import { ReactElement, useId } from "react";
 
-import { CATEGORY_PALETTE } from "./plan-edits";
+import { CATEGORY_PALETTE } from "./plan-structure-edits";
 import { DraftField } from "./draft-field";
 
 const HEX = /^#?([0-9a-f]{6})$/i;
@@ -34,7 +34,9 @@ export function normalizeHex(text: string): string | null {
 }
 
 const validateHex = (text: string): string | null =>
-  normalizeHex(text) === null ? "Bitte eine Farbe als #RRGGBB angeben, etwa #E40045." : null;
+  normalizeHex(text) === null
+    ? "Bitte eine Farbe als #RRGGBB angeben, etwa #E40045."
+    : null;
 
 export interface ColorFieldProps {
   /** Name der Gruppe; nennt die Kategorie, damit mehrere Felder unterscheidbar bleiben. */
@@ -43,7 +45,11 @@ export interface ColorFieldProps {
   onChange: (color: string) => void;
 }
 
-export function ColorField({ label, value, onChange }: ColorFieldProps): ReactElement {
+export function ColorField({
+  label,
+  value,
+  onChange,
+}: ColorFieldProps): ReactElement {
   const name = useId();
   const current = value.toUpperCase();
 

@@ -122,7 +122,7 @@ describe("readPlanAttribute", () => {
 
   it("nimmt nur bekannte Symbole und lässt leere Serien weg", () => {
     const value = basePlan();
-    Object.assign((value.items as Record<string, unknown>[])[0], { symbol: "star", series: "   " });
+    Object.assign((value.items as Record<string, unknown>[])[0], { symbol: "pentagram", series: "   " });
     const item = read(value).plan.items[0];
     expect(item).not.toHaveProperty("symbol");
     expect(item).not.toHaveProperty("series");

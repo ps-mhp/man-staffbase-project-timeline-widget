@@ -19,10 +19,12 @@
  * (`aria-pressed` = sichtbar). Im Editor ist die Legende nur Legende.
  */
 
-import React, { CSSProperties, ReactElement } from "react";
+import React, { ReactElement } from "react";
 
 import { NO_CATEGORY } from "./plan-filter";
-import { Plan, UNCATEGORIZED_COLOR } from "./plan-model";
+import { MilestoneSymbol, Plan, UNCATEGORIZED_COLOR } from "./plan-model";
+import { SymbolGlyph } from "./symbol-glyph";
+import { DEFAULT_SYMBOL } from "./symbols";
 
 export interface CategoryLegendProps {
   plan: Plan;
@@ -36,33 +38,42 @@ interface Entry {
   id: string;
   title: string;
   color: string;
+  symbol: MilestoneSymbol;
 }
 
 function entriesOf(plan: Plan): Entry[] {
   const known = new Set(plan.categories.map((category) => category.id));
-  const entries: Entry[] = plan.categories.map(({ id, title, color }) => ({ id, title, color }));
+  const entries: Entry[] = plan.categories.map(({ id, title, color, symbol }) => ({
+    id,
+    title,
+    color,
+    symbol: symbol ?? DEFAULT_SYMBOL,
+  }));
   const hasUncategorized = plan.items.some((item) => item.category === undefined || !known.has(item.category));
-  return hasUncategorized ? [...entries, { id: NO_CATEGORY, title: "Ohne Kategorie", color: UNCATEGORIZED_COLOR }] : entries;
+  return hasUncategorized
+    ? [...entries, { id: NO_CATEGORY, title: "Ohne Kategorie", color: UNCATEGORIZED_COLOR, symbol: DEFAULT_SYMBOL }]
+    : entries;
 }
 
 export function CategoryLegend({ plan, hidden, interactive, onToggle, onShowAll }: CategoryLegendProps): ReactElement | null {
   const entries = entriesOf(plan);
   if (entries.length === 0) return null;
 
-  const dot = (color: string) => (
-    <span className="man-pt__legend-dot" style={{ "--pt-color": color } as CSSProperties} aria-hidden="true" />
-  );
+  // Form und Farbe zeigen, was der Plan zeigt — ein Punkt nennte nur die Farbe.
+  const dot = (entry: Entry) => <SymbolGlyph symbol={entry.symbol} color={entry.color} className="man-pt__legend-symbol" />;
 
   if (!interactive) {
     return (
-      <ul className="man-pt__legend" aria-label="Kategorien">
+      // `role="list"` statt `ul`: das Seiten-Stylesheet zeichnet vor jedes `li`
+      // einen roten Strich, der neben den Farbpunkten wie ein Fehler aussah.
+      <div className="man-pt__legend" role="list" aria-label="Kategorien">
         {entries.map((entry) => (
-          <li key={entry.id} className="man-pt__legend-entry">
-            {dot(entry.color)}
+          <span key={entry.id} role="listitem" className="man-pt__legend-entry">
+            {dot(entry)}
             {entry.title}
-          </li>
+          </span>
         ))}
-      </ul>
+      </div>
     );
   }
 
@@ -78,7 +89,7 @@ export function CategoryLegend({ plan, hidden, interactive, onToggle, onShowAll 
             aria-pressed={visible}
             onClick={() => onToggle(entry.id)}
           >
-            {dot(entry.color)}
+            {dot(entry)}
             {entry.title}
           </button>
         );

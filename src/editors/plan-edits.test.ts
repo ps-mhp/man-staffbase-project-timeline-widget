@@ -25,7 +25,13 @@ import {
   updateItem,
   withOptional,
 } from "./plan-edits";
-import { NOW, TODAY, basePlan, expectReadable, itemById } from "./plan-edits.fixture";
+import {
+  NOW,
+  TODAY,
+  basePlan,
+  expectReadable,
+  itemById,
+} from "./plan-edits.fixture";
 
 describe("touch", () => {
   it("setzt das Stand-Datum, ohne das Original anzufassen", () => {
@@ -54,7 +60,10 @@ describe("setTitle", () => {
 describe("withOptional", () => {
   it("setzt einen Wert und lässt einen leeren ganz weg", () => {
     const item = basePlan().items[0] as MilestoneItem;
-    expect(withOptional(item, "series", "Neu")).toEqual({ ...item, series: "Neu" });
+    expect(withOptional(item, "series", "Neu")).toEqual({
+      ...item,
+      series: "Neu",
+    });
     const without = withOptional(item, "series", undefined);
     expect("series" in without).toBe(false);
     expect(item.series).toBe("Messen");
@@ -115,13 +124,20 @@ describe("addItem", () => {
   it("legt einen Stichtag ohne Ebene an", () => {
     const { plan, id } = addItem(basePlan(), "deadline", "2026-03-10", NOW);
     const item = itemById(plan, id as string);
-    expect(item).toMatchObject({ kind: "deadline", title: "Neuer Stichtag", date: "2026-03-10" });
+    expect(item).toMatchObject({
+      kind: "deadline",
+      title: "Neuer Stichtag",
+      date: "2026-03-10",
+    });
     expect(item && "lane" in item).toBe(false);
   });
 
   it("legt ohne Ebene keinen Meilenstein und keinen Zeitraum an", () => {
     const plan = { ...basePlan(), lanes: [], items: [] };
-    expect(addItem(plan, "milestone", "2026-03-10", NOW)).toEqual({ plan, id: null });
+    expect(addItem(plan, "milestone", "2026-03-10", NOW)).toEqual({
+      plan,
+      id: null,
+    });
     expect(addItem(plan, "bar", "2026-03-10", NOW)).toEqual({ plan, id: null });
     expect(addItem(plan, "deadline", "2026-03-10", NOW).id).not.toBeNull();
   });
@@ -136,7 +152,10 @@ describe("addItem", () => {
         date: "2026-01-01",
       })),
     };
-    expect(addItem(full, "deadline", "2026-03-10", NOW)).toEqual({ plan: full, id: null });
+    expect(addItem(full, "deadline", "2026-03-10", NOW)).toEqual({
+      plan: full,
+      id: null,
+    });
   });
 });
 
@@ -156,7 +175,11 @@ describe("duplicateItem", () => {
     const { plan, id } = duplicateItem(basePlan(), "b1", NOW);
     expect(id).not.toBeNull();
     expect(id).not.toBe("b1");
-    expect(plan.items[2]).toEqual({ ...basePlan().items[1], id, title: "TMS1 (Kopie)" });
+    expect(plan.items[2]).toEqual({
+      ...basePlan().items[1],
+      id,
+      title: "TMS1 (Kopie)",
+    });
     expect(plan.updatedAt).toBe(TODAY);
     expectReadable(plan);
   });
@@ -173,7 +196,10 @@ describe("duplicateItem", () => {
     };
     expect(duplicateItem(full, "d1", NOW)).toEqual({ plan: full, id: null });
     const plan = basePlan();
-    expect(duplicateItem(plan, "gibt-es-nicht", NOW)).toEqual({ plan, id: null });
+    expect(duplicateItem(plan, "gibt-es-nicht", NOW)).toEqual({
+      plan,
+      id: null,
+    });
   });
 });
 
@@ -264,7 +290,12 @@ describe("changeKind", () => {
       date: "2027-07-01",
     });
     const toBar = changeKind(basePlan(), "d1", "bar", NOW);
-    expect(itemById(toBar, "d1")).toMatchObject({ kind: "bar", lane: "l1", start: "2027-07-01", end: "2027-07-31" });
+    expect(itemById(toBar, "d1")).toMatchObject({
+      kind: "bar",
+      lane: "l1",
+      start: "2027-07-01",
+      end: "2027-07-31",
+    });
     expectReadable(toBar);
   });
 
@@ -282,8 +313,12 @@ describe("changeKind", () => {
     const plan = basePlan();
     const withUnknown: Plan = {
       ...plan,
-      items: plan.items.map((item) => (item.id === "m1" ? { ...item, unknown: { owner: "PM" } } : item)),
+      items: plan.items.map((item) =>
+        item.id === "m1" ? { ...item, unknown: { owner: "PM" } } : item,
+      ),
     };
-    expect(itemById(changeKind(withUnknown, "m1", "bar", NOW), "m1")?.unknown).toEqual({ owner: "PM" });
+    expect(
+      itemById(changeKind(withUnknown, "m1", "bar", NOW), "m1")?.unknown,
+    ).toEqual({ owner: "PM" });
   });
 });

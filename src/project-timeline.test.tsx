@@ -105,6 +105,46 @@ describe("ProjectTimeline", () => {
     expect(item(/^Stichtag: § Euro 7/)).toBeInTheDocument();
   });
 
+  describe("Alle Ebenen ein- und ausklappen", () => {
+    const laneToggles = () => screen.getAllByRole("button", { name: /^(Messen|Launches \/ SOPs|Projekt-Meilensteine) (ein|auf)klappen$/ });
+
+    it("klappt mit einem Knopf alle Ebenen ein und wieder aus", () => {
+      renderTimeline();
+      fireEvent.click(screen.getByRole("button", { name: "Alle einklappen" }));
+      expect(laneToggles().map((toggle) => toggle.getAttribute("aria-expanded"))).toEqual(["false", "false", "false"]);
+
+      fireEvent.click(screen.getByRole("button", { name: "Alle aufklappen" }));
+      expect(laneToggles().map((toggle) => toggle.getAttribute("aria-expanded"))).toEqual(["true", "true", "true"]);
+      expect(screen.getByRole("button", { name: "Alle einklappen" })).toBeInTheDocument();
+    });
+
+    it("klappt ein, solange noch eine Ebene offen ist", () => {
+      renderTimeline();
+      fireEvent.click(screen.getByRole("button", { name: "Messen einklappen" }));
+      fireEvent.click(screen.getByRole("button", { name: "Launches / SOPs einklappen" }));
+      fireEvent.click(screen.getByRole("button", { name: "Alle einklappen" }));
+      expect(laneToggles().every((toggle) => toggle.getAttribute("aria-expanded") === "false")).toBe(true);
+    });
+
+    it("zählt nur die sichtbaren Ebenen", () => {
+      renderTimeline();
+      fireEvent.click(screen.getByRole("button", { name: "Messen einklappen" }));
+      fireEvent.click(screen.getByRole("button", { name: "Launches / SOPs einklappen" }));
+      fireEvent.click(screen.getByRole("button", { name: "Filter" }));
+      fireEvent.click(screen.getByRole("checkbox", { name: "Projekt-Meilensteine" }));
+      expect(screen.getByRole("button", { name: "Alle aufklappen" })).toBeInTheDocument();
+    });
+
+    it("fehlt bei nur einer Ebene — dort genügt ihr eigener Pfeil", () => {
+      const plan = examplePlan();
+      const lane = plan.lanes[0];
+      renderTimeline({
+        plan: { ...plan, lanes: [lane], items: plan.items.filter((entry) => entry.kind === "deadline" || entry.lane === lane.id) },
+      });
+      expect(screen.queryByRole("button", { name: /^Alle (ein|auf)klappen$/ })).not.toBeInTheDocument();
+    });
+  });
+
   it("blendet bei der Suche alles außer den Treffern ab", () => {
     renderTimeline();
     fireEvent.change(screen.getByRole("searchbox", { name: "Einträge durchsuchen" }), { target: { value: "iaa" } });
@@ -188,6 +228,116 @@ describe("ProjectTimeline", () => {
     fireEvent.click(item(/^Meilenstein: IAA, 15\. September 2026/));
     expect(onSelectItem).toHaveBeenCalledWith("fair-iaa-26");
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+
+  it("setzt die Zoom-Steuerung im Editor dorthin, wohin er sie haben will", () => {
+    const target = document.createElement("div");
+    document.body.appendChild(target);
+    const { container } = renderTimeline({ mode: "editor", toolbarTarget: target });
+    expect(within(target).getByRole("button", { name: "Vergrößern" })).toHaveClass("man-pt__button--compact");
+    expect(within(container).queryByRole("button", { name: "Vergrößern" })).not.toBeInTheDocument();
+    target.remove();
+  });
+
+  it("öffnet die Hilfe über den Knopf und gibt den Fokus beim Schließen zurück", () => {
+    renderTimeline();
+    const button = screen.getByRole("button", { name: /Hilfe/ });
+    button.focus();
+    fireEvent.click(button);
+    const dialog = screen.getByRole("dialog", { name: "Hilfe zum Projektplan" });
+    expect(within(dialog).getByText("TMS")).toBeInTheDocument();
+    fireEvent.keyDown(dialog, { key: "Escape" });
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(button).toHaveFocus();
+  });
+
+  it("öffnet die Hilfe mit ? aus dem Plan heraus", () => {
+    renderTimeline();
+    const first = item(/^Meilenstein: Bauma, 7\. April 2025/);
+    first.focus();
+    fireEvent.keyDown(first, { key: "?", shiftKey: true });
+    expect(screen.getByRole("dialog", { name: "Hilfe zum Projektplan" })).toBeInTheDocument();
+  });
+
+  it("bietet im Editor keine Hilfe an — dort hat der Editor seine eigene", () => {
+    renderTimeline({ mode: "editor" });
+    expect(screen.queryByRole("button", { name: /Hilfe/ })).not.toBeInTheDocument();
+  });
+
+  // Am 30.09.2026 auf der Seite: `onetruck-css` zeichnet vor jedes `li` im
+  // Inhaltsbereich einen roten Strich — neben den Farbpunkten der Kategorien
+  // sah das aus wie ein Fehler. Listen sind deshalb `role="list"` auf `div`.
+  it("rendert keine ul/ol/li, auch nicht in Details und Hilfe", async () => {
+    const { container } = renderTimeline();
+    fireEvent.click(item(/^Meilenstein: 1\. SOP eTGL,/));
+    await screen.findByRole("dialog", { name: "1. SOP eTGL" });
+    expect(container.querySelectorAll("ul, ol, li")).toHaveLength(0);
+    fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+
+    fireEvent.click(screen.getByRole("button", { name: /Hilfe/ }));
+    expect(screen.getByRole("list", { name: "Kategorien dieses Plans" })).toBeInTheDocument();
+    expect(document.querySelectorAll(".man-pt ul, .man-pt ol, .man-pt li")).toHaveLength(0);
+  });
+
+  it("rendert auch im Editor keine ul/li", () => {
+    const { container } = renderTimeline({ mode: "editor" });
+    expect(screen.getByRole("list", { name: "Kategorien" })).toBeInTheDocument();
+    expect(container.querySelectorAll("ul, ol, li")).toHaveLength(0);
+  });
+
+  describe("Vollbild", () => {
+    afterEach(() => {
+      delete (HTMLElement.prototype as { requestFullscreen?: unknown }).requestFullscreen;
+    });
+
+    it("legt sich ohne Fullscreen-API als Ebene über die Seite und kehrt mit Esc zurück", () => {
+      renderTimeline();
+      fireEvent.click(screen.getByRole("button", { name: "Vollbild" }));
+
+      const section = document.querySelector(".man-pt--expanded") as HTMLElement;
+      expect(section).toHaveClass("man-pt--overlay");
+      expect(section.parentElement).toBe(document.body);
+      expect(document.documentElement.style.overflow).toBe("hidden");
+      const exit = screen.getByRole("button", { name: "Vollbild beenden" });
+      expect(exit).toHaveFocus();
+
+      fireEvent.keyDown(exit, { key: "Escape" });
+      expect(document.querySelector(".man-pt--expanded")).toBeNull();
+      expect(document.documentElement.style.overflow).toBe("");
+      expect(screen.getByRole("button", { name: "Vollbild" })).toHaveFocus();
+    });
+
+    it("nutzt die Fullscreen-API, wo es sie gibt, und folgt ihrem Ende", async () => {
+      let fullscreen: Element | null = null;
+      Object.defineProperty(document, "fullscreenElement", { configurable: true, get: () => fullscreen });
+      const request = jest.fn((element: HTMLElement) => {
+        fullscreen = element;
+        return Promise.resolve();
+      });
+      HTMLElement.prototype.requestFullscreen = function requestFullscreen(this: HTMLElement) {
+        return request(this);
+      };
+      renderTimeline();
+      await act(async () => {
+        fireEvent.click(screen.getByRole("button", { name: "Vollbild" }));
+      });
+      const section = document.querySelector(".man-pt--expanded") as HTMLElement;
+      expect(section).not.toHaveClass("man-pt--overlay");
+      expect(request).toHaveBeenCalledWith(section);
+
+      // Der Browser beendet das Vollbild selbst, etwa per Esc.
+      fullscreen = null;
+      act(() => {
+        document.dispatchEvent(new Event("fullscreenchange"));
+      });
+      expect(document.querySelector(".man-pt--expanded")).toBeNull();
+      delete (document as { fullscreenElement?: unknown }).fullscreenElement;
+    });
+
+    it("bietet im Editor kein Vollbild an", () => {
+      renderTimeline({ mode: "editor" });
+      expect(screen.queryByRole("button", { name: "Vollbild" })).not.toBeInTheDocument();
+    });
   });
 
   it("zoomt über die Knöpfe", () => {

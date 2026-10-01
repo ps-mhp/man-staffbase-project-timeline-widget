@@ -12,22 +12,24 @@
  */
 
 /**
- * Eine Zeile im Reiter „Ebenen“ oder „Kategorien“: Name, Zahl der Einträge,
- * hoch/runter, löschen. Beide Reiter sehen gleich aus und bedienen sich
- * gleich; der Unterschied steckt in dem, was sie mit den Knöpfen tun.
+ * Eine Zeile im Reiter „Ebenen“ oder „Kategorien“, einzeilig:
+ * [Farbe] · Name · Zahl der Einträge · ↑ · ↓ · Löschen. Beide Reiter sehen
+ * gleich aus und bedienen sich gleich; der Unterschied steckt in dem, was sie
+ * mit den Knöpfen tun.
  */
 
 import * as React from "react";
 import { ReactElement, ReactNode } from "react";
 
-import { DraftField, requireText } from "./draft-field";
+import { DraftField } from "./draft-field";
+import { validateName } from "./entity-names";
 import { countLabel } from "./plan-queries";
-
-const requireName = requireText("Bitte einen Namen angeben.");
 
 export interface EntityRowProps {
   /** „Ebene“ oder „Kategorie“ — für die zugänglichen Namen der Knöpfe. */
-  noun: string;
+  noun: "Ebene" | "Kategorie";
+  /** Die Namen aller Geschwister — ein neuer Name muss sich unterscheiden. */
+  existing: readonly string[];
   /** Position ab 1, damit die Namensfelder unterscheidbar heißen. */
   position: number;
   title: string;
@@ -38,12 +40,13 @@ export interface EntityRowProps {
   onRename: (title: string) => void;
   onMove: (offset: -1 | 1) => void;
   onRemove: () => void;
-  /** Was die Zeile sonst noch trägt, etwa die Farbe einer Kategorie. */
-  children?: ReactNode;
+  /** Was vor dem Namen steht, etwa die Farbe einer Kategorie. */
+  leading?: ReactNode;
 }
 
 export function EntityRow({
   noun,
+  existing,
   position,
   title,
   count,
@@ -53,47 +56,50 @@ export function EntityRow({
   onRename,
   onMove,
   onRemove,
-  children,
+  leading,
 }: EntityRowProps): ReactElement {
   const name = `${noun} „${title}“`;
   return (
     <li className="man-pt-editor__entity">
-      <div className="man-pt-editor__entity-head">
-        <DraftField
-          label={`Name der ${noun} ${position}`}
-          hideLabel
-          value={title}
-          validate={requireName}
-          onCommit={onRename}
-          autoFocus={autoFocus}
-          className="man-pt-editor__entity-name"
-        />
-        <span className="man-pt-editor__meta">{countLabel(count)}</span>
-        {/* Pfeile statt „Nach oben“: drei Wörter je Zeile drängten den Namen
-            zusammen. Der zugängliche Name sagt, was sie tun und woran. */}
-        <button
-          type="button"
-          className="man-pt-editor__button man-pt-editor__button--icon"
-          aria-label={`${name} nach oben`}
-          disabled={isFirst}
-          onClick={() => onMove(-1)}
-        >
-          <span aria-hidden="true">↑</span>
-        </button>
-        <button
-          type="button"
-          className="man-pt-editor__button man-pt-editor__button--icon"
-          aria-label={`${name} nach unten`}
-          disabled={isLast}
-          onClick={() => onMove(1)}
-        >
-          <span aria-hidden="true">↓</span>
-        </button>
-        <button type="button" className="man-pt-editor__button" aria-label={`${name} löschen`} onClick={onRemove}>
-          Löschen
-        </button>
-      </div>
-      {children}
+      {leading}
+      <DraftField
+        label={`Name der ${noun} ${position}`}
+        hideLabel
+        value={title}
+        validate={validateName(noun, existing, title)}
+        onCommit={onRename}
+        autoFocus={autoFocus}
+        className="man-pt-editor__entity-name"
+      />
+      <span className="man-pt-editor__entity-count">{countLabel(count)}</span>
+      {/* Pfeile statt „Nach oben“: drei Wörter je Zeile drängten den Namen
+          zusammen. Der zugängliche Name sagt, was sie tun und woran. */}
+      <button
+        type="button"
+        className="man-pt-editor__button man-pt-editor__button--icon"
+        aria-label={`${name} nach oben`}
+        disabled={isFirst}
+        onClick={() => onMove(-1)}
+      >
+        <span aria-hidden="true">↑</span>
+      </button>
+      <button
+        type="button"
+        className="man-pt-editor__button man-pt-editor__button--icon"
+        aria-label={`${name} nach unten`}
+        disabled={isLast}
+        onClick={() => onMove(1)}
+      >
+        <span aria-hidden="true">↓</span>
+      </button>
+      <button
+        type="button"
+        className="man-pt-editor__button"
+        aria-label={`${name} löschen`}
+        onClick={onRemove}
+      >
+        Löschen
+      </button>
     </li>
   );
 }

@@ -12,7 +12,8 @@
  */
 
 /**
- * Der Reiter „Kategorien“: Name, Farbe, Reihenfolge, löschen.
+ * Der Reiter „Kategorien“: Name, Farbe, Form der Meilensteine, Reihenfolge,
+ * löschen.
  *
  * Die Reihenfolge hier ist die der Legende auf der Seite. Eine gelöschte
  * Kategorie nimmt keine Einträge mit — die stehen danach „ohne Kategorie“ da,
@@ -23,10 +24,19 @@ import * as React from "react";
 import { ReactElement, useRef, useState } from "react";
 
 import { Category, LIMITS, Plan } from "../plan-model";
-import { ColorField } from "./color-field";
+import { DEFAULT_SYMBOL } from "../symbols";
+import { ColorPicker } from "./color-picker";
 import { ConfirmDialog } from "./confirm-dialog";
 import { EntityRow } from "./entity-row";
-import { addCategory, moveCategory, removeCategory, updateCategory } from "./plan-edits";
+import { Pane, PaneEmpty } from "./pane";
+import { SymbolPicker } from "./symbol-picker";
+import {
+  addCategory,
+  moveCategory,
+  removeCategory,
+  setCategorySymbol,
+  updateCategory,
+} from "./plan-structure-edits";
 import { countInCategory, countLabel } from "./plan-queries";
 
 export interface CategoryEditorProps {
@@ -39,12 +49,17 @@ function removalMessage(count: number): string {
   return `${countLabel(count)} ${count === 1 ? "steht" : "stehen"} danach ohne Kategorie da.`;
 }
 
-export function CategoryEditor({ plan, onPlanChange }: CategoryEditorProps): ReactElement {
+export function CategoryEditor({
+  plan,
+  onPlanChange,
+}: CategoryEditorProps): ReactElement {
   const [focusId, setFocusId] = useState<string | null>(null);
   const [removingId, setRemovingId] = useState<string | null>(null);
   const addRef = useRef<HTMLButtonElement>(null);
   const full = plan.categories.length >= LIMITS.categories;
-  const removing = plan.categories.find((category) => category.id === removingId);
+  const removing = plan.categories.find(
+    (category) => category.id === removingId,
+  );
 
   const add = (): void => {
     const { plan: next, id } = addCategory(plan);
@@ -53,23 +68,42 @@ export function CategoryEditor({ plan, onPlanChange }: CategoryEditorProps): Rea
     setFocusId(id);
   };
 
-  const change = (category: Category, changes: Partial<Pick<Category, "title" | "color">>): void =>
-    onPlanChange(updateCategory(plan, category.id, changes));
+  const change = (
+    category: Category,
+    changes: Partial<Pick<Category, "title" | "color">>,
+  ): void => onPlanChange(updateCategory(plan, category.id, changes));
 
   return (
-    <div className="man-pt-editor__entities">
-      <p className="man-pt-editor__hint">
-        In dieser Reihenfolge stehen die Kategorien in der Legende. Die Farbe tragen Symbole und Balken, nie
-        der Text.
-      </p>
+    <Pane
+      className="man-pt-editor__entities"
+      hint={
+        full
+          ? `Mehr als ${LIMITS.categories} Kategorien trägt ein Plan nicht.`
+          : "In dieser Reihenfolge stehen die Kategorien in der Legende. Meilensteine tragen Form und Farbe ihrer Kategorie, Balken die Farbe — der Text nie."
+      }
+      actions={
+        <button
+          ref={addRef}
+          type="button"
+          className="man-pt-editor__button"
+          disabled={full}
+          onClick={add}
+        >
+          Neue Kategorie
+        </button>
+      }
+    >
       {plan.categories.length === 0 ? (
-        <p className="man-pt-editor__hint">Noch keine Kategorien. Einträge ohne Kategorie erscheinen grau.</p>
+        <PaneEmpty>
+          Noch keine Kategorien. Einträge ohne Kategorie erscheinen grau.
+        </PaneEmpty>
       ) : (
         <ol className="man-pt-editor__entity-list" aria-label="Kategorien">
           {plan.categories.map((category, index) => (
             <EntityRow
               key={category.id}
               noun="Kategorie"
+              existing={plan.categories.map((entry) => entry.title)}
               position={index + 1}
               title={category.title}
               count={countInCategory(plan, category.id)}
@@ -77,24 +111,31 @@ export function CategoryEditor({ plan, onPlanChange }: CategoryEditorProps): Rea
               isLast={index === plan.categories.length - 1}
               autoFocus={category.id === focusId}
               onRename={(title) => change(category, { title })}
-              onMove={(offset) => onPlanChange(moveCategory(plan, category.id, offset))}
+              onMove={(offset) =>
+                onPlanChange(moveCategory(plan, category.id, offset))
+              }
               onRemove={() => setRemovingId(category.id)}
-            >
-              <ColorField
-                label={`Farbe von „${category.title}“`}
-                value={category.color}
-                onChange={(color) => change(category, { color })}
-              />
-            </EntityRow>
+              leading={
+                <>
+                  <ColorPicker
+                    title={category.title}
+                    value={category.color}
+                    onChange={(color) => change(category, { color })}
+                  />
+                  <SymbolPicker
+                    title={category.title}
+                    value={category.symbol ?? DEFAULT_SYMBOL}
+                    color={category.color}
+                    onChange={(symbol) =>
+                      onPlanChange(setCategorySymbol(plan, category.id, symbol))
+                    }
+                  />
+                </>
+              }
+            />
           ))}
         </ol>
       )}
-      <div className="man-pt-editor__actions">
-        <button ref={addRef} type="button" className="man-pt-editor__button" disabled={full} onClick={add}>
-          Neue Kategorie
-        </button>
-      </div>
-      {full && <p className="man-pt-editor__hint">Mehr als {LIMITS.categories} Kategorien trägt ein Plan nicht.</p>}
       {removing !== undefined && (
         <ConfirmDialog
           title={`Kategorie „${removing.title}“ löschen?`}
@@ -108,6 +149,6 @@ export function CategoryEditor({ plan, onPlanChange }: CategoryEditorProps): Rea
           fallbackFocus={() => addRef.current}
         />
       )}
-    </div>
+    </Pane>
   );
 }

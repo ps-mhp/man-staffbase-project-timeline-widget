@@ -41,6 +41,14 @@
   font: 300 14px/21px #{man("font-body")};
 }
 
+// Die Zoom-Steuerung, wenn der Editor sie in seine Kopfzeile holt: dort steht
+// sie außerhalb des Plans und trägt `.man-pt` nur wegen der Farben.
+.man-pt--controls {
+  display: inline-flex;
+  gap: 0;
+  font-size: 13px;
+}
+
 .man-pt *,
 .man-pt *::before,
 .man-pt *::after {
@@ -49,6 +57,23 @@
 
 .man-pt [hidden] {
   display: none !important;
+}
+
+// Eckig, gegen jede Regel der Seite: am 30.09.2026 zeigte das Frontend die
+// Übersicht und ihr Fenster rund, obwohl hier `0` stand — eine Regel der Seite
+// war stärker. Fünf Klassen und `!important` setzen sich durch (wie
+// `man-outshine-host`, nur für alle Nachfahren). Rund bleibt nur, was rund
+// gemeint ist: das „?“ der Hilfe. Die Formen der Kategorien sind SVG und
+// brauchen keine Rundung.
+.man-pt.man-pt.man-pt.man-pt.man-pt,
+.man-pt.man-pt.man-pt.man-pt.man-pt *,
+.man-pt.man-pt.man-pt.man-pt.man-pt *::before,
+.man-pt.man-pt.man-pt.man-pt.man-pt *::after {
+  border-radius: 0 !important;
+}
+
+.man-pt.man-pt.man-pt.man-pt.man-pt .man-pt__help-icon {
+  border-radius: #{man("radius-round")} !important;
 }
 
 .man-pt__visually-hidden {
@@ -146,6 +171,22 @@
   }
 }
 
+.man-pt__button--compact {
+  @include man-outshine-host {
+    height: 28px !important;
+    padding: 0 8px !important;
+    font-size: 12px !important;
+  }
+}
+
+.man-pt__button--compact.man-pt__button--icon {
+  @include man-outshine-host {
+    width: 28px !important;
+    padding: 0 !important;
+    font-size: 16px !important;
+  }
+}
+
 .man-pt__button--primary {
   @include man-outshine-host {
     border-color: var(--pt-accent) !important;
@@ -213,23 +254,47 @@
   gap: 8px;
 }
 
-.man-pt__input,
+// Je Klasse einzeln: `man-outshine-host` verträgt keine Selektorliste — aus
+// `.a, .b` würde ein vermischter Selektor, der nichts trifft (bis 30.09.2026
+// hatten die Auswahllisten deshalb nie ihre eckige Form).
+@each $control in (".man-pt__input", ".man-pt__select") {
+  #{$control} {
+    @include man-outshine-host {
+      height: 36px !important;
+      margin: 0 !important;
+      padding: 0 10px !important;
+      border: 1px solid #{man("cta-border")} !important;
+      border-radius: 0 !important;
+      background: var(--pt-surface) !important;
+      color: var(--pt-text) !important;
+      font: 300 14px/1 #{man("font-body")} !important;
+      box-shadow: none !important;
+      // Safari zeichnet Such- und Auswahlfelder mit eigener, runder Optik, gegen
+      // die `border-radius: 0` nichts ausrichtet (am 30.09.2026 im Frontend
+      // beanstandet). Ohne native Optik gilt die eckige Form der Marke.
+      appearance: none !important;
+      -webkit-appearance: none !important;
+  
+      &:focus-visible {
+        outline: none !important;
+        box-shadow: #{man("focus")} !important;
+      }
+    }
+  }
+}
+
+.man-pt__input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+// Ohne native Optik fehlt der Pfeil der Auswahlliste; er kommt als Bild.
 .man-pt__select {
   @include man-outshine-host {
-    height: 36px !important;
-    margin: 0 !important;
-    padding: 0 10px !important;
-    border: 1px solid #{man("cta-border")} !important;
-    border-radius: 0 !important;
-    background: var(--pt-surface) !important;
-    color: var(--pt-text) !important;
-    font: 300 14px/1 #{man("font-body")} !important;
-    box-shadow: none !important;
-
-    &:focus-visible {
-      outline: none !important;
-      box-shadow: #{man("focus")} !important;
-    }
+    padding-right: 30px !important;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2312171C' stroke-width='1.5'/%3E%3C/svg%3E")
+        no-repeat right 10px center / 10px 6px,
+      var(--pt-surface) !important;
   }
 }
 
@@ -283,15 +348,16 @@
   border: 0;
 }
 
-.man-pt__filter-heading,
-.man-pt__field-label {
-  @include man-outshine-host {
-    margin: 0 0 2px !important;
-    padding: 0 !important;
-    @include man-type("eyebrow", true);
-    color: var(--pt-muted) !important;
-    letter-spacing: #{man("track-label")} !important;
-    text-transform: uppercase !important;
+@each $heading in (".man-pt__filter-heading", ".man-pt__field-label") {
+  #{$heading} {
+    @include man-outshine-host {
+      margin: 0 0 2px !important;
+      padding: 0 !important;
+      @include man-type("eyebrow", true);
+      color: var(--pt-muted) !important;
+      letter-spacing: #{man("track-label")} !important;
+      text-transform: uppercase !important;
+    }
   }
 }
 
@@ -351,19 +417,18 @@
   font-size: 13px;
 }
 
-.man-pt__legend-dot {
+// Die Form einer Kategorie neben ihrem Namen (`symbol-glyph.tsx`).
+.man-pt__legend-symbol {
   display: inline-block;
   flex: none;
-  width: 10px;
-  height: 10px;
   margin-right: 6px;
-  border-radius: #{man("radius-round")};
-  background: var(--pt-color);
-  vertical-align: middle;
+  vertical-align: -1px;
+  overflow: visible;
 }
 
-.man-pt__legend-entry .man-pt__legend-dot,
-.man-pt__chip .man-pt__legend-dot {
+.man-pt__legend-entry .man-pt__legend-symbol,
+.man-pt__chip .man-pt__legend-symbol,
+.man-pt__details-meta .man-pt__legend-symbol {
   margin-right: 0;
 }
 
@@ -405,9 +470,10 @@
   }
 }
 
-.man-pt__chip.is-off .man-pt__legend-dot {
-  background: transparent;
-  box-shadow: inset 0 0 0 2px var(--pt-color);
+// Ausgeblendet: die Form nur als Umriss.
+.man-pt__chip.is-off .man-pt__legend-symbol path {
+  fill: transparent;
+  stroke-width: 2;
 }
 
 .man-pt__chip--reset {
@@ -418,19 +484,59 @@
 
 // --- Bühne ------------------------------------------------------------------
 
+// `align-content: start`: ist die Bühne höher als der Plan (Vollbild, Editor),
+// liegen die Zeilen oben an, statt sich zu dehnen — sonst klaffte zwischen
+// Achse und erster Ebene eine Lücke.
 .man-pt__stage {
   display: grid;
   grid-template-columns: var(--pt-heads) minmax(0, 1fr);
+  align-content: start;
   border-top: 1px solid var(--pt-strong);
   border-bottom: 1px solid var(--pt-border);
 }
 
-// In der Editor-Vorschau ist die Bühne begrenzt und scrollt selbst: sonst
-// schöbe ein langer Plan das Formular weit nach unten. Zoom und Übersicht
-// bleiben dabei stehen, die Achse klebt oben in der Bühne.
+// In der Editor-Vorschau füllt der Plan die Fläche, die der Editor ihm gibt,
+// und nur die Bühne scrollt: Zoom, Legende und Übersicht bleiben stehen, die
+// Achse klebt oben in der Bühne. Ohne feste Höhe beim Elternteil wächst er wie
+// auf der Seite.
+// Seitlich derselbe Abstand wie alle übrigen Bereiche des Editors: er setzt
+// ihn als `--pt-ed-gutter`, damit Reiter, Listen und Vorschau an einer
+// Fluchtlinie stehen.
+.man-pt--editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  padding: 8px var(--pt-ed-gutter, 16px);
+}
+
+.man-pt--editor .man-pt__timeline {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+
+// Nur die Bühne gibt nach, wenn die Vorschau klein gezogen wird; Zoom,
+// Legende und Übersicht behalten ihre Höhe, sonst würden sie gestaucht.
+.man-pt--editor > *,
+.man-pt--editor .man-pt__timeline > * {
+  flex-shrink: 0;
+}
+
+.man-pt--editor > .man-pt__timeline,
 .man-pt--editor .man-pt__stage {
-  max-height: 420px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.man-pt--editor .man-pt__stage {
   overflow-y: auto;
+}
+
+.man-pt--editor .man-pt__legend {
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
 // Achse und Ecke bleiben beim Scrollen der Seite oben. Das traegt nur, weil
@@ -445,8 +551,71 @@
   background: var(--pt-surface);
 }
 
+// Unten in der Ecke, auf der Höhe der Quartale: „Alle einklappen" steht so
+// über den Pfeilen der Ebenen, auf ihrer Fluchtlinie.
 .man-pt__corner {
+  display: flex;
+  align-items: flex-end;
   border-right: 1px solid var(--pt-border);
+}
+
+.man-pt__lanes-toggle {
+  @include man-outshine-host {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: var(--pt-axis-row) !important;
+    margin: 0 !important;
+    padding: 0 8px 0 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: var(--pt-muted) !important;
+    font: 600 12px/16px #{man("font-head")} !important;
+    text-transform: none !important;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--pt-text) !important;
+    }
+
+    &:focus-visible {
+      outline: none !important;
+      box-shadow: #{man("focus")} !important;
+    }
+  }
+}
+
+.man-pt__lanes-toggle-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Zwei Pfeile der Ebenen übereinander; eingeklappt zeigen sie wie diese nach rechts.
+.man-pt__lanes-chevrons {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  width: 14px;
+  transition: transform var(--pt-duration);
+}
+
+.man-pt__lanes-chevrons .man-pt__lane-chevron {
+  border-color: currentcolor;
+}
+
+.man-pt__lanes-chevrons .man-pt__lane-chevron + .man-pt__lane-chevron {
+  margin-top: -3px;
+}
+
+.man-pt__lanes-toggle[data-collapsed="true"] .man-pt__lanes-chevrons {
+  transform: rotate(-90deg);
 }
 
 .man-pt__axis-host {
@@ -525,8 +694,10 @@
   right: 0;
   display: flex;
   align-items: flex-start;
-  gap: 4px;
-  padding: 12px 8px 12px 4px;
+  gap: 6px;
+  // Links kein Abstand: der Pfeil steht auf der Fluchtlinie des Widgets bzw.
+  // im Editor auf der aller Bereiche.
+  padding: 12px 8px 12px 0;
   border-top: 1px solid var(--pt-border);
   transition:
     top var(--pt-duration),
@@ -538,7 +709,7 @@
 }
 
 .man-pt__lane-head--deadlines {
-  padding-left: 28px;
+  padding-left: 20px;
   background: var(--pt-sunken);
 }
 
@@ -553,9 +724,9 @@
 .man-pt__lane-toggle {
   @include man-outshine-host {
     display: grid !important;
-    place-items: center !important;
+    place-items: center start !important;
     flex: none !important;
-    width: 20px !important;
+    width: 14px !important;
     min-width: 0 !important;
     min-height: 0 !important;
     height: 16px !important;
@@ -704,30 +875,33 @@
   }
 }
 
-.man-pt__symbol {
+// Meilensteine: die Form ihrer Kategorie als SVG (`symbols.ts`), gefüllt in
+// ihrer Farbe. `overflow: visible`, damit der Rand vorläufiger Einträge nicht
+// an der Zeichenfläche abgeschnitten wird.
+.man-pt__milestone .man-pt__symbol {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: var(--pt-color);
+}
+
+// Vorlaeufig: blass gefuellt mit kraeftigem Rand — „tbd" der Vorlage — in
+// jeder Form gleich.
+.man-pt__milestone.is-tentative .man-pt__symbol {
+  fill: color-mix(in srgb, var(--pt-color) 30%, #{man("white")});
+  stroke: var(--pt-color);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+// Stichtage behalten ihr Dreieck; es ist kein Zeichen einer Kategorie.
+.man-pt__deadline .man-pt__symbol {
   display: block;
   width: 100%;
   height: 100%;
   background: var(--pt-color);
-}
-
-.man-pt__milestone--diamond .man-pt__symbol {
-  transform: rotate(45deg) scale(0.78);
-}
-
-.man-pt__milestone--triangle .man-pt__symbol,
-.man-pt__deadline .man-pt__symbol {
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
-}
-
-.man-pt__milestone--circle .man-pt__symbol {
-  border-radius: #{man("radius-round")};
-}
-
-// Vorlaeufig: blass gefuellt mit kraeftigem Rand — „tbd" der Vorlage.
-.man-pt__milestone.is-tentative .man-pt__symbol {
-  background: color-mix(in srgb, var(--pt-color) 30%, #{man("white")});
-  box-shadow: inset 0 0 0 2px var(--pt-color);
 }
 
 .man-pt__bar-fill {
@@ -873,10 +1047,6 @@
   gap: 4px 8px;
 }
 
-.man-pt__details-meta .man-pt__legend-dot {
-  margin-right: 0;
-}
-
 .man-pt__details-term {
   font-weight: 600;
 }
@@ -904,9 +1074,10 @@
   margin-top: 8px;
 }
 
-.man-pt__details-links ul {
-  margin: 2px 0 0;
-  padding-left: 18px;
+.man-pt__details-list {
+  display: grid;
+  gap: 2px;
+  margin-top: 2px;
 }
 
 .man-pt__details-key {
@@ -989,6 +1160,253 @@
   color: #{man("error")};
 }
 
+// --- Vollbild --------------------------------------------------------------
+//
+// Im Vollbild (Fullscreen-API) oder als Ebene über der Seite: der Plan füllt
+// die Fläche, nur die Bühne rollt, Achse und Übersicht bleiben stehen.
+
+.man-pt--expanded {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 16px 24px;
+  overflow: hidden;
+  background: var(--pt-surface);
+}
+
+// Unter den Dialogen des Widgets (2147483000), über allem von der Seite.
+.man-pt--overlay {
+  position: fixed;
+  z-index: 2147482000;
+  inset: 0;
+}
+
+.man-pt--expanded > *,
+.man-pt--expanded .man-pt__timeline > * {
+  flex-shrink: 0;
+}
+
+.man-pt--expanded > .man-pt__timeline {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.man-pt--expanded .man-pt__stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.man-pt--expanded > .man-pt__list-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.man-pt__icon {
+  flex: none;
+}
+
+// --- Hilfe -----------------------------------------------------------------
+
+.man-pt__button--help {
+  @include man-outshine-host {
+    gap: 6px !important;
+  }
+}
+
+.man-pt__help-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid currentColor;
+  border-radius: #{man("radius-round")};
+  font: 600 11px/1 #{man("font-head")};
+}
+
+.man-pt__help {
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 0;
+  width: min(760px, 100%);
+  max-height: min(86vh, 780px);
+  padding: 0;
+}
+
+.man-pt__help-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 24px 8px;
+}
+
+.man-pt__help-tabs {
+  display: flex;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--pt-border);
+}
+
+.man-pt__help-tab {
+  @include man-outshine-host {
+    display: inline-flex !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 10px 12px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--pt-muted) !important;
+    font: 600 13px/16px #{man("font-head")} !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+
+    &.is-active {
+      color: var(--pt-text) !important;
+      box-shadow: inset 0 -3px 0 var(--pt-accent) !important;
+    }
+
+    &:focus-visible {
+      outline: none !important;
+      box-shadow: #{man("focus")} !important;
+    }
+  }
+}
+
+.man-pt__help-panel {
+  overflow-y: auto;
+  padding: 16px 24px 24px;
+}
+
+.man-pt__help-list,
+.man-pt__help-keys {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.man-pt__help-entry,
+.man-pt__help-key {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.man-pt__help-entry dt,
+.man-pt__help-key dt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.man-pt__help-entry dd,
+.man-pt__help-key dd {
+  margin: 0;
+}
+
+// Tasten stehen im Textfluss: „Shift + Mausrad" darf nicht in Teile zerfallen.
+.man-pt__help-key dt {
+  display: block;
+  line-height: 24px;
+}
+
+.man-pt__help-sample {
+  flex: none;
+  width: 72px;
+}
+
+.man-pt__help-section {
+  margin-top: 24px;
+}
+
+.man-pt__help-heading {
+  @include man-outshine-host {
+    margin: 0 0 8px !important;
+    @include man-type("eyebrow", true);
+    color: var(--pt-muted) !important;
+    letter-spacing: #{man("track-label")} !important;
+    text-transform: uppercase !important;
+  }
+}
+
+.man-pt__help-text {
+  margin: 0 0 8px;
+}
+
+.man-pt__kbd {
+  display: inline-block;
+  min-width: 22px;
+  padding: 0 5px;
+  border: 1px solid var(--pt-border);
+  border-bottom-width: 2px;
+  background: var(--pt-sunken);
+  color: var(--pt-text);
+  font: 600 12px/18px #{man("font-head")};
+  text-align: center;
+}
+
+// Die Muster: dieselben Farben wie der Plan.
+.man-pt__help-fill {
+  fill: var(--pt-strong);
+}
+
+.man-pt__help-fill--soft {
+  fill: color-mix(in srgb, var(--pt-strong) 30%, #{man("white")});
+}
+
+.man-pt__help-fill--faint {
+  fill-opacity: 0.25;
+}
+
+.man-pt__help-fill--muted {
+  fill: var(--pt-muted);
+}
+
+.man-pt__help-stroke {
+  stroke: var(--pt-strong);
+  stroke-width: 2;
+}
+
+.man-pt__help-stroke--dashed {
+  stroke-dasharray: 3 2;
+}
+
+.man-pt__help-line {
+  fill: none;
+  stroke: var(--pt-muted);
+  stroke-width: 1.5;
+}
+
+.man-pt__help-line--dashed {
+  stroke-dasharray: 4 3;
+}
+
+.man-pt__help-line--accent {
+  stroke: var(--pt-accent);
+  stroke-width: 2;
+}
+
+.man-pt__help-line--strong {
+  stroke: var(--pt-strong);
+  stroke-width: 2;
+}
+
+.man-pt__help-accent {
+  fill: var(--pt-accent);
+}
+
 // --- Liste und Leerzustand --------------------------------------------------
 
 .man-pt__list-wrap {
@@ -1047,7 +1465,17 @@
 
   .man-pt__lane-head {
     gap: 2px;
-    padding: 10px 4px 10px 2px;
+    padding: 10px 4px 10px 0;
+  }
+
+  // Die schmale Spalte fasst den Text nicht; er bleibt der Name des Knopfs.
+  .man-pt__lanes-toggle-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   .man-pt__search {
@@ -1075,6 +1503,20 @@
 
   .man-pt__lane-title {
     font-size: 12px;
+  }
+
+  .man-pt__help {
+    max-height: 100%;
+  }
+
+  .man-pt--expanded {
+    padding: 12px 16px;
+  }
+
+  .man-pt__help-entry,
+  .man-pt__help-key {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
   }
 }
 

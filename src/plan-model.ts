@@ -28,9 +28,27 @@ import { DayNumber, formatIsoDate, parseIsoDate, parseIsoMonth, todayDay } from 
 
 export type ItemKind = "milestone" | "bar" | "deadline";
 
-export type MilestoneSymbol = "diamond" | "triangle" | "square" | "circle";
+/** Die Form der Meilensteine einer Kategorie; siehe `symbols.ts` für Namen und Zeichnung. */
+export type MilestoneSymbol =
+  | "diamond"
+  | "triangle"
+  | "triangle-down"
+  | "square"
+  | "circle"
+  | "hexagon"
+  | "star"
+  | "plus";
 
-export const MILESTONE_SYMBOLS: readonly MilestoneSymbol[] = ["diamond", "triangle", "square", "circle"];
+export const MILESTONE_SYMBOLS: readonly MilestoneSymbol[] = [
+  "diamond",
+  "triangle",
+  "triangle-down",
+  "square",
+  "circle",
+  "hexagon",
+  "star",
+  "plus",
+];
 
 /**
  * Alles, was eine spätere Version geschrieben hat und diese nicht kennt.
@@ -50,6 +68,11 @@ export interface Category {
   title: string;
   /** `#RRGGBB`. */
   color: string;
+  /**
+   * Die Form ihrer Meilensteine. Farbe und Form gehören zur Kategorie — sonst
+   * trüge dieselbe Kategorie mal ein Dreieck, mal eine Raute.
+   */
+  symbol?: MilestoneSymbol;
   unknown?: Unknown;
 }
 
@@ -71,6 +94,12 @@ export interface MilestoneItem extends ItemBase {
   lane: string;
   /** `JJJJ-MM-TT`. */
   date: string;
+  /**
+   * Nur noch gelesen, nicht mehr gepflegt: die Form kommt von der Kategorie.
+   * Pläne vor dem 30.09.2026 trugen sie am Meilenstein; beim Lesen erbt eine
+   * Kategorie ohne eigene Form die häufigste ihrer Meilensteine, und ohne
+   * Kategorie gilt sie weiter.
+   */
   symbol?: MilestoneSymbol;
   series?: string;
 }
@@ -195,7 +224,7 @@ export function todayIso(now: Date = new Date()): string {
 
 const KNOWN_PLAN_KEYS = new Set(["version", "title", "updatedAt", "view", "lanes", "categories", "items"]);
 const KNOWN_LANE_KEYS = new Set(["id", "title"]);
-const KNOWN_CATEGORY_KEYS = new Set(["id", "title", "color"]);
+const KNOWN_CATEGORY_KEYS = new Set(["id", "title", "color", "symbol"]);
 const KNOWN_ITEM_KEYS = new Set([
   "id",
   "kind",
@@ -282,6 +311,7 @@ function readCategory(raw: Raw): Category | null {
   if (id === undefined || title === undefined) return null;
   const color = typeof raw.color === "string" && HEX_COLOR.test(raw.color) ? raw.color.toUpperCase() : UNCATEGORIZED_COLOR;
   const category: Category = { id, title, color };
+  if (MILESTONE_SYMBOLS.includes(raw.symbol as MilestoneSymbol)) category.symbol = raw.symbol as MilestoneSymbol;
   const unknown = unknownOf(raw, KNOWN_CATEGORY_KEYS);
   if (unknown !== undefined) category.unknown = unknown;
   return category;
@@ -378,6 +408,28 @@ function readView(value: unknown): PlanView | undefined {
   return { start: first.trim(), end: second.trim() };
 }
 
+/**
+ * Gibt jeder Kategorie ohne eigene Form die häufigste Form ihrer Meilensteine
+ * — so sehen Pläne, die ihre Formen noch am Meilenstein trugen, nach dem
+ * Umstieg gleich aus. Bei Gleichstand gewinnt die zuerst genannte.
+ */
+function inheritSymbols(categories: Category[], items: PlanItem[]): Category[] {
+  return categories.map((category) => {
+    if (category.symbol !== undefined) return category;
+    const counts = new Map<MilestoneSymbol, number>();
+    for (const item of items) {
+      if (item.kind === "milestone" && item.category === category.id && item.symbol !== undefined) {
+        counts.set(item.symbol, (counts.get(item.symbol) ?? 0) + 1);
+      }
+    }
+    let best: MilestoneSymbol | undefined;
+    for (const [symbol, count] of counts) {
+      if (best === undefined || count > (counts.get(best) ?? 0)) best = symbol;
+    }
+    return best === undefined ? category : { ...category, symbol: best };
+  });
+}
+
 /** Liest das Attribut `plan`. Scheitert nie; was unbrauchbar ist, fällt weg und wird gezählt. */
 export function readPlanAttribute(raw: string): PlanReadResult {
   const value = readRaw(raw);
@@ -388,7 +440,12 @@ export function readPlanAttribute(raw: string): PlanReadResult {
   const items = readList(value.items, readItem, LIMITS.items);
   const resolved = resolveReferences(items.list, lanes.list, categories.list);
 
-  const plan: Plan = { version: 1, lanes: lanes.list, categories: categories.list, items: resolved };
+  const plan: Plan = {
+    version: 1,
+    lanes: lanes.list,
+    categories: inheritSymbols(categories.list, resolved),
+    items: resolved,
+  };
   const title = asText(value.title)?.trim();
   if (title) plan.title = title;
   const updatedAt = asDate(value.updatedAt);

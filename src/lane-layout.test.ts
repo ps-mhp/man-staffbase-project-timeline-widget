@@ -142,15 +142,23 @@ describe("layoutTimeline", () => {
     expect((placed(settled, "m2") as PlacedMilestone).cx).toBeCloseTo((day("2025-03-10") - ORIGIN + 0.5) * 0.1);
   });
 
-  it("zeigt eine eingeklappte Ebene auf einer Zeile ohne Beschriftungen", () => {
-    const result = layout([milestone("m1", "2025-01-10"), milestone("m2", "2025-01-11"), bar("b", "2025-01-01", "2025-02-01")], {
-      collapsed: new Set(["a"]),
-    });
-    const lane = result.lanes[0];
-    expect(lane.collapsed).toBe(true);
-    expect(lane.rowCount).toBe(1);
-    expect(lane.items.every((entry) => entry.label === null)).toBe(true);
-    expect(lane.height).toBe(GEOMETRY.minLaneHeight);
+  it("zeigt eine eingeklappte Ebene ohne Beschriftungen und kompakt", () => {
+    const items = [milestone("m1", "2025-01-10"), milestone("m2", "2025-06-10")];
+    const collapsed = layout(items, { collapsed: new Set(["a"]) }).lanes[0];
+    expect(collapsed.collapsed).toBe(true);
+    expect(collapsed.rowCount).toBe(1);
+    expect(collapsed.items.every((entry) => entry.label === null)).toBe(true);
+    expect(collapsed.height).toBe(GEOMETRY.minLaneHeight);
+  });
+
+  it("versetzt auch eingeklappt, was sich überdeckt, statt es übereinander zu legen", () => {
+    const items = [milestone("m1", "2025-01-10"), milestone("m2", "2025-01-11"), bar("b", "2025-01-01", "2025-02-01")];
+    const lane = layout(items, { collapsed: new Set(["a"]) }).lanes[0];
+    expect(lane.rowCount).toBe(3);
+    const [m1, m2] = ["m1", "m2"].map((id) => lane.items.find((entry) => entry.item.id === id) as PlacedMilestone);
+    expect(m1.cy).not.toBe(m2.cy);
+    // Eingeklappt bleibt die Ebene deutlich flacher als ausgeklappt.
+    expect(lane.height).toBeLessThan(layout(items).lanes[0].height);
   });
 
   it("stapelt die Ebenen in der gegebenen Reihenfolge und lässt fehlende weg", () => {

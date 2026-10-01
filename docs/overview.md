@@ -42,11 +42,14 @@ Von oben nach unten:
 1. **Überschrift** (falls gesetzt) und **„Stand: …“** — das Datum der letzten
    Änderung am Plan, im Datumsformat der Seitensprache.
 2. **Werkzeugleiste** — Suche, **Filter**, Zoom (**−**, **+**, **Alles
-   zeigen**), der Umschalter **Zeitstrahl | Liste** und **Exportieren**.
+   zeigen**), der Umschalter **Zeitstrahl | Liste**, **Exportieren**,
+   **Vollbild** und **Hilfe**.
 3. **Legende** — die Kategorien mit ihrer Farbe. Ein Klick blendet eine
    Kategorie aus oder wieder ein.
 4. **Der Plan** — links die Titel der Ebenen, rechts die Zeitachse mit den
-   Einträgen, unter der letzten Ebene die Titel der Stichtage.
+   Einträgen, unter der letzten Ebene die Titel der Stichtage. Der Pfeil am
+   Titel klappt eine Ebene ein; **Alle einklappen** über den Titeln klappt
+   alle auf einmal ein und danach wieder auf.
 5. **Übersicht** — ein schmaler Streifen über den ganzen Zeitraum. Ein Rahmen
    zeigt, welcher Ausschnitt gerade zu sehen ist.
 
@@ -74,6 +77,16 @@ Außerdem:
 - Auf schmalen Bildschirmen (unter 768 Pixel Breite) öffnen sich Filter und
   Details als Blatt vom unteren Rand, und **Liste** und **Exportieren** stehen
   im Menü **Mehr**.
+- **Vollbild** zeigt den Plan über den ganzen Bildschirm, mit derselben
+  Bedienung; nur der Plan selbst rollt, Achse und Übersicht bleiben stehen.
+  **Esc** oder **Vollbild beenden** kehrt zur Seite zurück. Wo der Browser kein
+  echtes Vollbild erlaubt (etwa Safari auf dem iPhone), legt sich der Plan über
+  die ganze Seite.
+- **Hilfe** erklärt Leser:innen direkt auf der Seite, was die Zeichen
+  bedeuten (Reiter **Legende**, mit den Kategorien dieses Plans) und wie man den
+  Plan mit Maus, Trackpad, Touch und Tastatur bedient (Reiter **Bedienung**).
+  Aus dem Plan heraus öffnet auch die Taste **?** die Hilfe. Im Plan-Editor gibt
+  es den Knopf nicht.
 - **Ohne Einträge zeigt das Widget gar nichts** — keinen leeren Rahmen und
   keine Fehlermeldung.
 

@@ -55,6 +55,8 @@ export const GEOMETRY = {
   labelTierGap: 2,
   unitGap: 8,
   rowGap: 8,
+  /** Zwischen den Zeilen einer eingeklappten Ebene; dort gibt es keine Beschriftungen. */
+  collapsedRowGap: 4,
   lanePadding: 12,
   minLaneHeight: 48,
   barLabelPadding: 6,
@@ -353,9 +355,12 @@ function measureUnit(
   };
 }
 
-/** Teilt jede Einheit der ersten Zeile zu, in der sie Platz hat. Eingeklappt: alles auf eine Zeile. */
-function assignRows(units: Unit[], collapsed: boolean): Unit[][] {
-  if (collapsed) return units.length === 0 ? [] : [units];
+/**
+ * Teilt jede Einheit der ersten Zeile zu, in der sie Platz hat. Das gilt auch
+ * eingeklappt — dort nur ohne Beschriftungen und damit dichter: zwei Symbole am
+ * selben Tag übereinander gezeichnet wären nicht mehr zu unterscheiden.
+ */
+function assignRows(units: Unit[]): Unit[][] {
   const rows: { right: number; units: Unit[] }[] = [];
   const sorted = [...units].sort((a, b) => a.left - b.left || a.key.localeCompare(b.key));
   for (const unit of sorted) {
@@ -483,8 +488,9 @@ function prepareLane(input: PrepareInput, lane: Lane, top: number): PreparedLane
 
   const rows: PreparedRow[] = [];
   let rowTop = top + GEOMETRY.lanePadding;
-  assignRows(units, collapsed).forEach((row, index) => {
-    if (index > 0) rowTop += GEOMETRY.rowGap;
+  const rowGap = collapsed ? GEOMETRY.collapsedRowGap : GEOMETRY.rowGap;
+  assignRows(units).forEach((row, index) => {
+    if (index > 0) rowTop += rowGap;
     rows.push({ top: rowTop, units: row });
     rowTop += Math.max(...row.map((unit) => unit.height));
   });

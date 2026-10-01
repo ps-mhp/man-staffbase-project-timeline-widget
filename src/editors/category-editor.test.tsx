@@ -19,7 +19,13 @@ import { LIMITS, Plan } from "../plan-model";
 import { CategoryEditor } from "./category-editor";
 import { findItem, testPlan } from "./test-plan.fixture";
 
-function Harness({ initial = testPlan(), spy = jest.fn() }: { initial?: Plan; spy?: jest.Mock }): React.ReactElement {
+function Harness({
+  initial = testPlan(),
+  spy = jest.fn(),
+}: {
+  initial?: Plan;
+  spy?: jest.Mock;
+}): React.ReactElement {
   const [plan, setPlan] = useState(initial);
   return (
     <CategoryEditor
@@ -32,24 +38,57 @@ function Harness({ initial = testPlan(), spy = jest.fn() }: { initial?: Plan; sp
   );
 }
 
-const lastPlan = (spy: jest.Mock): Plan => spy.mock.calls[spy.mock.calls.length - 1][0];
+const lastPlan = (spy: jest.Mock): Plan =>
+  spy.mock.calls[spy.mock.calls.length - 1][0];
 
 describe("CategoryEditor", () => {
-  it("listet die Kategorien mit Name und Farbe", () => {
+  it("listet die Kategorien einzeilig mit Farbknopf, Name und Zahl", () => {
     render(<Harness />);
-    expect(screen.getByLabelText("Name der Kategorie 1")).toHaveValue("General");
-    const colors = screen.getByRole("group", { name: "Farbe von „TMS“" });
-    expect(within(colors).getByRole("radio", { name: "#91B900" })).toBeChecked();
+    expect(screen.getByLabelText("Name der Kategorie 1")).toHaveValue(
+      "General",
+    );
+    expect(
+      screen.getByRole("button", { name: "Farbe von „TMS“: #91B900" }),
+    ).toHaveAttribute("aria-expanded", "false");
+    expect(screen.getByText("2 Einträge")).toBeInTheDocument();
   });
 
   it("benennt um und färbt um", () => {
     const spy = jest.fn();
     render(<Harness spy={spy} />);
-    fireEvent.change(screen.getByLabelText("Name der Kategorie 2"), { target: { value: "TMS neu" } });
+    fireEvent.change(screen.getByLabelText("Name der Kategorie 2"), {
+      target: { value: "TMS neu" },
+    });
     expect(lastPlan(spy).categories[1].title).toBe("TMS neu");
+    fireEvent.click(
+      screen.getByRole("button", { name: "Farbe von „TMS neu“: #91B900" }),
+    );
     const colors = screen.getByRole("group", { name: "Farbe von „TMS neu“" });
     fireEvent.click(within(colors).getByRole("radio", { name: "#00786E" }));
-    expect(lastPlan(spy).categories[1]).toEqual({ id: "c2", title: "TMS neu", color: "#00786E" });
+    expect(lastPlan(spy).categories[1]).toEqual({
+      id: "c2",
+      title: "TMS neu",
+      color: "#00786E",
+    });
+    expect(
+      screen.getByRole("button", { name: "Farbe von „TMS neu“: #00786E" }),
+    ).toBeInTheDocument();
+  });
+
+  it("setzt die Form der Meilensteine über den Formknopf der Zeile", () => {
+    const spy = jest.fn();
+    render(<Harness spy={spy} />);
+    fireEvent.click(
+      screen.getByRole("button", { name: "Form von „General“: Quadrat" }),
+    );
+    fireEvent.click(screen.getByRole("radio", { name: "Sechseck" }));
+    expect(lastPlan(spy).categories[0]).toMatchObject({
+      id: "c1",
+      symbol: "hexagon",
+    });
+    expect(
+      screen.getByRole("button", { name: "Form von „General“: Sechseck" }),
+    ).toBeInTheDocument();
   });
 
   it("hält einen leeren Namen als Entwurf mit Fehler", () => {
@@ -61,11 +100,24 @@ describe("CategoryEditor", () => {
     expect(name).toHaveAccessibleDescription("Bitte einen Namen angeben.");
   });
 
+  it("weist beim Umbenennen einen Namen zurück, den es schon gibt", () => {
+    const spy = jest.fn();
+    render(<Harness spy={spy} />);
+    const name = screen.getByLabelText("Name der Kategorie 2");
+    fireEvent.change(name, { target: { value: "general" } });
+    expect(spy).not.toHaveBeenCalled();
+    expect(name).toHaveAccessibleDescription(
+      "Eine Kategorie „general“ gibt es schon.",
+    );
+  });
+
   it("legt eine Kategorie an und setzt den Fokus in ihren Namen", () => {
     const spy = jest.fn();
     render(<Harness spy={spy} />);
     fireEvent.click(screen.getByRole("button", { name: "Neue Kategorie" }));
-    expect(lastPlan(spy).categories[2]).toMatchObject({ title: "Neue Kategorie" });
+    expect(lastPlan(spy).categories[2]).toMatchObject({
+      title: "Neue Kategorie",
+    });
     expect(screen.getByLabelText("Name der Kategorie 3")).toHaveFocus();
   });
 
@@ -79,24 +131,43 @@ describe("CategoryEditor", () => {
       })),
     };
     render(<Harness initial={plan} />);
-    expect(screen.getByRole("button", { name: "Neue Kategorie" })).toBeDisabled();
-    expect(screen.getByText(`Mehr als ${LIMITS.categories} Kategorien trägt ein Plan nicht.`)).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Neue Kategorie" }),
+    ).toBeDisabled();
+    expect(
+      screen.getByText(
+        `Mehr als ${LIMITS.categories} Kategorien trägt ein Plan nicht.`,
+      ),
+    ).toBeInTheDocument();
   });
 
   it("verschiebt eine Kategorie — so steht sie in der Legende", () => {
     const spy = jest.fn();
     render(<Harness spy={spy} />);
-    expect(screen.getByRole("button", { name: "Kategorie „TMS“ nach unten" })).toBeDisabled();
-    fireEvent.click(screen.getByRole("button", { name: "Kategorie „TMS“ nach oben" }));
-    expect(lastPlan(spy).categories.map((category) => category.id)).toEqual(["c2", "c1"]);
+    expect(
+      screen.getByRole("button", { name: "Kategorie „TMS“ nach unten" }),
+    ).toBeDisabled();
+    fireEvent.click(
+      screen.getByRole("button", { name: "Kategorie „TMS“ nach oben" }),
+    );
+    expect(lastPlan(spy).categories.map((category) => category.id)).toEqual([
+      "c2",
+      "c1",
+    ]);
   });
 
   it("nennt beim Löschen die Zahl der betroffenen Einträge", () => {
     const spy = jest.fn();
     render(<Harness spy={spy} />);
-    fireEvent.click(screen.getByRole("button", { name: "Kategorie „General“ löschen" }));
-    const dialog = screen.getByRole("dialog", { name: "Kategorie „General“ löschen?" });
-    expect(dialog).toHaveAccessibleDescription("2 Einträge stehen danach ohne Kategorie da.");
+    fireEvent.click(
+      screen.getByRole("button", { name: "Kategorie „General“ löschen" }),
+    );
+    const dialog = screen.getByRole("dialog", {
+      name: "Kategorie „General“ löschen?",
+    });
+    expect(dialog).toHaveAccessibleDescription(
+      "2 Einträge stehen danach ohne Kategorie da.",
+    );
     fireEvent.click(within(dialog).getByRole("button", { name: "Löschen" }));
 
     const next = lastPlan(spy);
@@ -108,8 +179,12 @@ describe("CategoryEditor", () => {
   it("sagt beim Löschen einer ungenutzten Kategorie, dass kein Eintrag betroffen ist", () => {
     const plan: Plan = { ...testPlan(), items: [] };
     render(<Harness initial={plan} />);
-    fireEvent.click(screen.getByRole("button", { name: "Kategorie „TMS“ löschen" }));
-    expect(screen.getByRole("dialog")).toHaveAccessibleDescription("Kein Eintrag gehört zu dieser Kategorie.");
+    fireEvent.click(
+      screen.getByRole("button", { name: "Kategorie „TMS“ löschen" }),
+    );
+    expect(screen.getByRole("dialog")).toHaveAccessibleDescription(
+      "Kein Eintrag gehört zu dieser Kategorie.",
+    );
   });
 
   it("sagt, wenn es noch keine Kategorie gibt", () => {

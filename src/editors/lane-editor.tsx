@@ -25,7 +25,13 @@ import { ReactElement, useId, useRef, useState } from "react";
 import { LIMITS, Lane, Plan } from "../plan-model";
 import { ConfirmDialog } from "./confirm-dialog";
 import { EntityRow } from "./entity-row";
-import { addLane, moveLane, removeLane, renameLane } from "./plan-edits";
+import { Pane, PaneEmpty } from "./pane";
+import {
+  addLane,
+  moveLane,
+  removeLane,
+  renameLane,
+} from "./plan-structure-edits";
 import { countInLane, countLabel } from "./plan-queries";
 
 export interface LaneEditorProps {
@@ -42,12 +48,20 @@ interface RemoveLaneDialogProps {
   fallbackFocus: () => HTMLElement | null;
 }
 
-function RemoveLaneDialog({ plan, lane, onConfirm, onCancel, fallbackFocus }: RemoveLaneDialogProps): ReactElement {
+function RemoveLaneDialog({
+  plan,
+  lane,
+  onConfirm,
+  onCancel,
+  fallbackFocus,
+}: RemoveLaneDialogProps): ReactElement {
   const choiceName = useId();
   const targetId = useId();
   const count = countInLane(plan, lane.id);
   const others = plan.lanes.filter((entry) => entry.id !== lane.id);
-  const [mode, setMode] = useState<"move" | "delete">(others.length > 0 ? "move" : "delete");
+  const [mode, setMode] = useState<"move" | "delete">(
+    others.length > 0 ? "move" : "delete",
+  );
   const [target, setTarget] = useState(others[0]?.id ?? "");
 
   const choices =
@@ -85,7 +99,12 @@ function RemoveLaneDialog({ plan, lane, onConfirm, onCancel, fallbackFocus }: Re
           </div>
         )}
         <label className="man-pt-editor__check">
-          <input type="radio" name={choiceName} checked={mode === "delete"} onChange={() => setMode("delete")} />
+          <input
+            type="radio"
+            name={choiceName}
+            checked={mode === "delete"}
+            onChange={() => setMode("delete")}
+          />
           Mit Einträgen löschen
         </label>
       </>
@@ -94,7 +113,11 @@ function RemoveLaneDialog({ plan, lane, onConfirm, onCancel, fallbackFocus }: Re
   return (
     <ConfirmDialog
       title={`Ebene „${lane.title}“ löschen?`}
-      message={count === 0 ? "Die Ebene enthält keine Einträge." : `Die Ebene enthält ${countLabel(count)}.`}
+      message={
+        count === 0
+          ? "Die Ebene enthält keine Einträge."
+          : `Die Ebene enthält ${countLabel(count)}.`
+      }
       confirmLabel="Löschen"
       onConfirm={() => onConfirm(count > 0 && mode === "move" ? target : null)}
       onCancel={onCancel}
@@ -105,7 +128,10 @@ function RemoveLaneDialog({ plan, lane, onConfirm, onCancel, fallbackFocus }: Re
   );
 }
 
-export function LaneEditor({ plan, onPlanChange }: LaneEditorProps): ReactElement {
+export function LaneEditor({
+  plan,
+  onPlanChange,
+}: LaneEditorProps): ReactElement {
   const [focusId, setFocusId] = useState<string | null>(null);
   const [removingId, setRemovingId] = useState<string | null>(null);
   const addRef = useRef<HTMLButtonElement>(null);
@@ -120,35 +146,49 @@ export function LaneEditor({ plan, onPlanChange }: LaneEditorProps): ReactElemen
   };
 
   return (
-    <div className="man-pt-editor__entities">
-      <p className="man-pt-editor__hint">Die Ebenen stehen im Plan in dieser Reihenfolge untereinander.</p>
+    <Pane
+      className="man-pt-editor__entities"
+      hint={
+        full
+          ? `Mehr als ${LIMITS.lanes} Ebenen trägt ein Plan nicht.`
+          : "Die Ebenen stehen im Plan in dieser Reihenfolge untereinander."
+      }
+      actions={
+        <button
+          ref={addRef}
+          type="button"
+          className="man-pt-editor__button"
+          disabled={full}
+          onClick={add}
+        >
+          Neue Ebene
+        </button>
+      }
+    >
       {plan.lanes.length === 0 ? (
-        <p className="man-pt-editor__hint">Noch keine Ebenen.</p>
+        <PaneEmpty>Noch keine Ebenen.</PaneEmpty>
       ) : (
         <ol className="man-pt-editor__entity-list" aria-label="Ebenen">
           {plan.lanes.map((lane, index) => (
             <EntityRow
               key={lane.id}
               noun="Ebene"
+              existing={plan.lanes.map((entry) => entry.title)}
               position={index + 1}
               title={lane.title}
               count={countInLane(plan, lane.id)}
               isFirst={index === 0}
               isLast={index === plan.lanes.length - 1}
               autoFocus={lane.id === focusId}
-              onRename={(title) => onPlanChange(renameLane(plan, lane.id, title))}
+              onRename={(title) =>
+                onPlanChange(renameLane(plan, lane.id, title))
+              }
               onMove={(offset) => onPlanChange(moveLane(plan, lane.id, offset))}
               onRemove={() => setRemovingId(lane.id)}
             />
           ))}
         </ol>
       )}
-      <div className="man-pt-editor__actions">
-        <button ref={addRef} type="button" className="man-pt-editor__button" disabled={full} onClick={add}>
-          Neue Ebene
-        </button>
-      </div>
-      {full && <p className="man-pt-editor__hint">Mehr als {LIMITS.lanes} Ebenen trägt ein Plan nicht.</p>}
       {removing !== undefined && (
         <RemoveLaneDialog
           plan={plan}
@@ -161,6 +201,6 @@ export function LaneEditor({ plan, onPlanChange }: LaneEditorProps): ReactElemen
           fallbackFocus={() => addRef.current}
         />
       )}
-    </div>
+    </Pane>
   );
 }

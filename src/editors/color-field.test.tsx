@@ -18,7 +18,13 @@ import { ColorField, normalizeHex } from "./color-field";
 
 describe("ColorField", () => {
   it("bietet zwölf Farben an und markiert die gewählte", () => {
-    render(<ColorField label="Farbe von „TMS“" value="#91B900" onChange={jest.fn()} />);
+    render(
+      <ColorField
+        label="Farbe von „TMS“"
+        value="#91B900"
+        onChange={jest.fn()}
+      />,
+    );
     const group = screen.getByRole("group", { name: "Farbe von „TMS“" });
     const swatches = within(group).getAllByRole("radio");
     expect(swatches).toHaveLength(12);
@@ -35,7 +41,9 @@ describe("ColorField", () => {
   it("nimmt einen gültigen Hex-Wert an, auch ohne Raute und klein geschrieben", () => {
     const onChange = jest.fn();
     render(<ColorField label="Farbe" value="#91B900" onChange={onChange} />);
-    fireEvent.change(screen.getByLabelText("Hex-Wert"), { target: { value: "12ab9f" } });
+    fireEvent.change(screen.getByLabelText("Hex-Wert"), {
+      target: { value: "12ab9f" },
+    });
     expect(onChange).toHaveBeenCalledWith("#12AB9F");
   });
 
@@ -51,7 +59,11 @@ describe("ColorField", () => {
 
   it("markiert keine Palettenfarbe bei einer eigenen Farbe", () => {
     render(<ColorField label="Farbe" value="#123456" onChange={jest.fn()} />);
-    expect(screen.getAllByRole("radio").filter((radio) => (radio as HTMLInputElement).checked)).toHaveLength(0);
+    expect(
+      screen
+        .getAllByRole("radio")
+        .filter((radio) => (radio as HTMLInputElement).checked),
+    ).toHaveLength(0);
   });
 });
 

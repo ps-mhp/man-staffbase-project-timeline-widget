@@ -25,6 +25,8 @@ import { Placement, placePopover } from "@shared/popover-placement";
 
 import { trapTab } from "./focus-trap";
 import { kindAndTerm } from "./item-text";
+import { SymbolGlyph } from "./symbol-glyph";
+import { symbolOf } from "./symbols";
 import { Plan, PlanItem, categoryOf, colorOf, isLaneItem } from "./plan-model";
 
 export interface ItemDetailsProps {
@@ -44,15 +46,16 @@ function Links({ title, items, onSelect }: { title: string; items: PlanItem[]; o
   return (
     <div className="man-pt__details-links">
       <span className="man-pt__details-key">{title}</span>
-      <ul>
+      {/* `role="list"` statt `ul`: das Seiten-Stylesheet setzt vor jedes `li` einen roten Strich. */}
+      <div role="list" className="man-pt__details-list">
         {items.map((linked) => (
-          <li key={linked.id}>
+          <div key={linked.id} role="listitem">
             <button type="button" className="man-pt__link-button" onClick={() => onSelect(linked.id)}>
               {linked.title}
             </button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
@@ -67,7 +70,7 @@ function Body({ plan, item, locale, onSelect }: Pick<ItemDetailsProps, "plan" | 
   return (
     <>
       <p className="man-pt__details-meta">
-        <span className="man-pt__legend-dot" style={{ "--pt-color": colorOf(plan, item) } as CSSProperties} aria-hidden="true" />
+        <SymbolGlyph symbol={symbolOf(plan, item)} color={colorOf(plan, item)} className="man-pt__legend-symbol" />
         {category?.title ?? "Ohne Kategorie"}
         {item.tentative && <span className="man-pt__tag">vorläufig</span>}
       </p>

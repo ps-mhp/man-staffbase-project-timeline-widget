@@ -1,0 +1,294 @@
+/*!
+ * Copyright 2026, MHP Management und IT-Beratung GmbH and contributors.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Die Listen des Plan-Editors: Einträge links neben dem Formular, die
+// Zeilen der Ebenen und Kategorien samt Farbwahl. Volle Breite, getrennt
+// durch Haarlinien; die Auswahl ist ein Ton mit Akzent links, kein Rahmen.
+
+@use "@shared/stylings/editor-chrome" as chrome;
+@use "@shared/stylings/man-tokens" as tokens;
+@use "plan-editor-tokens" as local;
+
+// --- Einträge: Liste und Formular ----
+
+// Zwei Bereiche nebeneinander, jeder so hoch wie der Reiter und mit eigenem
+// Rollbereich, dazwischen der Ziehgriff als Trennlinie. Die Breite der Liste
+// kommt als `--pt-list-width` vom Griff. `minmax(0, …)` in beiden Richtungen,
+// sonst wüchse eine Zeile des Rasters mit ihrem Inhalt über den Reiter hinaus.
+//
+// Schmal stehen Liste und Formular untereinander; dort gilt die gezogene
+// Breite nicht, der Griff verschwindet, und eine Haarlinie trennt.
+.man-pt-editor__entries {
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-rows: minmax(0, 2fr) minmax(0, 3fr);
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+
+  > .man-pt-editor__splitter {
+    display: none;
+  }
+
+  > .man-pt-editor__form {
+    border-top: local.$hairline;
+  }
+}
+
+@media (min-width: 900px) {
+  .man-pt-editor__entries {
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-columns:
+      var(--pt-list-width, #{local.$list-width})
+      local.$splitter minmax(0, 1fr);
+
+    > .man-pt-editor__splitter {
+      display: flex;
+    }
+
+    > .man-pt-editor__form {
+      border-top: 0;
+    }
+  }
+}
+
+// Der Kopf der Eintragsliste: Suche und Arten fuellen ihre Zeilen ganz aus,
+// buendig und ohne Rundung wie Felder einer Werkzeugleiste. Der Text der Suche
+// bleibt trotzdem auf der Fluchtlinie.
+.man-pt-editor__items .man-pt-editor__pane-row {
+  padding: 0;
+}
+
+.man-pt-editor__items .man-pt-editor__pane-lead {
+  flex-wrap: nowrap;
+  gap: 0;
+  align-items: stretch;
+  align-self: stretch;
+}
+
+.man-pt-editor__list-bar {
+  display: flex;
+  flex: 1 1 auto;
+  gap: 0;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.man-pt-editor__search {
+  display: flex;
+  flex: 1 1 auto;
+  margin: 0;
+}
+
+.man-pt-editor__search .man-pt-editor__input {
+  height: 100%;
+  min-height: 0;
+  padding: 0 local.$gutter;
+  background: chrome.$surface;
+  border: 0;
+  border-radius: 0;
+
+  &:focus-visible {
+    box-shadow: inset 0 0 0 2px chrome.$focus-border;
+  }
+}
+
+// Der Grund, warum „+“ gesperrt ist — über der Liste, nicht im Kopf: dort
+// brächte er die Kopfzeilen aus der Flucht mit dem Formular daneben.
+.man-pt-editor__list-hint {
+  padding: local.$space-s local.$gutter;
+  border-bottom: local.$hairline;
+}
+
+// Die Liste läuft bis an den Rand ihres Bereichs.
+.man-pt-editor__items .man-pt-editor__pane-body {
+  padding: 0;
+}
+
+.man-pt-editor__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.man-pt-editor__list-row {
+  position: relative;
+  border-bottom: local.$hairline;
+}
+
+.man-pt-editor__list-item {
+  @include tokens.man-outshine-host {
+    display: flex;
+    width: 100%;
+    margin: 0;
+  }
+  @include local.studio-button-states;
+
+  --pt-button-bg: transparent;
+  --pt-button-bg-hover: #{chrome.$surface-hover};
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  min-height: 0;
+  // Rechts Platz für den Papierkorb.
+  padding: 6px 40px 6px local.$gutter;
+  font: inherit;
+  text-align: start;
+  color: chrome.$text-body;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color chrome.$transition;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset chrome.$focus-ring;
+  }
+}
+
+.man-pt-editor__list-item--active {
+  --pt-button-bg: #{chrome.$accent-selection};
+
+  box-shadow: inset 2px 0 0 chrome.$accent;
+}
+
+// Die Form der Kategorie vor dem Titel, auf der Grundlinie der Schrift.
+.man-pt-editor__list-glyph {
+  flex: 0 0 auto;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+
+.man-pt-editor__list-title {
+  overflow: hidden;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Der Papierkorb rechts in der Zeile: sichtbar beim Überfahren und sobald
+// etwas in der Zeile den Fokus hat — sonst fände ihn die Tastatur nicht —,
+// und dauerhaft auf Touch-Geräten, die kein Überfahren kennen. `opacity`
+// statt `display`, damit er im Fokus-Kreislauf bleibt.
+//
+// Seine Hülle ist zugleich der Anker der Rückfrage, trägt aber nicht
+// `.man-pt-editor__anchor`: dessen `position: relative` stünde später im
+// Stylesheet und höbe das `absolute` hier auf.
+// Senkrecht mittig ohne `transform`: ein `transform` machte die Hülle zum
+// Bezugsrahmen für das `fixed` stehende Popover darin, und es stünde versetzt.
+.man-pt-editor__row-tools {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  // Das Symbol, nicht der Knopf, steht auf der Fluchtlinie.
+  right: calc(#{local.$gutter} - 6px);
+  display: flex;
+  align-items: center;
+}
+
+.man-pt-editor__row-delete {
+  --pt-button-bg-hover: #{chrome.$surface};
+
+  color: chrome.$text-muted;
+  border-color: transparent;
+  opacity: 0;
+  transition: opacity chrome.$transition;
+}
+
+.man-pt-editor__list-row:hover .man-pt-editor__row-delete,
+.man-pt-editor__list-row:focus-within .man-pt-editor__row-delete,
+.man-pt-editor__row-tools--open .man-pt-editor__row-delete {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .man-pt-editor__row-delete {
+    opacity: 1;
+  }
+}
+
+.man-pt-editor__row-delete:hover:not(:disabled) {
+  color: local.$danger;
+}
+
+// --- Ebenen und Kategorien ----
+
+.man-pt-editor__entities {
+  flex: 1 1 auto;
+}
+
+.man-pt-editor__entities .man-pt-editor__pane-body {
+  padding: 0;
+}
+
+.man-pt-editor__entity-list {
+  max-width: local.$rows-max-width;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// Eine Zeile: [Farbe] · Name · Zahl · ↑ · ↓ · Löschen, alles gleich hoch.
+.man-pt-editor__entity {
+  display: flex;
+  gap: local.$space-s;
+  align-items: flex-start;
+  padding: local.$space-xs local.$gutter;
+  border-bottom: local.$hairline;
+
+  .man-pt-editor__input {
+    min-height: local.$row-control;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+}
+
+.man-pt-editor__entity-name {
+  flex: 1 1 auto;
+}
+
+.man-pt-editor__entity-count {
+  flex: 0 0 88px;
+  font-size: 12px;
+  line-height: local.$row-control;
+  color: chrome.$text-muted;
+}
+
+// Farbe und Form klappen in der Zeile auf, nicht in einem Portal (siehe
+// `inline-picker.tsx`).
+.man-pt-editor__picker {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.man-pt-editor__color-chip {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgb(0 0 0 / 15%);
+  border-radius: chrome.$radius-small;
+}
+
+.man-pt-editor__picker-popover {
+  position: absolute;
+  top: calc(100% + #{local.$space-xs});
+  left: 0;
+  z-index: 5;
+  width: max-content;
+  padding: local.$space-m;
+  background: chrome.$surface;
+  border: 1px solid chrome.$border-menu;
+  border-radius: chrome.$radius-small;
+  box-shadow: chrome.$shadow-menu;
+}

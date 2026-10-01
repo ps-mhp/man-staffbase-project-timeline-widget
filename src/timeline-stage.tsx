@@ -48,7 +48,11 @@ export interface TimelineStageProps {
   focusId: string | null;
   bodyRef: RefObject<HTMLDivElement | null>;
   hint: boolean;
+  /** Ob alle sichtbaren Ebenen eingeklappt sind — dann klappt der Knopf in der Ecke auf. */
+  allLanesCollapsed: boolean;
   onToggleLane: (laneId: string) => void;
+  /** Fehlt bei nur einer Ebene: dort genügt ihr eigener Pfeil. */
+  onToggleAllLanes?: () => void;
   onActivate: (id: string, element: HTMLElement) => void;
   onFocusItem: (id: string) => void;
   onKeyDown: (event: KeyboardEvent<HTMLElement>) => void;
@@ -71,6 +75,19 @@ function LaneHead({ lane, onToggle }: { lane: LaneLayout; onToggle: () => void }
   );
 }
 
+// Steht über den Pfeilen der Ebenen und sieht aus wie sie, nur doppelt.
+function LaneToggleAll({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }): ReactElement {
+  return (
+    <button type="button" className="man-pt__lanes-toggle" data-collapsed={collapsed} onClick={onToggle}>
+      <span className="man-pt__lanes-chevrons" aria-hidden="true">
+        <span className="man-pt__lane-chevron" />
+        <span className="man-pt__lane-chevron" />
+      </span>
+      <span className="man-pt__lanes-toggle-text">{collapsed ? "Alle aufklappen" : "Alle einklappen"}</span>
+    </button>
+  );
+}
+
 export function TimelineStage(props: TimelineStageProps): ReactElement {
   const { plan, locale, layout, tiers, width, todayX, selectedId, relatedIds, dimmedIds, focusId } = props;
 
@@ -86,7 +103,9 @@ export function TimelineStage(props: TimelineStageProps): ReactElement {
 
   return (
     <div className="man-pt__stage" style={{ "--pt-body-height": `${layout.height}px` } as CSSProperties}>
-      <div className="man-pt__corner" aria-hidden="true" />
+      <div className="man-pt__corner">
+        {props.onToggleAllLanes && <LaneToggleAll collapsed={props.allLanesCollapsed} onToggle={props.onToggleAllLanes} />}
+      </div>
       <div className="man-pt__axis-host">
         <TimelineAxis tiers={tiers} width={width} todayX={todayX} />
       </div>

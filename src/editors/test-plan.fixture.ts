@@ -28,7 +28,7 @@ export function testPlan(): Plan {
       { id: "l2", title: "SOPs" },
     ],
     categories: [
-      { id: "c1", title: "General", color: "#E40045" },
+      { id: "c1", title: "General", color: "#E40045", symbol: "square" },
       { id: "c2", title: "TMS", color: "#91B900" },
     ],
     items: [
@@ -39,7 +39,6 @@ export function testPlan(): Plan {
         category: "c1",
         title: "Bauma",
         date: "2025-04-07",
-        symbol: "square",
         series: "Messen 2025",
       },
       {
@@ -54,8 +53,21 @@ export function testPlan(): Plan {
         series: "TMS",
         dependsOn: ["m1"],
       },
-      { id: "d1", kind: "deadline", category: "c1", title: "Euro 7", date: "2027-07-01" },
-      { id: "m2", kind: "milestone", lane: "l2", title: "SOP", date: "2026-01-15", series: "TG Assist" },
+      {
+        id: "d1",
+        kind: "deadline",
+        category: "c1",
+        title: "Euro 7",
+        date: "2027-07-01",
+      },
+      {
+        id: "m2",
+        kind: "milestone",
+        lane: "l2",
+        title: "SOP",
+        date: "2026-01-15",
+        series: "TG Assist",
+      },
     ],
   };
 }

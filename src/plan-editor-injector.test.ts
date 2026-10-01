@@ -18,7 +18,10 @@ import { FieldModalInjectorOptions } from "@shared/config-modal";
 import { examplePlan } from "./example-plan";
 import { PlanEditor } from "./editors/plan-editor";
 import { encodePlanAttribute } from "./plan-model";
-import { PlanEditorValue, startPlanEditorInjector } from "./plan-editor-injector";
+import {
+  PlanEditorValue,
+  startPlanEditorInjector,
+} from "./plan-editor-injector";
 
 const mockStart = jest.fn((_options: unknown) => () => undefined);
 jest.mock("@shared/config-modal", () => ({
@@ -29,7 +32,9 @@ jest.mock("./editors/plan-editor", () => ({ PlanEditor: () => null }));
 
 const options = (): FieldModalInjectorOptions<PlanEditorValue> => {
   startPlanEditorInjector();
-  return mockStart.mock.calls[mockStart.mock.calls.length - 1][0] as FieldModalInjectorOptions<PlanEditorValue>;
+  return mockStart.mock.calls[
+    mockStart.mock.calls.length - 1
+  ][0] as FieldModalInjectorOptions<PlanEditorValue>;
 };
 
 afterEach(() => mockStart.mockClear());
@@ -42,7 +47,13 @@ describe("startPlanEditorInjector", () => {
       modalTestId: "plan-editor-modal",
       reopenTestId: "plan-editor-reopen",
     });
-    expect(options().panelStyle?.maxWidth).toBe("1280px");
+    // Vollbild: der Editor zeichnet Rahmen und Abstände selbst.
+    expect(options().panelStyle).toMatchObject({
+      width: "100vw",
+      height: "100vh",
+      padding: 0,
+      borderRadius: 0,
+    });
   });
 
   it("gibt die Aufräumfunktion des Injektors zurück", () => {
@@ -52,7 +63,10 @@ describe("startPlanEditorInjector", () => {
   });
 
   it("liest das Attribut samt der Zahl verworfener Einträge", () => {
-    const raw = JSON.stringify({ ...examplePlan(), items: [...examplePlan().items, { id: "x", kind: "unbekannt" }] });
+    const raw = JSON.stringify({
+      ...examplePlan(),
+      items: [...examplePlan().items, { id: "x", kind: "unbekannt" }],
+    });
     const value = options().parse(raw);
     expect(value.plan.items).toHaveLength(examplePlan().items.length);
     expect(value.dropped).toBe(1);
@@ -60,7 +74,9 @@ describe("startPlanEditorInjector", () => {
 
   it("schreibt nur den Plan, verpackt", () => {
     const plan = examplePlan();
-    expect(options().serialize({ plan, dropped: 3 })).toBe(encodePlanAttribute(plan));
+    expect(options().serialize({ plan, dropped: 3 })).toBe(
+      encodePlanAttribute(plan),
+    );
   });
 
   it("rendert den Plan-Editor", () => {

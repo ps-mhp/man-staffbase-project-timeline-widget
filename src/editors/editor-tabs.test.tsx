@@ -28,7 +28,12 @@ const TABS: readonly TabDefinition<Tab>[] = [
 function Harness(): React.ReactElement {
   const [active, setActive] = useState<Tab>("items");
   return (
-    <EditorTabs tabs={TABS} active={active} onChange={setActive} label="Bereiche des Plans">
+    <EditorTabs
+      tabs={TABS}
+      active={active}
+      onChange={setActive}
+      label="Bereiche des Plans"
+    >
       <p>Inhalt {active}</p>
     </EditorTabs>
   );
@@ -37,22 +42,34 @@ function Harness(): React.ReactElement {
 describe("EditorTabs", () => {
   it("zeigt echte Reiter mit zugehörigem Bereich", () => {
     render(<Harness />);
-    expect(screen.getByRole("tablist", { name: "Bereiche des Plans" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("tablist", { name: "Bereiche des Plans" }),
+    ).toBeInTheDocument();
     const tab = screen.getByRole("tab", { name: "Einträge" });
     expect(tab).toHaveAttribute("aria-selected", "true");
-    expect(screen.getByRole("tabpanel", { name: "Einträge" })).toHaveTextContent("Inhalt items");
+    expect(
+      screen.getByRole("tabpanel", { name: "Einträge" }),
+    ).toHaveTextContent("Inhalt items");
   });
 
   it("hält nur den aktiven Reiter in der Tab-Reihenfolge", () => {
     render(<Harness />);
-    expect(screen.getByRole("tab", { name: "Einträge" })).toHaveAttribute("tabindex", "0");
-    expect(screen.getByRole("tab", { name: "Ebenen" })).toHaveAttribute("tabindex", "-1");
+    expect(screen.getByRole("tab", { name: "Einträge" })).toHaveAttribute(
+      "tabindex",
+      "0",
+    );
+    expect(screen.getByRole("tab", { name: "Ebenen" })).toHaveAttribute(
+      "tabindex",
+      "-1",
+    );
   });
 
   it("wechselt per Klick", () => {
     render(<Harness />);
     fireEvent.click(screen.getByRole("tab", { name: "Kategorien" }));
-    expect(screen.getByRole("tabpanel", { name: "Kategorien" })).toHaveTextContent("Inhalt categories");
+    expect(
+      screen.getByRole("tabpanel", { name: "Kategorien" }),
+    ).toHaveTextContent("Inhalt categories");
   });
 
   it.each([

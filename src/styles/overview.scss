@@ -17,6 +17,18 @@
 
 @use "@shared/stylings/man-tokens" as *;
 
+// Eckig mit Nachdruck: am 30.09.2026 waren Streifen und Fenster im Frontend
+// rund, eine Regel der Seite schlug die einfache Klasse. Die Übersicht steht
+// zudem auch außerhalb von `.man-pt` sicher (etwa in Tests).
+// Je Klasse einzeln: `man-outshine-host` verträgt keine Selektorliste.
+@each $part in (".man-pt-overview", ".man-pt-overview__track", ".man-pt-overview__window", ".man-pt-overview__handle") {
+  #{$part} {
+    @include man-outshine-host {
+      border-radius: 0 !important;
+    }
+  }
+}
+
 .man-pt-overview {
   position: relative;
   box-sizing: border-box;

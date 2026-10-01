@@ -22,7 +22,9 @@
  */
 
 import * as React from "react";
-import { ReactElement, useId, useState } from "react";
+import { ReactElement, useEffect, useId, useRef, useState } from "react";
+
+import { useReportValidity } from "./field-validity";
 
 /** Liefert die Fehlermeldung, oder `null`, wenn die Eingabe gültig ist. */
 export type Validator = (text: string) => string | null;
@@ -74,6 +76,10 @@ export interface DraftFieldProps {
   /** Verbirgt das Label optisch; Screenreader lesen es weiter vor. */
   hideLabel?: boolean;
   className?: string;
+  /**
+   * Fokus beim Erscheinen, Inhalt markiert: nach dem Anlegen steht dort
+   * „Neuer Meilenstein“, und das erste Tippen soll ihn ersetzen.
+   */
   autoFocus?: boolean;
 }
 
@@ -94,6 +100,15 @@ export function DraftField({
   const errorId = `${id}-error`;
   const draft = useDraft(value);
   const error = validate?.(draft.text) ?? null;
+  const fieldRef = useRef<HTMLInputElement & HTMLTextAreaElement>(null);
+  useReportValidity(id, error !== null);
+
+  useEffect(() => {
+    if (!autoFocus) return;
+    fieldRef.current?.focus();
+    fieldRef.current?.select();
+    // Nur beim Erscheinen; ein späteres Rendern soll den Fokus nicht holen.
+  }, []);
 
   const change = (text: string): void => {
     draft.setText(text);
@@ -107,7 +122,7 @@ export function DraftField({
   // beim Betreten nicht mit vor.
   const shared = {
     id,
-    autoFocus,
+    ref: fieldRef,
     value: draft.text,
     "aria-invalid": error !== null,
     "aria-describedby": error !== null ? errorId : undefined,
@@ -115,11 +130,20 @@ export function DraftField({
 
   return (
     <div className={`man-pt-editor__field${className ? ` ${className}` : ""}`}>
-      <label className={hideLabel ? "man-pt-editor__sr-only" : "man-pt-editor__label"} htmlFor={id}>
+      <label
+        className={
+          hideLabel ? "man-pt-editor__sr-only" : "man-pt-editor__label"
+        }
+        htmlFor={id}
+      >
         {label}
       </label>
       {multiline ? (
-        <textarea {...shared} className="man-pt-editor__textarea" onChange={(event) => change(event.target.value)} />
+        <textarea
+          {...shared}
+          className="man-pt-editor__textarea"
+          onChange={(event) => change(event.target.value)}
+        />
       ) : (
         <input
           {...shared}

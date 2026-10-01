@@ -26,6 +26,7 @@ import { inkFor } from "./color";
 import { GEOMETRY, LabelBox, PlacedBar, PlacedDeadline, PlacedMilestone } from "./lane-layout";
 import { accessibleName } from "./item-text";
 import { Plan, PlanItem, colorOf } from "./plan-model";
+import { symbolOf, symbolPath } from "./symbols";
 
 export interface ItemState {
   /** Der eine Tab-Stopp der Zeitfläche. */
@@ -98,13 +99,17 @@ export function MilestoneMarker(props: CommonProps & { placed: PlacedMilestone }
   const { item, cx, cy, label } = placed;
   const half = GEOMETRY.markerSize / 2;
   const style: Style = { left: cx - half, top: cy - half, "--pt-color": colorOf(plan, item) };
+  // Die Form kommt von der Kategorie, wie die Farbe (`symbols.ts`).
+  const symbol = symbolOf(plan, item);
   return (
     <button
       {...buttonProps(item, props)}
-      className={classes("man-pt__milestone", item, props.state, [`man-pt__milestone--${item.symbol ?? "diamond"}`])}
+      className={classes("man-pt__milestone", item, props.state, [`man-pt__milestone--${symbol}`])}
       style={style}
     >
-      <span className="man-pt__symbol" aria-hidden="true" />
+      <svg className="man-pt__symbol" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+        <path d={symbolPath(symbol)} />
+      </svg>
       {label !== null && <Label box={label} originX={cx - half} originY={cy - half} text={item.title} />}
     </button>
   );

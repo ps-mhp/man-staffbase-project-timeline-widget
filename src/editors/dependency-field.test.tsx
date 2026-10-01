@@ -21,7 +21,14 @@ import { findItem, testPlan } from "./test-plan.fixture";
 const plan = testPlan();
 
 const renderField = (id: string, onChange = jest.fn()) =>
-  render(<DependencyField plan={plan} item={findItem(plan, id) as LaneItem} locale="de-DE" onChange={onChange} />);
+  render(
+    <DependencyField
+      plan={plan}
+      item={findItem(plan, id) as LaneItem}
+      locale="de-DE"
+      onChange={onChange}
+    />,
+  );
 
 describe("DependencyField", () => {
   it("bietet die anderen Meilensteine und Zeiträume an, keine Stichtage", () => {
@@ -32,7 +39,9 @@ describe("DependencyField", () => {
       "Bauma07.04.2025",
       "SOP15.01.2026",
     ]);
-    expect(within(group).getByRole("checkbox", { name: /Bauma/ })).toBeChecked();
+    expect(
+      within(group).getByRole("checkbox", { name: /Bauma/ }),
+    ).toBeChecked();
   });
 
   it("fügt einen Vorgänger hinzu und nimmt einen weg", () => {
@@ -46,22 +55,42 @@ describe("DependencyField", () => {
 
   it("filtert die Auswahl über die Suche", () => {
     renderField("b1");
-    fireEvent.change(screen.getByLabelText("Vorgänger suchen"), { target: { value: "sop" } });
-    expect(screen.queryByRole("checkbox", { name: /Bauma/ })).not.toBeInTheDocument();
+    fireEvent.change(screen.getByLabelText("Vorgänger suchen"), {
+      target: { value: "sop" },
+    });
+    expect(
+      screen.queryByRole("checkbox", { name: /Bauma/ }),
+    ).not.toBeInTheDocument();
     expect(screen.getByRole("checkbox", { name: /SOP/ })).toBeInTheDocument();
   });
 
   it("sagt, wenn die Suche nichts findet, und zählt die gewählten", () => {
     renderField("b1");
     expect(screen.getByText("1 gewählt")).toBeInTheDocument();
-    fireEvent.change(screen.getByLabelText("Vorgänger suchen"), { target: { value: "gibt es nicht" } });
-    expect(screen.getByText("Kein Eintrag passt zur Suche.")).toBeInTheDocument();
+    fireEvent.change(screen.getByLabelText("Vorgänger suchen"), {
+      target: { value: "gibt es nicht" },
+    });
+    expect(
+      screen.getByText("Kein Eintrag passt zur Suche."),
+    ).toBeInTheDocument();
   });
 
   it("sagt, wenn es noch keinen möglichen Vorgänger gibt", () => {
-    const lonely = { ...plan, items: [findItem(plan, "m1"), findItem(plan, "d1")] };
-    render(<DependencyField plan={lonely} item={findItem(lonely, "m1") as LaneItem} locale="de-DE" onChange={jest.fn()} />);
-    expect(screen.getByText(/noch keine anderen Meilensteine oder Zeiträume/)).toBeInTheDocument();
+    const lonely = {
+      ...plan,
+      items: [findItem(plan, "m1"), findItem(plan, "d1")],
+    };
+    render(
+      <DependencyField
+        plan={lonely}
+        item={findItem(lonely, "m1") as LaneItem}
+        locale="de-DE"
+        onChange={jest.fn()}
+      />,
+    );
+    expect(
+      screen.getByText(/noch keine anderen Meilensteine oder Zeiträume/),
+    ).toBeInTheDocument();
     expect(screen.queryByLabelText("Vorgänger suchen")).not.toBeInTheDocument();
   });
 });
