@@ -519,6 +519,34 @@ describe("verknüpfte Inhalte in der Leseansicht", () => {
     expect(within(table).getByRole("button", { name: "Beitrag öffnen: Bauma" })).toBeInTheDocument();
   });
 
+  const ATTACHMENTS = [
+    { mediaId: "m1", url: "/api/media/secure/external/v2/raw/upload/plan.pdf", fileName: "plan.pdf", kind: "file" as const, label: "Ablaufplan" },
+    { mediaId: "m2", url: "/api/media/secure/external/v2/image/upload/bild.png", fileName: "bild.png", kind: "image" as const },
+  ];
+
+  const withAttachments = (id: string) => {
+    const plan = linkedPlan();
+    return { ...plan, items: plan.items.map((entry) => (entry.id === id ? { ...entry, attachments: ATTACHMENTS } : entry)) };
+  };
+
+  it("zeigt die Anhänge im Modal neben dem Inhalt", () => {
+    renderTimeline({ plan: withAttachments("fair-iaa-26") });
+    fireEvent.click(item(/^Meilenstein: IAA, 15\. September 2026/));
+
+    const aside = within(screen.getByRole("dialog", { name: "IAA" })).getByRole("complementary");
+    expect(within(aside).getByRole("link", { name: /Ablaufplan/ })).toHaveAttribute("download", "plan.pdf");
+    expect(within(aside).getByRole("img", { name: "bild.png" })).toHaveAttribute("src", ATTACHMENTS[1].url);
+  });
+
+  it("zeigt die Anhänge eines Eintrags ohne Inhalt in seinen Details", () => {
+    renderTimeline({ plan: withAttachments("fair-iaa-28") });
+    fireEvent.click(item(/^Meilenstein: IAA, 19\. September 2028/));
+
+    const details = screen.getByRole("dialog", { name: "IAA" });
+    expect(within(details).getByRole("list", { name: "Anhänge" })).toBeInTheDocument();
+    expect(within(details).getByRole("link", { name: /Ablaufplan/ })).toHaveAttribute("href", ATTACHMENTS[0].url);
+  });
+
   it("wählt im Editor den Eintrag aus, statt etwas zu öffnen", () => {
     const onSelectItem = jest.fn();
     renderTimeline({ plan: linkedPlan(), mode: "editor", onSelectItem });

@@ -186,3 +186,47 @@ describe("Übersetzung des Plans", () => {
     expect(isTranslatedPlanHtml("<p>Ein Artikel</p>")).toBe(false);
   });
 });
+
+describe("Übersetzung der Anhänge", () => {
+  const withAttachments: Plan = {
+    ...plan,
+    items: plan.items.map((item, index) =>
+      index === 0
+        ? {
+            ...item,
+            attachments: [
+              { mediaId: "m1", url: "/api/media/secure/a.pdf", fileName: "a.pdf", kind: "file" as const, label: "Ablaufplan" },
+              { mediaId: "m2", url: "/api/media/secure/b.pdf", fileName: "b.pdf", kind: "file" as const },
+            ],
+          }
+        : item,
+    ),
+  };
+
+  it("verpackt die Beschriftung eines Anhangs, nicht aber Dateiname und Adresse", () => {
+    const html = planToTranslatable(withAttachments);
+    expect(html).toContain("Ablaufplan");
+    expect(html).not.toContain("a.pdf");
+    expect(html).not.toContain("/api/media");
+  });
+
+  it("übernimmt die übersetzte Beschriftung am richtigen Anhang", () => {
+    const translated = planFromTranslated(translate(planToTranslatable(withAttachments), { Ablaufplan: "Schedule" }), withAttachments);
+    expect(translated.items[0].attachments).toEqual([
+      { ...withAttachments.items[0].attachments![0], label: "Schedule" },
+      withAttachments.items[0].attachments![1],
+    ]);
+  });
+
+  it("erfindet keine Beschriftung, wo keine war", () => {
+    const html = planToTranslatable(withAttachments).replace(
+      "</section>",
+      '</section><section data-plan-part="attachment" data-id="i-c4s" data-media="m2"><p data-field="label">Erfunden</p></section>',
+    );
+    expect(planFromTranslated(html, withAttachments).items[0].attachments![1]).not.toHaveProperty("label");
+  });
+
+  it("überlebt den Rundlauf unverändert, wenn nichts übersetzt wurde", () => {
+    expect(planFromTranslated(planToTranslatable(withAttachments), withAttachments)).toEqual(withAttachments);
+  });
+});

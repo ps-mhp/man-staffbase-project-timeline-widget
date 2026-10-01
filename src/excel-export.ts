@@ -97,9 +97,11 @@ interface Column {
  */
 const excelDate = (day: DayNumber): Date => new Date(day * MS_PER_DAY);
 
-/** Die volle Adresse eines Inhalts: die Datei verlässt die App, ein Pfad allein führte nirgendwohin. */
+/** Die volle Adresse: die Datei verlässt die App, ein Pfad allein führte nirgendwohin. */
+const absolute = (href: string): string => new URL(href, window.location.origin).href;
+
 const link = (href: string): Hyperlink => {
-  const url = new URL(href, window.location.origin).href;
+  const url = absolute(href);
   return { text: url, hyperlink: url };
 };
 
@@ -127,6 +129,11 @@ const COLUMNS: readonly Column[] = [
   { header: "Vorgänger", value: (row) => text(row.predecessors.join("; ")) },
   { header: "Beschreibung", value: (row) => text(row.description) },
   { header: "Inhalt", value: (row) => (row.content === null ? null : link(row.content.href)) },
+  // Mehrere Anhänge in einer Zelle, je Zeile einer: Excel kennt je Zelle nur einen Link.
+  {
+    header: "Anhänge",
+    value: (row) => text(row.attachments.map((entry) => `${entry.name} (${absolute(entry.href)})`).join("\n")),
+  },
 ];
 
 /** Die längste Zeile eines Texts in Zeichen — ein Umbruch in der Zelle macht sie nicht breiter. */

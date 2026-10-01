@@ -224,9 +224,24 @@ etwa die Seite mit allen Infos zu einem Software-Update. Der Plan bleibt der
    sehen sie aber erst nach dem Veröffentlichen.
 4. **In neuem Tab öffnen** zeigt, was verknüpft ist.
 
+Unter der Verknüpfung stehen die **Anhänge**: Dateien und Bilder aus der
+Medienbibliothek von Staffbase, bis zu zehn je Eintrag.
+
+1. Klicken Sie im Reiter **Inhalt** auf **Datei oder Bild hinzufügen …** und
+   wählen Sie in der Medienbibliothek eine Datei aus — oder laden Sie dort eine
+   neue hoch.
+2. Geben Sie ihr bei Bedarf eine **Beschriftung**; sonst steht dort der
+   Dateiname.
+3. Mit **↑** und **↓** ändern Sie die Reihenfolge, **×** entfernt den Anhang.
+
+Anhänge bleiben hinter der Anmeldung: Leser:innen öffnen sie mit ihren eigenen
+Rechten, wie jede Datei aus der Medienbibliothek.
+
 Auf der Seite ist die Beschriftung eines verknüpften Eintrags unterstrichen.
 Ein Klick darauf öffnet die Seite oder den Beitrag in einem Fenster über dem
-Plan, statt der Details; **In neuem Tab öffnen** steht dort immer oben. Mit
+Plan, statt der Details; **In neuem Tab öffnen** steht dort immer oben, die
+Anhänge stehen daneben. Bei einem Eintrag ohne verknüpften Inhalt zeigen die
+Details seine Anhänge. Mit
 **Verknüpfung: Keine** lösen Sie die Verknüpfung wieder.
 
 ## Einträge duplizieren und löschen

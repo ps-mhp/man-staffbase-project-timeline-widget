@@ -70,6 +70,27 @@ describe("KIND_LABELS", () => {
 describe("planRows", () => {
   const rows = planRows(plan, plan.items);
 
+  it("nennt die Anhänge mit Beschriftung und Adresse", () => {
+    const withFiles: Plan = {
+      ...plan,
+      items: plan.items.map((entry, index) =>
+        index === 0
+          ? {
+              ...entry,
+              attachments: [
+                { mediaId: "m1", url: "/api/media/secure/a.pdf", fileName: "a.pdf", kind: "file", label: "Ablaufplan" },
+                { mediaId: "m2", url: "/api/media/secure/b.png", fileName: "b.png", kind: "image" },
+              ],
+            }
+          : entry,
+      ),
+    };
+    expect(planRows(withFiles, withFiles.items.slice(0, 1))[0].attachments).toEqual([
+      { name: "Ablaufplan", href: "/api/media/secure/a.pdf" },
+      { name: "b.png", href: "/api/media/secure/b.png" },
+    ]);
+  });
+
   it("nennt Art und Leseadresse eines verknüpften Inhalts", () => {
     const linked: Plan = {
       ...plan,
@@ -100,6 +121,7 @@ describe("planRows", () => {
       predecessors: [],
       description: "Erste\nPhase",
       content: null,
+      attachments: [],
     });
   });
 
@@ -119,6 +141,7 @@ describe("planRows", () => {
       predecessors: ["IAA", "Alpha"],
       description: "",
       content: null,
+      attachments: [],
     });
   });
 

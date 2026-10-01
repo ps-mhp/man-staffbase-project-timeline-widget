@@ -24,6 +24,7 @@
  * Felder eine spätere Version geschrieben haben kann.
  */
 
+import type { AttachmentEntry } from "@shared/content-modal/attachment-list";
 import { isMediaUrl, isStaffbaseId, pageHref, postHref } from "@shared/staffbase/ids";
 
 export type LinkedContent =
@@ -117,4 +118,20 @@ export function readAttachments(value: unknown): { attachments?: Attachment[]; d
 /** Die Leseadresse eines Inhalts — für „In neuem Tab öffnen“ und den Export. */
 export function contentHref(content: LinkedContent): string {
   return content.kind === "page" ? pageHref(content.menuId) : postHref(content.id);
+}
+
+/** Die Anhänge, wie die Leseansicht sie zeigt: die Beschriftung, sonst der Dateiname. */
+export function attachmentEntries(attachments: readonly Attachment[] | undefined): AttachmentEntry[] {
+  return (attachments ?? []).map((attachment) => {
+    const entry: AttachmentEntry = {
+      id: attachment.mediaId,
+      url: attachment.url,
+      name: attachment.label ?? attachment.fileName,
+      fileName: attachment.fileName,
+      kind: attachment.kind,
+    };
+    if (attachment.width !== undefined) entry.width = attachment.width;
+    if (attachment.height !== undefined) entry.height = attachment.height;
+    return entry;
+  });
 }

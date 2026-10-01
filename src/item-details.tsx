@@ -21,10 +21,12 @@
 
 import React, { CSSProperties, ReactElement, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 
+import { AttachmentList } from "@shared/content-modal/attachment-list";
 import { Placement, placePopover } from "@shared/popover-placement";
 
 import { trapTab } from "./focus-trap";
 import { kindAndTerm } from "./item-text";
+import { attachmentEntries } from "./linked-content";
 import { SymbolGlyph } from "./symbol-glyph";
 import { symbolOf } from "./symbols";
 import { Plan, PlanItem, categoryOf, colorOf, isLaneItem } from "./plan-model";
@@ -88,6 +90,7 @@ function Body({ plan, item, locale, onSelect }: Pick<ItemDetailsProps, "plan" | 
       {item.description !== undefined && <p className="man-pt__details-description">{item.description}</p>}
       <Links title="Vorgänger" items={predecessors} onSelect={onSelect} />
       <Links title="Nachfolger" items={successors} onSelect={onSelect} />
+      <AttachmentList entries={attachmentEntries(item.attachments)} flush />
     </>
   );
 }

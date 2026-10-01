@@ -54,6 +54,8 @@ export interface PlanRow {
   description: string;
   /** Der verknüpfte Inhalt mit Leseadresse, oder `null`. */
   content: { kind: LinkedContent["kind"]; label: "Seite" | "Beitrag"; href: string } | null;
+  /** Die Anhänge: Beschriftung (sonst Dateiname) und Adresse. */
+  attachments: { name: string; href: string }[];
 }
 
 /**
@@ -104,6 +106,10 @@ function rankedRows(plan: Plan, items: readonly PlanItem[]): RankedRow[] {
         item.content === undefined
           ? null
           : { kind: item.content.kind, label: item.content.kind === "page" ? "Seite" : "Beitrag", href: contentHref(item.content) },
+      attachments: (item.attachments ?? []).map((attachment) => ({
+        name: attachment.label ?? attachment.fileName,
+        href: attachment.url,
+      })),
     };
     return { row, laneRank: isLaneItem(item) ? (lane?.index ?? plan.lanes.length) : deadlineRank };
   });

@@ -13,7 +13,7 @@
 
 /**
  * Der Unterreiter „Inhalt“: welche Staffbase-Seite oder welchen News-Beitrag
- * die Leseansicht beim Klick auf den Eintrag öffnet.
+ * die Leseansicht beim Klick auf den Eintrag öffnet, darunter die Anhänge.
  *
  * Erst die Art, dann die Auswahl — bei News erst der Kanal, dann der Beitrag.
  * Ein Wechsel der Art löst eine bestehende Verknüpfung gleich: sonst zeigte
@@ -27,6 +27,7 @@ import { ReactElement, useState } from "react";
 
 import { contentHref } from "../linked-content";
 import { LinkedContent } from "../plan-model";
+import { AttachmentsField } from "./attachments-field";
 import { PanelProps, SelectField } from "./item-form-panels";
 import { setContent } from "./link-edits";
 import {
@@ -184,6 +185,7 @@ export function ContentPanel({ plan, item, onPlanChange }: PanelProps): ReactEle
         />
       )}
       {content !== undefined && <Summary content={content} />}
+      <AttachmentsField plan={plan} item={item} onPlanChange={onPlanChange} />
     </>
   );
 }

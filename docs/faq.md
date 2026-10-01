@@ -36,6 +36,13 @@ Kanal steht, den Sie nicht sehen dürfen. Veröffentlichen Sie den Beitrag bzw.
 prüfen Sie die Sichtbarkeit des Kanals. **In neuem Tab öffnen** zeigt, was
 Staffbase selbst dazu sagt.
 
+**Frage:** Ein Anhang lässt sich nicht öffnen.
+
+Antwort: Anhänge kommen aus der Medienbibliothek von Staffbase und werden mit
+den Rechten der lesenden Person geladen. Wurde die Datei dort gelöscht oder ist
+sie für diese Person nicht sichtbar, schlägt das Öffnen fehl. Prüfen Sie die
+Datei in der Medienbibliothek und hängen Sie sie bei Bedarf neu an.
+
 **Frage:** Oben im Plan-Editor steht „N Verknüpfungen konnten nicht gelesen
 werden und gehen beim Speichern verloren.“
 

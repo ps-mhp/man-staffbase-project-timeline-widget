@@ -22,30 +22,38 @@
  * `data-plan-part`/`data-id` und jedes Feld einer mit `data-field` ist, und
  * danach wieder herausgelesen. Vorbild: `hotspot-image-widget/src/translation-payload.ts`.
  *
+ * Die Beschriftungen der Anhänge reisen als eigene Teile mit (Eintrag und
+ * Medium als Schlüssel); Dateinamen und Adressen nicht.
+ *
  * Kennungen, Termine, Farben, Verweise und `series` reisen nicht mit. Das ist
  * keine Sprache — und `series` ist ein Schlüssel: zwei verschieden übersetzte
  * Fassungen desselben Namens rissen eine Serie auseinander.
  */
 
-import { Category, Lane, Plan, PlanItem } from "./plan-model";
+import { Attachment, Category, Lane, Plan, PlanItem } from "./plan-model";
 
 /** Kennzeichnet die Teile des Dokuments; zugleich der Beleg, dass eine Antwort von hier stammt. */
 const PART_ATTRIBUTE = "data-plan-part";
 const ID_ATTRIBUTE = "data-id";
 const FIELD_ATTRIBUTE = "data-field";
+/** Nur an Anhängen: das Medium; die Kennung des Teils ist die des Eintrags. */
+const MEDIA_ATTRIBUTE = "data-media";
 
-type PartName = "plan" | "lane" | "category" | "item";
+type PartName = "plan" | "lane" | "category" | "item" | "attachment";
 
 /** Die Überschrift gibt es nur einmal; ihr Teil braucht trotzdem eine Kennung. */
 const PLAN_ID = "plan";
 
 /** Die Felder, die je Teil übersetzt werden. */
-type FieldName = "title" | "description";
+type FieldName = "title" | "description" | "label";
 
 type Fields = ReadonlyMap<FieldName, string>;
 
 /** Ebene und Eintrag dürfen dieselbe Kennung tragen; erst mit dem Teil ist der Schlüssel eindeutig. */
 const partKey = (part: PartName, id: string): string => `${part}\u0000${id}`;
+
+/** Ein Anhang ist erst mit Eintrag und Medium eindeutig — dasselbe Medium kann an mehreren Einträgen hängen. */
+const attachmentId = (itemId: string, mediaId: string): string => `${itemId}\u0000${mediaId}`;
 
 /**
  * Schreibt Text als Knoten, Zeilenumbrüche als `<br>`.
@@ -72,10 +80,16 @@ function appendText(target: HTMLElement, text: string): void {
 export function planToTranslatable(plan: Plan): string {
   const container = document.createElement("div");
 
-  const addPart = (part: PartName, id: string, fields: ReadonlyArray<[FieldName, string | undefined]>): void => {
+  const addPart = (
+    part: PartName,
+    id: string,
+    fields: ReadonlyArray<[FieldName, string | undefined]>,
+    media?: string,
+  ): void => {
     const section = document.createElement("section");
     section.setAttribute(PART_ATTRIBUTE, part);
     section.setAttribute(ID_ATTRIBUTE, id);
+    if (media !== undefined) section.setAttribute(MEDIA_ATTRIBUTE, media);
     for (const [name, text] of fields) {
       if (text === undefined || text.trim() === "") continue;
       const field = document.createElement("p");
@@ -89,12 +103,15 @@ export function planToTranslatable(plan: Plan): string {
   addPart("plan", PLAN_ID, [["title", plan.title]]);
   plan.lanes.forEach((lane) => addPart("lane", lane.id, [["title", lane.title]]));
   plan.categories.forEach((category) => addPart("category", category.id, [["title", category.title]]));
-  plan.items.forEach((item) =>
+  plan.items.forEach((item) => {
     addPart("item", item.id, [
       ["title", item.title],
       ["description", item.description],
-    ]),
-  );
+    ]);
+    (item.attachments ?? []).forEach((attachment) =>
+      addPart("attachment", item.id, [["label", attachment.label]], attachment.mediaId),
+    );
+  });
 
   return container.innerHTML;
 }
@@ -107,9 +124,10 @@ function readText(node: Node): string {
 }
 
 const isPartName = (value: string | null): value is PartName =>
-  value === "plan" || value === "lane" || value === "category" || value === "item";
+  value === "plan" || value === "lane" || value === "category" || value === "item" || value === "attachment";
 
-const isFieldName = (value: string | null): value is FieldName => value === "title" || value === "description";
+const isFieldName = (value: string | null): value is FieldName =>
+  value === "title" || value === "description" || value === "label";
 
 /**
  * Alle übersetzten Felder, nach Teil und Kennung.
@@ -128,7 +146,9 @@ function readParts(html: string): ReadonlyMap<string, Fields> {
     const part = section.getAttribute(PART_ATTRIBUTE);
     const id = section.getAttribute(ID_ATTRIBUTE);
     if (!isPartName(part) || id === null) return;
-    const key = partKey(part, id);
+    const media = section.getAttribute(MEDIA_ATTRIBUTE);
+    if (part === "attachment" && media === null) return;
+    const key = partKey(part, part === "attachment" ? attachmentId(id, media as string) : id);
     if (parts.has(key)) return;
 
     const fields = new Map<FieldName, string>();
@@ -164,12 +184,19 @@ const translateCategory = (category: Category, fields: Fields): Category => ({
 });
 
 /** Nur was vorher da war, wird übersetzt: eine Beschreibung, die der Dienst erfindet, fällt weg. */
-function translateItem(item: PlanItem, fields: Fields): PlanItem {
+function translateItem(item: PlanItem, fields: Fields, attachmentFields: (mediaId: string) => Fields): PlanItem {
   const title = pick(fields, "title", item.title);
-  return item.description === undefined
-    ? { ...item, title }
-    : { ...item, title, description: pick(fields, "description", item.description) };
+  const translated: PlanItem =
+    item.description === undefined
+      ? { ...item, title }
+      : { ...item, title, description: pick(fields, "description", item.description) };
+  if (item.attachments === undefined) return translated;
+  return { ...translated, attachments: item.attachments.map((attachment) => translateAttachment(attachment, attachmentFields(attachment.mediaId))) };
 }
+
+/** Wie bei der Beschreibung: eine Beschriftung, die der Dienst erfindet, fällt weg. */
+const translateAttachment = (attachment: Attachment, fields: Fields): Attachment =>
+  attachment.label === undefined ? attachment : { ...attachment, label: pick(fields, "label", attachment.label) };
 
 /** Wie bei der Beschreibung: eine Überschrift, die der Dienst erfindet, fällt weg. */
 function translateTitle(plan: Plan, fields: Fields): Plan {
@@ -191,7 +218,9 @@ export function planFromTranslated(html: string, plan: Plan): Plan {
     ...translateTitle(plan, fieldsOf("plan", PLAN_ID)),
     lanes: plan.lanes.map((lane) => translateLane(lane, fieldsOf("lane", lane.id))),
     categories: plan.categories.map((category) => translateCategory(category, fieldsOf("category", category.id))),
-    items: plan.items.map((item) => translateItem(item, fieldsOf("item", item.id))),
+    items: plan.items.map((item) =>
+      translateItem(item, fieldsOf("item", item.id), (mediaId) => fieldsOf("attachment", attachmentId(item.id, mediaId))),
+    ),
   };
 }
 

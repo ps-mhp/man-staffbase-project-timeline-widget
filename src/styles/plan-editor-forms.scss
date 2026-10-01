@@ -253,3 +253,75 @@
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: local.$space-m;
 }
+
+// --- Anhänge im Reiter „Inhalt“ ----
+
+.man-pt-editor__attachments {
+  display: flex;
+  flex-direction: column;
+  gap: local.$space-s;
+  margin-top: local.$space-m;
+  padding-top: local.$space-m;
+  border-top: local.$hairline;
+}
+
+.man-pt-editor__subheading {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: chrome.$text-strong;
+}
+
+.man-pt-editor__attachment-list {
+  display: flex;
+  flex-direction: column;
+  gap: local.$space-xs;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// Typ · Name · Beschriftung · Knöpfe; schmal bricht die Beschriftung um.
+.man-pt-editor__attachment {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(120px, 1fr) auto;
+  gap: local.$space-s;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.man-pt-editor__attachment-kind {
+  min-width: 40px;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  color: chrome.$text-muted;
+  background: chrome.$surface-muted;
+  border: local.$hairline;
+  border-radius: chrome.$radius-small;
+}
+
+.man-pt-editor__attachment-name {
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: chrome.$text;
+}
+
+.man-pt-editor__attachment-actions {
+  display: inline-flex;
+  gap: local.$space-xs;
+}
+
+@media (max-width: 640px) {
+  .man-pt-editor__attachment {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .man-pt-editor__attachment-label {
+    grid-column: 1 / -1;
+  }
+}

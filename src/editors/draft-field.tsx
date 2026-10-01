@@ -75,6 +75,8 @@ export interface DraftFieldProps {
   list?: string;
   /** Verbirgt das Label optisch; Screenreader lesen es weiter vor. */
   hideLabel?: boolean;
+  /** Sichtbarer Hinweis im leeren Feld — wo das Label verborgen ist, sagt er, wofür es da ist. */
+  placeholder?: string;
   className?: string;
   /**
    * Fokus beim Erscheinen, Inhalt markiert: nach dem Anlegen steht dort
@@ -93,6 +95,7 @@ export function DraftField({
   multiline = false,
   list,
   hideLabel = false,
+  placeholder,
   className,
   autoFocus = false,
 }: DraftFieldProps): ReactElement {
@@ -149,6 +152,7 @@ export function DraftField({
           {...shared}
           type={type}
           list={list}
+          placeholder={placeholder}
           className="man-pt-editor__input"
           onChange={(event) => change(event.target.value)}
         />

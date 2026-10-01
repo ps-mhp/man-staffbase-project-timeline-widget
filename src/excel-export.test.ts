@@ -34,6 +34,7 @@ const baseRow: Omit<PlanRow, "id" | "kind" | "kindLabel" | "title" | "start" | "
   predecessors: [],
   description: "",
   content: null,
+  attachments: [],
 };
 
 const rows: PlanRow[] = [
@@ -95,7 +96,10 @@ function valuesOf(sheet: ExcelJS.Worksheet, columns: number): ExcelJS.CellValue[
   return table;
 }
 
-const HEADER = ["Ebene", "Art", "Titel", "Kategorie", "Beginn", "Ende", "Serie", "Vorläufig", "Vorgänger", "Beschreibung", "Inhalt"];
+/** Die Spaltenbreite, die ExcelJS nicht schreibt (siehe „gibt jeder Spalte eine Breite …“). */
+const EXCELJS_DEFAULT_WIDTH = 9;
+
+const HEADER = ["Ebene", "Art", "Titel", "Kategorie", "Beginn", "Ende", "Serie", "Vorläufig", "Vorgänger", "Beschreibung", "Inhalt", "Anhänge"];
 
 describe("buildWorkbookBuffer", () => {
   it("liefert einen ArrayBuffer mit den Blättern „Planung“ und „Info“", async () => {
@@ -127,9 +131,10 @@ describe("buildWorkbookBuffer", () => {
           "C4S TG Assist; 0-Serie",
           "Erste\nZeile",
           null,
+          null,
         ],
-        ["Launches / SOPs", "Zeitraum", "TMS1", null, utc("2028-01-01"), utc("2030-06-30"), null, null, null, null, null],
-        ["Alle Ebenen", "Stichtag", "§ Euro 7", "General", utc("2029-05-01"), null, null, null, null, null, null],
+        ["Launches / SOPs", "Zeitraum", "TMS1", null, utc("2028-01-01"), utc("2030-06-30"), null, null, null, null, null, null],
+        ["Alle Ebenen", "Stichtag", "§ Euro 7", "General", utc("2029-05-01"), null, null, null, null, null, null, null],
       ]);
     });
 
@@ -145,12 +150,14 @@ describe("buildWorkbookBuffer", () => {
       HEADER.forEach((_, index) => expect(sheet.getCell(1, index + 1).font?.bold).toBe(true));
       expect(sheet.getCell("A2").font?.bold).not.toBe(true);
       expect(sheet.views).toEqual([expect.objectContaining({ state: "frozen", ySplit: 1 })]);
-      expect(sheet.autoFilter).toBe("A1:K4");
+      expect(sheet.autoFilter).toBe("A1:L4");
     });
 
     it("gibt jeder Spalte eine Breite, die Datumswerte fasst und nicht ausufert", () => {
       HEADER.forEach((_, index) => {
-        const width = sheet.getColumn(index + 1).width as number;
+        // Breite 9 ist die Vorgabe von ExcelJS und wird nicht geschrieben —
+        // zurückgelesen fehlt sie dann; Excel zeigt die Spalte in Standardbreite.
+        const width = sheet.getColumn(index + 1).width ?? EXCELJS_DEFAULT_WIDTH;
         expect(width).toBeGreaterThanOrEqual(8);
         expect(width).toBeLessThanOrEqual(60);
       });
@@ -174,7 +181,22 @@ describe("buildWorkbookBuffer", () => {
     };
     const sheet = sheetOf(await readBack(await buildWorkbookBuffer(request({ rows: [linked] }))), "Planung");
     const url = `${window.location.origin}/content/page/6abe2602f70f4a552a0470c4`;
-    expect(sheet.getCell(2, HEADER.length).value).toEqual({ text: url, hyperlink: url });
+    expect(sheet.getCell(2, HEADER.indexOf("Inhalt") + 1).value).toEqual({ text: url, hyperlink: url });
+  });
+
+  it("nennt die Anhänge zeilenweise mit voller Adresse", async () => {
+    const linked: PlanRow = {
+      ...rows[1],
+      attachments: [
+        { name: "Ablaufplan", href: "/api/media/secure/a.pdf" },
+        { name: "b.png", href: "/api/media/secure/b.png" },
+      ],
+    };
+    const sheet = sheetOf(await readBack(await buildWorkbookBuffer(request({ rows: [linked] }))), "Planung");
+    const origin = window.location.origin;
+    expect(sheet.getCell(2, HEADER.indexOf("Anhänge") + 1).value).toBe(
+      `Ablaufplan (${origin}/api/media/secure/a.pdf)\nb.png (${origin}/api/media/secure/b.png)`,
+    );
   });
 
   it("begrenzt die Breite auch bei sehr langem Text", async () => {
@@ -195,7 +217,7 @@ describe("buildWorkbookBuffer", () => {
   it("schreibt ohne Einträge nur die Kopfzeile", async () => {
     const sheet = sheetOf(await readBack(await buildWorkbookBuffer(request({ rows: [] }))), "Planung");
     expect(valuesOf(sheet, HEADER.length)).toEqual([HEADER]);
-    expect(sheet.autoFilter).toBe("A1:K1");
+    expect(sheet.autoFilter).toBe("A1:L1");
   });
 
   describe("Blatt „Info“", () => {

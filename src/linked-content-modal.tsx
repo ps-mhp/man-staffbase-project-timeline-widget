@@ -17,11 +17,13 @@
  * API-Key, also mit genau den Rechten, die sie ohnehin hat. Im Kopf stehen
  * Titel, Art, Termin und Kategorie des Eintrags und immer „In neuem Tab
  * öffnen“: auch wenn der Beitrag hier nicht lädt, führt der Link weiter.
+ * Anhänge stehen daneben, auf schmalen Bildschirmen darunter.
  */
 
 import * as React from "react";
 import { ReactElement, useCallback, useEffect, useState } from "react";
 
+import { AttachmentList } from "@shared/content-modal/attachment-list";
 import { ContentModal } from "@shared/content-modal/content-modal";
 import { PageFrame } from "@shared/content-modal/page-frame";
 import { PostBody } from "@shared/staffbase/post-body";
@@ -29,7 +31,7 @@ import { ensurePostStyles } from "@shared/staffbase/post-styles";
 import { Post, PostContent, pickLocalizedContent, requestPost, userLocales } from "@shared/staffbase/posts";
 
 import { kindAndTerm } from "./item-text";
-import { contentHref } from "./linked-content";
+import { attachmentEntries, contentHref } from "./linked-content";
 import { Plan, PlanItem, categoryOf } from "./plan-model";
 
 const LOADING = "Beitrag wird geladen …";
@@ -92,9 +94,17 @@ export function LinkedContentModal({ plan, item, locale, onClose, container }: L
   if (content === undefined) return null;
   const href = contentHref(content);
   const meta = [kindAndTerm(item, locale), categoryOf(plan, item)?.title].filter(Boolean).join(" · ");
+  const attachments = attachmentEntries(item.attachments);
 
   return (
-    <ContentModal title={item.title} meta={meta} href={href} onClose={onClose} container={container}>
+    <ContentModal
+      title={item.title}
+      meta={meta}
+      href={href}
+      onClose={onClose}
+      container={container}
+      aside={attachments.length > 0 ? <AttachmentList entries={attachments} /> : undefined}
+    >
       {content.kind === "page" ? <PageFrame href={href} title={item.title} /> : <NewsContent postId={content.id} />}
     </ContentModal>
   );
