@@ -22,6 +22,7 @@
 
 import { DayNumber } from "./calendar";
 import { ItemKind, Plan, PlanItem, categoryOf, colorOf, isLaneItem, itemEndDay, itemStartDay } from "./plan-model";
+import { LinkedContent, contentHref } from "./linked-content";
 
 export const KIND_LABELS: Record<ItemKind, string> = {
   milestone: "Meilenstein",
@@ -51,6 +52,8 @@ export interface PlanRow {
   /** Titel, in der Reihenfolge von `dependsOn`. */
   predecessors: string[];
   description: string;
+  /** Der verknüpfte Inhalt mit Leseadresse, oder `null`. */
+  content: { kind: LinkedContent["kind"]; label: "Seite" | "Beitrag"; href: string } | null;
 }
 
 /**
@@ -97,6 +100,10 @@ function rankedRows(plan: Plan, items: readonly PlanItem[]): RankedRow[] {
       tentative: item.tentative === true,
       predecessors,
       description: item.description ?? "",
+      content:
+        item.content === undefined
+          ? null
+          : { kind: item.content.kind, label: item.content.kind === "page" ? "Seite" : "Beitrag", href: contentHref(item.content) },
     };
     return { row, laneRank: isLaneItem(item) ? (lane?.index ?? plan.lanes.length) : deadlineRank };
   });

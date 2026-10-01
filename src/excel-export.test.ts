@@ -33,6 +33,7 @@ const baseRow: Omit<PlanRow, "id" | "kind" | "kindLabel" | "title" | "start" | "
   tentative: false,
   predecessors: [],
   description: "",
+  content: null,
 };
 
 const rows: PlanRow[] = [
@@ -94,7 +95,7 @@ function valuesOf(sheet: ExcelJS.Worksheet, columns: number): ExcelJS.CellValue[
   return table;
 }
 
-const HEADER = ["Ebene", "Art", "Titel", "Kategorie", "Beginn", "Ende", "Serie", "Vorläufig", "Vorgänger", "Beschreibung"];
+const HEADER = ["Ebene", "Art", "Titel", "Kategorie", "Beginn", "Ende", "Serie", "Vorläufig", "Vorgänger", "Beschreibung", "Inhalt"];
 
 describe("buildWorkbookBuffer", () => {
   it("liefert einen ArrayBuffer mit den Blättern „Planung“ und „Info“", async () => {
@@ -125,9 +126,10 @@ describe("buildWorkbookBuffer", () => {
           "ja",
           "C4S TG Assist; 0-Serie",
           "Erste\nZeile",
+          null,
         ],
-        ["Launches / SOPs", "Zeitraum", "TMS1", null, utc("2028-01-01"), utc("2030-06-30"), null, null, null, null],
-        ["Alle Ebenen", "Stichtag", "§ Euro 7", "General", utc("2029-05-01"), null, null, null, null, null],
+        ["Launches / SOPs", "Zeitraum", "TMS1", null, utc("2028-01-01"), utc("2030-06-30"), null, null, null, null, null],
+        ["Alle Ebenen", "Stichtag", "§ Euro 7", "General", utc("2029-05-01"), null, null, null, null, null, null],
       ]);
     });
 
@@ -143,7 +145,7 @@ describe("buildWorkbookBuffer", () => {
       HEADER.forEach((_, index) => expect(sheet.getCell(1, index + 1).font?.bold).toBe(true));
       expect(sheet.getCell("A2").font?.bold).not.toBe(true);
       expect(sheet.views).toEqual([expect.objectContaining({ state: "frozen", ySplit: 1 })]);
-      expect(sheet.autoFilter).toBe("A1:J4");
+      expect(sheet.autoFilter).toBe("A1:K4");
     });
 
     it("gibt jeder Spalte eine Breite, die Datumswerte fasst und nicht ausufert", () => {
@@ -165,6 +167,16 @@ describe("buildWorkbookBuffer", () => {
     });
   });
 
+  it("verlinkt einen verknüpften Inhalt mit seiner vollen Adresse", async () => {
+    const linked: PlanRow = {
+      ...rows[1],
+      content: { kind: "page", label: "Seite", href: "/content/page/6abe2602f70f4a552a0470c4" },
+    };
+    const sheet = sheetOf(await readBack(await buildWorkbookBuffer(request({ rows: [linked] }))), "Planung");
+    const url = `${window.location.origin}/content/page/6abe2602f70f4a552a0470c4`;
+    expect(sheet.getCell(2, HEADER.length).value).toEqual({ text: url, hyperlink: url });
+  });
+
   it("begrenzt die Breite auch bei sehr langem Text", async () => {
     const long = { ...rows[0], description: "x".repeat(500) };
     const sheet = sheetOf(await readBack(await buildWorkbookBuffer(request({ rows: [long] }))), "Planung");
@@ -183,7 +195,7 @@ describe("buildWorkbookBuffer", () => {
   it("schreibt ohne Einträge nur die Kopfzeile", async () => {
     const sheet = sheetOf(await readBack(await buildWorkbookBuffer(request({ rows: [] }))), "Planung");
     expect(valuesOf(sheet, HEADER.length)).toEqual([HEADER]);
-    expect(sheet.autoFilter).toBe("A1:J1");
+    expect(sheet.autoFilter).toBe("A1:K1");
   });
 
   describe("Blatt „Info“", () => {

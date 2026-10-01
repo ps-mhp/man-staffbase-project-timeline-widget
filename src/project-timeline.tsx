@@ -35,6 +35,7 @@ import { ExportDialog } from "./export-dialog";
 import { HelpDialog } from "./help-dialog";
 import { formatDate } from "./format";
 import { ItemDetails } from "./item-details";
+import { LinkedContentModal } from "./linked-content-modal";
 import { placeLayout, prepareLayout } from "./lane-layout";
 import { ListView } from "./list-view";
 import { OverviewStrip } from "./overview-strip";
@@ -131,6 +132,8 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
   const [collapsed, setCollapsed] = useState<ReadonlySet<string>>(new Set());
   const [view, setView] = useState<TimelineView>("timeline");
   const [detailsId, setDetailsId] = useState<string | null>(null);
+  /** Der Eintrag, dessen verknüpfter Inhalt im Modal offen ist. */
+  const [contentId, setContentId] = useState<string | null>(null);
   const [anchor, setAnchor] = useState<{ x: number; y: number; width: number; height: number } | null>(null);
   const [exportOpen, setExportOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
@@ -295,7 +298,21 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
       onSelectItem?.(id);
       return;
     }
+    // Ein Eintrag mit Inhalt öffnet ihn gleich — die Details stünden nur davor.
+    if (plan.items.some((entry) => entry.id === id && entry.content !== undefined)) {
+      setDetailsId(null);
+      setContentId(id);
+      return;
+    }
     setDetailsId((current) => (current === id ? null : id));
+  };
+
+  // Zurück an den Eintrag, wie beim Schließen der Details: Safari fokussiert
+  // einen Button beim Klick nicht, das Modal fände sonst keinen Ursprung.
+  const closeContent = () => {
+    const id = contentId;
+    setContentId(null);
+    if (id !== null) findItem(bodyRef.current, id)?.focus({ preventScroll: true });
   };
 
   const closeDetails = () => {
@@ -363,6 +380,7 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
     />
   );
   const detailsItem = detailsId === null ? undefined : byId.get(detailsId);
+  const contentItem = contentId === null ? undefined : byId.get(contentId);
   const filtersActive = activeFilterCount(filter);
 
   const toolbar = (compact: boolean) => (
@@ -456,7 +474,16 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
         </div>
       )}
 
-      {view === "list" && !isEditor && <ListView plan={plan} items={items} locale={locale} matches={matches} />}
+      {view === "list" && !isEditor && <ListView
+          plan={plan}
+          items={items}
+          locale={locale}
+          matches={matches}
+          onOpenContent={(id) => {
+            setDetailsId(null);
+            setContentId(id);
+          }}
+        />}
 
       <div className="man-pt__timeline" hidden={view === "list" && !isEditor}>
         <TimelineStage
@@ -516,6 +543,16 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
             setDetailsId(id);
             reveal(id);
           }}
+        />
+      )}
+
+      {contentItem?.content !== undefined && (
+        <LinkedContentModal
+          plan={plan}
+          item={contentItem}
+          locale={locale}
+          onClose={closeContent}
+          container={expanded.mode === "fullscreen" ? rootRef.current : undefined}
         />
       )}
 

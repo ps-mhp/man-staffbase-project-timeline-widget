@@ -17,14 +17,14 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import { FormHarness as Harness, openTab } from "./item-form.fixture";
 
 describe("ItemForm: Unterreiter", () => {
-  it("gliedert die Felder in vier Reiter der zweiten Ebene", () => {
+  it("gliedert die Felder in fünf Reiter der zweiten Ebene", () => {
     render(<Harness id="b1" />);
     const list = screen.getByRole("tablist", { name: "Felder des Eintrags" });
     expect(
       within(list)
         .getAllByRole("tab")
         .map((tab) => tab.textContent),
-    ).toEqual(["Allgemein", "Einordnung", "Termin", "Abhängigkeiten (1)"]);
+    ).toEqual(["Allgemein", "Einordnung", "Termin", "Abhängigkeiten (1)", "Inhalt"]);
     expect(
       screen.getByRole("tabpanel", { name: "Allgemein" }),
     ).toContainElement(screen.getByLabelText("Titel"));
@@ -69,6 +69,11 @@ describe("ItemForm: Unterreiter", () => {
     expect(
       screen.getByRole("tab", { name: "Abhängigkeiten (1)" }),
     ).toBeInTheDocument();
+  });
+
+  it("bietet im Reiter „Inhalt“ die Verknüpfung an — auch bei einem Stichtag", () => {
+    render(<Harness id="d1" tab="content" />);
+    expect(screen.getByRole("tabpanel", { name: "Inhalt" })).toContainElement(screen.getByLabelText("Verknüpfung"));
   });
 
   it("fällt bei einem Stichtag von „Abhängigkeiten“ auf „Allgemein“ zurück", () => {

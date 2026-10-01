@@ -55,8 +55,9 @@ Rechts das Formular des gewählten Eintrags; über ihm stehen sein Titel und
 die Knöpfe **Duplizieren** und **Löschen**, darunter die Reiter **Allgemein**
 (Art, Titel, Beschreibung), **Einordnung** (Ebene, Kategorie, Serie),
 **Termin** (Datum bzw. Beginn und Ende, beim Zeitraum Pfeil am Ende, Vorläufig)
-und **Abhängigkeiten**. Ein roter Punkt am Reiter zeigt eine ungültige
-Eingabe darin; bei Stichtagen entfällt **Abhängigkeiten**:
+**Abhängigkeiten** und **Inhalt** (verknüpfte Seite oder News-Beitrag). Ein
+roter Punkt am Reiter zeigt eine ungültige Eingabe darin; bei Stichtagen
+entfällt **Abhängigkeiten**:
 
 | Feld | Gilt für | Beschreibung |
 | --- | --- | --- |
@@ -71,6 +72,9 @@ Eingabe darin; bei Stichtagen entfällt **Abhängigkeiten**:
 | Serie | Meilenstein, Zeitraum | Einträge derselben Ebene mit gleichem Seriennamen stehen auf einer Zeile. Das Feld klappt die Serien dieser Ebene mit der Zahl ihrer Einträge auf; ein getippter neuer Name wird über „„…“ als neue Serie anlegen“ übernommen, **Keine Serie** nimmt den Eintrag heraus. |
 | Vorläufig | alle | Der Termin steht noch nicht fest; der Eintrag erscheint als Umriss bzw. mit gestricheltem Rand. |
 | Hängt ab von | Meilenstein, Zeitraum | Die Vorgänger des Eintrags; auf der Seite als gestrichelte Linie mit Pfeil. |
+| Verknüpfung | alle | **Keine**, **Seite** oder **News-Beitrag**. Ein Wechsel löst eine bestehende Verknüpfung. Auf der Seite ist die Beschriftung des Eintrags dann unterstrichen, und ein Klick öffnet den Inhalt in einem Fenster über dem Plan. |
+| Seite | alle | Die Staffbase-Seite aus der Liste der Seiten (die 100 zuletzt bearbeiteten). |
+| Kanal, Beitrag | alle | Erst der News-Kanal (mit seinem Typ: Artikel, Kurznachricht, Bildbeitrag), dann der Beitrag. Entwürfe sind wählbar und mit „(Entwurf)“ gekennzeichnet — Leser:innen sehen sie erst nach dem Veröffentlichen. **In neuem Tab öffnen** zeigt den verknüpften Inhalt. |
 | Duplizieren | alle | Legt eine Kopie des Eintrags an. |
 | Löschen | alle | Fragt nach und entfernt dann den Eintrag und alle Abhängigkeiten, die auf ihn zeigen; die Rückfrage nennt die abhängigen Einträge. |
 

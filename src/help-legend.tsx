@@ -140,6 +140,16 @@ function CollapsedSample() {
   );
 }
 
+/** Ein Symbol mit unterstrichener Beschriftung — so erscheint ein Eintrag mit Inhalt. */
+function LinkedSample() {
+  return (
+    <Sample width={72}>
+      <path className="man-pt__help-fill" d={DIAMOND} transform={at(0)} />
+      <path className="man-pt__help-line man-pt__help-line--strong" d="M 20 13 L 70 13" />
+    </Sample>
+  );
+}
+
 interface Entry {
   term: string;
   sample: ReactElement;
@@ -186,6 +196,11 @@ const ENTRIES: readonly Entry[] = [
     term: "Eingeklappte Ebene",
     sample: <CollapsedSample />,
     text: "Der Pfeil am Namen einer Ebene klappt sie ein: dann zeigt sie nur Symbole und Balken, ohne Beschriftung.",
+  },
+  {
+    term: "Verknüpfter Inhalt",
+    sample: <LinkedSample />,
+    text: "Ist die Beschriftung unterstrichen, öffnet ein Klick eine Seite oder einen Beitrag mit mehr dazu.",
   },
 ];
 

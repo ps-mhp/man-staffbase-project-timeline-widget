@@ -75,7 +75,13 @@ const FORBIDDEN_IN_FILE_NAME = new Set(["\\", "/", ":", "*", "?", '"', "<", ">",
  */
 const REVOKE_DELAY_MS = 1000;
 
-type CellInput = string | Date | null;
+/** Ein Link, den Excel als anklickbar zeigt. */
+interface Hyperlink {
+  text: string;
+  hyperlink: string;
+}
+
+type CellInput = string | Date | Hyperlink | null;
 
 interface Column {
   header: string;
@@ -90,6 +96,12 @@ interface Column {
  * Zeitzone exportiert wird.
  */
 const excelDate = (day: DayNumber): Date => new Date(day * MS_PER_DAY);
+
+/** Die volle Adresse eines Inhalts: die Datei verlässt die App, ein Pfad allein führte nirgendwohin. */
+const link = (href: string): Hyperlink => {
+  const url = new URL(href, window.location.origin).href;
+  return { text: url, hyperlink: url };
+};
 
 /** Leerer Text wird eine leere Zelle — sonst zeigte der Autofilter zwei Arten von „leer". */
 const text = (value: string): string | null => {
@@ -114,6 +126,7 @@ const COLUMNS: readonly Column[] = [
   { header: "Vorläufig", value: (row) => (row.tentative ? "ja" : null) },
   { header: "Vorgänger", value: (row) => text(row.predecessors.join("; ")) },
   { header: "Beschreibung", value: (row) => text(row.description) },
+  { header: "Inhalt", value: (row) => (row.content === null ? null : link(row.content.href)) },
 ];
 
 /** Die längste Zeile eines Texts in Zeichen — ein Umbruch in der Zelle macht sie nicht breiter. */
@@ -127,7 +140,10 @@ function fitWidth(texts: readonly string[]): number {
 
 function columnWidth(column: Column, rows: readonly PlanRow[]): number {
   if (column.date) return DATE_WIDTH;
-  const values = rows.map((row) => column.value(row)).filter((value): value is string => typeof value === "string");
+  const values = rows
+    .map((row) => column.value(row))
+    .map((value) => (value !== null && typeof value === "object" && "hyperlink" in value ? value.text : value))
+    .filter((value): value is string => typeof value === "string");
   return fitWidth([column.header, ...values]);
 }
 

@@ -25,7 +25,7 @@ describe("HelpDialog", () => {
     renderHelp();
     const dialog = screen.getByRole("dialog", { name: "Hilfe zum Projektplan" });
     expect(within(dialog).getByRole("tab", { name: "Legende" })).toHaveAttribute("aria-selected", "true");
-    for (const term of ["Meilenstein", "Zeitraum", "Vorläufig", "Serie", "Abhängigkeit", "Stichtag", "Heute", "Eingeklappte Ebene"]) {
+    for (const term of ["Meilenstein", "Zeitraum", "Vorläufig", "Serie", "Abhängigkeit", "Stichtag", "Heute", "Eingeklappte Ebene", "Verknüpfter Inhalt"]) {
       expect(within(dialog).getByText(term, { selector: "dt" })).toBeInTheDocument();
     }
     expect(within(dialog).getByText("MY26 TG Assist")).toBeInTheDocument();
@@ -39,6 +39,7 @@ describe("HelpDialog", () => {
       expect(within(panel).getByRole("heading", { name: heading })).toBeInTheDocument();
     }
     expect(within(panel).getByText(/Excel/)).toBeInTheDocument();
+    expect(within(panel).getAllByText(/unterstrichen/).length).toBeGreaterThanOrEqual(2);
   });
 
   it("verschweigt den Export, wenn es ihn nicht gibt", () => {

@@ -25,6 +25,9 @@
 import { decodePayload, encodePayload, isPayload } from "@shared/payload";
 
 import { DayNumber, formatIsoDate, parseIsoDate, parseIsoMonth, todayDay } from "./calendar";
+import { Attachment, LIMIT_ATTACHMENTS, LinkedContent, readAttachments, readContent } from "./linked-content";
+
+export type { Attachment, LinkedContent } from "./linked-content";
 
 export type ItemKind = "milestone" | "bar" | "deadline";
 
@@ -86,6 +89,10 @@ interface ItemBase {
   tentative?: boolean;
   /** Die `id`s der Vorgänger. Nur Meilensteine und Zeiträume. */
   dependsOn?: string[];
+  /** Seite oder Beitrag; die Leseansicht öffnet ihn beim Klick im Modal. */
+  content?: LinkedContent;
+  /** Dateien und Bilder aus Staffbase Media, in dieser Reihenfolge. */
+  attachments?: Attachment[];
   unknown?: Unknown;
 }
 
@@ -158,10 +165,12 @@ export interface Plan {
 export interface PlanReadResult {
   plan: Plan;
   dropped: number;
+  /** Verknüpfungen und Anhänge, die nicht taugten; ihr Eintrag blieb. */
+  droppedLinks: number;
 }
 
 /** Mehr trägt ein Plan nicht; der Editor nimmt darüber hinaus nichts an. */
-export const LIMITS = { items: 300, lanes: 20, categories: 24 } as const;
+export const LIMITS = { items: 300, lanes: 20, categories: 24, attachments: LIMIT_ATTACHMENTS } as const;
 
 /** Die Farbe von Einträgen ohne Kategorie; entspricht `man("text-subtle")`. */
 export const UNCATEGORIZED_COLOR = "#71787F";
@@ -240,6 +249,8 @@ const KNOWN_ITEM_KEYS = new Set([
   "symbol",
   "arrow",
   "series",
+  "content",
+  "attachments",
 ]);
 
 const HEX_COLOR = /^#[0-9a-f]{6}$/i;
@@ -317,8 +328,13 @@ function readCategory(raw: Raw): Category | null {
   return category;
 }
 
+/** Zählt beim Lesen die Verknüpfungen, die nicht taugten. */
+interface LinkTally {
+  dropped: number;
+}
+
 /** Liest einen Eintrag ohne die Verweise; die prüft {@link resolveReferences}. */
-function readItem(raw: Raw): PlanItem | null {
+function readItem(raw: Raw, links: LinkTally): PlanItem | null {
   const id = asText(raw.id);
   const title = asText(raw.title);
   if (id === undefined || title === undefined) return null;
@@ -336,8 +352,20 @@ function readItem(raw: Raw): PlanItem | null {
   const unknown = unknownOf(raw, KNOWN_ITEM_KEYS);
   if (unknown !== undefined) base.unknown = unknown;
 
-  const series = asText(raw.series)?.trim();
+  const content = readContent(raw.content);
+  const attachments = readAttachments(raw.attachments);
+  if (content.content !== undefined) base.content = content.content;
+  if (attachments.attachments !== undefined) base.attachments = attachments.attachments;
 
+  const series = asText(raw.series)?.trim();
+  const item = readKind(raw, base, series);
+  // Nur Verknüpfungen eines Eintrags zählen, den es auch gibt: ein verworfener
+  // Eintrag ist schon als solcher gezählt.
+  if (item !== null) links.dropped += content.dropped + attachments.dropped;
+  return item;
+}
+
+function readKind(raw: Raw, base: ItemBase, series: string | undefined): PlanItem | null {
   switch (raw.kind) {
     case "milestone": {
       const lane = asText(raw.lane);
@@ -433,11 +461,12 @@ function inheritSymbols(categories: Category[], items: PlanItem[]): Category[] {
 /** Liest das Attribut `plan`. Scheitert nie; was unbrauchbar ist, fällt weg und wird gezählt. */
 export function readPlanAttribute(raw: string): PlanReadResult {
   const value = readRaw(raw);
-  if (!isRecord(value)) return { plan: emptyPlan(), dropped: 0 };
+  if (!isRecord(value)) return { plan: emptyPlan(), dropped: 0, droppedLinks: 0 };
 
   const lanes = readList(value.lanes, readLane, LIMITS.lanes);
   const categories = readList(value.categories, readCategory, LIMITS.categories);
-  const items = readList(value.items, readItem, LIMITS.items);
+  const links: LinkTally = { dropped: 0 };
+  const items = readList(value.items, (raw) => readItem(raw, links), LIMITS.items);
   const resolved = resolveReferences(items.list, lanes.list, categories.list);
 
   const plan: Plan = {
@@ -455,7 +484,7 @@ export function readPlanAttribute(raw: string): PlanReadResult {
   const unknown = unknownOf(value, KNOWN_PLAN_KEYS);
   if (unknown !== undefined) plan.unknown = unknown;
 
-  return { plan, dropped: items.dropped + (items.list.length - resolved.length) };
+  return { plan, dropped: items.dropped + (items.list.length - resolved.length), droppedLinks: links.dropped };
 }
 
 /** Nur der Plan, für die Leseansicht. */

@@ -33,6 +33,8 @@ export interface ListViewProps {
   locale: string;
   /** Bei aktiver Suche die Treffer; `null`, solange nicht gesucht wird. */
   matches: ReadonlySet<string> | null;
+  /** Öffnet den verknüpften Inhalt eines Eintrags im Modal. */
+  onOpenContent?: (id: string) => void;
 }
 
 function term(row: PlanRow, locale: string): string {
@@ -40,7 +42,7 @@ function term(row: PlanRow, locale: string): string {
   return row.end === null ? start : `${start} – ${formatShortDate(row.end, locale)}`;
 }
 
-export function ListView({ plan, items, locale, matches }: ListViewProps): ReactElement {
+export function ListView({ plan, items, locale, matches, onOpenContent }: ListViewProps): ReactElement {
   const shown = matches === null ? items : items.filter((item) => matches.has(item.id));
   const rows = rowsByDate(plan, shown);
   const symbols = new Map(shown.map((item) => [item.id, symbolOf(plan, item)]));
@@ -55,6 +57,7 @@ export function ListView({ plan, items, locale, matches }: ListViewProps): React
             <th scope="col">Kategorie</th>
             <th scope="col">Ebene</th>
             <th scope="col">Art</th>
+            <th scope="col">Inhalt</th>
           </tr>
         </thead>
         <tbody>
@@ -71,6 +74,18 @@ export function ListView({ plan, items, locale, matches }: ListViewProps): React
               </td>
               <td>{row.lane}</td>
               <td>{row.kindLabel}</td>
+              <td>
+                {row.content !== null && onOpenContent !== undefined && (
+                  <button
+                    type="button"
+                    className="man-pt__button man-pt__button--compact"
+                    aria-label={`${row.content.label} öffnen: ${row.title}`}
+                    onClick={() => onOpenContent(row.id)}
+                  >
+                    {row.content.label} öffnen
+                  </button>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

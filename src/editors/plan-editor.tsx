@@ -79,6 +79,12 @@ const TABS: readonly TabDefinition<EditorTab>[] = [
   { id: "categories", label: "Kategorien" },
 ];
 
+function droppedLinksMessage(droppedLinks: number): string {
+  return droppedLinks === 1
+    ? "1 Verknüpfung konnte nicht gelesen werden und geht beim Speichern verloren."
+    : `${droppedLinks} Verknüpfungen konnten nicht gelesen werden und gehen beim Speichern verloren.`;
+}
+
 function droppedMessage(dropped: number): string {
   return dropped === 1
     ? "1 Eintrag konnte nicht gelesen werden und geht beim Speichern verloren."
@@ -110,7 +116,7 @@ export function PlanEditor({
       "styles/plan-editor-overlays.scss",
     ),
   ];
-  const { plan, dropped } = value;
+  const { plan, dropped, droppedLinks = 0 } = value;
   const rootRef = useRef<HTMLDivElement>(null);
   const [tab, setTab] = useState<EditorTab>("items");
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -135,7 +141,7 @@ export function PlanEditor({
     remeasureKey: previewOpen && !empty,
   });
 
-  const changePlan = (next: Plan): void => onChange({ plan: next, dropped });
+  const changePlan = (next: Plan): void => onChange({ plan: next, dropped, droppedLinks });
 
   // Beständig, damit eine Vorschau, die in einem Effekt meldet, nicht bei
   // jedem Rendern neu meldet — und ein gleicher Ausschnitt rendert nichts neu.
@@ -173,7 +179,7 @@ export function PlanEditor({
    * dem Entwurf dieses Renderns — die Zahl daneben zählt dafür nicht.
    */
   const save = (): void => {
-    onChange({ plan, dropped: 0 });
+    onChange({ plan, dropped: 0, droppedLinks: 0 });
     onSave();
   };
 
@@ -211,9 +217,14 @@ export function PlanEditor({
         onCancel={onClose}
         onSave={save}
       />
-      {dropped > 0 && (
+      {(dropped > 0 || droppedLinks > 0) && (
         <p className="man-pt-editor__notice" role="alert">
-          {droppedMessage(dropped)}
+          {[
+            dropped > 0 ? droppedMessage(dropped) : null,
+            droppedLinks > 0 ? droppedLinksMessage(droppedLinks) : null,
+          ]
+            .filter((message) => message !== null)
+            .join(" ")}
         </p>
       )}
       <div ref={mainRef} className="man-pt-editor__main">

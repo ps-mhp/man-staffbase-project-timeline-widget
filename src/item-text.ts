@@ -47,3 +47,9 @@ export function accessibleName(plan: Plan, item: PlanItem, locale: string): stri
   if (item.tentative) parts.push("vorläufig");
   return parts.join(", ");
 }
+
+/** Was ein Klick auf einen Eintrag mit Inhalt öffnet — Zusatz zum zugänglichen Namen. */
+export function contentHint(item: PlanItem): string | undefined {
+  if (item.content === undefined) return undefined;
+  return item.content.kind === "page" ? "öffnet verknüpfte Seite" : "öffnet verknüpften Beitrag";
+}

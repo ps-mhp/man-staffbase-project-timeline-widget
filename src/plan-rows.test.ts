@@ -70,6 +70,20 @@ describe("KIND_LABELS", () => {
 describe("planRows", () => {
   const rows = planRows(plan, plan.items);
 
+  it("nennt Art und Leseadresse eines verknüpften Inhalts", () => {
+    const linked: Plan = {
+      ...plan,
+      items: plan.items.map((entry, index) =>
+        index === 0 ? { ...entry, content: { kind: "news", id: "6a7b213404bf7d770c9d579a" } } : entry,
+      ),
+    };
+    expect(planRows(linked, linked.items.slice(0, 1))[0].content).toEqual({
+      kind: "news",
+      label: "Beitrag",
+      href: "/content/news/article/6a7b213404bf7d770c9d579a",
+    });
+  });
+
   it("beschreibt einen Zeitraum vollständig", () => {
     expect(rowOf(rows, "alpha")).toEqual({
       id: "alpha",
@@ -85,6 +99,7 @@ describe("planRows", () => {
       tentative: true,
       predecessors: [],
       description: "Erste\nPhase",
+      content: null,
     });
   });
 
@@ -103,6 +118,7 @@ describe("planRows", () => {
       tentative: false,
       predecessors: ["IAA", "Alpha"],
       description: "",
+      content: null,
     });
   });
 

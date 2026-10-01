@@ -14,7 +14,7 @@
 /**
  * Das Formular des gewählten Eintrags. Im festen Kopf stehen Titel, Art und
  * die Handlungen, darunter die Unterreiter Allgemein · Einordnung · Termin ·
- * Abhängigkeiten; nur ihr Inhalt rollt.
+ * Abhängigkeiten · Inhalt; nur ihr Inhalt rollt.
  *
  * Alle Unterreiter bleiben gemountet und nur verborgen: sonst gingen beim
  * Wechsel Entwürfe und Feldfehler verloren. Hält ein Reiter eine ungültige
@@ -26,6 +26,7 @@ import * as React from "react";
 import { ReactElement, useEffect, useId, useState } from "react";
 
 import { LIMITS, Plan, PlanItem, isLaneItem } from "../plan-model";
+import { ContentPanel } from "./content-panel";
 import { DeleteConfirm } from "./delete-confirm";
 import { DependencyField } from "./dependency-field";
 import { TabList, TabPanel } from "./editor-tabs";
@@ -35,13 +36,14 @@ import { updateItem, withOptional } from "./plan-edits";
 import { Pane } from "./pane";
 import { KIND_LABELS, countDependents } from "./plan-queries";
 
-export type FormTab = "general" | "placement" | "term" | "dependencies";
+export type FormTab = "general" | "placement" | "term" | "dependencies" | "content";
 
 const FORM_TABS: readonly FormTab[] = [
   "general",
   "placement",
   "term",
   "dependencies",
+  "content",
 ];
 
 const FORM_TAB_LABELS: Readonly<Record<FormTab, string>> = {
@@ -49,6 +51,7 @@ const FORM_TAB_LABELS: Readonly<Record<FormTab, string>> = {
   placement: "Einordnung",
   term: "Termin",
   dependencies: "Abhängigkeiten",
+  content: "Inhalt",
 };
 
 export interface ItemFormProps {
@@ -194,6 +197,7 @@ export function ItemForm({
             }
           />,
         )}
+      {panel("content", <ContentPanel {...shared} />)}
     </Pane>
   );
 }

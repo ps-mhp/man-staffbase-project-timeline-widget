@@ -27,6 +27,24 @@ retten, klicken Sie auf **Abbrechen**, statt zu übernehmen, und wenden Sie
 sich an die Person, die den Plan zuletzt geändert hat — meist wurde der Inhalt
 des Textfelds **Plan** von Hand bearbeitet.
 
+**Frage:** Ein Klick auf einen verknüpften Eintrag zeigt „Dieser Beitrag ist
+nicht verfügbar oder nicht freigegeben.“
+
+Antwort: Das Fenster lädt den Beitrag mit Ihren eigenen Rechten. Die Meldung
+erscheint, wenn der Beitrag noch ein Entwurf ist, gelöscht wurde oder in einem
+Kanal steht, den Sie nicht sehen dürfen. Veröffentlichen Sie den Beitrag bzw.
+prüfen Sie die Sichtbarkeit des Kanals. **In neuem Tab öffnen** zeigt, was
+Staffbase selbst dazu sagt.
+
+**Frage:** Oben im Plan-Editor steht „N Verknüpfungen konnten nicht gelesen
+werden und gehen beim Speichern verloren.“
+
+Antwort: Im gespeicherten Plan steht an einem Eintrag eine Verknüpfung oder
+ein Anhang, mit dem das Widget nichts anfangen kann — meist, weil der Inhalt
+des Textfelds **Plan** von Hand bearbeitet wurde. Der Eintrag selbst bleibt
+erhalten, nur die Verknüpfung fällt beim Speichern weg. Verknüpfen Sie die
+Seite bzw. den Beitrag im Reiter **Inhalt** neu.
+
 **Frage:** Beim Drehen am Mausrad erscheint „Zum Zoomen Strg/⌘ gedrückt
 halten“.
 

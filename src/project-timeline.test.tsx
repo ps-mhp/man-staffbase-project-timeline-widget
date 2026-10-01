@@ -427,3 +427,106 @@ describe("ProjectTimeline", () => {
     });
   });
 });
+
+describe("verknüpfte Inhalte in der Leseansicht", () => {
+  const MENU_ID = "6abe2602f70f4a552a0470c4";
+  const POST_ID = "6a7b213404bf7d770c9d579a";
+
+  const linkedPlan = () => {
+    const plan = examplePlan();
+    return {
+      ...plan,
+      items: plan.items.map((entry) => {
+        if (entry.id === "fair-iaa-26") return { ...entry, content: { kind: "page" as const, id: "6abe2602f70f4a552a0470c3", menuId: MENU_ID } };
+        if (entry.id === "fair-bauma-25") return { ...entry, content: { kind: "news" as const, id: POST_ID } };
+        return entry;
+      }),
+    };
+  };
+
+  const respond = (post: { status: number; body?: unknown }) =>
+    jest.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      if (url === "/api/users/me") return new Response(JSON.stringify({ config: { locale: "de_DE" } }), { status: 200 });
+      if (url === `/api/posts/${POST_ID}`) return new Response(post.body === undefined ? "" : JSON.stringify(post.body), { status: post.status });
+      return new Response("", { status: 404 });
+    });
+
+  afterEach(() => jest.restoreAllMocks());
+
+  it("sagt im Namen eines Eintrags, dass er einen Inhalt öffnet", () => {
+    renderTimeline({ plan: linkedPlan() });
+    expect(item(/^Meilenstein: IAA, 15\. September 2026, .* – öffnet verknüpfte Seite$/)).toBeInTheDocument();
+    expect(item(/^Meilenstein: Bauma, 7\. April 2025, .* – öffnet verknüpften Beitrag$/)).toBeInTheDocument();
+    expect(item(/^Meilenstein: IAA, 15\. September 2026/)).toHaveAttribute("aria-haspopup", "dialog");
+  });
+
+  it("öffnet eine verknüpfte Seite im Modal statt der Details", () => {
+    renderTimeline({ plan: linkedPlan() });
+    fireEvent.click(item(/^Meilenstein: IAA, 15\. September 2026/));
+
+    const dialog = screen.getByRole("dialog", { name: "IAA" });
+    expect(screen.getAllByRole("dialog")).toHaveLength(1);
+    expect(within(dialog).getByTitle("IAA")).toHaveAttribute("src", `/content/page/${MENU_ID}`);
+    expect(within(dialog).getByRole("link", { name: /neuem Tab/i })).toHaveAttribute("href", `/content/page/${MENU_ID}`);
+    expect(within(dialog).getByText(/^Meilenstein · 15\. September 2026/)).toBeInTheDocument();
+  });
+
+  it("lädt einen verknüpften Beitrag mit der Sitzung der Leser:in und zeigt ihn", async () => {
+    const fetchMock = respond({
+      status: 200,
+      body: { id: POST_ID, contentType: "articles", contents: { de_DE: { title: "Bauma-News", content: "<p>Der Text</p>" } } },
+    });
+    renderTimeline({ plan: linkedPlan() });
+    fireEvent.click(item(/^Meilenstein: Bauma, 7\. April 2025/));
+
+    const dialog = screen.getByRole("dialog", { name: "Bauma" });
+    expect(await within(dialog).findByText("Der Text")).toBeInTheDocument();
+    expect(within(dialog).getByText("Bauma-News")).toBeInTheDocument();
+    expect(within(dialog).getByRole("link", { name: /neuem Tab/i })).toHaveAttribute("href", `/content/news/article/${POST_ID}`);
+    expect(fetchMock).toHaveBeenCalledWith(`/api/posts/${POST_ID}`, expect.objectContaining({ credentials: "same-origin" }));
+  });
+
+  it.each([403, 404])("sagt bei HTTP %i, dass der Beitrag nicht verfügbar ist — der Link bleibt", async (status) => {
+    respond({ status });
+    renderTimeline({ plan: linkedPlan() });
+    fireEvent.click(item(/^Meilenstein: Bauma, 7\. April 2025/));
+
+    const dialog = screen.getByRole("dialog", { name: "Bauma" });
+    expect(await within(dialog).findByText(/nicht verfügbar oder nicht freigegeben/)).toBeInTheDocument();
+    expect(within(dialog).getByRole("link", { name: /neuem Tab/i })).toBeInTheDocument();
+  });
+
+  it("schließt mit Escape und gibt den Fokus an den Eintrag zurück", () => {
+    renderTimeline({ plan: linkedPlan() });
+    const iaa = item(/^Meilenstein: IAA, 15\. September 2026/);
+    iaa.focus();
+    fireEvent.click(iaa);
+    fireEvent.keyDown(document, { key: "Escape" });
+
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(iaa).toHaveFocus();
+  });
+
+  it("öffnet den Inhalt auch aus der Listenansicht", () => {
+    renderTimeline({ plan: linkedPlan() });
+    fireEvent.click(screen.getByRole("button", { name: "Liste" }));
+
+    const table = screen.getByRole("table");
+    expect(within(table).getByRole("columnheader", { name: "Inhalt" })).toBeInTheDocument();
+    fireEvent.click(within(table).getByRole("button", { name: "Seite öffnen: IAA" }));
+    expect(screen.getByRole("dialog", { name: "IAA" })).toBeInTheDocument();
+    expect(within(table).getByRole("button", { name: "Beitrag öffnen: Bauma" })).toBeInTheDocument();
+  });
+
+  it("wählt im Editor den Eintrag aus, statt etwas zu öffnen", () => {
+    const onSelectItem = jest.fn();
+    renderTimeline({ plan: linkedPlan(), mode: "editor", onSelectItem });
+    const iaa = item(/^Meilenstein: IAA, 15\. September 2026/);
+
+    expect(iaa.getAttribute("aria-label")).not.toMatch(/öffnet verknüpfte/);
+    fireEvent.click(iaa);
+    expect(onSelectItem).toHaveBeenCalledWith("fair-iaa-26");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+});

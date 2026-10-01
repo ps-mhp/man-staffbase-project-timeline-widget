@@ -24,7 +24,7 @@ import React, { CSSProperties, ReactElement } from "react";
 
 import { inkFor } from "./color";
 import { GEOMETRY, LabelBox, PlacedBar, PlacedDeadline, PlacedMilestone } from "./lane-layout";
-import { accessibleName } from "./item-text";
+import { accessibleName, contentHint } from "./item-text";
 import { Plan, PlanItem, colorOf } from "./plan-model";
 import { symbolOf, symbolPath } from "./symbols";
 
@@ -40,6 +40,8 @@ export interface ItemState {
   dimmed: boolean;
   /** Ob die Details dieses Eintrags offen sind; `undefined`, wo es keine Details gibt (Editor). */
   expanded?: boolean;
+  /** Ein Klick öffnet einen verknüpften Inhalt im Modal (nur Leseansicht). */
+  linked?: boolean;
 }
 
 interface CommonProps {
@@ -58,6 +60,7 @@ function classes(base: string, item: PlanItem, state: ItemState, extra: string[]
     base,
     ...extra,
     item.tentative ? "is-tentative" : "",
+    state.linked ? "has-content" : "",
     state.selected ? "is-selected" : "",
     state.current ? "is-current" : "",
     state.related ? "is-related" : "",
@@ -82,12 +85,20 @@ function Label({ box, originX, originY, text }: { box: LabelBox; originX: number
   );
 }
 
+/** „… – öffnet verknüpfte Seite“: der Name sagt, was der Klick tut. */
+function linkedName(name: string, item: PlanItem, state: ItemState): string {
+  const hint = state.linked ? contentHint(item) : undefined;
+  return hint === undefined ? name : `${name} – ${hint}`;
+}
+
 function buttonProps(item: PlanItem, props: CommonProps) {
   return {
     type: "button" as const,
     "data-item-id": item.id,
-    "aria-label": accessibleName(props.plan, item, props.locale),
-    "aria-expanded": props.state.expanded,
+    "aria-label": linkedName(accessibleName(props.plan, item, props.locale), item, props.state),
+    // Ein Eintrag mit Inhalt öffnet ein Modal, keine aufklappenden Details.
+    "aria-expanded": props.state.linked ? undefined : props.state.expanded,
+    "aria-haspopup": props.state.linked ? ("dialog" as const) : undefined,
     tabIndex: props.state.focusable ? 0 : -1,
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => props.onActivate(item.id, event.currentTarget),
     onFocus: () => props.onFocusItem(item.id),

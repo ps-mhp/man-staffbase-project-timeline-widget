@@ -281,7 +281,7 @@ describe("PlanEditor: Einträge und Beginn", () => {
       />,
     );
     fireEvent.click(screen.getByRole("button", { name: "Übernehmen" }));
-    expect(onChange).toHaveBeenLastCalledWith({ plan: testPlan(), dropped: 0 });
+    expect(onChange).toHaveBeenLastCalledWith({ plan: testPlan(), dropped: 0, droppedLinks: 0 });
     expect(onSave).toHaveBeenCalledTimes(1);
     expect(screen.queryByText(/nicht gelesen werden/)).not.toBeInTheDocument();
   });

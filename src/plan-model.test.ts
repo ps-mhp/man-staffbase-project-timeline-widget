@@ -198,3 +198,49 @@ describe("planExtent", () => {
     expect(planExtent([])).toBeNull();
   });
 });
+
+describe("verknüpfte Inhalte", () => {
+  const PAGE = { kind: "page", id: "6abe2602f70f4a552a0470c3", menuId: "6abe2602f70f4a552a0470c4", title: "Release 3.4" };
+  const FILE = { mediaId: "m1", url: "/api/media/secure/external/v2/raw/upload/abc.pdf", fileName: "Info.pdf", kind: "file" };
+
+  const withLinks = (content: unknown, attachments: unknown): Record<string, unknown> => {
+    const plan = basePlan();
+    const items = plan.items as Record<string, unknown>[];
+    return { ...plan, items: [{ ...items[0], content, attachments }, ...items.slice(1)] };
+  };
+
+  it("liest Inhalt und Anhänge an jeder Art von Eintrag und zählt nichts", () => {
+    const plan = basePlan();
+    const items = (plan.items as Record<string, unknown>[]).map((item) => ({ ...item, content: PAGE, attachments: [FILE] }));
+    const { plan: parsed, dropped, droppedLinks } = read({ ...plan, items });
+
+    expect(dropped).toBe(0);
+    expect(droppedLinks).toBe(0);
+    for (const item of parsed.items) {
+      expect(item.content).toEqual(PAGE);
+      expect(item.attachments).toEqual([FILE]);
+    }
+  });
+
+  it("übersteht den Rundlauf", () => {
+    const plan = read(withLinks(PAGE, [FILE])).plan;
+    expect(readPlanAttribute(encodePlanAttribute(plan)).plan).toEqual(plan);
+  });
+
+  it("behält den Eintrag, wenn nur seine Verknüpfung nicht taugt", () => {
+    const { plan, dropped, droppedLinks } = read(withLinks({ kind: "url", href: "https://evil.example" }, [{ ...FILE, url: "https://evil.example/x.pdf" }, FILE]));
+
+    expect(dropped).toBe(0);
+    expect(droppedLinks).toBe(2);
+    expect(plan.items[0]).not.toHaveProperty("content");
+    expect(plan.items[0].attachments).toEqual([FILE]);
+    // Was nicht taugte, landet auch nicht im Beutel für unbekannte Felder —
+    // sonst schriebe der nächste Speichervorgang es unbesehen zurück.
+    expect(plan.items[0].unknown).toBeUndefined();
+  });
+
+  it("meldet ohne Verknüpfungen null verworfene", () => {
+    expect(read(basePlan()).droppedLinks).toBe(0);
+    expect(readPlanAttribute("").droppedLinks).toBe(0);
+  });
+});

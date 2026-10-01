@@ -76,7 +76,7 @@
 ## Das Formular eines Eintrags
 
 Rechts neben der Liste steht das Formular des gewählten Eintrags. Oben stehen
-sein Titel und die Knöpfe **Duplizieren** und **Löschen**, darunter vier
+sein Titel und die Knöpfe **Duplizieren** und **Löschen**, darunter fünf
 Reiter:
 
 - **Allgemein** — Art, Titel, Beschreibung
@@ -85,6 +85,8 @@ Reiter:
   Vorläufig
 - **Abhängigkeiten** — die Vorgänger; die Zahl dahinter nennt, wie viele
   gewählt sind. Stichtage haben diesen Reiter nicht.
+- **Inhalt** — die Staffbase-Seite oder der News-Beitrag, den ein Klick auf
+  den Eintrag öffnet
 
 Der gewählte Reiter bleibt offen, wenn Sie zu einem anderen Eintrag wechseln
 — wer die Termine mehrerer Einträge pflegt, bleibt auf **Termin**. Hält ein
@@ -206,6 +208,26 @@ MY26“ und „TG-Assist MY26“ sind zwei verschiedene Serien.
 Abhängigkeiten gibt es nur zwischen Meilensteinen und Zeiträumen, nicht für
 Stichtage. Wird ein Eintrag gelöscht, verschwindet er auch aus allen
 Abhängigkeiten.
+
+## Eine Seite oder einen Beitrag verknüpfen
+
+Pro Eintrag lässt sich eine Staffbase-Seite oder ein News-Beitrag verknüpfen —
+etwa die Seite mit allen Infos zu einem Software-Update. Der Plan bleibt der
+Überblick, die Einzelheiten stehen dort, wo sie ohnehin gepflegt werden.
+
+1. Wählen Sie den Eintrag im Reiter **Einträge** aus und öffnen Sie den
+   Reiter **Inhalt**.
+2. Wählen Sie unter **Verknüpfung** **Seite** oder **News-Beitrag**.
+3. Bei einer Seite wählen Sie sie unter **Seite** aus. Bei einem Beitrag
+   wählen Sie erst den **Kanal**, dann den **Beitrag**. Entwürfe sind mit
+   „(Entwurf)“ gekennzeichnet; sie lassen sich schon verknüpfen, Leser:innen
+   sehen sie aber erst nach dem Veröffentlichen.
+4. **In neuem Tab öffnen** zeigt, was verknüpft ist.
+
+Auf der Seite ist die Beschriftung eines verknüpften Eintrags unterstrichen.
+Ein Klick darauf öffnet die Seite oder den Beitrag in einem Fenster über dem
+Plan, statt der Details; **In neuem Tab öffnen** steht dort immer oben. Mit
+**Verknüpfung: Keine** lösen Sie die Verknüpfung wieder.
 
 ## Einträge duplizieren und löschen
 

@@ -228,6 +228,21 @@ describe("PlanEditor: Rahmen und Vorschau", () => {
     },
   );
 
+  it.each([
+    [1, "1 Verknüpfung konnte nicht gelesen werden und geht beim Speichern verloren."],
+    [2, "2 Verknüpfungen konnten nicht gelesen werden und gehen beim Speichern verloren."],
+  ])("warnt, wenn beim Lesen %i Verknüpfungen verworfen wurden", (droppedLinks, message) => {
+    render(<Harness initial={{ plan: testPlan(), dropped: 0, droppedLinks }} />);
+    expect(screen.getByText(message)).toBeInTheDocument();
+  });
+
+  it("nennt verworfene Einträge und Verknüpfungen zusammen", () => {
+    render(<Harness initial={{ plan: testPlan(), dropped: 1, droppedLinks: 1 }} />);
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      "1 Eintrag konnte nicht gelesen werden und geht beim Speichern verloren. 1 Verknüpfung konnte nicht gelesen werden und geht beim Speichern verloren.",
+    );
+  });
+
   it("warnt nicht ohne verworfene Einträge", () => {
     render(<Harness />);
     expect(screen.queryByText(/nicht gelesen werden/)).not.toBeInTheDocument();

@@ -37,6 +37,8 @@ import { Plan, encodePlanAttribute, readPlanAttribute } from "./plan-model";
 export interface PlanEditorValue {
   plan: Plan;
   dropped: number;
+  /** Verknüpfungen und Anhänge, die beim Lesen wegfielen; ihr Eintrag blieb. */
+  droppedLinks?: number;
 }
 
 const FULL_SCREEN_PANEL: React.CSSProperties = {

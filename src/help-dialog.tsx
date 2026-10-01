@@ -99,7 +99,10 @@ function HelpControls({ allowExport }: { allowExport: boolean }): ReactElement {
             "Verschiebt den Plan nach links oder rechts.",
           ],
           ["−  +  Alles zeigen", "Zoomt in Stufen; „Alles zeigen“ zeigt den ganzen Zeitraum."],
-          ["Klick auf einen Eintrag", "Öffnet die Details mit Termin, Ebene und Serie; Vorgänger und Nachfolger sind darin anklickbar."],
+          [
+            "Klick auf einen Eintrag",
+            "Öffnet die Details mit Termin, Ebene und Serie; Vorgänger und Nachfolger sind darin anklickbar. Ist die Beschriftung unterstrichen, öffnet er stattdessen die verknüpfte Seite oder den Beitrag.",
+          ],
           ["Übersicht unter dem Plan", "Fenster ziehen verschiebt, seine Ränder ziehen ändert den Zeitraum, ein Klick daneben springt dorthin."],
         ]}
       />
@@ -108,7 +111,7 @@ function HelpControls({ allowExport }: { allowExport: boolean }): ReactElement {
         rows={[
           ["Zwei Finger spreizen", "Zoomt hinein, zusammenziehen zoomt heraus."],
           ["Waagerecht wischen", "Verschiebt den Plan; senkrecht rollt die Seite wie gewohnt."],
-          ["Tippen", "Öffnet die Details eines Eintrags."],
+          ["Tippen", "Öffnet die Details eines Eintrags — oder, ist er unterstrichen, die verknüpfte Seite oder den Beitrag."],
         ]}
       />
       <Group

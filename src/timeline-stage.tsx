@@ -91,6 +91,8 @@ function LaneToggleAll({ collapsed, onToggle }: { collapsed: boolean; onToggle: 
 export function TimelineStage(props: TimelineStageProps): ReactElement {
   const { plan, locale, layout, tiers, width, todayX, selectedId, relatedIds, dimmedIds, focusId } = props;
 
+  // Nur die Leseansicht öffnet Inhalte; im Editor wählt ein Klick aus.
+  const linkedIds = new Set(props.mode === "page" ? plan.items.filter((item) => item.content !== undefined).map((item) => item.id) : []);
   const stateOf = (id: string): ItemState => ({
     focusable: id === focusId,
     selected: id === selectedId,
@@ -98,6 +100,7 @@ export function TimelineStage(props: TimelineStageProps): ReactElement {
     related: relatedIds.has(id),
     dimmed: dimmedIds.has(id),
     expanded: props.mode === "page" ? id === selectedId : undefined,
+    linked: linkedIds.has(id),
   });
   const common = { plan, locale, onActivate: props.onActivate, onFocusItem: props.onFocusItem };
 

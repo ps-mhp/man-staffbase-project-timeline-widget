@@ -961,6 +961,16 @@
   text-decoration: underline;
 }
 
+// Ein Eintrag mit verknüpftem Inhalt trägt seine Beschriftung dauerhaft
+// unterstrichen — das übliche Zeichen für „führt weiter“. Ein Zeichen wie ↗
+// änderte die Breite, mit der das Layout die Beschriftungen verteilt.
+.man-pt__item.has-content .man-pt__label,
+.man-pt__item.has-content .man-pt__bar-text {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
 .man-pt__item.is-selected .man-pt__symbol,
 .man-pt__item.is-selected .man-pt__bar-fill {
   box-shadow:

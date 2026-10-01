@@ -53,7 +53,7 @@ export interface PanelProps {
   onPlanChange: (plan: Plan) => void;
 }
 
-function SelectField({
+export function SelectField({
   label,
   value,
   onChange,
