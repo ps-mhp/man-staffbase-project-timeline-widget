@@ -13,7 +13,7 @@
 
 import * as React from "react";
 import { useState } from "react";
-import { act, fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 
 import { LinkedContent, Plan } from "../plan-model";
 import { ContentPanel } from "./content-panel";
@@ -158,9 +158,10 @@ describe("ContentPanel", () => {
     mockStaffbase([]);
     render(<Harness content={{ kind: "page", id: P1, menuId: M1, title: "Alte Seite" }} />);
     const select = await screen.findByLabelText("Seite");
-    await act(async () => {});
+    // Auf den geladenen Katalog warten, nicht auf eine feste Zahl von Runden:
+    // unter Last (Coverage-Lauf) braucht die Antwort mehr als eine.
+    expect(await within(select).findByRole("option", { name: "Alte Seite (nicht im Katalog)" })).toBeInTheDocument();
     expect(select).toHaveValue(P1);
-    expect(within(select).getByRole("option", { name: "Alte Seite (nicht im Katalog)" })).toBeInTheDocument();
   });
 
   it("sagt, wenn es keine Seiten gibt", async () => {
