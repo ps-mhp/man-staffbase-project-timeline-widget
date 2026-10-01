@@ -73,8 +73,8 @@ entfällt **Abhängigkeiten**:
 | Vorläufig | alle | Der Termin steht noch nicht fest; der Eintrag erscheint als Umriss bzw. mit gestricheltem Rand. |
 | Hängt ab von | Meilenstein, Zeitraum | Die Vorgänger des Eintrags; auf der Seite als gestrichelte Linie mit Pfeil. |
 | Verknüpfung | alle | **Keine**, **Seite** oder **News-Beitrag**. Ein Wechsel löst eine bestehende Verknüpfung. Auf der Seite ist die Beschriftung des Eintrags dann unterstrichen, und ein Klick öffnet den Inhalt in einem Fenster über dem Plan. |
-| Seite | alle | Die Staffbase-Seite aus der Liste der Seiten (die 100 zuletzt bearbeiteten). |
-| Kanal, Beitrag | alle | Erst der News-Kanal (mit seinem Typ: Artikel, Kurznachricht, Bildbeitrag), dann der Beitrag. Entwürfe sind wählbar und mit „(Entwurf)“ gekennzeichnet — Leser:innen sehen sie erst nach dem Veröffentlichen. **In neuem Tab öffnen** zeigt den verknüpften Inhalt. |
+| Seite | alle | Die Staffbase-Seite aus der Liste der Seiten (die 100 zuletzt bearbeiteten). **Neue Seite …** legt sie im Staffbase-Editor an, der sich über den Plan-Editor legt; nach dem Erstellen ist sie verknüpft. |
+| Kanal, Beitrag | alle | Erst der News-Kanal (mit seinem Typ: Artikel, Kurznachricht, Bildbeitrag), dann der Beitrag. Entwürfe sind wählbar und mit „(Entwurf)“ gekennzeichnet — Leser:innen sehen sie erst nach dem Veröffentlichen. **Neuer Beitrag …** legt im gewählten Kanal einen an; nach dem Speichern ist er verknüpft. **In neuem Tab öffnen** zeigt den verknüpften Inhalt. |
 | Anhänge | alle | Bis zu zehn Dateien oder Bilder aus der Medienbibliothek, je mit optionaler Beschriftung (sonst der Dateiname). **Datei oder Bild hinzufügen …** öffnet die Bibliothek; **↑**/**↓** ordnen, **×** entfernt. Anhänge bleiben hinter der Anmeldung. Auf der Seite stehen sie neben dem verknüpften Inhalt bzw. in den Details, im Excel-Export in der Spalte „Anhänge“. |
 | Duplizieren | alle | Legt eine Kopie des Eintrags an. |
 | Löschen | alle | Fragt nach und entfernt dann den Eintrag und alle Abhängigkeiten, die auf ihn zeigen; die Rückfrage nennt die abhängigen Einträge. |

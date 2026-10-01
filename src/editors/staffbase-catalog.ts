@@ -26,24 +26,35 @@ import { useEffect, useState } from "react";
 import { fetchEntityCatalog } from "@shared/entity-picker/entity-catalog";
 import { ChannelType, NewsChannel, fetchChannelPosts, fetchNewsChannels } from "@shared/staffbase/channels";
 import { PageOption, pageCatalogSource } from "@shared/staffbase/pages";
-import { Post, documentLocales, pickLocalizedContent } from "@shared/staffbase/posts";
+import { Post } from "@shared/staffbase/posts";
 
 /** So viele Beiträge zeigt die Auswahl je Kanal. */
 const POST_LIMIT = 100;
-/** Länger wird ein Name in der Auswahl nicht — eine Kurznachricht ist sonst ein Absatz. */
-const MAX_LABEL = 80;
 
 export type Loaded<T> = { status: "loading"; items: readonly T[] } | { status: "ready"; items: readonly T[] };
 
 let pages: Promise<PageOption[]> | null = null;
 let channels: Promise<NewsChannel[]> | null = null;
 const postsByChannel = new Map<string, Promise<Post[]>>();
+/** Steigt, wenn eine Liste veraltet ist; die Hooks laden dann beim nächsten Zeichnen neu. */
+let generation = 0;
 
 /** Für Tests: jede Prüfung beginnt ohne geladene Listen. */
 export function resetStaffbaseCatalogs(): void {
   pages = null;
   channels = null;
   postsByChannel.clear();
+}
+
+/**
+ * Nach einer Neuanlage im Staffbase-Editor: die Liste, in der das Neue steht,
+ * ist veraltet. Ohne Neuladen hieße die frisch verknüpfte Seite „nicht im
+ * Katalog“, und ein neuer Beitrag trüge kein Etikett „Entwurf“.
+ */
+export function refreshAfterCreate(created: { kind: "page" } | { kind: "news"; channelId: string }): void {
+  if (created.kind === "page") pages = null;
+  else postsByChannel.delete(created.channelId);
+  generation += 1;
 }
 
 const isPageOption = (option: { id: string }): option is PageOption =>
@@ -81,36 +92,18 @@ function useLoaded<T>(key: string | null, load: () => Promise<T[]>): Loaded<T> {
   return state !== null && state.key === key ? { status: "ready", items: state.items } : { status: "loading", items: [] };
 }
 
-export const usePages = (): Loaded<PageOption> => useLoaded("pages", loadPages);
+export const usePages = (): Loaded<PageOption> => useLoaded(`pages:${generation}`, loadPages);
 
 export const useNewsChannels = (): Loaded<NewsChannel> => useLoaded("channels", loadChannels);
 
 export const useChannelPosts = (channelId: string): Loaded<Post> =>
-  useLoaded(channelId === "" ? null : channelId, () => loadPosts(channelId));
+  useLoaded(channelId === "" ? null : `${channelId}:${generation}`, () => loadPosts(channelId));
 
 export const CHANNEL_TYPE_LABELS: Readonly<Record<ChannelType, string>> = {
   articles: "Artikel",
   updates: "Kurznachricht",
   pictures: "Bildbeitrag",
 };
-
-/** Text aus dem HTML eines Beitrags. `DOMParser` führt nichts aus, er liest nur. */
-function textOf(html: string | undefined): string {
-  if (html === undefined || html.trim() === "") return "";
-  const text = new DOMParser().parseFromString(html, "text/html").body.textContent ?? "";
-  return text.replace(/\s+/g, " ").trim();
-}
-
-/**
- * Wie ein Beitrag in der Auswahl heißt: sein Titel, sonst — bei einer
- * Kurznachricht ohne Titel — der Anfang seines Texts.
- */
-export function postTitle(post: Post): string {
-  const content = pickLocalizedContent(post.contents, documentLocales());
-  const text = textOf(content?.title) || textOf(content?.content) || textOf(content?.teaser);
-  if (text === "") return post.id;
-  return text.length <= MAX_LABEL ? text : `${text.slice(0, MAX_LABEL - 1).trimEnd()}…`;
-}
 
 /** Noch nicht veröffentlicht: Leser:innen sehen ihn nicht. */
 export const isDraft = (post: Post): boolean => post.published === undefined || post.published === null || post.published === "";

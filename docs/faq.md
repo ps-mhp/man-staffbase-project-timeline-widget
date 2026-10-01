@@ -36,6 +36,17 @@ Kanal steht, den Sie nicht sehen dürfen. Veröffentlichen Sie den Beitrag bzw.
 prüfen Sie die Sichtbarkeit des Kanals. **In neuem Tab öffnen** zeigt, was
 Staffbase selbst dazu sagt.
 
+**Frage:** Ich habe mit **Neue Seite …** eine Seite angelegt, aber oben steht
+nicht „Verknüpft: …“.
+
+Antwort: Der Editor erkennt die neue Seite daran, dass Staffbase nach dem
+**Erstellen** zu ihr wechselt (bei einem Beitrag: nach dem Speichern). Solange
+nur der Anlege-Dialog offen ist, gibt es noch nichts zu verknüpfen. Haben Sie im
+Staffbase-Editor zu einer anderen, schon bestehenden Seite weitergeklickt, wird
+diese bewusst nicht verknüpft. Schließen Sie mit **Abbrechen**: Findet der
+Editor genau eine Seite, die Sie seit dem Öffnen angelegt haben, bietet er sie
+zum Verknüpfen an. Andernfalls wählen Sie die neue Seite unter **Seite** aus.
+
 **Frage:** Ein Anhang lässt sich nicht öffnen.
 
 Antwort: Anhänge kommen aus der Medienbibliothek von Staffbase und werden mit

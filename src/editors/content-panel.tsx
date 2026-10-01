@@ -20,10 +20,19 @@
  * der Reiter „News“, während der Eintrag noch auf eine Seite verwiese.
  * Entwürfe sind wählbar, die Redaktion verknüpft oft vor dem Veröffentlichen;
  * ein Hinweis sagt, dass Leser:innen sie erst danach sehen.
+ *
+ * Was es noch nicht gibt, legt „Neue Seite …“ bzw. „Neuer Beitrag …“ im
+ * Staffbase-Editor an, der sich über den Plan-Editor legt; das Ergebnis ist
+ * danach schon verknüpft.
  */
 
 import * as React from "react";
-import { ReactElement, useState } from "react";
+import { ReactElement, useMemo, useState } from "react";
+
+import { postTitle } from "@shared/staffbase/posts";
+import { Created } from "@shared/studio-create/created";
+import { StudioCreateLayer } from "@shared/studio-create/studio-create-layer";
+import { CreateTarget } from "@shared/studio-create/studio-paths";
 
 import { contentHref } from "../linked-content";
 import { LinkedContent } from "../plan-model";
@@ -33,7 +42,7 @@ import { setContent } from "./link-edits";
 import {
   CHANNEL_TYPE_LABELS,
   isDraft,
-  postTitle,
+  refreshAfterCreate,
   useChannelPosts,
   useNewsChannels,
   usePages,
@@ -57,7 +66,26 @@ function stale(id: string, title: string | undefined, ready: boolean, where: str
   );
 }
 
-function PagePicker({ selected, onPick }: { selected?: Extract<LinkedContent, { kind: "page" }>; onPick: (content: LinkedContent) => void }) {
+/** Der Knopf, der den Staffbase-Editor zum Anlegen öffnet. */
+function CreateButton({ label, onClick }: { label: string; onClick: () => void }): ReactElement {
+  return (
+    <div className="man-pt-editor__actions">
+      <button type="button" className="man-pt-editor__button" onClick={onClick}>
+        {label}
+      </button>
+    </div>
+  );
+}
+
+function PagePicker({
+  selected,
+  onPick,
+  onCreate,
+}: {
+  selected?: Extract<LinkedContent, { kind: "page" }>;
+  onPick: (content: LinkedContent) => void;
+  onCreate: () => void;
+}) {
   const pages = usePages();
   const ready = pages.status === "ready";
   const listed = selected !== undefined && pages.items.some((page) => page.id === selected.id);
@@ -82,6 +110,7 @@ function PagePicker({ selected, onPick }: { selected?: Extract<LinkedContent, { 
         ))}
       </SelectField>
       {ready && pages.items.length === 0 && <p className="man-pt-editor__hint">Keine Seiten gefunden.</p>}
+      <CreateButton label="Neue Seite …" onClick={onCreate} />
     </>
   );
 }
@@ -91,11 +120,13 @@ function NewsPicker({
   channelId,
   onChannel,
   onPick,
+  onCreate,
 }: {
   selected?: Extract<LinkedContent, { kind: "news" }>;
   channelId: string;
   onChannel: (id: string) => void;
   onPick: (content: LinkedContent) => void;
+  onCreate: () => void;
 }) {
   const channels = useNewsChannels();
   const posts = useChannelPosts(channelId);
@@ -136,6 +167,8 @@ function NewsPicker({
           ))}
         </SelectField>
       )}
+      {/* Ein Beitrag entsteht immer in einem Kanal — erst der, dann der Knopf. */}
+      {channelId !== "" && <CreateButton label="Neuer Beitrag …" onClick={onCreate} />}
     </>
   );
 }
@@ -159,7 +192,20 @@ export function ContentPanel({ plan, item, onPlanChange }: PanelProps): ReactEle
   const [kind, setKind] = useState<Kind>(content?.kind ?? "none");
   const [channelId, setChannelId] = useState(content?.kind === "news" ? (content.channelId ?? "") : "");
 
+  const [creating, setCreating] = useState<CreateTarget | null>(null);
+  // Was im Plan schon verknüpft ist, gilt beim Anlegen nie als neu — sonst
+  // böte die Rückfallebene an, was eben erst an einem anderen Eintrag hängt.
+  const linkedIds = useMemo(
+    () => new Set(plan.items.flatMap((entry) => (entry.content === undefined ? [] : [entry.content.id]))),
+    [plan.items],
+  );
+
   const link = (next: LinkedContent | undefined): void => onPlanChange(setContent(plan, item.id, next));
+
+  const linkCreated = (created: Created): void => {
+    refreshAfterCreate(created);
+    link(created);
+  };
 
   const changeKind = (next: Kind): void => {
     setKind(next);
@@ -175,13 +221,28 @@ export function ContentPanel({ plan, item, onPlanChange }: PanelProps): ReactEle
           </option>
         ))}
       </SelectField>
-      {kind === "page" && <PagePicker selected={content?.kind === "page" ? content : undefined} onPick={link} />}
+      {kind === "page" && (
+        <PagePicker
+          selected={content?.kind === "page" ? content : undefined}
+          onPick={link}
+          onCreate={() => setCreating({ kind: "page" })}
+        />
+      )}
       {kind === "news" && (
         <NewsPicker
           selected={content?.kind === "news" ? content : undefined}
           channelId={channelId}
           onChannel={setChannelId}
           onPick={link}
+          onCreate={() => setCreating({ kind: "news", channelId })}
+        />
+      )}
+      {creating !== null && (
+        <StudioCreateLayer
+          target={creating}
+          exclude={linkedIds}
+          onCreated={linkCreated}
+          onClose={() => setCreating(null)}
         />
       )}
       {content !== undefined && <Summary content={content} />}

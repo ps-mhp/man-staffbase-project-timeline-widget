@@ -224,6 +224,22 @@ etwa die Seite mit allen Infos zu einem Software-Update. Der Plan bleibt der
    sehen sie aber erst nach dem Veröffentlichen.
 4. **In neuem Tab öffnen** zeigt, was verknüpft ist.
 
+Gibt es die Seite oder den Beitrag noch nicht, legen Sie sie gleich hier an:
+
+1. Klicken Sie unter der Auswahl auf **Neue Seite …** — bzw. bei einem
+   Beitrag, nachdem Sie den **Kanal** gewählt haben, auf **Neuer Beitrag …**.
+2. Über dem Plan-Editor öffnet sich der Staffbase-Editor. Legen Sie die Seite
+   dort an (**Erstellen**) bzw. speichern Sie den Beitrag als Entwurf.
+3. Sobald Staffbase gespeichert hat, ist der Inhalt mit dem Eintrag verknüpft;
+   oben steht dann „Verknüpft: …“. Sie können im Staffbase-Editor
+   weiterschreiben. **Fertig** schließt ihn.
+
+Schließen Sie mit **Abbrechen** oder Esc, bevor etwas verknüpft ist, fragt der
+Editor nach: Hat er in der Zwischenzeit genau eine neue Seite bzw. einen neuen
+Beitrag von Ihnen gefunden, bietet er an, sie zu verknüpfen; sonst fragt er,
+ob das Anlegen wirklich abgebrochen werden soll — was im Staffbase-Editor noch
+nicht gespeichert ist, geht dabei verloren.
+
 Unter der Verknüpfung stehen die **Anhänge**: Dateien und Bilder aus der
 Medienbibliothek von Staffbase, bis zu zehn je Eintrag.
 
