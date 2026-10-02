@@ -42,8 +42,8 @@ function mockStaffbase(pages: unknown[] = [
     if (url.startsWith("/api/channels")) {
       return json({
         data: [
-          { id: C1, pluginID: "news", config: { contentType: "articles", localization: { de_DE: { title: "Truck News" } } } },
-          { id: C2, pluginID: "news", config: { contentType: "updates", localization: { de_DE: { title: "Kurz" } } } },
+          { id: C1, pluginID: "news", contentType: "articles", config: { localization: { de_DE: { title: "Truck News" } } } },
+          { id: C2, pluginID: "news", contentType: "updates", config: { localization: { de_DE: { title: "Kurz" } } } },
         ],
       });
     }
