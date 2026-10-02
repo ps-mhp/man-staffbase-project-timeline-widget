@@ -25,8 +25,10 @@ import { useEffect, useState } from "react";
 
 import { fetchEntityCatalog } from "@shared/entity-picker/entity-catalog";
 import { ChannelType, NewsChannel, fetchChannelPosts, fetchNewsChannels } from "@shared/staffbase/channels";
+import { pageHref } from "@shared/staffbase/ids";
 import { PageOption, pageCatalogSource } from "@shared/staffbase/pages";
 import { Post } from "@shared/staffbase/posts";
+import { Created } from "@shared/studio-create/created";
 
 /** So viele Beiträge zeigt die Auswahl je Kanal. */
 const POST_LIMIT = 100;
@@ -48,20 +50,29 @@ export function resetStaffbaseCatalogs(): void {
 
 /**
  * Nach einer Neuanlage im Staffbase-Editor: die Liste, in der das Neue steht,
- * ist veraltet. Ohne Neuladen hieße die frisch verknüpfte Seite „nicht im
- * Katalog“, und ein neuer Beitrag trüge kein Etikett „Entwurf“.
+ * ist veraltet. Ohne Neuladen trüge ein neuer Beitrag kein Etikett „Entwurf“.
+ *
+ * Eine neue Seite kommt zusätzlich selbst in die Liste: die Suche findet sie
+ * erst nach einer Weile (live 02.10.2026: Sekunden danach noch nicht), und bis
+ * dahin hieße die frisch verknüpfte Seite „nicht im Katalog“.
  */
-export function refreshAfterCreate(created: { kind: "page" } | { kind: "news"; channelId: string }): void {
-  if (created.kind === "page") pages = null;
-  else postsByChannel.delete(created.channelId);
+export function refreshAfterCreate(created: Created): void {
+  if (created.kind === "page") {
+    const fresh: PageOption = { id: created.id, title: created.title, menuId: created.menuId, href: pageHref(created.menuId) };
+    pages = fetchPages().then((list) => (list.some((page) => page.id === fresh.id) ? list : [fresh, ...list]));
+  } else {
+    postsByChannel.delete(created.channelId);
+  }
   generation += 1;
 }
 
 const isPageOption = (option: { id: string }): option is PageOption =>
   typeof (option as Partial<PageOption>).menuId === "string";
 
-const loadPages = (): Promise<PageOption[]> =>
-  (pages ??= fetchEntityCatalog(pageCatalogSource).then((options) => options.filter(isPageOption)));
+const fetchPages = (): Promise<PageOption[]> =>
+  fetchEntityCatalog(pageCatalogSource).then((options) => options.filter(isPageOption));
+
+const loadPages = (): Promise<PageOption[]> => (pages ??= fetchPages());
 
 const loadChannels = (): Promise<NewsChannel[]> => (channels ??= fetchNewsChannels());
 

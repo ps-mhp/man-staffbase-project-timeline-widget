@@ -262,6 +262,11 @@ describe("ContentPanel — neu anlegen", () => {
     await waitFor(() =>
       expect(fetchMock.mock.calls.filter(([url]) => String(url).startsWith("/api/branch/pages/search"))).toHaveLength(2),
     );
+    // Die Suche kennt eine frische Seite erst nach einer Weile (live 02.10.2026:
+    // Sekunden danach noch nicht) — der Reiter führt sie trotzdem als Seite des Katalogs.
+    expect(await screen.findByRole("option", { name: "Neue Seite" })).toBeInTheDocument();
+    expect(screen.getByLabelText("Seite")).toHaveValue(NEW_PAGE);
+    expect(screen.queryByRole("option", { name: /nicht im Katalog/ })).not.toBeInTheDocument();
   });
 
   it("verknüpft nichts, was schon an einem anderen Eintrag hängt", async () => {
