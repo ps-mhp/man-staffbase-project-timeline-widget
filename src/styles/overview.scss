@@ -16,6 +16,7 @@
 // Kategorien des Plans und stehen deshalb inline am Element, nicht hier.
 
 @use "@shared/stylings/man-tokens" as *;
+@use "@shared/stylings/man-craft" as *;
 
 // Eckig mit Nachdruck: am 30.09.2026 waren Streifen und Fenster im Frontend
 // rund, eine Regel der Seite schlug die einfache Klasse. Die Übersicht steht
@@ -110,8 +111,9 @@
     outline: none;
   }
 
+  // Fokus nach Craft: blaue Linie mit Abstand, kein `box-shadow`.
   &:focus-visible {
-    box-shadow: man("focus");
+    @include man-focus-ring;
   }
 }
 

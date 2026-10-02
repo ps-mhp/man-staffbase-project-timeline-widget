@@ -142,7 +142,7 @@ export function ItemDetails(props: ItemDetailsProps): ReactElement {
         <h3 id={titleId} className="man-pt__details-title">
           {item.title}
         </h3>
-        <button type="button" className="man-pt__button man-pt__button--icon" aria-label="Schließen" onClick={onClose}>
+        <button type="button" className="man-pt__button man-pt__button--icon man-pt__button--close" aria-label="Schließen" onClick={onClose}>
           ×
         </button>
       </div>

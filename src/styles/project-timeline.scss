@@ -12,10 +12,14 @@
  */
 
 @use "@shared/stylings/man-tokens" as *;
+@use "@shared/stylings/man-craft" as *;
 
 // Der Projektplan auf der Seite. Farben, Schriften und Rundungen kommen aus
 // den MAN-Tokens; die Farbe eines Eintrags kommt als `--pt-color` aus den
-// Daten, die Schrift darauf als `--pt-ink` (siehe `color.ts`).
+// Daten, die Schrift darauf als `--pt-ink` (siehe `color.ts`). Knöpfe, Felder,
+// Overlays und Fokus folgen Craft, dem MAN Design System (`man-craft`; Soll:
+// man-theme `src/lib/_craft.scss`): keine Versalien, keine Laufweiten, keine
+// Schatten an Overlays, Gewichte nur 400 und 700.
 //
 // Maße, die auch `lane-layout.ts` kennt (Symbol 14 px, Balken 22 px,
 // Beschriftung 13/16 px, Leiste 8 px), muessen hier dieselben bleiben — das
@@ -38,7 +42,7 @@
   display: grid;
   gap: 12px;
   color: var(--pt-text);
-  font: 300 14px/21px #{man("font-body")};
+  font: 400 14px/21px #{man("font-body")};
 }
 
 // Die Zoom-Steuerung, wenn der Editor sie in seine Kopfzeile holt: dort steht
@@ -62,9 +66,10 @@
 // Eckig, gegen jede Regel der Seite: am 30.09.2026 zeigte das Frontend die
 // Übersicht und ihr Fenster rund, obwohl hier `0` stand — eine Regel der Seite
 // war stärker. Fünf Klassen und `!important` setzen sich durch (wie
-// `man-outshine-host`, nur für alle Nachfahren). Rund bleibt nur, was rund
-// gemeint ist: das „?“ der Hilfe. Die Formen der Kategorien sind SVG und
-// brauchen keine Rundung.
+// `man-outshine-host`, nur für alle Nachfahren). Rund bleibt nur, was Craft
+// rund zeichnet: das „?“ der Hilfe (Kreis), Chip und Tag (Pille) und die
+// Reiter der Hilfe (2px oben). Die Formen der Kategorien sind SVG und brauchen
+// keine Rundung.
 .man-pt.man-pt.man-pt.man-pt.man-pt,
 .man-pt.man-pt.man-pt.man-pt.man-pt *,
 .man-pt.man-pt.man-pt.man-pt.man-pt *::before,
@@ -74,6 +79,15 @@
 
 .man-pt.man-pt.man-pt.man-pt.man-pt .man-pt__help-icon {
   border-radius: #{man("radius-round")} !important;
+}
+
+.man-pt.man-pt.man-pt.man-pt.man-pt .man-pt__chip,
+.man-pt.man-pt.man-pt.man-pt.man-pt .man-pt__tag {
+  border-radius: #{man("radius-pill")} !important;
+}
+
+.man-pt.man-pt.man-pt.man-pt.man-pt .man-pt__help-tab {
+  border-radius: #{man("radius-soft")} #{man("radius-soft")} 0 0 !important;
 }
 
 .man-pt__visually-hidden {
@@ -116,72 +130,75 @@
 // Mit Nachdruck: `man-theme` macht aus jedem blanken `button` im
 // Inhaltsbereich einen Handlungsknopf ueber die volle Breite (Vorfall
 // 10.09.2026 im Hotspot-Widget).
+//
+// Der Craft-Knopf (`man-button`): in der Leiste m (40px wie das Suchfeld, 2px
+// Rand), kompakt s (32px, 1px Rand) in der Kopfzeile des Editors und in den
+// Listenzeilen. Gewöhnlich `secondary`, der Export `primary`, „Abbrechen“ und
+// „Zurücksetzen“ `plain`. Icon 8px neben dem Text wie in Craft.
 
 .man-pt__button {
   @include man-outshine-host {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    width: auto !important;
-    min-width: 0 !important;
+    @include man-button("m", "secondary", true);
+    gap: 8px !important;
     min-height: 0 !important;
-    height: 36px !important;
-    margin: 0 !important;
-    padding: 0 12px !important;
-    border: 1px solid #{man("cta-border")} !important;
-    border-radius: 0 !important;
-    background: var(--pt-surface) !important;
-    color: var(--pt-text) !important;
-    font: 600 13px/1 #{man("font-head")} !important;
-    letter-spacing: normal !important;
-    text-transform: none !important;
-    box-shadow: none !important;
-    cursor: pointer;
-    white-space: nowrap;
 
-    &:hover {
-      border-color: var(--pt-strong) !important;
-    }
-
-    &:focus-visible {
-      outline: none !important;
-      box-shadow: #{man("focus")} !important;
-    }
-
+    // Gewählte Ansicht und offener Filter: gefüllt wie Craft `standard`.
     &.is-active,
     &.is-open {
-      border-color: var(--pt-strong) !important;
-      background: var(--pt-strong) !important;
+      border-color: #{man("slate")} !important;
+      background-color: #{man("slate")} !important;
       color: #{man("white")} !important;
     }
 
-    &:disabled {
-      cursor: default;
-      opacity: 0.5;
+    &.is-active:hover,
+    &.is-open:hover {
+      border-color: #{man("slate-700")} !important;
+      background-color: #{man("slate-700")} !important;
     }
   }
 }
 
+// Nur ein Zeichen: quadratisch wie Craft `iconOnly`.
 .man-pt__button--icon {
   @include man-outshine-host {
-    width: 36px !important;
+    width: 40px !important;
+    min-width: 0 !important;
     padding: 0 !important;
     font-size: 18px !important;
   }
 }
 
+// Das Schließen-Kreuz in Details und Hilfe: ein Symbolknopf wie am Craft-Modal
+// (32px, ohne Rand) und wie jeder Symbolknopf ohne Fläche bei Hover und Druck
+// — wie `.man-cm__close` im gemeinsamen Modal.
+.man-pt__button--close {
+  @include man-outshine-host {
+    width: 32px !important;
+    height: 32px !important;
+    border-color: transparent !important;
+    background-color: transparent !important;
+    color: #{man("slate")} !important;
+    font-size: 22px !important;
+
+    &:hover,
+    &:active {
+      border-color: transparent !important;
+      background-color: transparent !important;
+      color: #{man("slate-700")} !important;
+    }
+  }
+}
+
 .man-pt__button--compact {
   @include man-outshine-host {
-    height: 28px !important;
-    padding: 0 8px !important;
-    font-size: 12px !important;
+    @include man-button("s", "secondary", true);
   }
 }
 
 .man-pt__button--compact.man-pt__button--icon {
   @include man-outshine-host {
-    width: 28px !important;
+    width: 32px !important;
+    min-width: 0 !important;
     padding: 0 !important;
     font-size: 16px !important;
   }
@@ -189,22 +206,13 @@
 
 .man-pt__button--primary {
   @include man-outshine-host {
-    border-color: var(--pt-accent) !important;
-    background: var(--pt-accent) !important;
-    color: #{man("white")} !important;
-
-    &:hover {
-      border-color: #{man("red-hover")} !important;
-      background: #{man("red-hover")} !important;
-    }
+    @include man-button("m", "primary", true);
   }
 }
 
 .man-pt__button--quiet {
   @include man-outshine-host {
-    border-color: transparent !important;
-    background: transparent !important;
-    text-decoration: underline !important;
+    @include man-button("m", "plain", true);
   }
 }
 
@@ -233,8 +241,7 @@
     }
 
     &:focus-visible {
-      outline: none !important;
-      box-shadow: #{man("focus")} !important;
+      @include man-focus-ring(true);
     }
   }
 }
@@ -257,28 +264,20 @@
 // Je Klasse einzeln: `man-outshine-host` verträgt keine Selektorliste — aus
 // `.a, .b` würde ein vermischter Selektor, der nichts trifft (bis 30.09.2026
 // hatten die Auswahllisten deshalb nie ihre eckige Form).
+// Das Craft-Feld (`man-input`): 40px, Rand 1px #5B6F85, Hover #1E2832,
+// Man Europe 400 16px.
 @each $control in (".man-pt__input", ".man-pt__select") {
   #{$control} {
     @include man-outshine-host {
-      height: 36px !important;
+      @include man-input(true);
+      height: 40px !important;
       margin: 0 !important;
-      padding: 0 10px !important;
-      border: 1px solid #{man("cta-border")} !important;
-      border-radius: 0 !important;
-      background: var(--pt-surface) !important;
-      color: var(--pt-text) !important;
-      font: 300 14px/1 #{man("font-body")} !important;
-      box-shadow: none !important;
+      line-height: 1 !important;
       // Safari zeichnet Such- und Auswahlfelder mit eigener, runder Optik, gegen
       // die `border-radius: 0` nichts ausrichtet (am 30.09.2026 im Frontend
       // beanstandet). Ohne native Optik gilt die eckige Form der Marke.
       appearance: none !important;
       -webkit-appearance: none !important;
-  
-      &:focus-visible {
-        outline: none !important;
-        box-shadow: #{man("focus")} !important;
-      }
     }
   }
 }
@@ -287,13 +286,14 @@
   -webkit-appearance: none;
 }
 
-// Ohne native Optik fehlt der Pfeil der Auswahlliste; er kommt als Bild.
+// Ohne native Optik fehlt der Pfeil der Auswahlliste; er kommt als Bild, rot
+// wie der Pfeil von Craft `select` (#E40045).
 .man-pt__select {
   @include man-outshine-host {
-    padding-right: 30px !important;
+    padding-right: 34px !important;
     background:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2312171C' stroke-width='1.5'/%3E%3C/svg%3E")
-        no-repeat right 10px center / 10px 6px,
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23E40045' stroke-width='1.5'/%3E%3C/svg%3E")
+        no-repeat right 12px center / 10px 6px,
       var(--pt-surface) !important;
   }
 }
@@ -323,6 +323,7 @@
   position: relative;
 }
 
+// Craft-Popover: weiß, 1px #CBD3DC, kein Schatten, 4px unter dem Knopf.
 .man-pt__panel {
   position: absolute;
   z-index: 20;
@@ -330,9 +331,7 @@
   left: 0;
   min-width: 300px;
   padding: 16px;
-  border: 1px solid var(--pt-border);
-  background: var(--pt-surface);
-  box-shadow: #{man("elevation-overlay")};
+  @include man-overlay;
 }
 
 .man-pt__filter-panel {
@@ -355,8 +354,6 @@
       padding: 0 !important;
       @include man-type("eyebrow", true);
       color: var(--pt-muted) !important;
-      letter-spacing: #{man("track-label")} !important;
-      text-transform: uppercase !important;
     }
   }
 }
@@ -369,9 +366,10 @@
   cursor: pointer;
 }
 
+// Angehakt rot wie Craft `checkbox` und `radio-button` (#E40045).
 .man-pt__check input,
 .man-pt__radio input {
-  accent-color: var(--pt-strong);
+  accent-color: var(--pt-accent);
 }
 
 .man-pt__period {
@@ -432,33 +430,39 @@
   margin-right: 0;
 }
 
+// Craft-Chip m: Pille (siehe die Ausnahmen der Rundung oben), 32px, Polster 0 8,
+// Rand 1px #5B6F85, Man Europe 400 14px, Hover #EAEDF3. Der Fokusring folgt
+// der Pille.
 .man-pt__chip {
   @include man-outshine-host {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 6px !important;
+    gap: 4px !important;
     width: auto !important;
     min-width: 0 !important;
     min-height: 0 !important;
-    height: 28px !important;
+    height: 32px !important;
     margin: 0 !important;
-    padding: 0 10px !important;
-    border: 1px solid var(--pt-border) !important;
-    border-radius: 0 !important;
+    padding: 0 8px !important;
+    border: #{man("border-width")} solid #{man("border-input")} !important;
     background: var(--pt-surface) !important;
     color: var(--pt-text) !important;
-    font: 300 13px/1 #{man("font-body")} !important;
+    font: 400 14px/1 #{man("font-body")} !important;
+    letter-spacing: normal !important;
     text-transform: none !important;
     box-shadow: none !important;
     cursor: pointer;
+    transition:
+      color man("duration") man("ease"),
+      background-color man("duration") man("ease"),
+      border-color man("duration") man("ease");
 
     &:hover {
-      border-color: var(--pt-strong) !important;
+      background: #{man("slate-50")} !important;
     }
 
     &:focus-visible {
-      outline: none !important;
-      box-shadow: #{man("focus")} !important;
+      @include man-focus-ring(true);
     }
 
     // Ausgeblendet: blass und durchgestrichen — nicht nur blasser, damit der
@@ -575,7 +579,7 @@
     background: transparent !important;
     box-shadow: none !important;
     color: var(--pt-muted) !important;
-    font: 600 12px/16px #{man("font-head")} !important;
+    font: 700 12px/16px #{man("font-head")} !important;
     text-transform: none !important;
     cursor: pointer;
 
@@ -584,8 +588,7 @@
     }
 
     &:focus-visible {
-      outline: none !important;
-      box-shadow: #{man("focus")} !important;
+      @include man-focus-ring(true);
     }
   }
 }
@@ -660,14 +663,14 @@
   overflow: hidden;
   padding: 0 6px;
   color: var(--pt-muted);
-  font: 300 12px/var(--pt-axis-row) #{man("font-body")};
+  font: 400 12px/var(--pt-axis-row) #{man("font-body")};
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .man-pt__axis-row--upper .man-pt__axis-label {
   color: var(--pt-text);
-  font: 600 13px/var(--pt-axis-row) #{man("font-head")};
+  font: 700 13px/var(--pt-axis-row) #{man("font-head")};
 }
 
 .man-pt__today-tag {
@@ -678,7 +681,7 @@
   transform: translateX(-50%);
   background: var(--pt-strong);
   color: #{man("white")};
-  font: 600 11px/16px #{man("font-head")};
+  font: 700 11px/16px #{man("font-head")};
 }
 
 .man-pt__heads {
@@ -716,7 +719,7 @@
 // Trennen statt Brechen mitten im Wort: „Launche|s" war auf dem Telefon die Folge von `anywhere`.
 .man-pt__lane-title {
   min-width: 0;
-  font: 600 13px/16px #{man("font-head")};
+  font: 700 13px/16px #{man("font-head")};
   hyphens: auto;
   overflow-wrap: break-word;
 }
@@ -739,8 +742,7 @@
     cursor: pointer;
 
     &:focus-visible {
-      outline: none !important;
-      box-shadow: #{man("focus")} !important;
+      @include man-focus-ring(true);
     }
   }
 }
@@ -846,7 +848,7 @@
     border-radius: 0 !important;
     background: transparent !important;
     color: var(--pt-text) !important;
-    font: 300 13px/16px #{man("font-body")} !important;
+    font: 400 13px/16px #{man("font-body")} !important;
     text-align: left !important;
     text-transform: none !important;
     letter-spacing: normal !important;
@@ -855,8 +857,7 @@
     transition: top var(--pt-duration);
 
     &:focus-visible {
-      outline: 2px solid var(--pt-strong) !important;
-      outline-offset: 2px !important;
+      @include man-focus-ring(true);
     }
   }
 }
@@ -934,6 +935,8 @@
   color: var(--pt-text);
 }
 
+// Die Schrift muss `LABEL_FONT` in `text-measure.ts` gleichen: damit misst das
+// Layout die Breite, bevor die Beschriftung im DOM steht.
 .man-pt__label {
   position: absolute;
   display: -webkit-box;
@@ -941,7 +944,7 @@
   padding: 0 1px;
   background: #{man-alpha("white", 0.85)};
   color: var(--pt-text);
-  font: 300 13px/16px #{man("font-body")};
+  font: 400 13px/16px #{man("font-body")};
   -webkit-box-orient: vertical;
   -webkit-line-clamp: var(--pt-lines, 3);
   overflow-wrap: anywhere;
@@ -971,6 +974,9 @@
   text-underline-offset: 2px;
 }
 
+// Auswahl, Bezug und Suchtreffer: ein Ring mit weißem Spalt um Symbol bzw.
+// Balken. `box-shadow` ohne Unschärfe, also kein Schatten — so bleibt er neben
+// dem Fokusring (`outline` am Eintrag) sichtbar.
 .man-pt__item.is-selected .man-pt__symbol,
 .man-pt__item.is-selected .man-pt__bar-fill {
   box-shadow:
@@ -1020,9 +1026,8 @@
   width: 320px;
   max-width: calc(100% - 16px);
   padding: 16px;
-  border: 1px solid var(--pt-border);
-  background: var(--pt-surface);
-  box-shadow: #{man("elevation-overlay")};
+  // Craft-Popover: weiß, 1px #CBD3DC, kein Schatten.
+  @include man-overlay;
 }
 
 .man-pt__details:focus {
@@ -1058,7 +1063,7 @@
 }
 
 .man-pt__details-term {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .man-pt__details-facts {
@@ -1094,14 +1099,19 @@
   color: var(--pt-muted);
 }
 
+// Craft-Tag „gray“ m: Pille ohne Rand, 24px, Polster 0 8, #D3D3D3 mit Schrift
+// #303C49, Man Europe 400 14px.
 .man-pt__tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
   margin-left: 6px;
-  padding: 0 6px;
-  border: 1px dashed var(--pt-muted);
-  color: var(--pt-muted);
-  font-size: 12px;
-  line-height: 18px;
+  padding: 0 8px;
+  background: #{man("grey-300")};
+  color: var(--pt-text);
+  font: 400 14px/1 #{man("font-body")};
+  vertical-align: middle;
+  white-space: nowrap;
 }
 
 .man-pt__sheet-backdrop,
@@ -1137,10 +1147,10 @@
   gap: 16px;
   width: min(440px, 100%);
   padding: 24px;
-  background: var(--pt-surface);
-  box-shadow: #{man("elevation-overlay")};
+  // Craft-Modal: eckig, ohne Schatten; getrennt wie jedes Overlay über 1px #CBD3DC.
+  @include man-overlay;
   color: var(--pt-text);
-  font: 300 14px/21px #{man("font-body")};
+  font: 400 14px/21px #{man("font-body")};
 }
 
 .man-pt__dialog-title {
@@ -1165,9 +1175,10 @@
   gap: 8px;
 }
 
+// Fehlertext nach Craft #990000, nicht das Markenrot.
 .man-pt__error {
   margin: 0;
-  color: #{man("error")};
+  color: #{man("error-ink")};
 }
 
 // --- Vollbild --------------------------------------------------------------
@@ -1223,12 +1234,6 @@
 
 // --- Hilfe -----------------------------------------------------------------
 
-.man-pt__button--help {
-  @include man-outshine-host {
-    gap: 6px !important;
-  }
-}
-
 .man-pt__help-icon {
   display: inline-grid;
   place-items: center;
@@ -1236,7 +1241,7 @@
   height: 16px;
   border: 1.5px solid currentColor;
   border-radius: #{man("radius-round")};
-  font: 600 11px/1 #{man("font-head")};
+  font: 700 11px/1 #{man("font-head")};
 }
 
 .man-pt__help {
@@ -1255,38 +1260,48 @@
   padding: 16px 24px 8px;
 }
 
+// Craft-Tabs: 40px, Condensed 700 16px gemischt, Polster 0 16, auf einer
+// Grundlinie 2px #EAEDF3. Der Strich des Reiters deckt sie: bei Hover #AD0040
+// (300ms), gewählt rot mit roter Schrift.
 .man-pt__help-tabs {
   display: flex;
   padding: 0 24px;
-  border-bottom: 1px solid var(--pt-border);
+  border-bottom: #{man("border-width-strong")} solid #{man("border-subtle")};
 }
 
 .man-pt__help-tab {
   @include man-outshine-host {
     display: inline-flex !important;
+    align-items: center !important;
     width: auto !important;
     min-width: 0 !important;
-    height: auto !important;
+    height: 40px !important;
     min-height: 0 !important;
-    margin: 0 !important;
-    padding: 10px 12px !important;
+    margin: 0 0 calc(-1 * #{man("border-width-strong")}) !important;
+    padding: 0 16px !important;
     border: 0 !important;
-    border-radius: 0 !important;
+    border-bottom: #{man("border-width-strong")} solid transparent !important;
     background: transparent !important;
-    color: var(--pt-muted) !important;
-    font: 600 13px/16px #{man("font-head")} !important;
+    color: var(--pt-text) !important;
+    font: 700 16px/1 #{man("font-head")} !important;
+    letter-spacing: normal !important;
     text-transform: none !important;
+    white-space: nowrap !important;
     box-shadow: none !important;
     cursor: pointer;
+    transition: border-color man("duration-slow") man("ease-move");
+
+    &:hover {
+      border-bottom-color: #{man("red-hover")} !important;
+    }
 
     &.is-active {
-      color: var(--pt-text) !important;
-      box-shadow: inset 0 -3px 0 var(--pt-accent) !important;
+      border-bottom-color: var(--pt-accent) !important;
+      color: var(--pt-accent) !important;
     }
 
     &:focus-visible {
-      outline: none !important;
-      box-shadow: #{man("focus")} !important;
+      @include man-focus-ring(true);
     }
   }
 }
@@ -1318,7 +1333,7 @@
   align-items: center;
   gap: 4px 12px;
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .man-pt__help-entry dd,
@@ -1346,8 +1361,6 @@
     margin: 0 0 8px !important;
     @include man-type("eyebrow", true);
     color: var(--pt-muted) !important;
-    letter-spacing: #{man("track-label")} !important;
-    text-transform: uppercase !important;
   }
 }
 
@@ -1363,7 +1376,7 @@
   border-bottom-width: 2px;
   background: var(--pt-sunken);
   color: var(--pt-text);
-  font: 600 12px/18px #{man("font-head")};
+  font: 700 12px/18px #{man("font-head")};
   text-align: center;
 }
 
@@ -1439,11 +1452,11 @@
 
 .man-pt__list thead th {
   border-bottom: 1px solid var(--pt-strong);
-  font: 600 13px/16px #{man("font-head")};
+  font: 700 13px/16px #{man("font-head")};
 }
 
 .man-pt__list tbody th {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .man-pt__list-term {
@@ -1471,6 +1484,13 @@
 @media (max-width: 767px) {
   .man-pt {
     --pt-heads: 96px;
+  }
+
+  // Craft: mobil eine Überschriftenstufe tiefer (h3 → h4).
+  .man-pt__title {
+    @include man-outshine-host {
+      @include man-type("h4", true);
+    }
   }
 
   .man-pt__lane-head {

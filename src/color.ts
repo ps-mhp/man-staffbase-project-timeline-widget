@@ -20,8 +20,12 @@
  * mindestens für 4,5 : 1.
  */
 
-/** `man("text")` und `man("white")`; fest, weil der Kontrast mit genau diesen Werten gerechnet ist. */
-export const DARK_INK = "#12171C";
+/**
+ * `man("slate-700")` (Craft anthracite-900) und `man("white")`; fest, weil der
+ * Kontrast mit genau diesen Werten gerechnet ist. Nicht `man("text")`
+ * (#303C49): darauf käme das Blau #4B96D2 der Vorlagen nur auf 3,5 : 1.
+ */
+export const DARK_INK = "#1E2832";
 export const LIGHT_INK = "#FFFFFF";
 
 function channel(value: number): number {

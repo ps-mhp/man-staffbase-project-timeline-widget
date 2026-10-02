@@ -23,8 +23,12 @@
  * zu schmal geschätzte überdeckt die Nachbarin.
  */
 
-/** Die Schrift der Beschriftungen; muss zu `.man-pt__label` im Stylesheet passen. */
-export const LABEL_FONT = '300 13px "MANEurope Light", "MAN Europe", Arial, sans-serif';
+/**
+ * Die Schrift der Beschriftungen; muss zu `.man-pt__label` im Stylesheet
+ * passen (Craft: Man Europe Regular 400). Ein Canvas löst kein `var()` auf,
+ * deshalb steht hier der Fallback von `man("font-body")` ausgeschrieben.
+ */
+export const LABEL_FONT = '400 13px "Man Europe", Arial, sans-serif';
 
 /** Durchschnittliche Zeichenbreite der Schätzung bei 13 px. */
 const ESTIMATED_CHAR_WIDTH = 7;

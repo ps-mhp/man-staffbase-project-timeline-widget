@@ -196,7 +196,7 @@ export function HelpDialog({ plan, allowExport, onClose }: HelpDialogProps): Rea
           <h3 id={titleId} className="man-pt__dialog-title">
             Hilfe zum Projektplan
           </h3>
-          <button type="button" className="man-pt__button man-pt__button--icon" aria-label="Schließen" onClick={onClose}>
+          <button type="button" className="man-pt__button man-pt__button--icon man-pt__button--close" aria-label="Schließen" onClick={onClose}>
             ×
           </button>
         </div>
