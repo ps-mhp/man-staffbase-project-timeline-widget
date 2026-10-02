@@ -42,11 +42,14 @@ Dall'alto verso il basso:
 1. **Intestazione** (se impostato) e **"Stato: ..."** — la data dell'ultimo
    Modifica il piano, nel formato di data della lingua della pagina. 
 2. **Barra degli strumenti** — Cerca, **Filtro**, Zoom (**−**, **+**, **Tutti
-   mostrare**), il toggle **Timeline | List** e **Export**. 
+   mostra**), il toggle **Timeline | List**, **Export**, 
+   **Schermo intero** e **Aiuto**. 
 3. **Leggenda** — categorie con il loro colore. Un clic mostra un
    Categoria spenta o riattivata. 
 4. **Il piano** — a sinistra i titoli dei livelli, a destra la linea temporale con il
-   Voci, sotto l'ultimo livello i titoli delle date chiave. 
+   Voci, sotto l'ultimo livello i titoli delle date chiave. La freccia sul
+   Il titolo si ripiega di uno strato; **Collassa tutto** sopra i titoli collassa
+   tutto in una volta e poi riaprono. 
 5. **Panoramica** — una striscia stretta che si estende per tutto il periodo. Un telaio
    mostra quale sezione viene attualmente vista. 
 
@@ -74,6 +77,16 @@ Inoltre:
 - Su schermi stretti (meno di 768 pixel di larghezza), filtri e
   I dettagli sono disponibili in un foglio dal basso, e **Lista** ed **Esporta** sono disponibili
   nel menù **Altro**. 
+- **Schermo intero** mostra il piano su tutto lo schermo, con lo stesso
+  operazione; rimangono in piedi solo i ruoli del piano, l'asse e la panoramica. 
+  **Esc** o **Esci Schermo intero** ritorna alla pagina. Dove il browser non
+  a schermo intero vero (come Safari su iPhone), il piano si sovrappone
+  tutta la pagina. 
+- **Aiuto** spiega direttamente ai lettori sulla pagina quali sono i personaggi
+  (Scheda Legend, con le categorie di questo piano) e come usare il
+  Plan operato con mouse, trackpad, touch e tastiera (scheda **Operazione**). 
+  Dal piano, il tasto **?** apre anche l'aiuto. Nell'editor di piani,
+  Non ha il pulsante. 
 - **Senza voci, il widget non mostra nulla** — nessun fotogramma vuoto e
   Nessun messaggio di errore. 
 

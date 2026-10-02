@@ -42,11 +42,14 @@ De arriba a abajo:
 1. **Encabezado** (si se ha establecido) y **"Estado: ..."** — la fecha del último
    Cambia el plano, en el formato de fecha del idioma de la página. 
 2. **Barra de herramientas** — Buscar, **Filtrar**, Zoom (**−**, **+**, **Todos
-   mostrar**), el interruptor **Línea de tiempo | Lista** y **Exportar**. 
+   mostrar**), el interruptor **Línea de tiempo | Lista**, **Export**, 
+   **Pantalla completa** y **Ayuda**. 
 3. **Leyenda** — categorías con su color. Con solo clic se muestra un
    Categoría apagada o activada. 
 4. **El plan** — a la izquierda los títulos de las capas, a la derecha la línea temporal con la
-   entradas, debajo del último nivel los títulos de las fechas clave. 
+   entradas, debajo del último nivel los títulos de las fechas clave. La flecha en el
+   El título se colapsa una capa; **Colapsa todo** sobre los títulos colapsa
+   Todo de golpe y luego vuelve a abrir. 
 5. **Visión general** — una franja estrecha a lo largo de todo el periodo. Un marco
    muestra qué sección se está viendo actualmente. 
 
@@ -74,6 +77,16 @@ Además:
 - En pantallas estrechas (menos de 768 píxeles de ancho), filtros y
   Los detalles están disponibles en una hoja desde abajo, y **List** y **Export**
   en el menú **Más**. 
+- **Pantalla completa** muestra el plano en toda la pantalla, con el mismo
+  funcionamiento; solo los propios rollos, eje y visión general permanecen en pie. 
+  **Esc** o **Salir de pantalla completa** vuelve a la página. Donde el navegador no lo hace
+  pantalla completa real (como Safari en el iPhone), superposiciones del plan
+  toda la página. 
+- **Ayuda** explica a los lectores directamente en la página qué personajes son los personajes
+  (pestaña de leyenda, con las categorías de este plan) y cómo usar el
+  Plan operaba con ratón, trackpad, táctil y teclado (pestaña **Operación**). 
+  Desde el plano, la tecla **?** también abre la ayuda. En el editor de planos,
+  No tiene el botón. 
 - **Sin entradas, el widget no muestra nada** — no hay fotograma vacío y
   No hay mensaje de error. 
 

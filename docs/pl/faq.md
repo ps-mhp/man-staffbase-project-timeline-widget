@@ -27,6 +27,42 @@ Nie. Zachowaj plan, znikną na zawsze. Chcesz
 Do osoby, która ostatnio zmieniła plan — zwykle treść była
 ręcznie z pola tekstowego **Plan**. 
 
+**Pytanie:** Kliknięcie w powiązany wpis pokazuje "Ten post to
+niedostępny lub niewydany." 
+
+Odpowiedź: Okno ładuje post z twoimi własnymi prawami. Wiadomość
+pojawia się, jeśli post nadal jest szkicą, został usunięty lub znajduje się w
+kanał, którego nie wolno Ci widzieć. Opublikuj post lub 
+Sprawdź widoczność kanału. **Otwórz w nowej karcie** pokazuje, co
+Sama Staffbase o tym mówi. 
+
+**Pytanie:** Stworzyłem stronę z **Nową stroną ...**, ale na górze jest napisane
+a nie "Linked: ...". 
+
+Odpowiedź: Redaktor rozpoznaje nową stronę po tym, że Staffbase została nazwana od
+**Create** przełącza się na to (w postie: po zapisaniu). Dopóki
+Otwarty jest tylko dialog tworzenia, na razie nie ma nic do podlinkowania. Jeśli masz
+Edytor staffbase na inną, już istniejącą stronę,
+celowo ich nie łączy. Zakończ się **Anuluj**: Jeśli
+Edytuję dokładnie jedną stronę, którą stworzyłeś od momentu otwarcia, oferuje ją
+aby linkować. W przeciwnym razie wybierz nową stronę w **Strona**. 
+
+**Pytanie:** Załącznik nie może być otwarty. 
+
+Odpowiedź: Załączniki pochodzą z biblioteki mediów Staffbase i są wysyłane razem
+Prawa osoby czytającej. Czy plik został tam usunięty, czy tak jest.
+niewidoczne dla tej osoby, otwarcie się nie udaje. Sprawdź
+pliku w Media Library i ponownie dołącz, jeśli zajdzie taka potrzeba. 
+
+**Pytanie:** Na górze edytora planu jest napisane "N nie potrafił odczytać skrótów
+i są tracone, gdy zostaną zbawione." 
+
+Odpowiedź: W zapisanym planie znajduje się link lub
+załącznik, z którym widżet nie może nic zrobić — zwykle dlatego, że treść
+pola tekstowego **Plan** zostało edytowane ręcznie. Sam wpis pozostał
+, jedynie link jest pomijany podczas zapisywania. Link
+Strona lub post w zakładce **Content**. 
+
 **Pytanie:** Podczas obracania kółka pojawia się "Ctrl/⌘ pressed to zoom"
 ". 
 
@@ -35,12 +71,37 @@ Podczas przewijania utknąłeś na mapie. Aby powiększyć, przytrzymaj klawisz 
 (Mac: ⌘) i przekręcę kółko myszy. Komunikat pojawia się tylko
 Raz. 
 
-**Pytanie:** Edytor planu mówi: "Jeszcze brak wpisów — podgląd się pojawi
-z pierwszym wpisem." 
+**Pytanie:** Edytor planu mówi: "Podgląd pojawia się razem z pierwszym
+Wejście." 
 
 Odpowiedź: Plan nie ma jeszcze wpisu, więc nie ma nic do pokazania. 
-W zakładce **Wpisy**, pod **Dodaj**, ustaw kamień milowy, 
-Wybierz okres lub termin, albo kliknij **Rozpocznij z Przykładowym Planem**. 
+W zakładce **Wpisy** powyżej listy wybierz typ i użyj
+**+** wpis wpis. 
+
+**Pytanie:** Edytor planów obejmuje cały ekran, włącznie z paskiem
+studia. 
+
+Odpowiedź: To jest celowe: podgląd, lista i formularz potrzebują miejsca. Ty
+wyjdź z edytora w prawym górnym rogu przez **Zastosuj** lub **Anuluj**; następnie
+ponownie można zobaczyć dialog konfiguracyjny, a **Edytuj plan ...** otwiera się
+Znowu redaktor. 
+
+**Pytanie:** Zapowiedź zajmuje dla mnie za dużo miejsca. 
+
+Odpowiedź: Przeciągnij wąski pasek poniżej podglądu, albo
+całkowicie zwij podgląd, klikając na **Podgląd**. Podobnie,
+Lista zgłoszeń może być wyświetlana na pasku pomiędzy listą a formularzem
+węższe lub szersze. Podwójne kliknięcie na pasek ustawia
+oryginalny rozmiar. Przeglądarka zapamiętuje rozmiary; w
+Prywatne okna, specyfikacje ponownie obowiązują przy następnym otwarciu. 
+
+**Pytanie:** Gdzie czytelnicy dowiadują się, co oznaczają postacie z planu? 
+
+**Odpowiedź:** Używając przycisku **Pomoc** na pasku narzędzi (na wąskim poziomie
+ekrany na **?**). Zakładka **Legend** pokazuje każdą postać jako małą
+Przykładka z wyjaśnieniem i kategoriami tego planu; zakładka **Operacja** 
+Wyjaśnia powiększanie, przesuwanie, filtry i wszystkie skróty klawiaturowe. Jeśli ostrość jest w
+Plan, otwiera też przycisk **?** i pomoc. 
 
 **Pytanie:** Jak zrobić zoom? 
 
@@ -58,7 +119,15 @@ Odpowiedź: Albo **Excel Export jest ustawiony w ustawieniach widgetu
 lub ekran jest wąski (mniej niż 768 pikseli)
 szerokość): wtedy **Eksport** znajduje się w menu **Więcej** na pasku narzędzi. 
 
-**Pytanie:** Co oznacza przerywana ramka lub symbol, który jest używany wyłącznie jako
+**Pytanie:** Gdzie ustawić kształt kamienia milowego? 
+
+Odpowiedź: według kategorii, a nie według kamienia milowego: w zakładce **Kategorie** 
+za pomocą przycisku kształtu obok pola koloru. Możesz wybrać między diamentem, trójkątem, trójkątem z czubkiem w dół, kwadratem, kołem, sześciokątem, gwiazdą lub krzyżem. Wszystkie
+Kamienie milowe w danej kategorii mają ten sam kształt i kolor — to właśnie można to rozpoznać
+kategoria na osi czasu nawet bez koloru. Kamienie milowe bez kategorii
+wygląda jak szary diament. 
+
+**Pytanie:** Co oznacza przerywana ramka lub kształt, który jest używany wyłącznie jako
 Konspekt? 
 
 Odpowiedź: Wpis jest oznaczony jako **wstępny** — jego data wciąż jest oczekiwana
@@ -110,12 +179,33 @@ W prawym górnym rogu pokazuje liczbę wpisów już w planie. Dla bardzo dużych
 Jeśli planujesz to zrobić, zaleca się podzielenie planu na kilka widgetów, takich jak
 po jednym na serię. 
 
-**Pytanie:** W sekcji **Dodaj** możesz dodać **kamień milowy** i **okres** 
+**Pytanie:** Przycisk **+** można używać w **kamieniach milowych** i **okresach czasowych** 
 Nie klikaj w to. 
 
 Odpowiedź: Plan nie ma już poziomu, a bez niego ma kamień milowy
-lub okres czasowy; edytor planu zaznaczy to poniżej. W zakładce **Poziomy** umieść ją nad **Nowe
-Daty odniesienia można również tworzyć bez poziomu. 
+lub kropka; redaktor planu wskazuje to poniżej. Lay
+W zakładce **Poziomy** wybierz przynajmniej jeden przez **Nową warstwę**. 
+
+**Pytanie:** Gdzie jest kosz na śmieci na liście zgłoszeń? 
+
+Odpowiedź: Pojawia się, gdy najedziesz kursorem na wiersz lub otworzysz
+linię przez klawiaturę; zawsze można ją zobaczyć na urządzeniach dotykowych. 
+Usunięcie następuje dopiero po zapytaniu. Jeśli inne wpisy zależą od usuniętych
+, zapytanie podaje jego liczbę; jego połączenia są usuwane. 
+
+**Pytanie:** Podczas tworzenia warstwy lub kategorii pojawia się komunikat "Warstwa "X" zwraca
+już istnieje." albo "Kategoria "X" już istnieje". 
+
+Odpowiedź: Każde imię może pojawić się tylko raz, w przeciwnym razie poziomy i
+Kategorie w polach wyboru, legenda i eksport Excela
+. Duże i małe litery oraz space na marginesie liczą się
+nie. Wybierz inną nazwę lub weź istniejącą warstwę. 
+
+**Pytanie:** Zakładka w formularzu ma czerwoną kropkę. 
+
+Odpowiedź: Pole w tej zakładce zawiera nieprawidłowe wejście, takie jak
+Pusta data. Plan zachowuje ostatnią ważną wartość tam. Otwórz
+tabulator i poprawa pole; wtedy punkt znika. 
 
 **Pytanie:** Formularz mówi "Proszę wpisać tytuł.", "Proszę wpisać tytuł."
 Wpisz swoje imię.", "Proszę podać datę.", "Proszę podać ważną datę

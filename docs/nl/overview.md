@@ -42,11 +42,14 @@ Van boven naar onder:
 1. **Kop** (indien ingesteld) en **"Status: ..."** — de datum van de laatste
    Verander het plan, in het datumformaat van de paginataal. 
 2. **Werkbalk** — Zoeken, **Filter**, Zoomen (**−**, **+**, **Allemaal)
-   toon**), de schakelaar **Tijdlijn | Lijst** en **Exporteren**. 
+   toon**), de schakelaar **Tijdlijn | Lijst**, **Exporteren**, 
+   **Volledig scherm** en **Help**. 
 3. **Legende** — categorieën met hun kleur. Eén klik toont een
    Categorie af en toe of weer uit. 
 4. **Het plan** — links de titels van de lagen, rechts de tijdlijn met de
-   Vermeldingen, onder het laatste niveau de titels van de belangrijkste data. 
+   Vermeldingen, onder het laatste niveau de titels van de sleuteldata. De pijl op de
+   Titel stort één laag in; **Collapse all** boven de titels stort in
+   Alles tegelijk en dan weer openen. 
 5. **Overzicht** — een smalle strook over de hele periode. Een kader
    toont welk gedeelte momenteel te zien is. 
 
@@ -74,6 +77,16 @@ Ook:
 - Op smalle schermen (minder dan 768 pixels breed), filters en
   Details als een blad van onderaan, en **Lijst** en **Export** zijn beschikbaar
   in het menu **Meer**. 
+- **Volledig scherm** toont het plan over het hele scherm, met hetzelfde
+  operation; alleen het plan zelf rolt, as en het overzicht blijven staan. 
+  **Esc** of **Volledig scherm afsluit** keert terug naar de pagina. Waar de browser dat niet doet
+  echte fullscreen (zoals Safari op de iPhone), de abonnementsoverlays
+  De hele pagina. 
+- **Help** legt direct op de pagina aan lezers uit wat de personages zijn
+  (Legende-tabblad, met de categorieën van dit plan) en hoe je de
+  Het plan werd bediend met muis, trackpad, touch en toetsenbord (**Bediening**-tabblad). 
+  Vanuit het plan opent de **?**-toets ook de hulp. In de planeditor,
+  Hij heeft de knop niet. 
 - **Zonder vermeldingen toont de widget niets** — geen leeg frame en
   Geen foutmelding. 
 

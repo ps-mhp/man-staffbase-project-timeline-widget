@@ -27,6 +27,42 @@ Non. Sauve le plan, ils disparaissent définitivement. Tu veux
 à la personne qui a changé le plan en dernier — généralement le contenu était
 de la boîte de texte **Plan** à la main. 
 
+**Question :** Cliquer sur une entrée liée montre « Ce post est
+non disponible ou non publié. » 
+
+Réponse : La fenêtre charge le post avec vos propres droits. Le message
+apparaît si le post est encore un brouillon, a été supprimé ou se trouve dans un
+Canal que vous n’êtes pas autorisé à voir. Publiez le post ou 
+Vérifie la visibilité de la chaîne. **Ouvrir dans un nouvel onglet** montre ce que
+La base de personnel elle-même en parle. 
+
+**Question :** J’ai créé une page avec **Nouvelle page ...**, mais en haut il est écrit
+pas « Lien : ... ». 
+
+Réponse : L’éditeur reconnaît la nouvelle page par le fait que Staffbase porte le nom du
+**Créer** y passe (pour un post : après avoir sauvegardé). Tant que
+Seule la boîte de dialogue de création est ouverte, il n’y a encore rien à lier. Si vous avez
+Rédacteur de la base de personnel vers une autre page déjà existante, le
+délibérément ne les lie pas. Clôturer avec **Annuler** : Si le
+Éditez exactement une page que vous avez créée depuis que vous l’avez ouverte, elle l’offre
+pour lien. Sinon, sélectionnez la nouvelle page sous **Page**. 
+
+**Question :** Un attachement ne peut pas être ouvert. 
+
+Réponse : Les pièces jointes proviennent de la bibliothèque média de Staffbase et sont envoyées avec
+les droits de la personne lectrice. Le fichier a-t-il été supprimé là-bas ou est-ce le cas
+non visible pour cette personne, l’ouverture échoue. Vérifiez le
+classez dans la bibliothèque média et reconnectez-la si nécessaire. 
+
+**Question :** En haut de l’éditeur de plans, il est écrit « N ne pouvait pas lire les raccourcis
+et sont perdus une fois sauvés. » 
+
+Réponse : Dans le forfait sauvegardé, il y a un lien ou
+Un accessoire avec lequel le widget ne peut rien faire — généralement à cause du contenu
+du champ de texte **Plan** a été modifié à la main. L’entrée elle-même reste
+, seul le lien est omis lors de la sauvegarde. Liaison le
+Pagez ou postez dans l’onglet **Contenu**. 
+
 **Question :** En tournant la molette de la souris, « Ctrl/⌘ pressed to zoom » apparaît
 ". 
 
@@ -35,12 +71,37 @@ Vous vous retrouveriez bloqué sur la carte en faisant défiler. Pour zoomer, ma
 (Mac : ⌘) et tourne la molette de la souris. Le message n’apparaît que
 Une fois. 
 
-**Question :** L’éditeur de plans dit « Pas encore de participation — l’aperçu apparaîtra
-avec la première entrée. » 
+**Question :** L’éditeur de plan dit « L’aperçu apparaît avec le premier
+Entrée. » 
 
 Réponse : Le plan n’a pas encore d’entrée, donc rien à montrer. 
-Dans l’onglet **Entrées**, sous **Ajouter**, fixez un jalon, 
-Sélectionnez la période ou la date limite, ou cliquez sur **Commencer par un plan type**. 
+Dans l’onglet **Entrées** au-dessus de la liste, sélectionnez un type et utilisez
+**+** Saisit une entrée. 
+
+**Question :** L’éditeur de plans couvre tout l’écran, y compris la barre
+du studio. 
+
+Réponse : C’est intentionnel : l’aperçu, la liste et la forme ont besoin d’espace. Vous
+quitte l’éditeur en haut à droite via **Appliquer** ou **Annuler** ; puis
+la boîte de dialogue de configuration peut être vue à nouveau, et **Modifier le plan ...** s’ouvre
+Encore l’éditeur. 
+
+**Question :** L’aperçu prend trop de place pour moi. 
+
+Réponse : Faites glisser la barre étroite sous l’aperçu, ou
+Réduisez complètement l’aperçu en cliquant sur **Aperçu**. De même,
+La liste des participants peut être affichée sur la barre entre la liste et le formulaire
+plus étroit ou plus large. Un double-clic sur une barre active le
+taille originale. Le navigateur se souvient des tailles ; dans un
+Les fenêtres privées, les spécifications s’appliquent à nouveau lors de la prochaine ouverture. 
+
+**Question :** Où les lecteurs apprennent-ils ce que signifient les personnages du plan ? 
+
+**Réponse :** En utilisant le bouton **Aide** dans la barre d’outils (en mode étroit
+écrans sur un ** ?**). L’onglet **Légende** affiche chaque personnage comme un petit
+Exemple avec explication et catégories de ce plan ; l’onglet **Opération** 
+Explique le zoom, le panoramique, les filtres et tous les raccourcis clavier. Si la mise au point est dans le
+Planifier, ouvre aussi le bouton ** ?** de l’aide. 
 
 **Question :** Comment je zoome ? 
 
@@ -58,7 +119,15 @@ Réponse : soit **Export Excel est défini dans les paramètres du widget
 ou l’écran est étroit (moins de 768 pixels)
 width) : alors **Export** se trouve dans le menu **Plus** de la barre d’outils. 
 
-**Question :** Que signifie une bordure en pointillés ou un symbole utilisé uniquement comme
+**Question :** Où dois-je définir la forme d’un jalon ? 
+
+Réponse : Par catégorie, pas par jalon : dans l’onglet **Catégories** 
+Via le bouton forme à côté du champ de couleur. Vous pouvez choisir entre losange, triangle, triangle avec la pointe vers le bas, carré, cercle, hexagone, étoile ou croix. Tous
+Les jalons d’une catégorie ont la même forme et la même couleur — c’est ainsi que l’on peut le savoir
+la catégorie dans la chronologie même sans couleur. Jalons sans catégorie
+apparaît sous forme de losange gris. 
+
+**Question :** Que signifie une bordure ou une forme pointillée qui n’est utilisée que comme
 Un plan ? 
 
 Réponse : L’entrée est marquée comme **préliminaire** — sa date est toujours en attente
@@ -110,12 +179,33 @@ Affiche en haut à droite combien d’entrées le plan a déjà. Pour les très 
 Si vous prévoyez cela, il est recommandé de diviser le plan en plusieurs widgets, tels que
 Un par série. 
 
-**Question :** Sous **Ajouter**, vous pouvez ajouter **jalon** et **période** 
+**Question :** Le bouton **+** peut être utilisé à **jalons** et **périodes temporelles** 
 Ne cliquez pas dessus. 
 
 Réponse : Le plan n’a plus de niveau, et sans niveau a un jalon
-ou période temporelle ; l’éditeur de plans indiquera ceci ci-dessous. Dans l’onglet **Niveaux**, placez-le au-dessus de **Nouveau
-Les dates de référence peuvent également être créées sans niveau. 
+ou période ; l’éditeur de plan l’indique ci-dessous. Lay
+Dans l’onglet **Niveaux**, sélectionnez-en au moins un via **Nouvelle couche**. 
+
+**Question :** Où se trouve la poubelle dans la liste des inscriptions ? 
+
+Réponse : Il apparaît lorsque vous survolez une ligne ou ouvrez un
+ligne via clavier ; elle est toujours visible sur des appareils tactiles. 
+La suppression ne se fait qu’après la requête. Si d’autres entrées dépendent de la suppression
+, la requête mentionne son numéro ; ses connexions sont supprimées. 
+
+**Question :** Lors de la création d’une couche ou d’une catégorie, il est indiqué « Une couche « X » retourne
+il existe déjà. » ou « Il existe déjà une catégorie « X ». 
+
+Réponse : Chaque nom ne peut apparaître qu’une seule fois, sinon les niveaux et
+Catégories dans les champs de sélection, les légendes et l’exportation Excel
+. Lettres majuscules et minuscules ainsi que des espaces dans le nombre de marges
+Non. Choisissez un autre nom ou prenez le calque existant. 
+
+**Question :** Un onglet dans le formulaire a un point rouge. 
+
+Réponse : Un champ de cet onglet contient une entrée invalide, telle qu’une
+Date vide. Le plan conserve la dernière valeur valide à cet endroit. Ouvrez le
+tab et corrige le champ ; puis le point disparaît. 
 
 **Question :** Le formulaire indique « Veuillez entrer un titre. », « Veuillez entrer un titre. »
 Saisissez votre nom. », « Veuillez entrer une date. », « Veuillez entrer une date valide

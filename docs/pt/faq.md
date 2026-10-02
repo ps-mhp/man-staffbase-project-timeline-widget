@@ -27,6 +27,42 @@ não. Salve o plano, eles desaparecem para sempre. Quer
 para a pessoa que mudou o plano por última vez — geralmente o conteúdo era
 da caixa de texto do **Plan** à mão. 
 
+**Pergunta:** Clicar em uma entrada vinculada mostra "Este post é
+não disponível ou não lançado." 
+
+Resposta: A janela carrega a postagem com seus próprios direitos. A mensagem
+aparece se a postagem ainda for um rascunho, foi deletada ou está em um
+canal que você não pode ver. Publique o post ou 
+Verifique a visibilidade do canal. **Abrir em nova aba** mostra o que
+A própria base de funcionários diz sobre isso. 
+
+**Pergunta:** Criei uma página com **Nova página ...**, mas no topo diz
+não "Linkado: ...". 
+
+Resposta: O editor reconhece a nova página pelo fato de que a Staffbase leva o nome do
+**Criar** muda para ele (para um post: depois de salvar). Desde que
+Apenas o diálogo de criação está aberto, ainda não há nada para linkar. Se você tiver
+Editor da base de equipe para outra página já existente, a
+deliberadamente não os vincula. Feche com **Cancelar**: Se o
+Edite exatamente uma página que você criou desde que abriu, ela oferece
+para linkar. Caso contrário, selecione a nova página sob **Página**. 
+
+**Pergunta:** Um anexo não pode ser aberto. 
+
+Resposta: Os anexos vêm da biblioteca de mídia da Staffbase e são enviados com
+os direitos da pessoa que lê. O arquivo foi deletado lá ou é isso
+não visível para essa pessoa, a abertura falha. Verifique o
+arquivar na Biblioteca de Mídia e anexá-la novamente se necessário. 
+
+**Pergunta:** No topo do editor de planos está escrito "N não conseguia ler atalhos
+e se perdem quando são salvos." 
+
+Resposta: No plano salvo, há um link ou
+um acessório com o qual o widget não pode fazer nada — geralmente porque o conteúdo
+do campo de texto **Plan** foi editado manualmente. A entrada em si permanece
+, apenas o link é omitido ao salvar. Link o
+Faça uma página ou poste na aba **Conteúdo**. 
+
 **Pergunta:** Ao girar a roda do mouse, aparece "Ctrl/⌘ pressed to zoom"
 ". 
 
@@ -35,12 +71,37 @@ Você ficaria preso no mapa enquanto rolava a rolagem. Para dar zoom, segure a t
 (Mac: ⌘) e gire a roda do mouse. A mensagem só aparece
 Uma vez. 
 
-**Pergunta:** O editor de planos diz "Ainda não há inscrições — a prévia vai aparecer
-com a primeira entrada." 
+**Pergunta:** O editor de planos diz "A prévia aparece com a primeira
+Entrada." 
 
 Resposta: O plano ainda não tem uma entrada, então não há nada para mostrar. 
-Na aba **Entradas**, em **Adicionar**, defina um marco, 
-Selecione o período de tempo ou prazo, ou clique em **Começar com o Plano de Exemplo**. 
+Na aba **Entradas** acima da lista, selecione um tipo e use
+**+** insira uma entrada. 
+
+**Pergunta:** O editor de planos cobre toda a tela, incluindo a barra
+do estúdio. 
+
+Resposta: Isso é intencional: prévia, lista e formulário precisam de espaço. Você
+saia do editor no canto superior direito via **Aplicar** ou **Cancelar**; então
+o diálogo de configuração pode ser visto novamente, e **Editar plano ...** se abre
+O editor de novo. 
+
+**Pergunta:** A prévia ocupa espaço demais para mim. 
+
+Resposta: Arraste a barra estreita para cima abaixo da prévia, ou
+colapse completamente a prévia clicando em **Prévia**. Da mesma forma,
+A lista de inscritos pode ser exibida na barra entre a lista e o formulário
+mais estreito ou mais largo. Clicar duas vezes em uma barra estabelece o
+tamanho original. O navegador lembra os tamanhos; em um
+Janelas privadas, as especificações se aplicam novamente na próxima vez que forem abertas. 
+
+**Pergunta:** Onde os leitores aprendem o que significam os personagens do plano? 
+
+**Resposta:** Usando o botão **Ajuda** na barra de ferramentas (no estreito
+telas em um **?**). A aba **Lenda** mostra cada personagem como um pequeno
+Exemplo com explicação e as categorias deste plano; a aba **Operação** 
+Explica o zoom, panorâmica, filtros e todos os atalhos de teclado. Se o foco estiver no
+Planejamento, também abre o botão **?** da ajuda. 
 
 **Pergunta:** Como faço zoom? 
 
@@ -58,7 +119,15 @@ Resposta: Ou **Exportação do Excel está configurada nas configurações do wi
 ou a tela é estreita (menos de 768 pixels)
 width): então **Export** está no menu **Mais** da barra de ferramentas. 
 
-**Pergunta:** O que significa uma borda tracejada ou um símbolo que é usado apenas como
+**Pergunta:** Onde definir a forma de um marco? 
+
+Resposta: Por sua categoria, não pelo marco: na aba **Categorias** 
+Usando o botão de forma ao lado do campo de cor. Você pode escolher entre losango, triângulo, triângulo com a ponta para baixo, quadrado, círculo, hexágono, estrela ou cruz. Todos
+Marcos em uma categoria têm o mesmo formato e cor — é assim que você pode saber
+a categoria na linha do tempo mesmo sem cor. Marcos sem categoria
+aparecer como um diamante cinza. 
+
+**Pergunta:** O que significa uma borda ou formato tracejado que é usado apenas como
 Resumo? 
 
 Resposta: A entrada está marcada como **preliminar** — sua data ainda está pendente
@@ -110,12 +179,33 @@ Mostra no canto superior direito quantas inscrições o plano já tem. Para muit
 Se você pretende fazer isso, recomenda-se dividir o plano em vários widgets, como
 Um por série. 
 
-**Pergunta:** Em **Adicionar** você pode adicionar **marco** e **período** de tempo** 
+**Pergunta:** O botão **+** pode ser usado em **marcos** e **períodos de tempo** 
 Não clique nele. 
 
 Resposta: O plano não tem mais um nível, e sem um nível tem um marco
-ou período de tempo; o editor de planos indicará isso abaixo. Na aba **Levels**, coloque sobre **Novo
-Datas de referência também podem ser criadas sem um nível. 
+ou período; o editor de plantas indica isso abaixo. Lay
+Na aba **Níveis**, selecione pelo menos um via **Nova Camada**. 
+
+**Pergunta:** Onde está a lixeira na lista de inscritos? 
+
+Resposta: Ele aparece quando você passa o mouse sobre uma linha ou abre um
+linha via teclado; sempre pode ser vista em dispositivos sensíveis ao toque. 
+A exclusão só é feita após a consulta. Se outras entradas dependerem do excluído
+, a consulta menciona seu número; suas conexões são removidas. 
+
+**Pergunta:** Ao criar uma camada ou categoria, aparece "Uma camada "X" retorna
+ela já existe." ou "Já existe uma categoria "X". 
+
+Resposta: Cada nome pode ocorrer apenas uma vez, caso contrário níveis e
+Categorias nos campos de seleção, legenda e exportação do Excel
+. Letras maiúsculas e minúsculas e espaços na contagem das margens
+não. Escolha um nome diferente ou pegue a camada existente. 
+
+**Pergunta:** Uma aba no formulário tem um ponto vermelho. 
+
+Resposta: Um campo nesta aba contém uma entrada inválida, como um
+Data vazia. O plano mantém o último valor válido ali. Abra o
+tab e corrigir o campo; então o ponto desaparece. 
 
 **Pergunta:** O formulário diz "Por favor, insira um título.", "Por favor, insira um título."
 Insira seu nome.", "Por favor, insira uma data.", "Por favor, insira uma data válida

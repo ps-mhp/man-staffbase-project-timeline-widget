@@ -42,11 +42,14 @@ De haut en bas :
 1. **Titre** (si défini) et **« Statut : ...»** — la date du dernier
    Changement du plan, dans le format de date de la langue de la page. 
 2. **Barre d’Outil** — Recherche, **Filtre**, Zoom (**−**, **+**, **Tous
-   montrer**), le bouton **Chronologie | Liste** et **Exporter**. 
+   montrer**), le bouton **Chronologie | Liste**, **Export**, 
+   **Plein écran** et **À l’aide**. 
 3. **Légende** — catégories avec leur couleur. Un clic affiche un
    Catégorie éteinte ou réactivée. 
 4. **Le plan** — à gauche les titres des calques, à droite la chronologie avec le
-   entrées, sous le dernier niveau les titres des dates clés. 
+   entrées, sous le dernier niveau les titres des dates clés. La flèche sur le
+   Le titre s’effondre d’une couche ; **Effondrer tout** au-dessus des titres s’effondre
+   Tout cela d’un coup puis de l’ouvrir à nouveau. 
 5. **Aperçu** — une bande étroite couvrant toute la période. Un cadre
    montre quelle section est actuellement vue. 
 
@@ -74,6 +77,16 @@ Aussi :
 - Sur des écrans étroits (moins de 768 pixels de large), filtres et
   Les détails sont disponibles sous forme de feuille à partir du bas, ainsi que **List** et **Export**
   dans le menu **Plus**. 
+- **Plein écran** affiche le plan sur tout l’écran, avec la même
+  fonctionnement ; seuls les rouleaux du plan lui-même, l’axe et la vue d’ensemble restent debout. 
+  **Esc** ou **Quitter plein écran** revient à la page. Là où le navigateur ne le fait pas
+  vrai plein écran (comme Safari sur iPhone), le plan se superpose
+  toute la page. 
+- **Aide** explique directement aux lecteurs sur la page quels sont les personnages
+  (onglet Légende, avec les catégories de ce plan) et comment utiliser le
+  Plan fonctionnait avec souris, pavé tactile, tactile et clavier (onglet **Opération**). 
+  Depuis le plan, la touche ** ?** ouvre aussi l’aide. Dans l’éditeur de plans,
+  Il n’a pas ce bouton. 
 - **Sans entrées, le widget n’affiche rien** — pas de cadre vide et
   Aucun message d’erreur. 
 

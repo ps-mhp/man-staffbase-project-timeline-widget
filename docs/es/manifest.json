@@ -36,6 +36,17 @@
       ]
     },
     {
+      "title": "Aplazamiento de una versión de software",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ],
+      "variant": "postponement"
+    },
+    {
       "title": "Sin la línea actual y sin exportación",
       "attributes": {
         "show-today": "false",

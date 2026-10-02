@@ -15,55 +15,76 @@ De kop van het plan is geen veld in de dialoog, maar wordt weergegeven in de pla
 
 ## De Planredacteur
 
-De planeditor bestaat uit het **Heading**-veld, het **Preview** en
-Drie tabbladen. Rechtsboven staat hoeveel vermeldingen de kaart bevat, voor de
-Voorbeeld "42 / 300 inzendingen". 
+De planeditor vult het hele scherm. Bovenaan staat de headerbalk, daaronder
+de **Preview** en drie tabbladen. Tussen Preview en tabbladen, en ertussen
+Invoerlijst en formulier hebben elk een trekhendel waarmee de hoogte van de
+en de breedte van de lijst te wijzigen (muis- of pijltjestoetsen, 
+Dubbelklikken herstelt de standaardinstelling; de browser onthoudt de groottes). 
 
-### Koers
+### Header
 
-| Veld | Beschrijving |
+| Besturingselement | Beschrijving |
 | --- | --- |
-| Kop | Bovenaan de planeditor. Staat boven het plan en geeft het Excel-bestand zijn naam. Optioneel: Laat leeg als de pagina al een geschikte kop heeft; het bestand wordt dan 'Projektplan_JJJJ-MM-TT.xlsx' genoemd. |
+| Kop | Staat boven het plan en geeft het Excel-bestand zijn naam. Optioneel: Laat het leeg als de pagina al een geschikte kop heeft; het bestand wordt dan 'Projektplan_JJJJ-MM-TT.xlsx' genoemd. |
+| "42 / 300 vermeldingen" | Hoeveel vermeldingen het plan bevat, gemeten tegen de bovengrens. |
+| "Niet-opgeslagen wijzigingen" | Verschijnt zodra het plan in de editor verschilt van het opgeslagen. |
+| Annuleren | Sluit de editor; in het geval van niet-opgeslagen wijzigingen vraagt hij vooraf of deze moeten worden verwijderd. |
+| Toepassen | Schrijf het plan in de instellingen en sluit de editor. Het wordt opgeslagen met de pagina. |
 
 ### Snel zicht
 
 | Besturingselement | Beschrijving |
 | --- | --- |
-| Voorbeeldweergave | Dezelfde tijdlijn als op de pagina, met zoom, zonder filters en export. Door op een invoer te klikken selecteert je deze in het tabblad "Vermeldingen". Kan worden ingeklapt. |
+| Voorbeeldweergave | Dezelfde tijdlijn als op de pagina, met zoom, zonder filter en export. Door op een item te klikken, selecteert je deze in het tabblad "Items" en wordt deze in de lijst zichtbaar. Door op **Preview** te klikken, wordt deze ingeklapt; als je het uitvouwt, is de laatste hoogte getekend. |
 | Deze sectie als startweergave | Slaat het zichtbare gedeelte van de preview, tot aan de maand, op als een weergave wanneer de pagina laadt. |
 | Start View verwijderen | Verwijdert de homeweergave; de widget toont het hele plan opnieuw bij het laden. |
-| Begin met Voorbeeldplan | Alleen wanneer het plan leeg is: vult de editor met een kop, drie niveaus, zeven categorieën en voorbeelditems. |
+| Begin met sjabloon | Alleen als het plan leeg is: toont de sjablonen waaruit je kunt kiezen ("Product Roadmap", "Rescheduling"). Door op een kaart te klikken, vult de editor deze kaart; **Retourneren** komt zonder wijziging terug. |
+| Start leeg | Alleen als het plan leeg is: maak een laag "Niveau 1". |
 
 ### Tab "Invoeren" 
 
-Links de lijst van alle inzendingen, gesorteerd op datum en via **Vermeldingen
-blader** doorzoekbaar; daarboven, onder **Voeg toe**, een knop voor
-**Mijlpaal**, **Punt** en **Deadline**. Rechts, de vorm van de
-Geselecteerde inzending: 
+Links staat de lijst met vermeldingen, gesorteerd op datum. Daarboven staan
+**Blader door vermeldingen** en daaronder een schakelaar voor het type — 
+**Mijlpalen**, **Periodes**, **Deadlines**, elk met een nummer (indien actief)
+zoeken: raakt); de knop **+** ernaast maakt een dergelijke invoer, 
+en de zoektocht werkt binnen de soort. 
+Wanneer je met de muis over een regel gaat, verschijnt er rechts een recyclebak voor verwijdering (met
+Query). 
+
+Rechts de vorm van de geselecteerde intekening; erboven staat de titel en
+de **Duplicaat**- en **Verwijderen**-knoppen, waaronder de **Algemeen**-tabbladen staan 
+(Type, Titel, Beschrijving), **Classificatie** (Niveau, Categorie, Serie), 
+**Datum** (datum of begin en einde, voor de puntpijl aan het einde, voorlopig)
+**Afhankelijkheden** en **Inhoud** (gelinkte pagina of nieuwsbericht). A
+Rode stip op het tabblad toont een ongeldige invoer erin; voor belangrijke data
+Geëlimineerde **Afhankelijkheden**: 
 
 | Veld | Van toepassing op | Beschrijving |
 | --- | --- | --- |
 | Typ | Alle | Mijlpaal, Periode of Deadline. Als je de deadline overneemt, wordt het niveau weggelaten. |
 | Titel | Alles | Verplicht. Geschreven op de vermelding en in de details. |
 | Beschrijving | Alle | Optioneel, meerregelig. Verschijnt alleen in de details en in de Excel-export. |
-| Niveau | Mijlpaal, Periode | Het niveau waarin de ingang zich bevindt. |
-| Categorie | Alle | Bepaalt de kleur. "Zonder categorie" verschijnt grijs. |
+| Niveau | Mijlpaal, Periode | Het niveau waarop de invoer zich bevindt. **Nieuwe laag ...** maakt er een (naam) aan en wijst deze onmiddellijk toe. |
+| Categorie | alle | Bepaalt de kleur en voor mijlpalen de vorm. "Zonder categorie" verschijnt grijs, mijlpalen als een diamant. **Nieuwe categorie ...** maakt er een aan (naam, kleur en vorm) en wijst deze onmiddellijk toe. |
 | Datum | Mijlpaal, deadline | De datum. |
 | Start, einde | Periode | Eerste en laatste dag; beide behoren tot de periode. |
-| Symbool | Mijlpaal | Rhombus (standaard), driehoek, vierkant of cirkel. |
 | Pijl aan het einde | Punt | De balk eindigt in een pijlpunt — "loopt door". |
-| Serie | Mijlpaal, Periode | Entries van hetzelfde niveau met dezelfde serienaam staan op een lijn. Het veld suggereert de serie van dit niveau. |
+| Serie | Mijlpaal, Periode | Inzendingen van hetzelfde niveau met dezelfde serienaam staan op één regel. Het veld breidt de reeks van dit niveau uit met het aantal van hun inzendingen; een getypte nieuwe naam wordt overgenomen via ""..." create as a new series", **Geen serie** verwijdert de inzending. |
 | Voorlopig | alle | De datum is nog niet vastgesteld; de vermelding verschijnt als een omtrek of met een gestreepte rand. |
 | Hangt af van | Mijlpaal, Punt | De voorgangers van de intekening; op de pagina als een stippellijn met een pijl. |
+| Link | alle | **Geen**, **Pagina** of **Nieuwsartikel**. Een wijziging breekt een bestaande link. Op de pagina wordt de inscriptie van de vermelding onderstreept, en een klik opent de inhoud in een venster boven het plan. |
+| Pagina | Alle | De Staffbase-pagina uit de lijst van pagina's (de 100 meest recent bewerkte). **Nieuwe pagina ...** maakt deze aan in de Staffbase-editor, die de planeditor overstijgt; na het aanmaken wordt deze gekoppeld. |
+| Kanaal, Bericht | alle | Eerst het nieuwskanaal (met het type: artikel, kort bericht, afbeeldingsbericht), daarna het bericht. Concepten zijn selecteerbaar en gemarkeerd met "(concept)" — lezers zien ze pas na publicatie. **Nieuw bericht ...** maakt er een aan in het geselecteerde kanaal; na het opslaan wordt het gelinkt. **Openen in nieuw tabblad** toont de gelinkte inhoud. |
+| Bijlagen | Alle | Tot tien bestanden of afbeeldingen uit de mediabibliotheek, elk met optioneel bijschrift (anders de bestandsnaam). **Voeg bestand of afbeelding toe ...** opent de bibliotheek; **↑**/**↓** rangschikken, **×** verwijderd. Bijlagen blijven achter de login. Op de pagina staan ze naast de gelinkte inhoud of in de details, in de Excel-export in de kolom "Bijlagen". |
 | Duplicaat | Alles | Maak een kopie van de invoer. |
-| Verwijderen | Alle | Verwijdert de vermelding en alle afhankelijkheden die ernaar wijzen. |
+| Verwijderen | alle | Vraagt om en verwijdert vervolgens de invoer en alle afhankelijkheden die ernaar wijzen; de zoekopdracht benoemt de afhankelijke vermeldingen. |
 
 ### Lagen-tabblad 
 
 | Besturingselement | Beschrijving |
 | --- | --- |
-| Nieuwe laag | Maak een nieuwe laag aan. |
-| Naam | De naam van de laag, links van zijn baan. Daarnaast staat hoeveel elementen deze bevat. |
+| Nieuwe laag | Rechtsboven in het tabblad. Maak een nieuwe laag aan. |
+| Naam | De naam van de laag, links van zijn baan. Moet uniek zijn. Daarnaast staat hoeveel elementen het bevat. |
 | Omhoog/Omlaag pijlen | Bestel op de pagina en exporteer in Excel. |
 | Verwijderen | Verwijdert de laag. Als het vermeldingen bevat, vraagt de editor of deze naar een andere laag moeten worden verplaatst (selecteer **Doellaag**) of dat ze ook verwijderd moeten worden. |
 
@@ -71,10 +92,11 @@ Geselecteerde inzending:
 
 | Besturingselement | Beschrijving |
 | --- | --- |
-| Nieuwe categorie | Maak een nieuwe categorie aan. |
-| Naam | De naam in de legende en in de details. |
-| Kleur | Een van de twaalf kleurvelden. |
+| Nieuwe categorie | Rechtsboven in het tabblad. Maak een nieuwe categorie aan. |
+| Kleurveld | Voor de naam; toont de kleur. Eén klik vergroot de twaalf kleuren en het **Hex Waarde**-veld; Esc of een klik ernaast sluit zich. |
 | Hex-waarde | Een aangepaste kleur in het formaat '#RRGGBB', bijvoorbeeld '#E40045'. |
+| Vormknop | Naast het kleurveld; toont de vorm waarmee de mijlpalen van de categorie verschijnen. Met een klik opent je de acht vormen: ruit, driehoek, driehoek met de punt naar beneden, vierkant, cirkel, zeshoek, ster of kruis. Pijltjestoetsen veranderen de vorm. |
+| Naam | De naam in de legende en in de details. Moet uniek zijn. Daarnaast staat hoeveel vermeldingen de categorie is toegewezen. |
 | Pijlen omhoog / omlaag | Volgorde van de legende. |
 | Verwijderen | Verwijdert de categorie; de vermeldingen worden "zonder categorie". De zoekopdracht geeft het nummer. |
 
@@ -85,7 +107,7 @@ Geselecteerde inzending:
 - Afspraken zijn **hele dagen** zonder tijd. De startweergave is
   **Maandelijks**. 
 - Tekst is nooit in de kleur van de categorie — felle kleuren zoals geel bleven bestaan
-  anders onleesbaar op wit. De kleur wordt alleen gedragen door het symbool, de streep en
+  anders onleesbaar op wit. De kleur wordt alleen gedragen door de vorm, de strepen en
   legend point; de tekst in de balk is zwart of wit, afhankelijk van wat
   is makkelijker te lezen. 
 - **Zonder vermeldingen toont de widget niets** — noch een leeg frame, noch

@@ -42,11 +42,14 @@ Od góry do dołu:
 1. **Nagłówek** (jeśli jest ustawiony) oraz **"Status: ..."** — data ostatniego
    Zmiana planu, w formacie daty w języku strony. 
 2. **Pasek narzędzi** — Wyszukiwanie, **Filtr**, Powiększanie (**−**, **+**, **Wszystkie
-   pokaż**), przełącznik **Oś czasu | List** oraz **Eksport**. 
+   pokaż**), przełącznik **Oś czasu | List**, **Eksport**, 
+   **Pełny ekran** i **Pomoc**. 
 3. **Legend** — kategorie z ich kolorem. Jednym kliknięciem wyświetla
    Kategoria wyłączona lub włączona ponownie. 
 4. **Plan** — po lewej tytuły warstw, po prawej oś czasu z
-   wpisy, poniżej ostatniego poziomu tytuły kluczowych dat. 
+   wpisy, poniżej ostatniego poziomu tytuły kluczowych dat. Strzałka na
+   Tytuł zapada się o jedną warstwę; **Zwij wszystko** powyżej tytułów zapada się
+   wszystko naraz, a potem znów się otwiera. 
 5. **Przegląd** — wąski pas obejmujący cały okres. Ramka
    pokazuje, która sekcja jest aktualnie widoczna. 
 
@@ -74,6 +77,16 @@ Dodatkowo:
 - Na wąskich ekranach (mniej niż 768 pikseli szerokości) filtry oraz
   Szczegóły w formie arkusza od dołu, a **List** i **Eksport** są dostępne
   w menu **Więcej**. 
+- **Pełny ekran** pokazuje plan na całym ekranie, z tym samym
+  działanie; tylko sam plan się toczy, oś i przegląd pozostają niezmienne. 
+  **Esc** lub **Wyjście z pełnego ekranu** wraca do strony. Jeśli przeglądarka tego nie robi
+  prawdziwy pełnoekranowy (np. Safari na iPhonie), nakładki planów
+  Całą stronę. 
+- **Pomoc** wyjaśnia czytelnikom bezpośrednio na stronie, czym są postacie
+  (zakładka Legenda, z kategoriami tego planu) oraz jak korzystać z
+  Plan działał za pomocą myszy, touchpada, dotyku i klawiatury (zakładka **Operation**). 
+  Z planu klawisz **?** również otwiera pomoc. W edytorze planu,
+  Nie ma przycisku. 
 - **Bez wpisów widżet nic nie pokazuje** — brak pustej ramki i
   Brak komunikatu o błędzie. 
 

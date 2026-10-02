@@ -36,6 +36,17 @@
       ]
     },
     {
+      "title": "Opóźnienie wydania oprogramowania",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ],
+      "variant": "postponement"
+    },
+    {
       "title": "Bez dzisiejszej linii i bez eksportu",
       "attributes": {
         "show-today": "false",

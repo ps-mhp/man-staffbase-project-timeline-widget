@@ -42,11 +42,14 @@ From top to bottom:
 1. **Heading** (if set) and **"Status: ..."** — the date of the last
    Change to the plan, in the date format of the page language. 
 2. **Toolbar** — Search, **Filter**, Zoom (**−**, **+**, **All
-   show**), the toggle **Timeline | List** and **Export**. 
+   show**), the toggle **Timeline | List**, **Export**, 
+   **Full screen** and **Help**. 
 3. **Legend** — categories with their color. One click displays a
    Category off or on again. 
 4. **The plan** — on the left the titles of the layers, on the right the timeline with the
-   entries, below the last level the titles of the key dates. 
+   entries, below the last level the titles of the key dates. The arrow on the
+   Title collapses one layer; **Collapse all** above the titles collapses
+   all at once and then open again. 
 5. **Overview** — a narrow strip over the entire period. A frame
    shows which section is currently being seen. 
 
@@ -74,6 +77,16 @@ Also:
 - On narrow screens (less than 768 pixels wide), filters and
   Details as a sheet from the bottom, and **List** and **Export** are available
   in the menu **More**. 
+- **Full screen** shows the plan across the entire screen, with the same
+  operation; only the plan itself rolls, axis and overview remain standing. 
+  **Esc** or **Exit Full Screen** returns to the page. Where the browser does not
+  real full screen (such as Safari on the iPhone), the plan overlays
+  the whole page. 
+- **Help** explains to readers directly on the page what the characters
+  (Legend tab, with the categories of this plan) and how to use the
+  Plan operated with mouse, trackpad, touch and keyboard (**Operation** tab). 
+  From the plan, the **?** key also opens the help. In the plan editor,
+  it doesn't have the button. 
 - **Without entries, the widget doesn't show anything** — no empty frame and
   no error message. 
 

@@ -27,6 +27,42 @@ No. Salva el plan, desaparecen para siempre. ¿Quieres
 para la persona que cambió el plan por última vez — normalmente el contenido era
 del cuadro de texto del **Plan** a mano. 
 
+**Pregunta:** Al hacer clic en una entrada enlazada aparece "Esta publicación es
+no disponible o no publicado." 
+
+Respuesta: La ventana carga la publicación con tus propios derechos. El mensaje
+aparece si la publicación sigue siendo un borrador, ha sido eliminada o está en un
+canal que no se te permite ver. Publica la publicación o 
+Comprueba la visibilidad del canal. **Abrir en una pestaña nueva** muestra lo que
+La propia base de personal dice esto. 
+
+**Pregunta:** He creado una página con **Nueva página ...**, pero en la parte superior pone
+no "Vinculado: ...". 
+
+Respuesta: El editor reconoce la nueva página por el hecho de que Staffbase lleva el nombre de
+**Crear** cambia a él (para una publicación: después de guardar). Mientras
+Solo está abierto el diálogo de creación, aún no hay nada que enlazar. Si tienes
+Editor de la base de personal a otra página ya existente, la
+deliberadamente no los vincula. Cierra con **Cancelar**: Si el
+Edita exactamente una página que has creado desde que la abriste, la ofrece
+para enlazar. De lo contrario, selecciona la nueva página bajo **Página**. 
+
+**Pregunta:** No se puede abrir un acceso. 
+
+Respuesta: Los archivos adjuntos provienen de la biblioteca multimedia de Staffbase y se envían con
+los derechos de la persona que lee. ¿Se ha eliminado el archivo allí o es así
+no visible para esa persona, la apertura falla. Comprueba el
+archiva en la Media Library y vuelve a adjuntarla si es necesario. 
+
+**Pregunta:** En la parte superior del editor de planos dice "N no podía leer atajos
+y se pierden cuando se salvan." 
+
+Respuesta: En el plan guardado, hay un enlace o
+un accesorio con el que el widget no puede hacer nada — normalmente por el contenido
+del campo de texto **Plan** ha sido editado a mano. La entrada en sí permanece
+, solo se omite el enlace al guardar. Enlace al
+Página o publica en la pestaña **Contenido**. 
+
 **Pregunta:** Al girar la rueda del ratón, aparece "Ctrl/⌘ pulsado para hacer zoom"
 ". 
 
@@ -35,12 +71,37 @@ Te quedarías atascado en el mapa mientras haces scroll. Para hacer zoom, manté
 (Mac: ⌘) y gira la rueda del ratón. El mensaje solo aparece
 una vez. 
 
-**Pregunta:** El editor de planes dice "Aún no hay inscripciones — aparecerá la vista previa
-con la primera entrada." 
+**Pregunta:** El editor de planes dice: "La vista previa aparece con la primera
+Entrada." 
 
 Respuesta: El plan aún no tiene una entrada, así que no hay nada que mostrar. 
-En la pestaña **Entradas**, bajo **Añadir**, establece un hito, 
-Selecciona el periodo de tiempo o la fecha límite, o haz clic en **Empezar con Plan de Ejemplo**. 
+En la pestaña **Entrantes** arriba de la lista, selecciona un tipo y usa
+**+** introduce una entrada. 
+
+**Pregunta:** El editor de planos cubre toda la pantalla, incluida la barra
+del estudio. 
+
+Respuesta: Esto es intencionado: la vista previa, la lista y el formulario necesitan espacio. Tú
+sal del editor en la esquina superior derecha mediante **Aplicar** o **Cancelar**; luego
+el diálogo de configuración puede verse de nuevo y **Editar plan ...** se abre
+Otra vez el editor. 
+
+**Pregunta:** El avance ocupa demasiado espacio para mí. 
+
+Respuesta: Arrastra la barra estrecha debajo de la vista previa, o
+colapsa completamente la vista previa haciendo clic en **Vista previa**. Igualmente,
+La lista de inscritos puede mostrarse en la barra entre la lista y el formulario
+más estrecha o más ancha. Hacer doble clic en una barra establece el
+tamaño original. El navegador recuerda los tamaños; en un
+Ventanas privadas, las especificaciones se aplican de nuevo la próxima vez que se abran. 
+
+**Pregunta:** ¿Dónde aprenden los lectores qué significan los personajes del plan? 
+
+**Respuesta:** Usando el botón **Ayuda** en la barra de herramientas (en la opción estrecha
+pantallas en un **?**). La pestaña **Leyenda** muestra a cada personaje como un pequeño
+Ejemplo con explicación y las categorías de este plan; la pestaña **Operación** 
+Explica el zoom, el paneo, los filtros y todos los atajos de teclado. Si el enfoque está en el
+Planear, también abre el botón de ayuda **?**. 
 
 **Pregunta:** ¿Cómo hago zoom? 
 
@@ -58,7 +119,15 @@ Respuesta: O bien **Excel Export está configurado en la configuración del widg
 o la pantalla es estrecha (menos de 768 píxeles)
 width): entonces **Export** está en el menú **Más** de la barra de herramientas. 
 
-**Pregunta:** ¿Qué significa un borde discontinuo o un símbolo que solo se usa como
+**Pregunta:** ¿Dónde establezco la forma de un hito? 
+
+Respuesta: Por su categoría, no por el hito: en la pestaña **Categorías** 
+mediante el botón de forma junto al campo de color. Puedes elegir entre diamante, triángulo, triángulo con la punta hacia abajo, cuadrado, círculo, hexágono, estrella o cruz. Todos
+Los hitos de una categoría tienen la misma forma y color — así es como puedes saberlo
+la categoría en la línea temporal incluso sin color. Hitos sin categoría
+aparecen como un diamante gris. 
+
+**Pregunta:** ¿Qué significa un borde o forma discontinua que solo se usa como
 ¿Esquema? 
 
 Respuesta: La entrada está marcada como **preliminar** — su fecha aún está pendiente
@@ -110,12 +179,33 @@ En la parte superior derecha muestra cuántas entradas ya tiene el plano. Para m
 Si planeas hacer esto, se recomienda dividir el plan en varios widgets, como
 Uno por serie. 
 
-**Pregunta:** En **Añadir** puedes añadir **hito** y **periodo de tiempo** 
+**Pregunta:** El botón **+** puede usarse en **hitos** y **periodos de tiempo** 
 No hagas clic en él. 
 
 Respuesta: El plan ya no tiene nivel, y sin un nivel tiene un hito
-o periodo de tiempo; el editor de planes indicará esto más abajo. En la pestaña **Niveles**, coloca sobre **Nuevo
-Las fechas de referencia también pueden crearse sin un nivel. 
+o punto; el editor de planos lo indica a continuación. Lay
+En la pestaña **Niveles**, selecciona al menos uno mediante **Nueva Capa**. 
+
+**Pregunta:** ¿Dónde está el cubo de basura en la lista de inscripciones? 
+
+Respuesta: Aparece cuando pasas el cursor sobre una fila o abres un
+línea vía teclado; siempre puede verse en dispositivos táctiles. 
+La eliminación solo se realiza después de la consulta. Si otras entradas dependen de la eliminada
+, la consulta menciona su número; sus conexiones se eliminan. 
+
+**Pregunta:** Al crear una capa o categoría, dice "Una capa "X" devuelve
+ya existe." o "Ya existe una categoría "X". 
+
+Respuesta: Cada nombre solo puede aparecer una vez, de lo contrario niveles y
+Categorías en campos de selección, leyenda y exportación de Excel
+. Letras mayúsculas y minúsculas y espacios en el conteo de márgenes
+No. Elige otro nombre o toma la capa existente. 
+
+**Pregunta:** Una pestaña en el formulario tiene un punto rojo. 
+
+Respuesta: Un campo en esta pestaña contiene una entrada inválida, como una
+fecha vacía. El plano conserva el último valor válido allí. Abre el
+tab y corrige el campo; luego el punto desaparece. 
 
 **Pregunta:** El formulario dice "Por favor, introduzca un título.", "Por favor, introduzca un título."
 Introduce tu nombre.", "Por favor, introduce una fecha.", "Por favor, introduce una fecha válida

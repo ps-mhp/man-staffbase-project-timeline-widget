@@ -36,6 +36,17 @@
       ]
     },
     {
+      "title": "Uitstel van een softwarerelease",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ],
+      "variant": "postponement"
+    },
+    {
       "title": "Zonder vandaag lijn en zonder export",
       "attributes": {
         "show-today": "false",

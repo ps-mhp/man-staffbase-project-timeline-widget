@@ -36,6 +36,17 @@
       ]
     },
     {
+      "title": "Postponement of a software release",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ],
+      "variant": "postponement"
+    },
+    {
       "title": "Without today line and without export",
       "attributes": {
         "show-today": "false",

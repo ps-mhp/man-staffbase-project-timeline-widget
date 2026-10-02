@@ -27,6 +27,42 @@ No. Salva il piano, spariscono per sempre. Vuoi
 alla persona che ha cambiato l'ultima volta il piano — di solito il contenuto era
 della casella di testo **Plan** a mano. 
 
+**Domanda:** Cliccando su una voce collegata si vede "Questo post è
+non disponibile o non rilasciato." 
+
+Risposta: La finestra carica il post con i tuoi diritti. Il messaggio
+compare se il post è ancora una bozza, è stato cancellato o si trova in un
+canale che non ti è permesso vedere. Pubblica il post o 
+Controlla la visibilità del canale. **Apri in una nuova scheda** mostra cosa
+Staffbase stessa parla di questo. 
+
+**Domanda:** Ho creato una pagina con **Nuova pagina ...**, ma in alto c'è scritto
+non "Collegato: ...". 
+
+Risposta: L'editor riconosce la nuova pagina dal fatto che Staffbase prende il nome dal
+**Crea** lo attiva (per un post: dopo aver salvato). Finché
+Solo la finestra di creazione è aperta, non c'è ancora nulla da collegare. Se hai
+Staff Base editor a un'altra pagina già esistente, la
+deliberatamente non li collega. Chiudi con **Annulla**: Se il
+Modifica esattamente una pagina che hai creato da quando l'hai aperta, la offre
+per collegare. Altrimenti, seleziona la nuova pagina sotto **Pagina**. 
+
+**Domanda:** Un attaccamento non può essere aperto. 
+
+Risposta: Gli allegati provengono dalla media library di Staffbase e vengono inviati con
+i diritti della persona che legge. Il file è stato cancellato lì o è così
+non visibile a quella persona, l'apertura fallisce. Controlla il
+archivia nella Media Library e riallega se necessario. 
+
+**Domanda:** In cima all'editor di piani c'è scritto "N non poteva leggere scorciatoie
+e si perdono quando vengono salvati." 
+
+Risposta: Nel piano salvato, c'è un link o
+un accessorio con cui il widget non può fare nulla — di solito a causa del contenuto
+del campo testo **Plan** è stato modificato a mano. La voce stessa rimane
+, solo il link viene omesso durante il salvataggio. Link il
+Pagina o pubblica nella scheda **Contenuto**. 
+
 **Domanda:** Quando giri la rotellina, appare "Ctrl/⌘ pressed to zoom"
 ". 
 
@@ -35,12 +71,37 @@ Rimarresti bloccato sulla mappa mentre scorri. Per zoomare, tieni premuto il tas
 (Mac: ⌘) e gira la rotellina del mouse. Il messaggio appare solo
 una volta. 
 
-**Domanda:** L'editor di piani dice "Nessuna partecipazione ancora — apparirà l'anteprima
-con la prima voce." 
+**Domanda:** L'editor del piano dice "L'anteprima appare con la prima
+Ingresso." 
 
 Risposta: Il piano non ha ancora una iscrizione, quindi non c'è nulla da mostrare. 
-Nella scheda **Entrate**, sotto **Aggiungi**, imposta una pietra miliare, 
-Seleziona il periodo di tempo o la scadenza, oppure clicca su **Inizia con il piano di esempio**. 
+Nella scheda **Voci** sopra la lista, seleziona un tipo e usa
+**+** inserisci una voce. 
+
+**Domanda:** L'editor di piani copre tutto lo schermo, compresa la barra
+dello studio. 
+
+Risposta: Questo è intenzionale: anteprima, lista e modulo hanno bisogno di spazio. Tu
+uscire dall'editor in alto a destra tramite **Applica** o **Annulla**; poi
+la finestra di dialogo di configurazione può essere vista di nuovo, e **Modifica piano ...** si apre
+Di nuovo l'editore. 
+
+**Domanda:** L'anteprima occupa troppo spazio per me. 
+
+Risposta: Trascina la barra stretta sotto l'anteprima, oppure
+Comprimi completamente l'anteprima cliccando su **Anteprima**. Allo stesso modo,
+L'elenco degli iscritti può essere visualizzato sulla barra tra la lista e il modulo
+più stretto o più largo. Un doppio clic su una barra imposta il
+dimensione originale. Il browser ricorda le dimensioni; in un
+finestre private, le specifiche si applicano di nuovo la prossima volta che vengono aperte. 
+
+**Domanda:** Dove i lettori imparano cosa significano i personaggi del piano? 
+
+**Risposta:** Usando il pulsante **Aiuto** nella barra degli strumenti (in modalità restringente
+schermi su un **?**). La scheda **Leggenda** mostra ogni personaggio come un piccolo
+Esempio con spiegazione e le categorie di questo piano; la scheda **Operazione** 
+spiega zoom, panning, filtri e tutte le scorciatoie da tastiera. Se la messa a fuoco è nel
+Pianifica, apre anche il pulsante **?** dell'aiuto. 
 
 **Domanda:** Come si fa a zoomare? 
 
@@ -58,7 +119,15 @@ Risposta: O **Esportazione Excel è impostata nelle impostazioni del widget
 oppure lo schermo è stretto (meno di 768 pixel)
 width): poi **Export** si trova nel menu **Altro** della barra degli strumenti. 
 
-**Domanda:** Cosa significa un bordo tratteggiato o un simbolo usato solo come
+**Domanda:** Dove imposto la forma di una pietra miliare? 
+
+Risposta: Per categoria, non per traguardo: nella scheda **Categorie** 
+tramite il pulsante shape accanto al campo colore. Puoi scegliere tra diamante, triangolo, triangolo con la punta ribassata, quadrato, cerchio, esagono, stella o croce. Tutti
+I traguardi in una categoria hanno la stessa forma e colore — è così che si può capire
+la categoria nella linea temporale anche senza colore. Traguardi senza categoria
+Appaiono come un diamante grigio. 
+
+**Domanda:** Cosa significa un bordo o una forma tratteggiata che viene usata solo come
 Scaletta? 
 
 Risposta: La voce è contrassegnata come **preliminare** — la sua data è ancora in attesa
@@ -110,12 +179,33 @@ Mostra in alto a destra quante voci ha già il piano. Per molto grandi
 Se hai intenzione di farlo, è consigliato suddividere il piano in diversi widget, come
 Uno per serie. 
 
-**Domanda:** Sotto **Aggiungi** puoi aggiungere **milestone** e **periodo di tempo** 
+**Domanda:** Il pulsante **+** può essere usato in **traguardi** e **periodi temporali** 
 Non cliccarci sopra. 
 
 Risposta: Il piano non prevede più un livello, e senza un livello ha una pietra miliare
-o periodo di tempo; l'editor del piano lo indicherà qui sotto. Nella scheda **Levels**, posiziona sopra **Nuovo
-Le date di riferimento possono anche essere create senza un livello. 
+o punto; l'editor del piano lo indica di seguito. Lay
+Nella scheda **Livelli**, selezionane almeno uno tramite **Nuovo Livello**. 
+
+**Domanda:** Dov'è il bidone della spazzatura nella lista degli iscritti? 
+
+Risposta: Appare quando passi il mouse sopra una riga o apri un
+linea tramite tastiera; può sempre essere vista su dispositivi touch. 
+La cancellazione avviene solo dopo la query. Se altre voci dipendono dall'eliminazione
+, la query menziona il suo numero; le sue connessioni vengono rimossi. 
+
+**Domanda:** Quando si crea un livello o una categoria, dice "Un livello "X" restituisce
+esiste già." oppure "Esiste già una categoria "X". 
+
+Risposta: Ogni nome può comparire una sola volta, altrimenti livelli e
+Categorie nei campi di selezione, legenda ed esportazione Excel
+. Lettere maiuscole e minuscole e spazi nel conteggio dei margini
+No. Scegli un nome diverso o prendi il livello esistente. 
+
+**Domanda:** Una scheda nel modulo ha un punto rosso. 
+
+Risposta: Un campo in questa scheda contiene un input non valido, come un
+Data vuota. Il piano mantiene l'ultimo valore valido lì. Apri il
+tab e correggi il campo; poi il punto scompare. 
 
 **Domanda:** Il modulo dice "Si prega di inserire un titolo.", "Si prega di inserire un titolo."
 Inserisci il tuo nome.", "Inserisci una data.", "Inserisci una data valida

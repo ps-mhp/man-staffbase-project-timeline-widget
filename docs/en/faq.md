@@ -27,6 +27,42 @@ not. Save the plan, they disappear permanently. Do you want to
 to the person who last changed the plan — usually the content was
 of the **Plan** text box by hand. 
 
+**Question:** Clicking on a linked entry shows "This post is
+not available or not released." 
+
+Answer: The window loads the post with your own rights. The message
+appears if the post is still a draft, has been deleted or is in a
+channel that you are not allowed to see. Publish the post or 
+check the visibility of the channel. **Open in new tab** shows what
+Staffbase itself says about this. 
+
+**Question:** I created a page with **New page ...**, but at the top it says
+not "Linked: ...". 
+
+Answer: The editor recognizes the new page by the fact that Staffbase is named after the
+**Create** switches to it (for a post: after saving). As long as
+only the creation dialog is open, there is nothing to link yet. If you have
+Staffbase editor to another, already existing page, the
+deliberately does not link them. Close with **Cancel**: If the
+editor exactly one page that you have created since you opened it, it offers it
+to link. Otherwise, select the new page under **Page**. 
+
+**Question:** An attachment cannot be opened. 
+
+Answer: Attachments come from Staffbase's media library and are sent with
+the rights of the reading person. Has the file been deleted there or is it
+not visible to that person, the opening fails. Check the
+file in the Media Library and reattach it if necessary. 
+
+**Question:** At the top of the plan editor it says "N could not read shortcuts
+and are lost when saved." 
+
+Answer: In the saved plan, there is a link or
+an attachment that the widget can't do anything with — usually because the content
+of the **Plan** text field has been edited by hand. The entry itself remains
+, only the link is omitted when saving. Link the
+Page or post in the **Content** tab. 
+
 **Question:** When turning the mouse wheel, "Ctrl/⌘ pressed to zoom" appears
 ". 
 
@@ -35,12 +71,37 @@ you would get stuck on the map while scrolling. To zoom, hold down the Ctrl key
 (Mac: ⌘) and turn the mouse wheel. The message only appears
 once. 
 
-**Question:** The plan editor says "No entries yet — the preview will appear
-with the first entry." 
+**Question:** The plan editor says "The preview appears with the first
+Entry." 
 
 Answer: The plan does not yet have an entry, so there is nothing to show. 
-In the **Entries** tab, under **Add**, set a milestone, 
-Select the time period or deadline, or click **Start with Sample Plan**. 
+In the **Entries** tab above the list, select a type and use
+**+** enter an entry. 
+
+**Question:** The plan editor covers the whole screen, including the bar
+of the studio. 
+
+Answer: This is intentional: preview, list and form need space. You
+exit the editor in the top right via **Apply** or **Cancel**; then
+the configuration dialog can be seen again, and **Edit plan ...** opens
+the editor again. 
+
+**Question:** The preview takes up too much space for me. 
+
+Answer: Drag the narrow bar up below the preview, or
+collapse the preview completely by clicking on **Preview**. Likewise,
+the entry list can be displayed on the bar between the list and the form
+narrower or wider. Double-clicking on a bar sets the
+original size. The browser remembers the sizes; in a
+private windows, the specifications apply again the next time they are opened. 
+
+**Question:** Where do readers learn what the characters in the plan mean? 
+
+**Answer:** Using the **Help** button in the toolbar (on narrow
+screens on a **?**). The **Legend** tab shows each character as a small
+Sample with explanation and the categories of this plan; the **Operation** tab 
+explains zooming, panning, filters and all keyboard shortcuts. If the focus is in the
+Plan, also opens the **?** button the help. 
 
 **Question:** How do I zoom? 
 
@@ -58,7 +119,15 @@ Answer: Either **Excel Export is set in the settings of the widget
 or the screen is narrow (less than 768 pixels)
 width): then **Export** is in the **More** menu of the toolbar. 
 
-**Question:** What does a dashed border or a symbol that is only used as a
+**Question:** Where do I set the shape of a milestone? 
+
+Answer: By its category, not by the milestone: in the **Categories** tab 
+via the shape button next to the color field. You can choose between diamond, triangle, triangle with the tip down, square, circle, hexagon, star or cross. All
+Milestones in a category have the same shape and color — this is how you can tell
+the category in the timeline even without color. Milestones without category
+appear as a gray diamond. 
+
+**Question:** What does a dashed border or shape mean that is only used as a
 outline? 
 
 Answer: The entry is marked as **preliminary** — its date is still pending
@@ -110,12 +179,33 @@ shows at the top right how many entries the plan already has. For very large
 If you plan to do this, it is recommended to split the plan into several widgets, such as
 one per series. 
 
-**Question:** Under **Add** you can add **milestone** and **time period** 
+**Question:** The **+** button can be used at **milestones** and **time periods** 
 do not click on it. 
 
 Answer: The plan no longer has a level, and without a level has a milestone
-or time period; the plan editor will indicate this below. In the **Levels** tab, place over **New
-Reference dates can also be created without a level. 
+or period; the plan editor indicates this below. Lay
+In the **Levels** tab, select at least one via **New Layer**. 
+
+**Question:** Where is the trash can in the entry list? 
+
+Answer: It appears when you hover over a row or open a
+line via keyboard; it can always be seen on touch devices. 
+Deletion is only done after the query. If other entries depend on the deleted
+, the query mentions its number; its connections are removed. 
+
+**Question:** When creating a layer or category, it says "A layer "X" returns
+it already exists." or "There is already a category "X". 
+
+Answer: Each name may only occur once, otherwise levels and
+Categories in selection fields, legend and Excel export
+. Upper and lower case letters and spaces in the margin count
+not. Choose a different name or take the existing layer. 
+
+**Question:** A tab in the form has a red dot. 
+
+Answer: A field in this tab holds an invalid input, such as a
+empty date. The plan retains the last valid value there. Open the
+tab and correct the field; then the point disappears. 
 
 **Question:** The form says "Please enter a title.", "Please enter a title."
 Enter your name.", "Please enter a date.", "Please enter a valid date

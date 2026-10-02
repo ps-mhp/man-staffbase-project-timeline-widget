@@ -36,6 +36,17 @@
       ]
     },
     {
+      "title": "Adiamento de um lançamento de software",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ],
+      "variant": "postponement"
+    },
+    {
       "title": "Sem a linha atual e sem exportação",
       "attributes": {
         "show-today": "false",

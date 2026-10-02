@@ -36,6 +36,17 @@
       ]
     },
     {
+      "title": "Rinvio di un rilascio software",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ],
+      "variant": "postponement"
+    },
+    {
       "title": "Senza linea attuale e senza esportazione",
       "attributes": {
         "show-today": "false",

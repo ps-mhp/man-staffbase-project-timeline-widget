@@ -42,11 +42,14 @@ De cima a baixo:
 1. **Cabeçalho** (se definido) e **"Status: ..."** — a data do último
    Altere o plano, no formato de data do idioma da página. 
 2. **Barra de Ferramentas** — Buscar, **Filtrar**, Zoom (**−**, **+**, **Todos
-   mostrar**), a opção de alternar **Linha do tempo | Lista** e **Exportar**. 
+   mostrar**), a opção de alternar **Linha do tempo | Lista**, **Export**, 
+   **Tela cheia** e **Socorro**. 
 3. **Lenda** — categorias com suas cores. Um clique exibe um
    Categoria desligada ou ligada. 
 4. **O plano** — à esquerda os títulos das camadas, à direita a linha do tempo com a
-   entradas, abaixo do último nível os títulos das datas-chave. 
+   entradas, abaixo do último nível os títulos das datas-chave. A seta no
+   O título colapsa uma camada; **Colapsa tudo** acima dos títulos colapsa
+   tudo de uma vez e depois abrir novamente. 
 5. **Visão geral** — uma faixa estreita ao longo de todo o período. Uma moldura
    mostra qual seção está sendo vista no momento. 
 
@@ -74,6 +77,16 @@ Além disso:
 - Em telas estreitas (menos de 768 pixels de largura), filtros e
   Detalhes em uma folha do final, e **List** e **Export** estão disponíveis
   no cardápio **Mais**. 
+- **Tela cheia** mostra o plano em toda a tela, com o mesmo
+  operação; apenas os próprios rolos do plano, eixo e visão geral permanecem de pé. 
+  **Esc** ou **Sair da tela cheia** retorna à página. Onde o navegador não retorna
+  tela cheia real (como o Safari no iPhone), o plano sobrepõe
+  a página inteira. 
+- **Ajuda** explica aos leitores diretamente na página quais são os personagens
+  (Aba Lenda, com as categorias deste plano) e como usar o
+  O Plan operava com mouse, trackpad, toque e teclado (aba **Operação**). 
+  Do plano, a tecla **?** também abre a ajuda. No editor de planos,
+  Não tem o botão. 
 - **Sem entradas, o widget não mostra nada** — nenhum quadro vazio e
   Sem mensagem de erro. 
 

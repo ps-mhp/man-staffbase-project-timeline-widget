@@ -36,6 +36,17 @@
       ]
     },
     {
+      "title": "Report d’une sortie logicielle",
+      "attributes": {
+        "show-today": "false",
+        "allow-export": "true"
+      },
+      "resolve": [
+        "plan"
+      ],
+      "variant": "postponement"
+    },
+    {
       "title": "Sans la ligne actuelle et sans exportation",
       "attributes": {
         "show-today": "false",
