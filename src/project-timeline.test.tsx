@@ -264,7 +264,7 @@ describe("ProjectTimeline", () => {
     expect(screen.queryByRole("button", { name: /Hilfe/ })).not.toBeInTheDocument();
   });
 
-  // Am 30.09.2026 auf der Seite: `onetruck-css` zeichnet vor jedes `li` im
+  // Am 30.09.2026 auf der Seite: `man-theme` zeichnet vor jedes `li` im
   // Inhaltsbereich einen roten Strich — neben den Farbpunkten der Kategorien
   // sah das aus wie ein Fehler. Listen sind deshalb `role="list"` auf `div`.
   it("rendert keine ul/ol/li, auch nicht in Details und Hilfe", async () => {
