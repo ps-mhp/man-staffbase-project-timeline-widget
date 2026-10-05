@@ -21,7 +21,7 @@
 import * as React from "react";
 import { KeyboardEvent, ReactElement, useId, useRef, useState } from "react";
 
-import { MilestoneSymbol } from "../plan-model";
+import { MilestoneSymbol, UNCATEGORIZED_COLOR } from "../plan-model";
 import { AnchoredPopover } from "./anchored-popover";
 import { ColorField } from "./color-field";
 import { validateName } from "./entity-names";
@@ -125,7 +125,7 @@ export function CreateEntityPopover({
             <SymbolField
               label="Form"
               value={symbol}
-              color={color ?? "#71787F"}
+              color={color ?? UNCATEGORIZED_COLOR}
               onChange={setSymbol}
             />
           )}

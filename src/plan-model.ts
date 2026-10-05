@@ -172,8 +172,11 @@ export interface PlanReadResult {
 /** Mehr trägt ein Plan nicht; der Editor nimmt darüber hinaus nichts an. */
 export const LIMITS = { items: 300, lanes: 20, categories: 24, attachments: LIMIT_ATTACHMENTS } as const;
 
-/** Die Farbe von Einträgen ohne Kategorie; entspricht `man("text-subtle")`. */
-export const UNCATEGORIZED_COLOR = "#71787F";
+/**
+ * Die Farbe von Einträgen ohne Kategorie; entspricht `man("text-subtle")`,
+ * also Craft `text-soft` (#5B6F85, vorher das alte Grau #71787F).
+ */
+export const UNCATEGORIZED_COLOR = "#5B6F85";
 
 export function emptyPlan(): Plan {
   return { version: 1, lanes: [], categories: [], items: [] };

@@ -53,7 +53,8 @@ export const CATEGORY_PALETTE: readonly string[] = [
   "#4B96D2",
   "#00786E",
   "#91B900",
-  "#71787F",
+  // Das neutrale Grau ist das von „Ohne Kategorie“ (Craft `text-soft`).
+  "#5B6F85",
   "#C10039",
   "#2D6A9F",
   "#8A6D00",

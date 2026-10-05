@@ -119,7 +119,7 @@ describe("OverviewStrip", () => {
 
     it("färbt Einträge ohne Kategorie neutral", () => {
       const { container } = renderStrip();
-      expect(container.querySelector('[data-id="u1"]')).toHaveStyle({ backgroundColor: "#71787F" });
+      expect(container.querySelector('[data-id="u1"]')).toHaveStyle({ backgroundColor: "#5B6F85" });
     });
 
     it("zieht Stichtage über alle Spuren statt in eine Spur", () => {
