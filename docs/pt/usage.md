@@ -1,335 +1,335 @@
 # Passo a passo
 
-## Crie o plano
+## Criar o plano
 
-1. Coloque o widget **Plano de Projeto** na página, preferencialmente em um
-   coluna larga: Uma linha do tempo precisa de espaço na largura. Em um
-   coluna estreita, permanece operável, mas mostra menos de cada vez. 
-2. Abra as configurações do widget. O editor de planos abre a partir de
-   ela própria, preenchendo a tela; também cobre o bar do estúdio. 
-3. Um plano vazio oferece duas maneiras: **Começar vazio** estabelece um nível
-   "Nível 1"; se preferir começar de um modelo finalizado, siga o
-   Comece com uma seção de modelos. 
-4. Na barra de cabeçalho do Editor de Planos, em **Cabeçalho** 
-   opcionalmente, insira um título para o plano. Ele fica acima do plano e fornece o
-   Arquivo no Excel o nome deles. 
-5. Crie as camadas na aba **Camadas** — veja "Manter camadas". 
-6. Na aba **Categorias**, crie as categorias com suas cores — 
-   veja "Categorias de manutenção". 
-7. Na aba **Entradas**, defina os marcos, períodos de tempo e prazos
-   — veja as seções a seguir. 
-8. Clique em **Aplicar** no canto superior direito. 
-9. No diálogo, marque os botões **Linha Mostrar Hoje** e
-   **Oferecer exportação do Excel**; ambos são pré-ativados. 
-10. Salve a página e pré-visualize o resultado. 
+1. Coloque o widget **Plano do projeto** na página, de preferência numa
+   coluna larga: uma linha do tempo precisa de espaço na largura. Numa
+   coluna estreita, continua a ser funcional, mas mostra menos informação de uma só vez.
+2. Abra as definições do widget. O editor do plano abre-se
+   automaticamente, ocupando todo o ecrã; ao fazê-lo, também oculta a barra do Studio.
+3. Um plano vazio oferece duas opções: **Começar do zero** cria um nível
+   «Nível 1»; quem preferir partir de um modelo pronto, siga a
+   secção «Começar com um modelo».
+4. Na barra de título do Editor de Planos, em **Título**,
+   introduza, se desejar, um título para o plano. Este aparece acima do plano e dá
+   o nome ao ficheiro do Excel.
+5. Na separador **Níveis**, crie os níveis — consulte «Gerir níveis».
+6. Na separador **Categorias**, crie as categorias com as respetivas cores —
+   consulte «Gerir categorias».
+7. Na separador **Entradas**, crie os marcos, os períodos e as datas-limite
+   — consulte as secções seguintes.
+8. Clique em **Aplicar**, no canto superior direito.
+9. Na caixa de diálogo, verifique se as opções **Mostrar linha de hoje** e
+   **Oferecer exportação para o Excel** estão ativadas; ambas vêm ativadas por predefinição.
+10. Guarde a página e verifique o resultado na pré-visualização.
 
-## Comece com um modelo
+## Começar com um modelo
 
-1. Abra as configurações de um widget cujo plano ainda esteja vazio. 
-2. No Editor de Planos, clique **Iniciar com o Modelo**. O editor exibe
-   os modelos como cartões, cada um com miniatura, descrição e o quê
-   Ela traz: 
-   - **Roteiro de produto** — vários anos e linhas de produtos baseadas no modelo
-     do plano de lançamento de caminhões de vendas: três níveis, sete categorias e cada uma
-     Tipo de entrada. 
-   - **Adiamento** — uma data adiada por alguns meses: 
-     datas antigas e novas como datas-chave, um nível por função afetada. 
-3. Clique no cartão apropriado. O editor preenche com o modelo; 
-   um título já inserido permanece. **Voltar** lidera sem mudança
-   De volta aos dois caminhos. 
-4. Personalize o título, camadas, categorias e entradas para se adequar ao seu projeto
-   Ou apague o que não precisa. 
-5. Clique em **Aplicar** no canto superior direito e salve a página. 
+1. Abra as definições de um widget cujo plano ainda esteja vazio.
+2. No editor de planos, clique em **Começar com um modelo**. O editor apresenta
+   os modelos sob a forma de cartões, cada um com uma imagem de pré-visualização, descrição e o que
+   cada um inclui:
+   - **Roteiro do produto** — vários anos e linhas de produtos, seguindo o modelo
+     do plano «Sales Truck Launch»: três níveis, sete categorias e todo o
+     tipo de entrada.
+   - **Adiamento de data** — um adiamento de alguns meses:
+     data antiga e nova como datas de referência, um nível por função afetada.
+3. Clique no cartão adequado. O Editor preenche-se com o modelo;
+   um título já introduzido permanece. **Voltar** leva-o de volta às duas opções
+   sem efetuar alterações.
+4. Adapte o título, os níveis, as categorias e as entradas ao seu projeto
+   ou elimine o que não precisar.
+5. Clique em **Aplicar** no canto superior direito e guarde a página.
 
-## Montando o editor de planos
+## Configurar o Editor de Planos
 
-- **Colapsar prévia:** Clicar em **Prévia** abre a linha do tempo
-  e dá espaço aos cavaleiros abaixo. Ele desdobrou o
-  Última altura selecionada. 
-- **Redimensionamento:** A linha divisória entre a pré-visualização e as abas muda o
-  Altura da prévia (pelo menos alta o suficiente para manter a linha do tempo visível), 
-  entre a lista de inscrições e o formulário. Arraste com o mouse ou coloque o foco nele e
-  use as setas (com Shift em incrementos maiores). A
-  Clique em dois instantes para restaurar o tamanho original. O navegador lembra
-  Os tamanhos para o próximo abrem abertamente. 
-- Lista, forma, camadas e categorias rolam cada uma separadamente; barra de cabeçalho, 
-  Os passageiros e os botões acima de cada área permanecem no lugar. 
+- **Recolher a pré-visualização:** Um clique em **Pré-visualização** recolhe a linha do tempo
+  e liberta espaço para os separadores abaixo. Quando expandida, volta a ter a
+  altura selecionada pela última vez.
+- **Alterar o tamanho:** A linha divisória entre a pré-visualização e os separadores altera a
+  altura da pré-visualização (pelo menos o suficiente para que a linha do tempo permaneça visível),
+  enquanto a linha entre a lista de entradas e o formulário altera a largura da lista. Arraste-a com o rato ou coloque o foco nela e
+  utilize as setas do teclado (com a tecla Shift para passos maiores). Um
+  duplo clique restaura o tamanho original. O navegador guarda
+  os tamanhos para a próxima vez que for aberto.
+- A lista, o formulário, os níveis e as categorias deslocam-se independentemente; a barra de cabeçalho,
+  os separadores e os botões acima de cada área permanecem fixos.
 
-## A Lista de Inscritos
+## A lista de entradas
 
-- Acima da lista no topo estão **Entradas de busca**, abaixo há um toggle
-  Para o tipo: **marcos**, **períodos** ou **datas-chave**, cada um com
-  do número deles. A lista mostra apenas entradas desse tipo. 
-- O botão **+** à direita do toggle exibe uma entrada do
-  Espécie escolhida. 
-- Na frente de cada título há uma pequena forma na cor de sua categoria — então
-  Você encontrará uma entrada da linha do tempo na lista. 
-- A busca funciona dentro do tipo selecionado; os números no toggle
-  Depois, mostre quantos acertos há em cada tipo. 
-- Se você selecionar uma entrada de outro tipo na prévia, o
-  Troque com. 
-- Para excluir, passe o mouse sobre uma linha e clique na
-  Lixo à direita (sempre visível em dispositivos sensíveis ao toque). Um pequeno
-  A consulta também indica quantas entradas dependem da excluída; confirmar
-  Você com **Delete**. 
+- Acima da lista encontra-se **Pesquisar entradas**; por baixo, um botão de alternância
+  para o tipo: **Marcos**, **Períodos** ou **Datas-limite**, cada um com
+  o respetivo número. A lista mostra apenas entradas desse tipo.
+- O botão **+** à direita do seletor cria uma entrada do
+  tipo selecionado.
+- Antes de cada título aparece, em letras pequenas, o símbolo na cor da respetiva categoria — assim
+  é possível localizar uma entrada da linha do tempo na lista.
+- A pesquisa funciona dentro do tipo selecionado; os números no botão de alternância
+  indicam, nesse caso, quantos resultados existem em cada tipo.
+- Se selecionar na pré-visualização uma entrada de outro tipo, o
+  botão de alternância muda em conformidade.
+- Para eliminar, passe o rato por cima de uma linha e clique no
+  cesto do lixo à direita (nos dispositivos táteis, este está sempre visível). Uma pequena
+  mensagem de confirmação indica também quantas entradas dependem da entrada eliminada; confirme
+  com **Eliminar**.
 
-## A forma de uma entrada
+## O formulário de uma entrada
 
-À direita da lista está o formulário da entrada selecionada. No topo estão
-seu título e os botões **Duplicar** e **Excluir**, incluindo cinco
-Ciclistas: 
+À direita da lista encontra-se o formulário da entrada selecionada. Na parte superior estão
+o seu título e os botões **Duplicar** e **Apagar**; por baixo, cinco
+separadores:
 
-- **General** — Tipo, Título, Descrição
-- **Classificação** — Nível, Categoria, Série
-- **Data** — data ou início e fim, seta no final do período, 
+- **Geral** — Tipo, título, descrição
+- **Classificação** — Nível, categoria, série
+- **Data** — Data ou início e fim; no caso de um período, há uma seta no final,
   Provisório
-- **Dependências** — os predecessores; o número atrás delas indica quantos
-  . Datas de corte não têm essa aba. 
-- **Conteúdo** — a página da Staffbase ou post de notícias que clica
-  abre a entrada
+- **Dependências** — os antecessores; o número a seguir indica quantos
+  estão selecionados. As datas-limite não têm esta separador.
+- **Conteúdo** — a página do Staffbase ou a notícia que se abre ao clicar
+  na entrada
 
-A aba selecionada permanecerá aberta quando você mudar para outra entrada
-— se você mantiver as datas de várias entradas, permanece em **Data**. Mantém um
-Se a aba inserir uma entrada inválida, mostra um ponto vermelho. 
+O separador selecionado permanece aberto quando muda para outra entrada
+— quem gere os prazos de várias entradas deve permanecer no separador **Prazo**. Se um
+separador contiver uma entrada inválida, exibe um ponto vermelho.
 
-## Manter camadas
+## Gerir níveis
 
-1. No Editor de Planos, abra a aba **Camadas**. 
-2. Para criar uma camada, clique em **Nova Camada** e entre
-   Insira o nome deles. Você também pode fazer isso diretamente na forma de uma entrada: sob
-   **Classificação** no campo **Nível**, selecione o **Novo nível ...**, selecione o
-   Digite o nome e clique em **Criar** — a nova camada fica igual
-   atribuído à entrada. 
-3. Para renomear uma camada, mude seu nome diretamente na lista. 
-   Ao lado de cada nome está quantas entradas a camada contém. Cada nome
-   pode ocorrer apenas uma vez (independentemente de maiúsculas e minúsculas). 
-4. Para mudar a ordem, mova a camada com as setas
-   Para cima ou para baixo. A ordem aqui é a ordem no
-   página e na exportação do Excel. 
-5. Para deletar uma camada, clique em **Excluir**. Ela ainda contém
-   entradas, o editor pergunta se elas são movidas para outra camada
-   — que você seleciona em **Nível Alvo** — ou se também são excluídos
-   . Confirme com **Excluir** ou interrompa com **Cancelar** 
-   . 
+1. No Editor de Planos, abra o separador **Níveis**.
+2. Para criar um nível, clique em **Novo nível** e introduza
+   o seu nome. O mesmo se pode fazer diretamente no formulário de uma entrada: em
+   **Classificação**, no campo **Nível**, selecione a opção **Novo Nível …**, introduza o
+   nome e clique em **Criar** — o novo nível fica então imediatamente
+   atribuído à entrada.
+3. Para renomear uma camada, altere o seu nome diretamente na lista.
+   Ao lado de cada nome indica-se o número de entradas que a camada contém. Cada nome
+   só pode aparecer uma vez (sem distinção entre maiúsculas e minúsculas).
+4. Para alterar a ordem, desloque o nível para cima
+   ou para baixo utilizando as setas. A ordem aqui corresponde à ordem na
+   página e na exportação para o Excel.
+5. Para eliminar um nível, clique em **Eliminar**. Se ainda contiver
+   entradas, o editor pergunta se estas devem ser movidas para outro nível
+   — selecione-o em **Nível de destino** — ou se devem ser eliminadas
+   juntamente com o nível. Confirme com **Eliminar** ou cancele com **Anular**
+  .
 
-## Manter categorias
+## Gerir categorias
 
-1. No editor de planos, abra a aba **Categorias**. 
+1. No Editor de planos, abra o separador **Categorias**.
 2. Para criar uma categoria, clique em **Nova categoria** e
-   Insira o nome deles — ou selecione do formulário da entrada
-   em **Classificação** no campo **Categoria**, selecione **Nova Categoria ...**; 
-   Lá você insere o nome, cor e forma. 
-3. Clique no campo de cores à frente do nome. Ele desdobra as doze cores; 
-   escolha um deles ou insira sua própria cor em **Valor Hexágono**
-   por exemplo, '#E40045'. Esc ou um clique ao lado fecha o
-   Seleção. 
-4. Clique no botão de forma ao lado e selecione a forma com a qual o
-   Marcos dessa categoria aparecem: losango, triângulo, triângulo com a ponta para baixo, quadrado, círculo, hexágono, estrela ou cruz. As setas
-   mudar de forma em forma. Uma nova categoria recebe a primeira forma, que
-   Ninguém mais está carregando ainda. 
-5. Para mudar a ordem da legenda, mova a categoria
-   com as setas apontando para cima ou para baixo. 
-6. Para deletar uma categoria, clique em **Excluir**. Suas participações
-   são mantidas e tornam-se "sem categoria" (cinza); a consulta menciona, 
-   quantas entradas isso afeta. 
+   introduza o seu nome — ou selecione, no formulário de uma entrada
+   em **Classificação**, no campo **Categoria**, a opção **Nova categoria …**;
+   aí, indique o nome, a cor e a forma.
+3. Clique no campo de cor à frente do nome. Serão apresentadas as doze cores;
+   selecione uma delas ou introduza uma cor personalizada em **Valor hexadecimal**,
+   por exemplo, `#E40045`. A tecla Esc ou um clique ao lado fecha a
+   seleção.
+4. Clique no botão de forma ao lado e selecione a forma com que os
+   marcos desta categoria serão apresentados: losango, triângulo, triângulo com o vértice para baixo, quadrado, círculo, hexágono, estrela ou cruz. As setas
+   alternam entre as diferentes formas. Uma nova categoria recebe a primeira forma que
+   ainda não tenha sido atribuída a nenhuma outra.
+5. Para alterar a ordem da legenda, desloque a categoria
+   para cima ou para baixo utilizando as setas.
+6. Para eliminar uma categoria, clique em **Eliminar**. As suas entradas
+   são mantidas e passam a ficar «sem categoria» (a cinzento); a mensagem de confirmação indica
+   quantas entradas são afetadas.
 
-## Crie um marco
+## Criar um marco
 
-1. No editor de planos, abra a aba **Entradas**. 
-2. Selecione **Marcos** acima da lista e clique em **+**. O
-   a nova entrada se chama "Novo marco", está no meio da prévia
-   e no primeiro nível; à direita, sua forma aparece na aba
-   **General**, o título está destacado. 
-3. Insira o **título** e, opcionalmente, uma **descrição**. O
-   A descrição aparece nos detalhes, os quebras de linha são mantidas. 
-4. Em **Classificação**, selecione **Nível** e **Categoria** — 
-   ou "Sem Categoria". 
-5. Insira a **data** em **Data**. 
-6. A forma e a cor do marco vêm de sua categoria; sem
-   categoria Aparece como um diamante cinza. Sob **Classificação**, há um
-   Note o formato que ele está usando atualmente. 
-7. Defina **Provisório** caso a data ainda não esteja definida. 
-8. Clique em **Aplicar** no canto superior direito assim que todas as entradas estiverem concluídas
-   são. 
+1. No Editor de Planos, abra o separador **Entradas**.
+2. Selecione **Marcos** acima da lista e clique em **+**. A
+   nova entrada chama-se «Novo Marco», encontra-se no centro da pré-visualização
+   e no primeiro nível; à direita, aparece o seu formulário no separador
+   **Geral**, com o título destacado.
+3. Introduza o **Título** e, opcionalmente, uma **Descrição**. A
+   descrição aparece nos detalhes, mantendo as quebras de linha.
+4. Em **Classificação**, selecione o **nível** e a **categoria** —
+   ou «Sem categoria».
+5. Em **Data**, introduza a **data**.
+6. A forma e a cor do marco dependem da sua categoria; sem
+   categoria, aparece como um losango cinzento. Em **Classificação**, há uma
+   nota com a forma que o marco tem nesse momento.
+7. Selecione **Provisório** se a data ainda não estiver definida.
+8. Clique em **Aplicar** no canto superior direito assim que todas as entradas estiverem
+   concluídas.
 
-## Crie um período de tempo
+## Criar um período
 
-1. Na aba **Entradas** acima da lista, selecione **Períodos de tempo** e clique
-   Clique em **+**. A nova entrada se chama "Novo Período". 
-2. Em **Geral**, insira o **título** e, opcionalmente, um
-   **Descrição**, em **Classificação** **Nível** e **Categoria**. 
-3. Insira **Data** **Início** e **Fim** em **Data**. Ambos os dias
-   pertencem ao período. 
-4. Coloque **seta no final** se o período já passar do fim
-   continua. 
-5. Defina **Provisório** caso o início ou o fim ainda não estejam definidos. 
+1. No separador **Entradas**, acima da lista, selecione **Períodos** e clique
+   em **+**. A nova entrada chama-se «Novo período».
+2. Em **Geral**, introduza o **Título** e, opcionalmente, uma
+   **Descrição**; em **Classificação**, introduza o **Nível** e a **Categoria**.
+3. Introduza, em **Data**, a **Data de início** e a **Data de fim**. Ambos os dias
+   fazem parte do período.
+4. Selecione **Seta no final** se o período se prolongar para além do fim
+   previsto.
+5. Selecione **Provisório** se o início ou o fim ainda não estiverem definidos.
 
-Um marco pode ser alterado para um período de tempo a qualquer momento sob **Arte**
-E vice-versa. 
+Um marco pode ser convertido a qualquer momento num período em **Tipo**
+e vice-versa.
 
-## Crie um prazo
+## Criar uma data de referência
 
-1. Na aba **Entradas** acima da lista, selecione **Datas-chave** e clique
-   Você clica **+**. 
-2. Insira **Título**, opcional **Descrição**, **Categoria** e
-   **Data**. Não há nível aqui: Uma data limite se aplica ao
-   O plano completo e passa por todos os níveis. 
+1. No separador **Entradas**, acima da lista **Datas de referência**, selecione
+   e clique em **+**.
+2. Introduza o **Título**, opcionalmente a **Descrição**, **Categoria** e
+   **Data**. Aqui não existe nível: uma data de referência aplica-se a todo o
+   plano e abrange todos os níveis.
 
-Se um marco ou período sob **Arte** se tornar a data limite, ele não se aplica.
-nivelado. 
+Se um marco ou período for definido como data de referência em **Tipo**, o seu
+nível deixa de existir.
 
-## Inscrições combinadas em uma série
+## Agrupar entradas numa série
 
-1. Na aba **Entradas**, selecione a primeira entrada da série e
-   abertura **Classificação**. 
-2. Clique no campo **Série**. Ele desdobra a série que possui em
-   dessa camada, cada uma com o número de suas entradas. Toque
-   um novo nome, por exemplo "TG Assist MY26", e selecione
-   **Crie "TG Assist MY26" como uma nova série** (ou pressione Enter). 
-3. Selecione a próxima entrada do mesmo nível e selecione
-   **Série** a série que você acabou de criar a partir da lista. 
-4. Repita o passo 3 para todas as entradas da série. **Sem série** até o fim
-   no topo da lista retira uma entrada; Esc representa o
-   valor anterior. 
+1. No separador **Entradas**, selecione a primeira entrada da série e
+   abra **Classificação**.
+2. Clique no campo **Série**. Serão apresentadas as séries que já existem
+   esse nível, cada uma com o número de entradas. Digite
+   um novo nome, por exemplo, «TG Assist MY26», e selecione
+   **«Criar «TG Assist MY26» como nova série»** (ou prima Enter).
+3. Selecione a entrada seguinte do mesmo nível e, em
+   **Série**, selecione a série que acabou de criar na lista.
+4. Repita o passo 3 para todas as entradas da série. **Sem série**, no
+   topo da lista, remove uma entrada; A tecla Esc restaura o
+   valor anterior.
 
-Séries são válidas apenas em um nível. Peças maiúsculas e minúsculas
-não tem papel quando é encontrado novamente, hífens e sotaques fazem: "TG Assist
-MY26" e "TG-Assist MY26" são duas séries diferentes. 
+As séries aplicam-se apenas dentro de um nível. As maiúsculas e minúsculas não têm
+importância na pesquisa, mas os hífens e os acentos sim: «TG Assist
+MY26» e «TG-Assist MY26» são duas séries diferentes.
 
-## Defina uma dependência
+## Definir uma dependência
 
-1. Na aba **Entradas**, selecione a entrada que foi criada por outro
-   (o sucessor), e abrir **Dependências**. 
-2. Em **Depende de**, encontre e selecione o antecessor. Múltiplos
-   Predecessores são possíveis. 
-3. Na página, uma linha pontilhada com uma seta agora conecta o
-   Predecessor com sucessor. 
+1. No separador **Entradas**, selecione a entrada que depende de outra
+   (o sucessor) e abra **Dependências**.
+2. Em **Depende de**, procure e selecione o antecessor. É possível definir vários
+   antecessores.
+3. Na página, uma linha tracejada com uma seta liga agora o
+   antecessor ao sucessor.
 
-Dependências existem apenas entre marcos e períodos de tempo, não para
-prazos. Se uma entrada for excluída, ela também desaparecerá de todos os prazos
-Dependências. 
+As dependências existem apenas entre marcos e períodos de tempo, não para
+datas-limite. Se uma entrada for eliminada, desaparece também de todas as
+dependências.
 
-## Link para uma página ou post
+## Vincular uma página ou uma notícia
 
-Uma página da Staffbase ou post de notícias pode ser linkada por entrada — 
-por exemplo, a página com todas as informações sobre uma atualização de software. O plano permanece o
-Visão geral, os detalhes estão onde eles são mantidos de qualquer forma. 
+Por cada entrada, é possível vincular uma página do Staffbase ou uma notícia —
+por exemplo, a página com todas as informações sobre uma atualização de software. O plano mantém-se como
+uma visão geral, enquanto os detalhes ficam onde são, de qualquer forma, geridos.
 
-1. Selecione a entrada na aba **Entradas** e abra a
-   Aba **Conteúdo**. 
-2. Em **Link**, selecione **Página** ou **Post de Notícias**. 
-3. Para uma página, selecione-a em **Página**. Para uma postagem
-   selecione o **canal**, depois o **post**. Os rascunhos são com
-   "(rascunho)"; eles já podem ser vinculados, leitores
-   Mas só veja depois de publicar. 
-4. **Abrir em nova aba** mostra o que está vinculado. 
+1. Selecione a entrada no separador **Entradas** e abra o
+   separador **Conteúdo**.
+2. Em **Ligação**, selecione **Página** ou **Artigo de notícias**.
+3. No caso de uma página, selecione-a em **Página**. No caso de uma notícia,
+   selecione primeiro o **Canal** e, em seguida, a **Notícia**. Os rascunhos estão identificados com
+   «(Rascunho)»; já podem ser ligados, mas os leitores
+   só as verão após a publicação.
+4. **Abrir numa nova aba** mostra o que está ligado.
 
-Se a página ou post ainda não existe, crie-a aqui: 
+Se a página ou a publicação ainda não existirem, crie-as aqui mesmo:
 
-1. Na seleção, clique **Nova página ...** — ou em um
-   Poste, depois de selecionar o **canal**, clique em **Nova postagem ...**. 
-2. Acima do editor de planos, o editor Staffbase se abre. Defina a página
-   lá (**Criar**) ou salvar a postagem como rascunho. 
-3. Uma vez que a Staffbase seja salva, o conteúdo é vinculado à entrada; 
-   no topo diz "Linkado: ...". Você pode usar o editor Staffbase para
-   Continue. **Pronto** fecha. 
+1. Clique em **Nova página …** abaixo da seleção — ou, no caso de uma
+   publicação, depois de ter selecionado o **Canal**, clique em **Nova publicação …**.
+2. O Editor do Staffbase abre-se por cima do Editor de Planos. Crie a página
+   ali (**Criar**) ou guarde a publicação como rascunho.
+3. Assim que o Staffbase guardar, o conteúdo fica associado à entrada;
+   na parte superior aparecerá então «Associado: …». Pode continuar a escrever no Editor do Staffbase
+  . **Concluído** fecha-o.
 
-Feche com **Cancelar** ou Esc antes de qualquer coisa ser vinculada, o
-Editor para: Enquanto isso, ele tem exatamente uma página nova ou uma nova
-contribuição encontrada por você, ele se oferece para vinculá-los; caso contrário, ele pergunta, 
-se a criação realmente deveria ser abortada — o que ainda é
-está perdida. 
+Se fechar com **Cancelar** ou Esc antes de algo estar associado, o
+editor pergunta: se, entretanto, tiver encontrado exatamente uma nova página ou uma nova
+artigo seu, o editor sugere que os vincule; caso contrário, pergunta
+se a criação deve mesmo ser cancelada — o que ainda
+não estiver guardado no editor do Staffbase será perdido.
 
-Abaixo do link estão os **Anexos**: Arquivos e imagens do
-Biblioteca de mídia da Staffbase, até dez por entrada. 
+Abaixo do link encontram-se os **Anexos**: ficheiros e imagens da
+biblioteca multimédia da Staffbase, até dez por entrada.
 
-1. Na aba **Conteúdo**, clique em **Adicionar arquivo ou imagem...** e
-   selecione um arquivo na Biblioteca de Mídia — ou baixe um arquivo da Biblioteca de Mídia
-   Novo recorde. 
-2. Se necessário, dê um **rótulo**; caso contrário, diz o
-   Nome do arquivo. 
-3. Com **↑** e **↓** você muda a ordem, **×** remove o anexo. 
+1. Na separador **Conteúdo**, clique em **Adicionar ficheiro ou imagem…** e
+   selecione um ficheiro na biblioteca multimédia — ou carregue um
+   novo.
+2. Se necessário, atribua-lhe uma **legenda**; caso contrário, aparecerá o
+   nome do ficheiro.
+3. Com **↑** e **↓** pode alterar a ordem; **×** remove o anexo.
 
-Anexos ficam atrás do registro: os leitores os abrem com os seus próprios
-Direitos, como qualquer arquivo da biblioteca de mídia. 
+Os anexos permanecem após o início de sessão: os leitores abrem-nos com os seus próprios
+direitos, tal como qualquer ficheiro da biblioteca de multimédia.
 
-Na página, a legenda de uma entrada vinculada está sublinhada. 
-Clicar nela abre a página ou postagem em uma janela acima do
-planeje, em vez dos detalhes; **Abrir em nova aba** está sempre no topo, o
-Anexos estão ao lado dele. No caso de uma entrada sem conteúdo vinculado, o
-detalha seus apegos. Com
-**Link: Nenhum** desvincule novamente. 
+Na página, a legenda de uma entrada com ligação aparece sublinhada.
+Ao clicar nela, a página ou a publicação abre-se numa janela sobre o
+plano, em vez de nos detalhes; **Abrir num novo separador** aparece sempre no topo, com os
+anexos ao lado. No caso de uma entrada sem conteúdo associado, os
+detalhes mostram os seus anexos. Com
+**Ligação: Nenhuma**, pode desassociar a ligação.
 
-## Duplicar e excluir entradas
+## Duplicar e eliminar entradas
 
-1. Selecione a entrada na aba **Entradas**. 
-2. **Duplicar** (canto superior direito do formulário) cria uma cópia que você pode
-   Então se ajuste. 
-3. **Excluir** (ao lado) pede e depois remove a entrada e todos
-   dependências que apontam para ele. A mesma consulta aparece em
-   Lixo na lista. Depois, a próxima entrada da lista é selecionada. 
+1. Selecione a entrada no separador **Entradas**.
+2. **Duplicar** (no canto superior direito do formulário) cria uma cópia que pode
+   ser posteriormente ajustada.
+3. **Eliminar** (ao lado) solicita confirmação e, em seguida, remove a entrada e todas as
+   dependências que apontam para ela. A mesma solicitação de confirmação aparece no
+   cesto de lixo da lista. Depois disso, a próxima entrada da lista fica selecionada.
 
-## Defina a visualização principal
+## Definir a vista inicial
 
-Sem uma visualização inicial, o widget mostra o plano completo ao carregar. Deveria
-Em vez disso, mostre um certo trecho, por exemplo, os próximos dois anos: 
+Sem uma vista inicial, o widget mostra o plano completo ao carregar. Se pretender
+que mostre, em vez disso, um determinado recorte, por exemplo, os próximos dois anos:
 
-1. Amplie e panoramize a **Prévia** no Editor de Planos até que o
-   pode ser visto na seção desejada. 
-2. Clique em **Esta seção como visualização inicial**. Salvando
-   Ao mês. 
-3. Para mostrar o plano completo novamente, clique em **Iniciar visualização
-   Remover**. 
-4. **Aplicar**, salvar, verificar na prévia da página. 
+1. Amplie e desloque a **Pré-visualização** no Editor do Plano até que a
+   secção pretendida fique visível.
+2. Clique em **Definir esta secção como vista inicial**. A definição é
+   guardada com precisão mensal.
+3. Para voltar a mostrar o plano completo, clique em **Remover vista inicial
+  **.
+4. **Aplicar**, guardar e verificar na pré-visualização da página.
 
-Leitores podem dar zoom a qualquer momento a partir da visualização inicial ou
-**Mostrar tudo** veja o plano completo. 
+Os leitores podem, a partir da vista inicial, ampliar ainda mais a qualquer momento ou ver
+o plano completo com **Mostrar tudo**.
 
-## Mudança depois
+## Alterar posteriormente
 
-1. Abra novamente as configurações do widget. O Editor de Planos mostrará o
-   Plano salvo. 
-2. Selecione a entrada na lista da aba **Entradas** ou por
-   Um clique na prévia e modificar sua forma. Um clique em
-   da pré-visualização muda para a aba **Entrantes** e busca a
-   Entrada na lista à vista. 
-3. Clique em **Aplicar** no canto superior direito e salve a página. 
-   A data após "Status:" é definida para o dia da mudança. 
+1. Abra novamente as definições do widget. O Editor de Planos mostra o
+   plano guardado.
+2. Selecione a entrada na lista do separador **Entradas** ou através de
+   um clique na pré-visualização e altere o seu formulário. Um clique na
+   pré-visualização muda para o separador **Entradas** e mostra a
+   entrada na lista para o ecrã.
+3. Clique em **Aplicar** no canto superior direito e guarde a página.
+   A data após «Estado:» é definida para o dia da alteração.
 
-Desde que as mudanças ainda não tenham sido aplicadas, a barra de cabeçalho diz
-"Alterações não salvas". Clique em **Cancelar** para descartar todas as alterações
-desde a última vez que o editor de planos foi aberto; o editor pergunta antes. 
+Enquanto as alterações ainda não forem aplicadas, a barra de título exibe
+«Alterações não guardadas». Com **Cancelar**, descarta todas as alterações
+efetuadas desde a última vez que abriu o editor de planos; o editor pede confirmação antes de prosseguir.
 
-## Baixe o plano como uma planilha Excel (como leitor)
+## Descarregar o plano como folha de cálculo do Excel (como leitor/a)
 
-1. Filtre e amplie o plano para que você possa ver o que precisa. 
-2. Clique em **Export** na barra de ferramentas. No modo estreito
-   telas, o botão está no menu **Mais**. 
-3. Escolha o escopo: 
-   - **Visualização Atual** — apenas as entradas na seção visível que
-     atender a todos os filtros ativos; se a busca estiver ativa, apenas os resultados. 
-   - **Plano completo** — todas as entradas, sem filtros e seções. 
+1. Filtre e amplie o plano de forma a ver apenas o que precisa.
+2. Clique em **Exportar** na barra de ferramentas. Em ecrãs estreitos,
+   o botão encontra-se no menu **Mais**.
+3. Selecione o âmbito:
+   - **Vista atual** — apenas as entradas na secção visível que
+     cumpram todos os filtros ativos; se houver uma pesquisa ativa, apenas os resultados.
+   - **Plano completo** — todas as entradas, sem filtros nem secção.
 
-   Por trás de cada eleição está quantas entradas ela contém. 
-4. Clique em **Download Excel**. O arquivo tem um nome semelhante ao
-   Cabeça do plano com a data de hoje, sem cabeça
-   'Projektplan_JJJJ-MM-TT.xlsx'. 
+   Em cada opção indica-se o número de entradas que inclui.
+4. Clique em **Descarregar para o Excel**. O ficheiro tem o nome do
+   título do plano com a data de hoje, sem o título
+   `Plano do Projeto_AAAA-MM-DD.xlsx`.
 
-O arquivo contém a folha **Planejamento** com uma linha por entrada (nível, 
-Tipo, Título, Categoria, Início, Fim, Série, Preliminar, Predecessor, 
-descrição) e a folha **Info** com título, status, data de exportação, escopo e
-Os filtros ativos. 
+O ficheiro contém a folha **Planeamento** com uma linha por entrada (nível,
+tipo, título, categoria, início, fim, série, provisório, predecessor,
+descrição) e a folha **Info** com título, estado, data de exportação, âmbito e
+os filtros ativos.
 
-## Quando algo não funciona
+## Se algo não funcionar
 
-1. **O widget não mostra nada na página.** O plano ainda não tem um.
-   entrada. Abra Configurações e defina pelo menos uma
-   Marco, período de tempo ou prazo. 
-2. **O editor de planos não abre.** Em **Plan** há apenas um
-   Caixa de texto. Feche e reabra as configurações. Mudar
-   Não altere o conteúdo do campo de texto manualmente — é o tecnico
-   Versão aproximada do plano. 
-3. **No topo do editor de plantas, diz que as entradas não puderam ser lidas.** 
-   Veja o FAQ deste relatório. 
-4. **Leitores não conseguem encontrar o botão "Exportar".** Verifique se
-   **Oferecer Exportação do Excel** está ativada.
+1. **O widget não apresenta nada na página.** O plano ainda não tem
+   nenhuma entrada. Abra as definições e crie, pelo menos, um
+   marco, período ou data-limite.
+2. **O editor do plano não abre.** Em **Plano**, aparece apenas um
+   campo de texto. Feche as definições e volte a abri-las. Não altere
+   manualmente o conteúdo do campo de texto — trata-se da versão técnica
+   preliminar do plano.
+3. **Na parte superior do Editor de Planos, aparece uma mensagem a indicar que não foi possível ler as entradas.**
+   Consulte as Perguntas Frequentes sobre esta mensagem.
+4. **Os leitores não conseguem encontrar o botão «Exportar».** Verifique se a opção
+   **Oferecer exportação para Excel** está ativada.

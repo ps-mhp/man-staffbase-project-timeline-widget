@@ -1,6 +1,6 @@
 {
   "title": "Projectplan",
-  "summary": "Een projectplan als tijdlijn: niveaus met mijlpalen en periodes, belangrijke data en afhankelijkheden — oneindig inzoombaar, filterbaar en downloadbaar als een Excel-spreadsheet.",
+  "summary": "Een projectplan in de vorm van een tijdlijn: niveaus met mijlpalen en tijdsperioden, streefdata en afhankelijkheden — traploos in- en uitzoombaar, filterbaar en te downloaden als Excel-tabel.",
   "icon": "📅",
   "pages": [
     {
@@ -20,13 +20,13 @@
     },
     {
       "id": "faq",
-      "title": "FAQ",
+      "title": "Veelgestelde vragen",
       "file": "faq.md"
     }
   ],
   "examples": [
     {
-      "title": "Voorbeeldplan met de Vandaag-regel en Excel-export",
+      "title": "Voorbeeldschema met ‘Vandaag’-lijn en Excel-export",
       "attributes": {
         "show-today": "true",
         "allow-export": "true"
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "title": "Uitstel van een softwarerelease",
+      "title": "Uitstel van een software-release",
       "attributes": {
         "show-today": "false",
         "allow-export": "true"
@@ -47,7 +47,7 @@
       "variant": "postponement"
     },
     {
-      "title": "Zonder vandaag lijn en zonder export",
+      "title": "Zonder de ‘Heute’-lijn en zonder export",
       "attributes": {
         "show-today": "false",
         "allow-export": "false"

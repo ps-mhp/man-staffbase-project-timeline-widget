@@ -1,6 +1,6 @@
 {
   "title": "Plan del proyecto",
-  "summary": "Un plan de proyecto como línea temporal: niveles con hitos y periodos, fechas clave y dependencias — infinitamente ampliables, filtrables y descargables como una hoja de cálculo Excel.",
+  "summary": "Un plan de proyecto en forma de línea de tiempo: niveles con hitos y plazos, fechas límite y dependencias; con zoom continuo, filtrable y descargable como hoja de cálculo de Excel.",
   "icon": "📅",
   "pages": [
     {
@@ -15,7 +15,7 @@
     },
     {
       "id": "settings",
-      "title": "Escenarios",
+      "title": "Configuración",
       "file": "settings.md"
     },
     {
@@ -26,7 +26,7 @@
   ],
   "examples": [
     {
-      "title": "Plan de ejemplo con la línea Today y exportación de Excel",
+      "title": "Plan de ejemplo con la línea «Hoy» y exportación a Excel",
       "attributes": {
         "show-today": "true",
         "allow-export": "true"
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "title": "Aplazamiento de una versión de software",
+      "title": "Aplazamiento de la fecha de lanzamiento de una versión de software",
       "attributes": {
         "show-today": "false",
         "allow-export": "true"
@@ -47,7 +47,7 @@
       "variant": "postponement"
     },
     {
-      "title": "Sin la línea actual y sin exportación",
+      "title": "Sin la línea «Hoy» y sin exportación",
       "attributes": {
         "show-today": "false",
         "allow-export": "false"

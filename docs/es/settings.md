@@ -1,124 +1,124 @@
-# Escenarios
+# Ajustes
 
-El diálogo de configuración del widget tiene tres campos. "Plan" se muestra en el
-editor de planos, que se muestra al abrir la configuración; 
-El campo de texto detrás es la versión técnica preliminar y no debe hacerse a mano.
-puede ser editado. Los dos campos restantes están directamente en el diálogo. El
-El encabezado del plano no es un campo del diálogo, sino que se muestra en el editor de planos
-(véase más abajo). 
+El cuadro de diálogo de configuración del widget contiene tres campos. «Plan» se
+edita en el editor de planes, que aparece automáticamente al abrir los ajustes;
+el campo de texto que hay detrás es el borrador técnico y no debe modificarse
+manualmente. Los otros dos campos se encuentran directamente en el cuadro de diálogo. El
+título del plan no es un campo del cuadro de diálogo, sino que se gestiona en el editor de planes
+(véase más abajo).
 
-| Atributo | Etiqueta en el diálogo | Descripción |
+| Atributo | Etiqueta en el cuadro de diálogo | Descripción |
 | --- | --- | --- |
-| 'plan' | Plan | Encabezado, niveles, categorías, entradas y la vista inicial. Mantenidos en el editor de planos. Por defecto: vacío. |
-| 'mostrar-hoy' | Línea Mostrar Hoy | Una línea vertical oscura con "Hoy" en el eje marca hoy, si está en la sección visible. Por defecto: activado. |
-| 'permitir-exportar' | Ofrecer exportación en Excel | Muestra a los lectores el botón **Exportar**, que usan para descargar las entradas como una hoja de cálculo de Excel. Por defecto: activado. |
+| `plan` | Plan | Encabezado, niveles, categorías, entradas y la vista inicial. Se edita en el editor de planos. Por defecto: vacío. |
+| `show-today` | Mostrar línea de «Hoy» | Una línea vertical oscura con la palabra «Hoy» en el eje marca el día de hoy, siempre que se encuentre dentro de la sección visible. Valor predeterminado: activado. |
+| `allow-export` | Ofrecer exportación a Excel | Muestra a los lectores el botón **Exportar**, mediante el cual pueden descargar las entradas como una hoja de cálculo de Excel. Por defecto: activado. |
 
 ## El editor de planes
 
-El editor de planos ocupa toda la pantalla. En la parte superior está la barra de cabecera, debajo de ella
-la **Vista previa** y tres pestañas. Entre Vista previa y pestañas, y entre
-La lista de inscripciones y el formulario tienen cada uno una manija de tirada con la que la altura de la
-y cambiar el ancho de la lista (ratón o teclas de flecha, 
-El doble clic restaura el valor predeterminado; el navegador recuerda los tamaños). 
+El editor de planes ocupa toda la pantalla. En la parte superior se encuentra la barra de encabezado; debajo,
+la **vista previa** y tres pestañas. Entre la vista previa y las pestañas, así como entre
+la lista de entradas y el formulario, hay un control de arrastre con el que se puede ajustar la altura de la
+vista previa y el ancho de la lista (con el ratón o las teclas de flecha;
+al hacer doble clic se restablecen los valores predeterminados; el navegador recuerda los tamaños).
 
-### Cabeza
-
-| Elemento de control | Descripción |
-| --- | --- |
-| Encabezado | Se sitúa por encima del plano y da nombre al archivo Excel. Opcional: Deja en blanco si la página ya tiene un encabezado adecuado; el archivo se llama entonces 'Projektplan_JJJJ-MM-TT.xlsx'. |
-| "42 / 300 entradas" | Cuántas entradas tiene el plano, medidas respecto al límite superior. |
-| "Cambios no guardados" | Aparece tan pronto como el plan en el editor difiere del guardado. |
-| Cancelar | Cierra el editor; en caso de cambios no guardados, pregunta de antemano si deben descartarse. |
-| Aplicar | Escribe el plan en la configuración y cierra el editor. Se guarda junto con la página. |
-
-### Vista rápida
+### Barra de título
 
 | Elemento de control | Descripción |
 | --- | --- |
-| Vista previa | La misma línea de tiempo que en la página, con zoom, sin filtro ni exportación. Al hacer clic en una entrada se selecciona en la pestaña "Entradas" y aparece en la lista. Al hacer clic en **Vista previa** se colapsa; desplegada tiene la última altura dibujada. |
-| Esta sección como vista inicial | Guarda la sección visible de la vista previa, hasta el mes, como vista cuando carga la página. |
-| Eliminar la vista de inicio | Elimina la vista principal; el widget muestra de nuevo todo el plan al cargar. |
-| Empieza con Plantilla | Solo si el plan está vacío: muestra las plantillas para elegir ("Hoja de ruta del producto", "Reprogramación"). Al hacer clic en una tarjeta, el editor se llena con ella; **Devolver** devuelve sin cambios. |
-| Empieza vacío | Solo si el plano está vacío: crea una capa "Nivel 1". |
+| Título | Se encuentra encima del plan y da nombre al archivo de Excel. Opcional: déjalo en blanco si la página ya tiene un título adecuado; en ese caso, el archivo se llamará `Plan_del_proyecto_AAAA-MM-DD.xlsx`. |
+| «42 / 300 entradas» | Número de entradas que contiene el plan, medido en relación con el límite máximo. |
+| «Cambios no guardados» | Aparece en cuanto el plan del editor difiere del guardado. |
+| Cancelar | Cierra el editor; si hay cambios no guardados, pregunta previamente si se deben descartar. |
+| Aplicar | Guarda el plan en la configuración y cierra el editor. Se guarda junto con la página. |
 
-### Pestaña "Entradas" 
+### Vista previa
 
-A la izquierda está la lista de entradas, ordenadas por fecha. Encima están
-**Explora las entradas** y debajo de ellas un interruptor para el tipo — 
-**Hitos**, **Puntos**, **Plazos**, cada uno con número (si está activo
-search: hits); el botón **+** junto a él crea una entrada de este tipo, 
-y la búsqueda funciona dentro de la especie. 
-Al pasar el cursor sobre una línea, aparece una papelera de reciclaje a la derecha para su eliminación (con
-Consulta). 
+| Elemento de control | Descripción |
+| --- | --- |
+| Vista previa | La misma línea de tiempo que en la página, con zoom, sin filtros ni exportación. Al hacer clic en una entrada, esta se selecciona en la pestaña «Entradas» y se muestra en la lista. Al hacer clic en **Vista previa**, se pliega; cuando se despliega, vuelve a mostrar la altura a la que se había ajustado por última vez. |
+| Esta sección como vista inicial | Guarda la sección visible de la vista previa, con precisión mensual, como vista inicial al cargar la página. |
+| Eliminar vista inicial | Borra la vista inicial; al cargarse, el widget vuelve a mostrar el plan completo. |
+| Empezar con una plantilla | Solo si el plan está vacío: muestra las plantillas para elegir («Hoja de ruta del producto», «Aplazamiento de fecha»). Al hacer clic en una tarjeta, esta se muestra en el editor; **Atrás** permite volver sin guardar cambios. |
+| Empezar desde cero | Solo si el plan está vacío: crea una capa denominada «Capa 1». |
 
-A la derecha, la forma de la entrada seleccionada; encima de ella está su título y
-los botones **Duplicar** y **Eliminar**, debajo de los cuales están las pestañas de **General** 
-(Tipo, título, descripción), **clasificación** (nivel, categoría, serie), 
-**Fecha** (fecha o inicio y fin, para la flecha del punto al final, provisional)
-**Dependencias** y **Contenido** (página enlazada o entrada de noticias). A
-el punto rojo en la pestaña muestra una entrada inválida; para fechas clave
-**Dependencias** eliminadas: 
+### Pestaña «Entradas»
 
-| Campo | Aplica a | Descripción |
+A la izquierda, la lista de entradas, ordenadas por fecha. Encima aparece
+**Buscar entradas** y, debajo, un selector para el tipo:
+**Hitos**, **Periodos**, **Fechas clave**, cada uno con su número (si la
+búsqueda: resultados); el botón **+** situado junto a cada uno crea una entrada de ese tipo,
+y la búsqueda se realiza dentro de ese tipo.
+Al pasar el cursor por encima de una línea, aparece a la derecha una papelera para borrarla (con
+confirmación).
+
+A la derecha, el formulario de la entrada seleccionada; encima aparecen su título y
+los botones **Duplicar** y **Eliminar**, y debajo las pestañas **General**
+(tipo, título, descripción), **Clasificación** (nivel, categoría, serie),
+**Fecha** (fecha o inicio y fin; en el caso de un periodo, una flecha al final; provisional)
+**Dependencias** y **Contenido** (página vinculada o noticia). Un
+punto rojo en la pestaña indica que hay un dato no válido en ella; en el caso de las fechas clave,
+no se aplica **Dependencias**:
+
+| Campo | Se aplica a | Descripción |
 | --- | --- | --- |
-| Tipo | Todos | Hito, periodo o fecha límite. Si cambias a la fecha límite, el nivel se omite. |
-| Título | Todos | Obligatorio. Escrito en la entrada y en los detalles. |
-| Descripción | Todos | Opcional, multilínea. Aparece solo en los detalles y en la exportación de Excel. |
-| Nivel | Hito, Periodo | El nivel en el que se encuentra la entrada. **Nueva capa ...** crea uno (nombre) y lo asigna inmediatamente. |
-| Categoría | todos | Determina el color y para hitos la forma. "Sin categoría" aparece en gris, los hitos aparecen como diamante. **Nueva categoría ...** crea uno (nombre, color y forma) y lo asigna inmediatamente. |
-| Fecha | Hito, fecha límite | La fecha. |
-| Inicio, fin | Punto | Primer y último día; ambos pertenecen a la época. |
-| Flecha al final | Punto | La barra termina en una punta de flecha — "sigue corriendo". |
-| Serie | Hito, Periodo | Las entradas del mismo nivel con el mismo nombre de serie están en una línea. El campo amplía la serie de este nivel con el número de sus entradas; un nuevo nombre mecanografiado se toma mediante ""..." crear como una nueva serie", **Ninguna serie** elimina la entrada. |
-| Provisional | todos | La fecha aún no se ha fijado; la entrada aparece como un contorno o con un borde discontinuo. |
-| Depende de | Hito, Punto | Los predecesores de la entrada; en la página como una línea discontinua con una flecha. |
-| Enlace | todos | **Ninguno**, **Página** o **Artículo de noticias**. Un cambio rompe un enlace existente. En la página, la inscripción de la entrada se subraya, y un clic abre el contenido en una ventana sobre el plano. |
-| Página | Todos | La página de Staffbase de la lista de páginas (las 100 editadas más recientemente). **Nueva página ...** la crea en el editor de Staffbase, que superpone el editor de planos; tras crearla, se enlaza. |
-| Canal, Publicación | todos | Primero el canal de noticias (con su tipo: artículo, mensaje corto, imagen de publicación), luego la publicación. Los borradores son seleccionables y marcados con "(borrador)" — los lectores solo los ven después de publicarlos. **Nueva publicación ...** crea una en el canal seleccionado; tras guardar, se enlaza. **Abrir en una nueva pestaña** muestra el contenido enlazado. |
-| Adjuntos | Todos | Hasta diez archivos o imágenes de la biblioteca multimedia, cada uno con pie de foto opcional (de lo contrario, el nombre del archivo). **Añadir archivo o imagen ...** abre la biblioteca; **↑**/**↓** organizar, **×** eliminado. Los archivos adjuntos permanecen detrás del inicio de sesión. En la página, están junto al contenido enlazado o en los detalles, en la exportación de Excel en la columna "Adjuntos". |
-| Duplicado | Todos | Crea una copia de la entrada. |
-| Eliminar | todos | Solicita y luego elimina la entrada y todas las dependencias que apuntan a ella; la consulta nombra las entradas dependientes. |
+| Tipo | todos | Hito, periodo o fecha clave. Al cambiar a fecha clave, se omite el nivel. |
+| Título | todos | Obligatorio. Aparece en la entrada y en los detalles. |
+| Descripción | todos | Opcional, de varias líneas. Solo aparece en los detalles y en la exportación a Excel. |
+| Nivel | Hito, periodo | El nivel en el que se encuentra la entrada. **Nuevo nivel…** crea uno (nombre) y lo asigna inmediatamente. |
+| Categoría | todas | Determina el color y, en el caso de los hitos, la forma. «Sin categoría» aparece en gris; los hitos, como un rombo. **Nueva categoría…** crea una (nombre, color y forma) y la asigna inmediatamente. |
+| Fecha | Hito, fecha de referencia | La fecha. |
+| Inicio, Fin | Periodo | Primer y último día; ambos forman parte del periodo. |
+| Flecha al final | Periodo | La barra termina en una punta de flecha — «continúa». |
+| Serie | Hito, periodo | Las entradas del mismo nivel con el mismo nombre de serie aparecen en una misma línea. El campo despliega las series de este nivel con el número de entradas que tienen; si se escribe un nuevo nombre, se aplica como nueva serie mediante «Crear nueva serie como „…“»; **Sin serie** elimina la entrada. |
+| Provisional | todas | La fecha aún no está fijada; la entrada aparece como un contorno o con un borde discontinuo. |
+| Depende de | Hito, periodo | Los predecesores de la entrada; en la página aparecen como una línea discontinua con una flecha. |
+| Enlace | todos | **Ninguno**, **página** o **noticia**. Un cambio anula un enlace existente. En la página, el título de la entrada aparece entonces subrayado, y al hacer clic se abre el contenido en una ventana sobre el plan. |
+| Página | todas | La página de Staffbase de la lista de páginas (las 100 últimas editadas). **Nueva página…** la crea en el editor de Staffbase, que se superpone al editor del mapa; una vez creada, queda enlazada. |
+| Canal, publicación | todas | Primero el canal de noticias (con su tipo: artículo, noticia breve, publicación con imagen) y, a continuación, la publicación. Se pueden seleccionar borradores, que se marcan con «(borrador)»; los lectores solo los ven tras su publicación. **Nueva publicación…** crea una en el canal seleccionado; una vez guardada, queda vinculada. **Abrir en una nueva pestaña** muestra el contenido vinculado. |
+| Archivos adjuntos | todos | Hasta diez archivos o imágenes de la biblioteca multimedia, cada uno con un título opcional (de lo contrario, se muestra el nombre del archivo). **Añadir archivo o imagen…** abre la biblioteca; **↑**/**↓** ordena, **×** elimina. Los archivos adjuntos se conservan tras iniciar sesión. En la página aparecen junto al contenido vinculado o en los detalles; en la exportación a Excel, en la columna «Archivos adjuntos». |
+| Duplicar | todos | Crea una copia de la entrada. |
+| Eliminar | todo | Pide confirmación y, a continuación, elimina la entrada y todas las dependencias que apuntan a ella; la ventana de confirmación indica las entradas dependientes. |
 
-### Pestaña de capas 
+### Pestaña «Niveles»
 
 | Elemento de control | Descripción |
 | --- | --- |
-| Nueva capa | En la esquina superior derecha de la pestaña. Crea una nueva capa. |
-| Nombre | El nombre de la capa, a la izquierda de su órbita. Debe ser único. Al lado está cuántas entradas contiene. |
-| Flechas arriba/abajo | Ordenar en la página y en exportar en Excel. |
-| Eliminar | Elimina la capa. Si contiene entradas, el editor pregunta si deben moverse a otra capa (selecciona **Capa Destino**) o si también deben eliminarse. |
+| Nueva capa | Arriba a la derecha de la pestaña. Crea una nueva capa. |
+| Nombre | El nombre de la capa, a la izquierda de su pista. Debe ser único. Junto a él se indica cuántas entradas contiene. |
+| Flechas hacia arriba / hacia abajo | Orden en la página y en la exportación a Excel. |
+| Eliminar | Elimina el nivel. Si contiene entradas, el editor pregunta si estas deben trasladarse a otro nivel (selección de **nivel de destino**) o si deben eliminarse también. |
 
-### Pestaña "Categorías" 
+### Pestaña «Categorías»
 
 | Elemento de control | Descripción |
 | --- | --- |
 | Nueva categoría | Arriba a la derecha de la pestaña. Crea una nueva categoría. |
-| Campo de color | Delante del nombre; muestra el color. Un clic expande los doce colores y el campo **Valor hexadecimal**; Esc o un clic junto a él se cierra. |
-| Valor hexadecimal | Un color personalizado en formato '#RRGGBB', por ejemplo '#E40045'. |
-| Botón de Forma | Junto al campo de color; muestra la forma con la que aparecen los hitos de la categoría. Un clic abre las ocho formas: rombo, triángulo, triángulo con la punta hacia abajo, cuadrado, círculo, hexágono, estrella o cruz. Las flechas cambian la forma. |
-| Nombre | El nombre en la leyenda y en los detalles. Debe ser único. Al lado está cuántas entradas está asignada la categoría. |
+| Casilla de color | Delante del nombre; muestra el color. Al hacer clic se despliegan los doce colores y el campo **Valor hexadecimal**; se cierra con Esc o haciendo clic junto a él. |
+| Valor hexadecimal | Un color personalizado en el formato `#RRGGBB`, por ejemplo, `#E40045`. |
+| Botón de forma | Junto al campo de color; muestra la forma con la que aparecen los hitos de la categoría. Al hacer clic se despliegan las ocho formas: rombo, triángulo, triángulo con la punta hacia abajo, cuadrado, círculo, hexágono, estrella o cruz. Las teclas de flecha cambian la forma. |
+| Nombre | El nombre que aparece en la leyenda y en los detalles. Debe ser único. Junto a él se indica a cuántas entradas está asignada la categoría. |
 | Flechas arriba/abajo | Orden de la leyenda. |
-| Eliminar | Elimina la categoría; sus entradas pasan a ser "sin categoría". La consulta da su número. |
+| Eliminar | Elimina la categoría; sus entradas pasan a estar «sin categoría». La ventana de confirmación indica su número. |
 
-## Fronteras
+## Límites
 
-- Un plan tiene un máximo de **300 entradas**, **20 niveles** y
-  **24 categorías**. Más allá de eso, el editor ya no acepta nada. 
-- Las citas son **días enteros** sin tiempo. La vista inicial es
-  **Mensual**. 
-- El texto nunca está en el color de la categoría — permanecen colores brillantes como el amarillo
-  de lo contrario, ilegible en blanco. El color solo se lleva por la forma, las barras y
-  punto de leyenda; la escritura en el bar es en blanco o negro, dependiendo de qué
-  es más fácil de leer. 
-- **Sin entradas, el widget no muestra nada** — ni un fotograma vacío ni
-  Un mensaje. 
+- Un plano puede contener como máximo **300 entradas**, **20 niveles** y
+  **24 categorías**. El editor no acepta nada más allá de estos límites.
+- Las citas son **días completos** sin hora. La vista inicial es
+  **por mes**.
+- El texto nunca aparece en el color de la categoría; de lo contrario, los colores claros, como el amarillo,
+  resultarían ilegibles sobre fondo blanco. El color solo se aplica a la forma, la barra y
+  el punto de leyenda; la fuente de la barra es negra o blanca, según lo que
+  resulte más legible.
+- **Sin entradas, el widget no muestra nada**, ni un marco vacío ni
+  un mensaje.
 
-## Dependencias entre entornos
+## Dependencias entre los ajustes
 
-- **Línea Mostrar hoy** solo funciona si hoy está en visible
-  extracto. En el caso de un plan que sea completamente pasado o
-  por lo tanto, la línea solo puede verse después de haber sido trasladada. 
-- El **encabezado** también determina el nombre del archivo Excel; sin
-  Solo sirve como titular. 
-- **Encabezado** y **Vista de inicio** están configurados en el editor de planos, no en el
-  diálogo; ambos forman parte del plan.
+- **Mostrar la línea de hoy** solo funciona si el día de hoy se encuentra en la
+  sección visible. Por lo tanto, en un plan que se sitúe íntegramente en el pasado o
+  en el futuro, la línea solo se verá tras desplazarlo.
+- El **encabezado** también determina el nombre del archivo de Excel; si no
+  se activa la exportación, solo actúa como encabezado.
+- El **encabezado** y la **vista inicial** se configuran en el editor de planes, no en el
+  cuadro de diálogo; ambos forman parte del plan.

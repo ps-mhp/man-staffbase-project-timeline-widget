@@ -1,335 +1,335 @@
 # Passo dopo passo
 
-## Crea il piano
+## Creare il piano
 
-1. Inserire il widget **Project Plan** sulla pagina, preferibilmente in un
-   colonna larga: Una timeline ha bisogno di spazio nella larghezza. In una
-   Colonna stretta, rimane operativa ma mostra meno alla volta. 
-2. Apri le impostazioni del widget. L'editor di piani si apre da
-   riempiendo lo schermo; copre anche la barra dello studio. 
-3. Un piano vuoto offre due modi: **Inizia vuoto** si posa un livello
-   "Livello 1"; se preferisci partire da un template finito, segui il
-   Inizia con una sezione modello. 
-4. Nella barra dell'intestazione dell'Editor di Piano, sotto **Heading** 
-   opzionalmente inserisci un titolo per il piano. Esso si posiziona sopra il piano e fornisce il
-   Archivio Excel del loro nome. 
-5. Crea i livelli nella scheda **Layers** — vedi "Mantenere i livelli". 
-6. Nella scheda **Categorie**, crea le categorie con i loro colori — 
-   vedi "Mantenere le categorie". 
-7. Nella scheda **Entrance**, imposta le tappe miliari, i periodi di tempo e le scadenze
-   — vedi le seguenti sezioni. 
-8. Clicca su **Applica** in alto a destra. 
-9. Nella finestra di dialogo, controlla i pulsanti **Mostra Linea di oggi** e
-   **Offri l'esportazione Excel**; entrambi sono pre-abilitati. 
-10. Salva la pagina e anteprima il risultato. 
+1. Inserite il widget **Piano di progetto** nella pagina, preferibilmente in una
+   colonna ampia: una linea temporale richiede spazio in larghezza. In una
+   colonna stretta rimane utilizzabile, ma mostra meno informazioni alla volta.
+2. Aprite le impostazioni del widget. L’editor del piano si aprirà
+   automaticamente a schermo intero, coprendo anche la barra dello Studio.
+3. Un piano vuoto offre due opzioni: **Inizia da zero** crea un livello
+   denominato «Livello 1»; chi preferisce partire da un modello già pronto, segua la
+   sezione «Inizia con un modello».
+4. Nella barra di intestazione dell’editor di schemi, alla voce **Titolo**,
+   inserite facoltativamente un titolo per lo schema. Questo apparirà sopra lo schema e darà
+   il nome al file Excel.
+5. Nella scheda **Livelli**, create i livelli — vedere «Gestire i livelli».
+6. Nella scheda **Categorie**, create le categorie con i relativi colori —
+   vedere «Gestire le categorie».
+7. Nella scheda **Voci**, creare le tappe fondamentali, i periodi e le date di riferimento
+   — vedere le sezioni seguenti.
+8. Fare clic su **Applica** in alto a destra.
+9. Nella finestra di dialogo, verificare che le caselle **Mostra linea "Oggi"** e
+   **Offri esportazione in Excel** siano selezionate; entrambe sono attivate di default.
+10. Salvare la pagina e verificare il risultato nell’anteprima.
 
-## Inizia con un modello
+## Iniziare con un modello
 
-1. Apri le impostazioni di un widget il cui piano è ancora vuoto. 
-2. Nel Piano Editor, clicca su **Inizia con il Template**. L'editor viene visualizzato
-   i modelli come carte, ognuna con miniatura, descrizione e cosa
-   Lei porta: 
-   - **Roadmap prodotto** — diversi anni e linee di prodotto basate sul modello
-     del piano Sales Truck Launch: tre livelli, sette categorie e ciascuno
-     Tipo di partecipazione. 
-   - **Rinvio** — una data posticipata per alcuni mesi: 
-     Vecchie e nuove date come date chiave, un livello per ogni funzione interessata. 
-3. Clicca sulla scheda appropriata. L'editor riempirà con il modello; 
-   rimane un titolo già inserito. **Indietro** conduce senza cambiare
-   Torniamo ai due sentieri. 
-4. Personalizza titolo, livelli, categorie e voci per adattarli al tuo progetto
-   Oppure elimina ciò che non ti serve. 
-5. Clicca su **Applica** nell'angolo in alto a destra e salva la pagina. 
+1. Apri le impostazioni di un widget il cui piano è ancora vuoto.
+2. Nell’editor del piano, clicca su **Inizia con un modello**. L’editor mostra
+   i modelli sotto forma di schede, ciascuna con un’anteprima, una descrizione e ciò che
+   offre:
+   - **Roadmap del prodotto** — diversi anni e linee di prodotto sul modello
+     del piano «Sales Truck Launch»: tre livelli, sette categorie e ogni
+     tipo di voce.
+   - **Rinvio di una data** — una data rinviata di pochi mesi:
+     data precedente e nuova come date di riferimento, un livello per ogni funzione interessata.
+3. Clicca sulla scheda corrispondente. L’editor si riempie con il modello;
+   un titolo già inserito rimane. **Indietro** riporta alle due opzioni
+   senza apportare modifiche.
+4. Adattate il titolo, i livelli, le categorie e le voci al vostro progetto
+   oppure eliminate ciò che non vi serve.
+5. Cliccate in alto a destra su **Applica** e salvate la pagina.
 
-## Configurazione dell'editor di piani
+## Configurare l’editor del piano
 
-- **Collassa anteprima:** Cliccando su **Anteprima** si apre la timeline
-  e lascia spazio ai cavalieri sottostanti. Ha aperto il
-  Ultima altezza selezionata. 
-- **Ridimensionamento:** La linea di demarcazione tra l'anteprima e le schede modifica il
-  Altezza dell'anteprima (almeno abbastanza alta da mantenere visibile la timeline), 
-  tra la lista delle iscrizioni e il modulo. Trascinalo con il mouse o metti il focus su di esso e
-  usa i tasti freccia (con Shift in incrementi maggiori). A
-  Doppio clic per ripristinare la dimensione originale. Il browser ricorda
-  Le misure per il prossimo si apriscono. 
-- Lista, forma, livelli e categorie scorrono ciascuno a modo scorretto; barra di intesta, 
-  I passeggeri e i pulsanti sopra ogni area rimangono al loro posto. 
+- **Nascondere l’anteprima:** cliccando su **Anteprima** si nasconde la timeline
+  e lo spazio viene assegnato alle schede sottostanti. Una volta riaperta, riprende l’
+  altezza selezionata per ultima.
+- **Modifica delle dimensioni:** la linea di separazione tra l’anteprima e le schede modifica l’
+  altezza dell’anteprima (almeno quanto basta affinché la linea temporale rimanga visibile),
+  quella tra l’elenco delle voci e il modulo modifica la larghezza dell’elenco. Trascinatela con il mouse oppure posizionate il cursore su di essa e
+  utilizzate i tasti freccia (con Shift per incrementi maggiori). Un
+  doppio clic ripristina le dimensioni originali. Il browser memorizza
+  le dimensioni per la prossima apertura.
+- L’elenco, il modulo, i livelli e le categorie scorrono separatamente; la barra di intestazione,
+  le schede e i pulsanti sopra ciascuna area rimangono fissi.
 
-## La lista degli iscritti
+## L’elenco delle voci
 
-- Sopra la lista in alto ci sono **voci di ricerca**, sotto c'è un toggle
-  per il tipo: **milestones**, **periodi** o **date chiave**, ciascuno con
-  del loro numero. La lista mostra solo voci di questo tipo. 
-- Il pulsante **+** a destra del toggle mostra una voce del
-  specie scelta. 
-- Davanti a ogni titolo c'è una piccola forma nel colore della sua categoria — quindi
-  Troverai una voce della linea temporale nella lista. 
-- La ricerca funziona all'interno del tipo selezionato; i numeri nel toggle
-  Poi mostra quanti colpi ci sono in ogni tipo. 
-- Se selezioni una voce di tipo diverso nell'anteprima, il
-  Scambia con. 
-- Per eliminare, passare il mouse su una riga e cliccare sul
-  Spazzatura a destra (è sempre visibile sui dispositivi touch). Un piccolo
-  La query indica anche quante voci dipendono da quella eliminata; conferma
-  Tu con **Cancella**. 
+- Sopra l’elenco, in alto, c’è **Cerca voci**; sotto, un pulsante di selezione
+  del tipo: **Traguardi**, **Periodi** o **Date di riferimento**, ciascuno con
+  il proprio numero. L’elenco mostra solo le voci di quel tipo.
+- Il pulsante **+** a destra del selettore crea una voce del
+  tipo selezionato.
+- Davanti a ogni titolo compare in piccolo il simbolo del tipo nel colore della relativa categoria — in questo modo
+  è possibile ritrovare nella lista una voce proveniente dalla linea temporale.
+- La ricerca opera all’interno del tipo selezionato; i numeri nel selettore
+  indicano quindi quanti risultati ci sono per ciascun tipo.
+- Se nell’anteprima si seleziona una voce di un altro tipo, il
+  selettore cambia di conseguenza.
+- Per eliminare, passate con il mouse su una riga e cliccate sul
+  cestino a destra (sui dispositivi touch è sempre visibile). Una piccola
+  finestra di conferma indica anche quanti elementi dipendono da quello eliminato; confermate
+  con **Elimina**.
 
-## La forma di una voce
+## Il modulo di una voce
 
-A destra della lista si trova la forma della voce selezionata. In alto sono presenti
-il titolo e i pulsanti **Duplicato** e **Cancella**, inclusi cinque
-Corridori: 
+A destra dell’elenco si trova il modulo della voce selezionata. In alto sono presenti
+il titolo e i pulsanti **Duplica** e **Elimina**, sotto i quali si trovano cinque
+schede:
 
-- **Generale** — Tipo, Titolo, Descrizione
-- **Classifica** — Livello, Categoria, Serie
-- **Data** — data o inizio e fine, freccia alla fine del periodo, 
+- **Generale** — Tipo, titolo, descrizione
+- **Classificazione** — Livello, categoria, serie
+- **Data** — Data oppure inizio e fine; in caso di intervallo, freccia alla fine,
   Provvisorio
-- **Dipendenze** — i predecessori; il numero dietro di esse indica quanti
-  . Le date di scadenza non hanno questa scheda. 
-- **Contenuto** — la pagina Staffbase o il post di notizie su cui clicca
-  Apertura dell'ingresso
+- **Dipendenze** — i predecessori; il numero che segue indica quanti
+  ne sono stati selezionati. Le date fisse non presentano questa scheda.
+- **Contenuto** — la pagina di Staffbase o l’articolo di notizie che si apre cliccando
+  sulla voce
 
-La scheda selezionata rimarrà aperta quando passi a un'altra voce
-— se mantieni le date di più voci, rimani su **Data**. Mantiene un
-Se la scheda inserisce una voce non valida, mostra un punto rosso. 
+La scheda selezionata rimane aperta quando si passa a un’altra voce
+— chi gestisce le date di più voci rimane su **Data**. Se una
+scheda contiene un dato non valido, viene visualizzato un punto rosso.
 
-## Mantenere gli strati
+## Gestire i livelli
 
-1. Nell'Editor Piani, apri la scheda **Layers**. 
-2. Per creare un livello, clicca su **Nuovo Livello** e inserisci
-   inserisci il loro nome. Puoi anche farlo direttamente sotto forma di voce: sotto
-   **Classificazione** nel campo **Level**, seleziona il **Nuovo livello ...**, seleziona il
-   Inserisci il nome e clicca su **Crea** — il nuovo livello è lo stesso
-   assegnato all'ingresso. 
-3. Per rinominare un livello, cambia il suo nome direttamente nella lista. 
-   Accanto a ogni nome c'è quante voci contiene il livello. Ogni nome
-   può verificarsi solo una volta (indipendentemente dalla maiuscola o dalla minuscola). 
-4. Per cambiare l'ordine, muovi il livello con le frecce
-   su o giù. L'ordine qui è l'ordine sul
-   e nell'esportazione Excel. 
-5. Per eliminare un livello, clicca su **Elimina**. Contiene ancora
-   le voci, l'editor chiede se vengono spostate su un altro livello
-   — che si seleziona sotto **Target Level** — oppure se vengono eliminati anche loro
-   . Conferma con **Cancella** o interrompi con **Annulla** 
-   . 
+1. Nell’editor del piano, apri la scheda **Livelli**.
+2. Per creare un livello, clicca su **Nuovo livello** e inserisci
+   il nome. Lo stesso vale direttamente nel modulo di una voce: sotto
+   **Classificazione**, nel campo **Livello**, selezionare l’opzione **Nuovo livello …**, inserire il
+   nome e cliccare su **Crea** — il nuovo livello verrà quindi immediatamente
+   assegnato alla voce.
+3. Per rinominare un livello, modificare il nome direttamente nell’elenco.
+   Accanto a ogni nome è indicato il numero di voci contenute nel livello. Ogni nome
+   può comparire una sola volta (senza distinzione tra maiuscole e minuscole).
+4. Per modificare l’ordine, spostare il livello utilizzando le frecce
+   verso l’alto o verso il basso. L’ordine qui corrisponde a quello nella
+   pagina e nell’esportazione in Excel.
+5. Per eliminare un livello, fare clic su **Elimina**. Se contiene ancora
+   delle voci, l’editor chiederà se queste devono essere spostate in un altro livello
+   — da selezionare in **Livello di destinazione** — oppure se devono essere eliminate
+   insieme al livello. Confermare con **Elimina** o annullare l’operazione con **Annulla**
+  .
 
-## Mantenere le categorie
+## Gestione delle categorie
 
-1. Nell'editor di piani, apri la scheda **Categorie**. 
-2. Per creare una categoria, clicca su **Nuova categoria** e
-   inserisci il loro nome — oppure seleziona dalla forma di una voce
-   sotto **Classificazione** nel campo **Categoria**, seleziona **Nuova Categoria ...**; 
-   Lì inserisci nome, colore e forma. 
-3. Clicca sul campo colore davanti al nome. Si aprono i dodici colori; 
-   scegli uno di questi o inserisci il tuo colore sotto **Valore esagonale**
-   ad esempio '#E40045'. Esc o un clic accanto chiude il
-   Selezione. 
-4. Clicca sul pulsante shape accanto ad esso e seleziona la forma con cui il
-   Le pietre miliari di questa categoria compaiono: diamante, triangolo, triangolo con la punta verso il basso, quadrato, cerchio, esagono, stella o croce. Le frecce
-   cambia da forma a forma. Una nuova categoria ottiene la prima forma, che
-   Nessun altro lo porta ancora. 
-5. Per cambiare l'ordine della leggenda, sposta la categoria
-   con le frecce che puntano verso l'alto o verso il basso. 
-6. Per eliminare una categoria, clicca su **Elimina**. Le tue voci
-   sono mantenuti e diventano "senza categoria" (grigio); la query menziona, 
-   Quante voci questo influenza. 
+1. Nell’editor del piano, aprite la scheda **Categorie**.
+2. Per creare una categoria, cliccate su **Nuova categoria** e
+   inserite il nome — oppure selezionate nel modulo di una voce
+   sotto **Classificazione** nel campo **Categoria** l’opzione **Nuova categoria …**;
+   lì specificate nome, colore e forma.
+3. Clicchi sul campo colore davanti al nome. Si aprirà una tavolozza con dodici colori;
+   ne scelga uno oppure inserisca un colore personalizzato nel campo **Valore esadecimale**,
+   ad esempio `#E40045`. Premendo Esc o cliccando accanto al campo si chiude la
+   selezione.
+4. Clicchi sul pulsante della forma accanto e selezioni la forma con cui
+   appariranno le tappe di questa categoria: rombo, triangolo, triangolo con la punta verso il basso, quadrato, cerchio, esagono, stella o croce. I tasti freccia
+   consentono di passare da una forma all’altra. A una nuova categoria viene assegnata la prima forma che
+   non sia già stata utilizzata.
+5. Per modificare l’ordine della legenda, spostare la categoria
+   verso l’alto o verso il basso utilizzando le frecce.
+6. Per eliminare una categoria, clicchi su **Elimina**. Le sue voci
+   rimarranno invariate e appariranno come «senza categoria» (in grigio); la finestra di conferma indicherà
+   quante voci sono interessate.
 
-## Crea un traguardo
+## Creare una tappa fondamentale
 
-1. Nell'editor di piani, apri la scheda **Voci**. 
-2. Seleziona **Milestones** sopra la lista e clicca su **+**. Il
-   La nuova voce si chiama "Nuova pietra miliare", è a metà dell'anteprima
-   e nel primo livello; a destra, la sua forma appare nella scheda
-   **Generale**, il titolo è evidenziato. 
-3. Inserire il **titolo** e opzionalmente una **descrizione**. Il
-   La descrizione appare nei dettagli, i salti di linea sono mantenuti. 
-4. Sotto **Classificazione**, seleziona **Livello** e **Categoria** — 
-   oppure "Senza categoria". 
-5. Inserisci la **data** sotto **Data**. 
-6. La forma e il colore della pietra miliare derivano dalla sua categoria; senza
-   Categoria appare come un diamante grigio. Sotto **Classificazione** c'è un
-   Nota la forma che sta indossando attualmente. 
-7. Fissare **Provvisorio** se la data non è ancora fissata. 
-8. Clicca su **Applica** nell'angolo in alto a destra una volta terminate tutte le voci
-   sono. 
+1. Nell’editor del piano, apri la scheda **Voci**.
+2. Seleziona **Traguardi** sopra l’elenco e clicca su **+**. La
+   nuova voce si chiama «Nuovo traguardo», si trova al centro dell’anteprima
+   e al primo livello; a destra appare il relativo modulo nella scheda
+   **Generale**, con il titolo evidenziato.
+3. Inserite il **Titolo** e, facoltativamente, una **Descrizione**. La
+   descrizione appare nei dettagli, le interruzioni di riga vengono mantenute.
+4. Sotto **Classificazione**, selezionate il **livello** e la **categoria** —
+   oppure «Senza categoria».
+5. Inserite la **data** sotto **Data**.
+6. La forma e il colore del traguardo dipendono dalla sua categoria; senza
+   categoria, appare come un rombo grigio. Sotto **Classificazione** è presente un’
+   indicazione relativa alla forma che assume in quel momento.
+7. Selezionare **Provvisorio** se la data non è ancora stata stabilita.
+8. Clicchi su **Applica** in alto a destra non appena tutte le voci sono pronte
+  .
 
-## Crea un periodo di tempo
+## Creare un intervallo di tempo
 
-1. Nella scheda **Voci** sopra la lista, seleziona **Periodi di tempo** e clicca
-   Clicca **+**. La nuova voce si chiama "Nuovo Periodo". 
-2. Sotto **General**, inserire il **titolo** e opzionalmente un
-   **Descrizione**, sotto **Classificazione** **Livello** e **Categoria**. 
-3. Inserisci **Data** **Inizio** e **Fine** sotto **Data**. Entrambi i giorni
-   appartengono al periodo. 
-4. Metti **freccia alla fine** se il periodo è oltre la fine
-   continua. 
-5. Impostare **Provvisorio** se l'inizio o la fine non sono ancora fissati. 
+1. Nella scheda **Voci**, sopra l’elenco, selezioni **Intervalli di tempo** e clicchi
+   su **+**. La nuova voce si chiama “Nuovo periodo”.
+2. Inserite nella sezione **Generale** il **Titolo** e, facoltativamente, una
+   **Descrizione**; nella sezione **Classificazione** inserite **Livello** e **Categoria**.
+3. Inserite sotto **Data** **Inizio** e **Fine**. Entrambe le date
+   fanno parte del periodo.
+4. Selezionate **Freccia alla fine** se il periodo prosegue oltre la data di fine
+   prevista.
+5. Selezionare **Provvisorio** se l’inizio o la fine non sono ancora stati stabiliti.
 
-Una milestone può essere modificata in un periodo di tempo in qualsiasi momento sotto **Art**
-E viceversa. 
+Un traguardo può essere convertito in qualsiasi momento in un periodo di tempo nella sezione **Tipo**
+e viceversa.
 
-## Crea una scadenza
+## Creare una data di riferimento
 
-1. Nella scheda **Voci** sopra la lista, seleziona **Date chiave** e clicca
-   Clicchi **+**. 
-2. Inserisci **Titolo**, opzionale **Descrizione**, **Categoria** e
-   **Data**. Qui non c'è un livello: una data di scadenza si applica al
-   Tutto il piano e percorre tutti i livelli. 
+1. Nella scheda **Voci**, sopra l’elenco, selezionate **Date di riferimento** e cliccate
+   su **+**.
+2. Inserite **Titolo**, **Descrizione** (facoltativa), **Categoria** e
+   **Data**. Qui non esiste un livello: una data di riferimento vale per l’
+  intero piano e si applica a tutti i livelli.
 
-Se una tappa o un periodo previsto dall'**Art** diventa la data di scadenza, non si applica.
-livello. 
+Se un traguardo o un periodo viene impostato come data di riferimento in **Tipo**, il suo
+livello viene eliminato.
 
-## Iscrizioni combinate in una serie
+## Raggruppare le voci in una serie
 
-1. Nella scheda **Voci**, seleziona la prima voce della serie e
-   aperto **Classificazione**. 
-2. Clicca nel campo **Serie**. Apre la serie che ha in
-   di questo strato, ciascuno con il numero delle sue voci. Tap
-   un nuovo nome, ad esempio "TG Assist MY26", e selezionare
-   **Crea "TG Assist MY26" come nuova serie** (oppure premi Invio). 
-3. Seleziona la voce successiva dello stesso livello e seleziona
-   **Serie** la serie che hai appena creato dalla lista. 
-4. Ripeti il passo 3 per tutte le voci della serie. **Nessuna serie** fino in fondo
-   in cima alla lista si esclude una voce; Esc rappresenta il
-   valore precedente. 
+1. Nella scheda **Voci**, selezionate la prima voce della serie e
+   aprite **Classificazione**.
+2. Cliccate nel campo **Serie**. Si aprirà l’elenco delle serie già presenti
+   questo livello, ciascuna con il numero delle relative voci. Digitate
+   un nuovo nome, ad esempio «TG Assist MY26», e selezionate
+   **«Crea una nuova serie "TG Assist MY26"»** (oppure premete Invio).
+3. Selezionare la voce successiva dello stesso livello e, alla voce
+   **Serie**, selezionare dall’elenco la serie appena creata.
+4. Ripetere il passaggio 3 per tutte le voci della serie. L’opzione **Nessuna serie**, situata
+   in cima all’elenco, rimuove una voce; il tasto Esc ripristina il
+   valore precedente.
 
-Le serie sono valide solo all'interno di un livello. Giochi maiuscoli e minuscoli
-nessun ruolo quando ritrovato, trattini e accenti fanno: "TG Assist
-MY26" e "TG-Assist MY26" sono due serie diverse. 
+Le serie sono valide solo all’interno di un livello. La distinzione tra maiuscole e minuscole non ha
+alcuna rilevanza per il recupero, mentre i trattini e gli accenti sì: «TG Assist
+MY26» e «TG-Assist MY26» sono due serie diverse.
 
-## Imposta una dipendenza
+## Impostare una dipendenza
 
-1. Nella scheda **Voci**, seleziona la voce creata da un'altra persona
-   (il successore), e aprite **Dipendenze**. 
-2. Sotto **Dipende da**, trova e seleziona il predecessore. Multipli
-   I predecessori sono possibili. 
-3. Sulla pagina, una linea tratteggiata con una freccia collega ora il
-   Predecessore con successore. 
+1. Nella scheda **Voci**, selezionate la voce che dipende da un’altra
+   (il successore) e aprite **Dipendenze**.
+2. In **Dipende da**, cercate e selezionate il predecessore. È possibile selezionare più
+   predecessori.
+3. Nella pagina, una linea tratteggiata con una freccia collega ora il
+   predecessore al successore.
 
-Le dipendenze esistono solo tra milestone e periodi di tempo, non per
-scadenze. Se una voce viene eliminata, scomparirà anche da tutte
-Dipendenze. 
+Le dipendenze esistono solo tra milestone e periodi di tempo, non per le
+date di riferimento. Se una voce viene eliminata, scompare anche da tutte le
+dipendenze.
 
-## Link a una pagina o post
+## Collegare una pagina o un articolo
 
-Una pagina Staffbase o un post di notizie può essere collegato per ogni voce — 
-ad esempio, la pagina con tutte le informazioni su un aggiornamento software. Il piano rimane il
-In generale, i dettagli sono comunque dove vengono mantenuti. 
+Per ogni voce è possibile collegare una pagina di Staffbase o un articolo della sezione Notizie —
+ad esempio la pagina con tutte le informazioni su un aggiornamento software. Il piano rimane la
+panoramica generale, mentre i dettagli si trovano dove vengono comunque gestiti.
 
-1. Seleziona la voce nella scheda **Voci** e apri la
-   Scheda **Contenuto**. 
-2. Sotto **Link**, seleziona **Pagina** o **Post di Notizie**. 
-3. Per una pagina, selezionala sotto **Pagina**. Per un post
-   seleziona il **canale**, poi il **post**. Le bozze sono con
-   "(bozza)"; possono già essere collegati, lettori
-   ma li vediamo solo dopo la pubblicazione. 
-4. **Apri in una nuova scheda** mostra cosa è collegato. 
+1. Selezionate la voce nella scheda **Voci** e aprite la
+   scheda **Contenuto**.
+2. Sotto **Collegamento**, selezionate **Pagina** o **Articolo**.
+3. Se si tratta di una pagina, selezionatela sotto **Pagina**. Se si tratta di un articolo,
+   selezionate prima il **Canale**, poi l’**Articolo**. Le bozze sono contrassegnate con
+   «(Bozza)»; è già possibile collegarle, ma i lettori
+   potranno però visualizzarle solo dopo la pubblicazione.
+4. **Apri in una nuova scheda** mostra ciò a cui si è collegato il link.
 
-Se la pagina o il post non esistono ancora, crealo proprio qui: 
+Se la pagina o l’articolo non esistono ancora, createli direttamente qui:
 
-1. Sotto la selezione, clicca **Nuova pagina ...** — oppure su un
-   Posta, dopo aver selezionato il **canale**, clicca su **Nuovo post ...**. 
-2. Sopra l'editor di piani, si apre l'editor Staffbase. Imposta la pagina
-   lì (**Crea**) oppure salva il post come bozza. 
-3. Una volta che la Staffbase è salvata, il contenuto viene collegato all'inserimento; 
-   in alto c'è scritto "Linked: ...". Puoi usare l'editor Staffbase per
-   Continua. **Fatto** lo chiude. 
+1. Clicca sotto l’elenco su **Nuova pagina …** — oppure, nel caso di un
+   articolo, dopo aver selezionato il **canale**, su **Nuovo articolo …**.
+2. Sopra l’editor del piano si aprirà l’editor di Staffbase. Crea la pagina
+   lì (**Crea**) oppure salva il post come bozza.
+3. Non appena Staffbase ha salvato, il contenuto viene collegato alla voce;
+   in alto compare quindi «Collegato: …». Potete continuare a scrivere nell’editor di Staffbase
+  . **Fine** lo chiude.
 
-Chiudi con **Annulla** o Esc prima che venga collegato qualcosa, il
-Direttore a: Nel frattempo ha esattamente una pagina nuova o una nuova
-contributo trovato da te, si offre di collegarli; altrimenti chiede, 
-se la creazione debba davvero essere abortita — cosa che è ancora oggi
-è perduto. 
+Se chiudete con **Annulla** o Esc prima che qualcosa sia collegato, l’
+editor chiede: se nel frattempo ha trovato esattamente una nuova pagina o un nuovo
+post da parte vostra, vi proporrà di collegarli; altrimenti chiederà
+se volete davvero annullare la creazione — ciò che nell’editor di Staffbase non è ancora
+stato salvato andrà perso.
 
-Sotto il link sono riportati gli **Allegati**: File e immagini dal
-Biblioteca multimediale da Staffbase, fino a dieci per voce. 
+Sotto il collegamento si trovano gli **Allegati**: file e immagini dalla
+libreria multimediale di Staffbase, fino a dieci per ogni voce.
 
-1. Nella scheda **Contenuto**, clicca su **Aggiungi file o immagine...** e
-   seleziona un file nella Media Library — oppure scarica un file dalla Media Library
-   Nuovo picco. 
-2. Se necessario, assegnare un'**etichetta**; altrimenti dice il
-   Nome del file. 
-3. Con **↑** e **↓** cambi l'ordine, **×** rimuovi l'accessorio. 
+1. Nella scheda **Contenuto**, clicchi su **Aggiungi file o immagine …** e
+   selezioni un file dalla libreria multimediale — oppure ne carichi uno
+   nuovo.
+2. Se necessario, inserite una **descrizione**; in caso contrario, verrà visualizzato il
+   nome del file.
+3. Con **↑** e **↓** potete modificare l’ordine, mentre **×** rimuove l’allegato.
 
-Gli allegati restano dietro la registrazione: i lettori li aprono con i propri
-Diritti, come qualsiasi file dalla media library. 
+Gli allegati rimangono disponibili dopo l’accesso: i lettori li aprono con i propri
+diritti, come qualsiasi file della libreria multimediale.
 
-Sulla pagina, la didascalia di una voce collegata è sottolineata. 
-Cliccandoci sopra si apre la pagina o il post in una finestra sopra il
-pianificare, invece dei dettagli; **Apri nella nuova scheda** è sempre in alto, il
-Gli allegati sono accanto ad esso. Nel caso di una voce senza contenuto collegato, il
-dettaglia i suoi attaccamenti. Con
-**Link: Nessuno** scollega di nuovo. 
+Nella pagina, la didascalia di una voce collegata è sottolineata.
+Cliccandoci sopra si apre la pagina o il contributo in una finestra sopra la
+mappa, anziché nei dettagli; **Apri in una nuova scheda** è sempre visualizzato in alto, gli
+allegati sono accanto. Per una voce senza contenuto collegato, i
+dettagli mostrano i relativi allegati. Con
+**Collegamento: Nessuno** si annulla il collegamento.
 
-## Duplica ed elimina le voci
+## Duplicare ed eliminare voci
 
-1. Seleziona la voce nella scheda **Voci**. 
-2. **Duplicato** (in alto a destra del modulo) crea una copia che puoi
-   Poi adattati. 
-3. **Cancella** (accanto) chiede e poi rimuove la voce e tutto
-   dipendenze che lo indichino. La stessa domanda appare su
-   Spazzatura nella lista. Poi viene selezionata la voce successiva nella lista. 
+1. Selezionare la voce nella scheda **Voci**.
+2. **Duplica** (in alto a destra nel modulo) crea una copia che è possibile
+   successivamente modificare.
+3. **Elimina** (accanto) richiede conferma e poi rimuove la voce e tutte le
+   dipendenze che rimandano ad essa. La stessa richiesta di conferma appare sul
+   cestino nell’elenco. Successivamente viene selezionata la voce successiva dell’elenco.
 
-## Imposta la visuale principale
+## Impostare la vista iniziale
 
-Senza una vista iniziale, il widget mostra l'intero piano durante il caricamento. Dovrebbe essere così
-Mostra invece un certo estratto, ad esempio i due anni successivi: 
+Senza una vista iniziale, il widget mostra l’intera planimetria al momento del caricamento. Se si desidera
+che mostri invece una sezione specifica, ad esempio i prossimi due anni:
 
-1. Zooma e panoramica la **Anteprima** nell'Editor Piano fino a
-   può essere visto nella sezione desiderata. 
-2. Clicca su **Questa sezione come vista principale**. Salvataggio
-   Al mese. 
-3. Per mostrare di nuovo l'intero piano, clicca su **Avvia vista
-   Rimuovi**. 
-4. **Applica**, salva, controlla l'anteprima della pagina. 
+1. Ingrandite e spostate l’**anteprima** nell’editor del piano finché non è
+   visibile la sezione desiderata.
+2. Cliccate su **Imposta questa sezione come vista iniziale**. L’impostazione viene
+   salvata con precisione mensile.
+3. Per visualizzare nuovamente l’intero piano, clicchi su **Rimuovi vista iniziale
+  **.
+4. **Applica**, salvi e verifichi nell’anteprima della pagina.
 
-I lettori possono zoomare in qualsiasi momento dalla vista principale o
-**Mostra tutto** vedi il piano completo. 
+I lettori possono in qualsiasi momento ingrandire ulteriormente la vista iniziale o visualizzare l’intero piano con
+**Mostra tutto**.
 
-## Cambia dopo
+## Modificare in un secondo momento
 
-1. Riapri le impostazioni del widget. L'Editor dei Piani mostrerà il
-   Piano salvato. 
-2. Seleziona la voce nell'elenco della scheda **Voci** o tramite
-   Un clic nell'anteprima e modificane la forma. Un clic in
-   della anteprima passa alla scheda **Entrate** e recupera il
-   Voce nella lista in vista. 
-3. Clicca su **Applica** nell'angolo in alto a destra e salva la pagina. 
-   La data dopo "Stato:" è impostata come il giorno del cambiamento. 
+1. Riaprire le impostazioni del widget. L’editor del piano mostra il
+   piano salvato.
+2. Selezionate la voce nell’elenco della scheda **Voci** oppure
+   cliccando nell’anteprima e modificatene il contenuto. Cliccando nell’
+  anteprima si passa alla scheda **Voci** e viene visualizzata la
+   voce nell’elenco.
+3. Clicchi in alto a destra su **Applica** e salvi la pagina.
+   La data dopo «Stato:» verrà impostata sul giorno della modifica.
 
-Finché non sono ancora state applicate modifiche, la barra dell'intestazione dice
-"Modifiche non salvate". Clicca **Annulla** per scartare tutte le modifiche
-dall'ultima volta che l'editor del piano è stato aperto; chiede l'editor in anticipo. 
+Finché le modifiche non vengono salvate, nella barra di intestazione
+appare la dicitura «Modifiche non salvate». Con **Annulla** si scartano tutte le modifiche
+apportate dall’ultima apertura dell’editor del piano; l’editor chiederà conferma prima di procedere.
 
-## Scarica il piano come foglio Excel (come lettore)
+## Scaricare il piano come foglio di calcolo Excel (come lettore/lettrice)
 
-1. Filtra e ingrandisci il piano così da vedere di cosa hai bisogno. 
-2. Clicca su **Esporta** nella barra degli strumenti. Su ristretto
-   il pulsante è nel menu **Altro**. 
-3. Scegli l'ambito: 
+1. Filtra e ingrandisci il piano in modo da visualizzare ciò che ti serve.
+2. Clicca su **Esporta** nella barra degli strumenti. Sugli schermi stretti
+   il pulsante si trova nel menu **Altro**.
+3. Selezionare l’ambito:
    - **Vista attuale** — solo le voci nella sezione visibile che
-     soddisfare tutti i filtri attivi; se la ricerca è attiva, solo i risultati. 
-   - **Piano completo** — tutte le voci, senza filtri e sezioni. 
+     soddisfano tutti i filtri attivi; se la ricerca è attiva, solo i risultati.
+   - **Piano completo** — tutte le voci, senza filtri né selezione.
 
-   Dietro ogni elezione c'è il numero di voci che contiene. 
-4. Clicca su **scarica Excel**. Il file ha un nome simile al
-   Direzione del piano con la data di oggi, senza direzione
-   'Projektplan_JJJJ-MM-TT.xlsx'. 
+   Accanto a ciascuna opzione è indicato il numero di voci che comprende.
+4. Fare clic su **Scarica in Excel**. Il file avrà lo stesso nome dell’
+  intestazione del piano con la data odierna, senza intestazione
+  `Piano di progetto_AAAA-MM-GG.xlsx`.
 
-Il file contiene il foglio **Planning** con una riga per ogni voce (level, 
-Tipo, Titolo, Categoria, Inizio, Fine, Serie, Preliminare, Predecessore, 
-descrizione) e il foglio **Info** con titolo, stato, data di esportazione, ambito e
-I filtri attivi. 
+Il file contiene il foglio **Pianificazione** con una riga per ogni voce (livello,
+tipo, titolo, categoria, inizio, fine, serie, provvisorio, predecessore,
+descrizione) e il foglio **Info** con titolo, stato, data di esportazione, volume e
+i filtri attivi.
 
-## Quando qualcosa non funziona
+## Se qualcosa non funziona
 
-1. **Il widget non mostra nulla sulla pagina.** Il piano non ne ha ancora uno.
-   Entry. Apri Impostazioni e imposta almeno una
-   Traguardo, periodo temporale o scadenza. 
-2. **L'editor di piani non si apre.** Sotto **Piano** ce n'è solo uno
-   Casella di testo. Chiudi e riapri le impostazioni. Cambia
-   Non modificare manualmente il contenuto del campo di testo — è il tecnico
-   Versione approssimativa del piano. 
-3. **In cima all'editor di piani, c'è scritto che le voci non potevano essere lette.** 
-   Consulta le FAQ per questo rapporto. 
-4. **I lettori non riescono a trovare il pulsante "Esporta".** Controlla se
-   **Offerta Esportazione Excel** attivata.
+1. **Il widget non visualizza nulla sulla pagina.** Il piano non contiene ancora alcuna
+   voce. Aprite le impostazioni e create almeno un
+   traguardo, un periodo o una data di scadenza.
+2. **L’editor del piano non si apre.** Sotto **Piano** compare solo un
+   campo di testo. Chiuda le impostazioni e le riapra. Non modifichi
+   manualmente il contenuto del campo di testo: si tratta della bozza tecnica
+   del piano.
+3. **Nella parte superiore dell’editor del piano compare un messaggio che indica che non è stato possibile leggere le voci.**
+   Consultare le FAQ relative a questo messaggio.
+4. **I lettori non riescono a trovare il pulsante «Esporta».** Verificare che l’opzione
+   **Offri esportazione in Excel** sia attivata.

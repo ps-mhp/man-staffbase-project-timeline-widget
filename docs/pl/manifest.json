@@ -1,6 +1,6 @@
 {
   "title": "Plan projektu",
-  "summary": "Plan projektu jako oś czasu: poziomy z kamieniami milowymi i okresami, kluczowymi datami i zależnościami — nieskończenie powiększalne, filtrowalne i do pobrania jako arkusz Excel.",
+  "summary": "Plan projektu w formie osi czasu: poziomy z kamieniami milowymi i okresami, terminami i zależnościami — z możliwością płynnego powiększania, filtrowania oraz pobrania w formie arkusza kalkulacyjnego Excel.",
   "icon": "📅",
   "pages": [
     {
@@ -20,13 +20,13 @@
     },
     {
       "id": "faq",
-      "title": "FAQ",
+      "title": "Najczęściej zadawane pytania",
       "file": "faq.md"
     }
   ],
   "examples": [
     {
-      "title": "Przykładowy plan z linią Today i eksportem Excel",
+      "title": "Przykładowy plan z linią „Dzisiaj” i eksportem do programu Excel",
       "attributes": {
         "show-today": "true",
         "allow-export": "true"
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "title": "Opóźnienie wydania oprogramowania",
+      "title": "Przesunięcie terminu wydania oprogramowania",
       "attributes": {
         "show-today": "false",
         "allow-export": "true"
@@ -47,7 +47,7 @@
       "variant": "postponement"
     },
     {
-      "title": "Bez dzisiejszej linii i bez eksportu",
+      "title": "Bez linii „Dzisiaj” i bez eksportu",
       "attributes": {
         "show-today": "false",
         "allow-export": "false"

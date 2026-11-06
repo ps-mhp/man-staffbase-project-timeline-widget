@@ -1,6 +1,6 @@
 {
   "title": "Plano do projeto",
-  "summary": "Um plano de projeto como linha do tempo: níveis com marcos e períodos, datas-chave e dependências — infinitamente ampliáveis, filtráveis e baixáveis como uma planilha Excel.",
+  "summary": "Um plano de projeto sob a forma de uma linha do tempo: níveis com marcos e períodos, datas-limite e dependências — com zoom contínuo, filtrável e descarregável como folha de cálculo do Excel.",
   "icon": "📅",
   "pages": [
     {
@@ -15,18 +15,18 @@
     },
     {
       "id": "settings",
-      "title": "Configurações",
+      "title": "Definições",
       "file": "settings.md"
     },
     {
       "id": "faq",
-      "title": "FAQ",
+      "title": "Perguntas frequentes",
       "file": "faq.md"
     }
   ],
   "examples": [
     {
-      "title": "Plano de exemplo com linha Today e exportação em Excel",
+      "title": "Exemplo de plano com a linha «Hoje» e exportação para o Excel",
       "attributes": {
         "show-today": "true",
         "allow-export": "true"
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "title": "Adiamento de um lançamento de software",
+      "title": "Adiamento do lançamento de uma versão de software",
       "attributes": {
         "show-today": "false",
         "allow-export": "true"
@@ -47,7 +47,7 @@
       "variant": "postponement"
     },
     {
-      "title": "Sem a linha atual e sem exportação",
+      "title": "Sem a linha «Hoje» e sem exportação",
       "attributes": {
         "show-today": "false",
         "allow-export": "false"

@@ -1,98 +1,100 @@
 # Plan projektu
 
-Ten widżet pokazuje plan projektu jako **oś czasu** — na przykład mapę drogową
-wprowadzenie pojazdów z targami, start-upy serii (SOP) oraz
-kamienie milowe projektu na przestrzeni kilku lat. Zastępuje slajd PowerPoint, 
-który jak dotąd był utrzymywany dla takich planów i zintegrowany jako obraz: Plan
-jest bezpośrednio na stronie, można go zmieniać w dowolnym momencie, a czytelnicy
-możesz samodzielnie go zbadać, przefiltrować i pobrać jako arkusz Excela. 
+Ten widget przedstawia plan projektu w formie **osi czasu** — na przykład harmonogram
+wprowadzenia pojazdu na rynek, obejmujący targi, rozpoczęcie produkcji seryjnej (SOP) oraz
+kamienie milowe projektu rozłożone na kilka lat. Zastępuje on slajd z programu PowerPoint,
+który dotychczas był używany do tworzenia takich planów i wstawiany jako obraz: plan
+znajduje się bezpośrednio na stronie, można go w każdej chwili edytować, a czytelnicy
+mogą samodzielnie przeglądać, filtrować i pobierać go w formie arkusza kalkulacyjnego Excel.
 
-Cały plan jest utrzymywany w **Edytorze Planu**, który jest wyświetlany, gdy
-Sama w sobie. 
+Cały plan jest edytowany w **edytorze planu**, który wyświetla się automatycznie po otwarciu
+ustawień.
 
 ## Z czego składa się plan
 
-- **Nagłówek** — opcjonalnie; stoi nad planem i wyświetla plik Excel
-  Ich imię. 
-- **Poziomy** — poziome ścieżki między sobą, na przykład "Pomiar", 
-  "Starty / SOP" oraz "Kamienie milowe projektu". Po lewej stronie znajduje się ich tytuł. 
+- **Nagłówek** — opcjonalny; znajduje się nad planem i nadaje plikowi Excel
+  nazwę.
+- **Poziomy** — poziome pasy umieszczone jeden pod drugim, na przykład „Targi”,
+  „Premiery / SOP” oraz „Kamienie milowe projektu”. Po lewej stronie znajduje się tytuł każdego z nich.
 - **Kategorie** — nadają wpisom kolor i pojawiają się jako legenda
-  nad planem, na przykład "MY26 TG Assist" w fioletowym kolorze. 
-- **Hasła** w trzech typach: 
-  - **Kamień milowy** — pojedyncza data, pokazana jako symbol (romb, 
-    trójkąt, kwadrat lub kółko) z tytułem poniżej. 
-  - **Kropka** — takt od początku do końca, z
-    Grot strzały na końcu oznacza "biegnij dalej". 
-  - **Deadline** — data obowiązująca na wszystkich poziomach, na przykład na nowym
-    regulaminowe. Wygląda to jak przerywana pionowa linia przebiegająca przez całą
-    Plan, z tytułem poniżej. 
-- **Seria** — Kamienie milowe i okresy na tym samym poziomie
-  Nazwy serii znajdują się na wspólnej linii. Jeśli zawiera okres czasowy, 
-  kamienie milowe znajdują się na jego belce; poza tym wąskie
-  Zrób pierwszy z ostatnim. 
-- **Zależności** — przerywane linie ze strzałką od poprzednika
-  następcą, na przykład z "C4S" do powiązanego SOP. 
-- **Wstępny** — wpis, którego data nie została jeszcze ustalona. Jest
-  pojawia się jedynie jako kontur lub wyraźnie wypełniony przerywaną ramką. 
+  nad planem, na przykład „MY26 TG Assist” w kolorze fioletowym.
+- **Wpisy** w trzech rodzajach:
+  - **Kamień milowy** — pojedynczy termin, przedstawiony jako symbol (romb,
+    trójkąt, kwadrat lub okrąg) z tytułem poniżej.
+  - **Okres** — pasek od początku do końca, na życzenie z
+    strzałką na końcu oznaczającą „trwa”.
+  - **Termin kluczowy** — termin obowiązujący na wszystkich poziomach, na przykład nowe
+    przepisy. Wyświetla się jako przerywana pionowa linia przebiegająca przez cały
+    plan, z tytułem poniżej.
+- **Seria** — kamienie milowe i okresy tego samego poziomu o tej samej
+  nazwie serii znajdują się w jednym wierszu. Jeśli do serii należy jakiś okres,
+  kamienie milowe znajdują się na jego pasku; w przeciwnym razie wąski
+  pasek łączy pierwszy z ostatnim.
+- **Zależności** — przerywane linie ze strzałką od poprzednika do
+  następcy, na przykład od „C4S” do powiązanego SOP.
+- **Wstępne** — wpis, którego termin nie został jeszcze ustalony. Pojawia się
+  tylko jako kontur lub jasno wypełniony z przerywaną ramką.
 
 ## Co widzą czytelnicy
 
-Od góry do dołu: 
+Od góry do dołu:
 
-1. **Nagłówek** (jeśli jest ustawiony) oraz **"Status: ..."** — data ostatniego
-   Zmiana planu, w formacie daty w języku strony. 
-2. **Pasek narzędzi** — Wyszukiwanie, **Filtr**, Powiększanie (**−**, **+**, **Wszystkie
-   pokaż**), przełącznik **Oś czasu | List**, **Eksport**, 
-   **Pełny ekran** i **Pomoc**. 
-3. **Legend** — kategorie z ich kolorem. Jednym kliknięciem wyświetla
-   Kategoria wyłączona lub włączona ponownie. 
-4. **Plan** — po lewej tytuły warstw, po prawej oś czasu z
-   wpisy, poniżej ostatniego poziomu tytuły kluczowych dat. Strzałka na
-   Tytuł zapada się o jedną warstwę; **Zwij wszystko** powyżej tytułów zapada się
-   wszystko naraz, a potem znów się otwiera. 
-5. **Przegląd** — wąski pas obejmujący cały okres. Ramka
-   pokazuje, która sekcja jest aktualnie widoczna. 
+1. **Nagłówek** (jeśli został ustawiony) i **„Stan na: …”** — data ostatniej
+   zmiany w planie, w formacie daty zgodnym z językiem strony.
+2. **Pasek narzędzi** — wyszukiwanie, **filtry**, powiększenie (**−**, **+**, **Pokaż wszystko**),
+  przełącznik **Oś czasu | Lista**, **Eksportuj**,
+  **Pełny ekran** i **Pomoc**.
+3. **Legenda** — kategorie wraz z ich kolorami. Jedno kliknięcie powoduje
+   ukrycie lub ponowne wyświetlenie kategorii.
+4. **Plan** — po lewej stronie tytuły warstw, po prawej osi czasu z
+   wpisami, a pod ostatnią warstwą tytuły dat kluczowych. Strzałka przy
+   nagłówku zwija daną warstwę; opcja **Zwiń wszystko** nad nagłówkami zwija
+   wszystkie naraz, a następnie ponownie je rozwija.
+5. **Przegląd** — wąski pasek obejmujący cały okres. Ramka
+   wskazuje, który fragment jest aktualnie widoczny.
 
-Dodatkowo: 
+Ponadto:
 
-- **Zoom** jest nieskończenie zmienny: za pomocą przycisków **−** i **+**, z
-  klawisz Ctrl (Mac: ⌘) i kółko myszy lub dwoma palcami na touchpadzie oraz
-  ekran dotykowy. Oś zmienia się z lat na kwartały i z miesięcy na miesiące
-  do tygodni kalendarzowych i poszczególnych dni. 
-- **Move** wykonuje się przez przeciąganie myszką, za pomocą Shift i kółka myszy, 
-  poprzez przecieranie poziomo lub przeciągnięcie klatki w przeglądzie. 
-- Kliknięcie na wpis** otwiera jego szczegóły: typ i data, 
-  Kategoria, poziom, seria, opis, a także poprzednicy i następcy. 
-- **Filtry** i **Wyszukiwanie** dotyczą tylko Twojej własnej wizyty; zapisane lub
-  Nic nie jest przekazywane innym. 
-- **List** pokazuje te same wpisy co tabela, posortowane według daty —
-  wygodniejszy sposób dla czytników ekranu, wąskie ekrany i do drukowania. 
-- **Eksport** pobiera wpisy jako plik Excel, pod warunkiem, że
-  Eksport jest włączony w Ustawieniach. 
-- Ciemna linia **"Today"** oznacza dzisiaj, jeśli
-  jest włączony, a tag znajduje się w widocznej części. 
-- Operacja działa także bez myszy: Tab wskakuje do planu,
-  Strzałki przełączają się między wpisami, Enter otwiera szczegóły, 
-  **+** i **−** zoom, **0** pokazuje wszystko. 
-- Na wąskich ekranach (mniej niż 768 pikseli szerokości) filtry oraz
-  Szczegóły w formie arkusza od dołu, a **List** i **Eksport** są dostępne
-  w menu **Więcej**. 
-- **Pełny ekran** pokazuje plan na całym ekranie, z tym samym
-  działanie; tylko sam plan się toczy, oś i przegląd pozostają niezmienne. 
-  **Esc** lub **Wyjście z pełnego ekranu** wraca do strony. Jeśli przeglądarka tego nie robi
-  prawdziwy pełnoekranowy (np. Safari na iPhonie), nakładki planów
-  Całą stronę. 
-- **Pomoc** wyjaśnia czytelnikom bezpośrednio na stronie, czym są postacie
-  (zakładka Legenda, z kategoriami tego planu) oraz jak korzystać z
-  Plan działał za pomocą myszy, touchpada, dotyku i klawiatury (zakładka **Operation**). 
-  Z planu klawisz **?** również otwiera pomoc. W edytorze planu,
-  Nie ma przycisku. 
-- **Bez wpisów widżet nic nie pokazuje** — brak pustej ramki i
-  Brak komunikatu o błędzie. 
+- **Powiększanie** i **pomniejszanie** odbywa się płynnie: za pomocą przycisków **−** i **+**, przy wciśniętym
+  klawiszu Ctrl (Mac: ⌘) i kółku myszy lub dwoma palcami na gładziku i
+  ekranie dotykowym. Oś zmienia się przy tym od lat, przez kwartały i miesiące, aż
+  do tygodni kalendarzowych i poszczególnych dni.
+- **Przesuwanie** odbywa się poprzez przeciągnięcie myszą, przytrzymaniem klawisza Shift i kółkiem myszy,
+  przez przesunięcie w poziomie lub przeciągnięcie ramki w widoku ogólnym.
+- **Kliknięcie na wpis** otwiera jego szczegóły: rodzaj i termin,
+  kategorię, poziom, serię, opis oraz poprzednik i następnik.
+- **Filtry** i **wyszukiwanie** dotyczą wyłącznie własnej wizyty; nic nie jest zapisywane ani
+  udostępniane innym.
+- **Lista** wyświetla te same wpisy w formie tabeli, posortowanej według terminu — jest to
+  wygodniejsze rozwiązanie dla czytników ekranu, wąskich ekranów oraz do drukowania.
+- **Eksport** pozwala pobrać wpisy jako plik Excel, o ile
+  opcja eksportu jest włączona w ustawieniach.
+- Ciemna linia **„Dzisiaj”** zaznacza bieżący dzień, o ile jest
+  włączona, a dzień ten znajduje się w widocznym fragmencie ekranu.
+- Obsługa działa również bez myszy: klawisz Tab przenosi do planu,
+  klawisze strzałek przełączają między wpisami, klawisz Enter otwiera szczegóły,
+  **+** i **−** powiększają lub pomniejszają widok, a **0** wyświetla wszystko.
+- Na wąskich ekranach (o szerokości poniżej 768 pikseli) plan zaczyna się od
+  **listy** — w formie kart zamiast tabeli, ponieważ oś czasu nie zajmuje tam
+  całej szerokości; przycisk przełączający w menu **Więcej** w każdej chwili przenosi do osi czasu.
+  Podobnie filtry i szczegóły otwierają się jako panel z dolnej krawędzi, a
+  **Lista** i **Eksportuj** znajdują się w menu **Więcej**.
+- **Tryb pełnoekranowy** wyświetla plan na całym ekranie, z tym samym
+  sposobem obsługi; przesuwa się tylko sam plan, oś i przegląd pozostają w miejscu.
+  Klawisz **Esc** lub opcja **Zamknij tryb pełnoekranowy** powodują powrót do strony. Tam, gdzie przeglądarka nie
+  pozwala na prawdziwy tryb pełnoekranowy (np. Safari na iPhonie), plan zajmuje
+  całą stronę.
+- **Pomoc** wyjaśnia czytelnikom bezpośrednio na stronie, co oznaczają symbole
+  (zakładka **Legenda**, zawierająca kategorie tego planu) oraz jak obsługiwać
+  plan za pomocą myszy, gładzika, ekranu dotykowego i klawiatury (zakładka **Obsługa**).
+  Również w samym planie przycisk **?** otwiera pomoc. W edytorze planu
+  przycisk ten nie jest dostępny.
+- **Bez wpisów widżet nie wyświetla nic** — ani pustej ramki, ani
+  komunikatu o błędzie.
 
-## Co widzisz w edytorze CMS
+## Co widać w edytorze CMS
 
-Edytor planów zawiera **podgląd** na górze: ta sama oś czasu co na
-strony, z powiększeniem, ale bez filtrów, listy i eksportu. Kliknij na
-Wpis w podglądzie wybiera go do edycji. Jak czytelnicy korzystają z planu
-Przy wszystkich filtrach i wyeksportowaniu sprawdź podgląd strony.
+W górnej części edytora planu znajduje się **podgląd**: ta sama oś czasu, co na
+stronie, z funkcją powiększania, ale bez filtrów, listy i opcji eksportu. Kliknięcie
+wpisu w podglądzie zaznacza go do edycji. Aby sprawdzić, jak czytelnicy widzą plan
+z wszystkimi filtrami i opcją eksportu, należy skorzystać z podglądu strony.

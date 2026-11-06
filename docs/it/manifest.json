@@ -1,6 +1,6 @@
 {
-  "title": "Piano del progetto",
-  "summary": "Un piano di progetto come tempistica: livelli con tappe e periodi, date chiave e dipendenze — infinitamente zoomabili, filtrabili e scaricabili come foglio di calcolo Excel.",
+  "title": "Piano di progetto",
+  "summary": "Un piano di progetto sotto forma di linea temporale: livelli con tappe fondamentali e periodi, scadenze e dipendenze — con zoom continuo, filtrabile e scaricabile come foglio di calcolo Excel.",
   "icon": "📅",
   "pages": [
     {
@@ -26,7 +26,7 @@
   ],
   "examples": [
     {
-      "title": "Piano di esempio con la riga Today ed esportazione Excel",
+      "title": "Piano di esempio con la linea \"Oggi\" ed esportazione in Excel",
       "attributes": {
         "show-today": "true",
         "allow-export": "true"
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "title": "Rinvio di un rilascio software",
+      "title": "Rinvio della data di rilascio di una versione del software",
       "attributes": {
         "show-today": "false",
         "allow-export": "true"
@@ -47,7 +47,7 @@
       "variant": "postponement"
     },
     {
-      "title": "Senza linea attuale e senza esportazione",
+      "title": "Senza la linea “Oggi” e senza esportazione",
       "attributes": {
         "show-today": "false",
         "allow-export": "false"

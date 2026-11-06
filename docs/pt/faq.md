@@ -1,240 +1,239 @@
-# FAQ
+# Perguntas Frequentes
 
-**Pergunta:** A página diz "Proibido o acesso desses filtros". 
+**Pergunta:** Na página aparece «Não há entradas para estes filtros».
 
-Resposta: Os filtros selecionados não deixam nenhuma entrada — por exemplo, porque todos
-Categorias estão escondidas na lenda, um nível é desselecionado, ou o
-O filtro de período não toca em nenhuma entrada. Clique **Filtro
-resetar**; então o plano completo pode ser visto novamente. Filtros só se aplicam a
-Sua própria visita, outros leitores veem o plano sem filtros. 
+Resposta: Os filtros selecionados não deixam nenhuma entrada visível — por exemplo, porque todas as
+categorias na legenda estão ocultas, uma camada foi desmarcada ou o
+filtro de período não abrange nenhum registo. Clique em ****Reiniciar filtros**
+; assim, voltará a ver o plano na íntegra. Os filtros aplicam-se apenas à
+sua própria visita; os outros leitores veem o plano sem filtros.
 
-**Pergunta:** Ao exportar, "A exportação falhou. Por favor, reexporte
-." 
+**Pergunta:** Ao exportar, aparece «A exportação falhou. Por favor, tente novamente
+.»
 
-Resposta: O arquivo Excel não pôde ser gerado. A ferramenta para isso é
-só carregava ao clicar em **Export**; frequentemente a conexão era
-interrompido brevemente naquele momento. Clique em **Excel novamente.
-Baixe**. Se não funcionar repetidamente, recarregue a página. 
+Resposta: Não foi possível criar o ficheiro Excel. A ferramenta para o efeito só é
+carregada ao clicar em **Exportar**; frequentemente, a ligação
+foi brevemente interrompida nesse momento. Clique novamente em **Descarregar Excel**.
+Se continuar a não funcionar, atualize a página.
 
-**Pergunta:** No topo do editor de plantas diz "N entradas não puderam ser lidas
-e se perdem ao salvar." 
+**Pergunta:** Na parte superior do editor de planos aparece «N entradas não puderam ser lidas
+e serão perdidas ao guardar.»
 
-Resposta: No plano salvo há entradas que o widget não tem
-— por exemplo, sem título, com data inválida, ou em uma camada que
-não existe mais. Tais entradas já estão mostradas na página publicada
-não. Salve o plano, eles desaparecem para sempre. Quer
-, clique em **Cancelar** em vez de aplicar, e candidate-se
-para a pessoa que mudou o plano por última vez — geralmente o conteúdo era
-da caixa de texto do **Plan** à mão. 
+Resposta: O plano guardado contém entradas que o widget não consegue
+processar — por exemplo, sem título, com data inválida ou num nível que
+já não existe. A página publicada já não mostra essas entradas.
+Se guardar o plano, elas desaparecerão definitivamente. Se quiser
+salvá-las, clique em **Cancelar**, em vez de confirmar, e contacte
+a pessoa que alterou o plano pela última vez — na maioria das vezes, o conteúdo
+do campo de texto **Plano** foi editado manualmente.
 
-**Pergunta:** Clicar em uma entrada vinculada mostra "Este post é
-não disponível ou não lançado." 
+**Pergunta:** Ao clicar numa entrada com link, aparece a mensagem «Esta publicação
+não está disponível ou não foi aprovada.»
 
-Resposta: A janela carrega a postagem com seus próprios direitos. A mensagem
-aparece se a postagem ainda for um rascunho, foi deletada ou está em um
-canal que você não pode ver. Publique o post ou 
-Verifique a visibilidade do canal. **Abrir em nova aba** mostra o que
-A própria base de funcionários diz sobre isso. 
+Resposta: A janela carrega a publicação com os seus próprios direitos de acesso. A mensagem
+aparece se a publicação ainda for um rascunho, tiver sido eliminada ou estiver num
+canal ao qual não tem acesso. Publique a publicação ou
+verifique a visibilidade do canal. **Abrir numa nova aba** mostra o que
+a própria Staffbase diz sobre isso.
 
-**Pergunta:** Criei uma página com **Nova página ...**, mas no topo diz
-não "Linkado: ...". 
+**Pergunta:** Criei uma página com **Nova página…**, mas na parte superior
+não aparece «Vinculada a: …».
 
-Resposta: O editor reconhece a nova página pelo fato de que a Staffbase leva o nome do
-**Criar** muda para ele (para um post: depois de salvar). Desde que
-Apenas o diálogo de criação está aberto, ainda não há nada para linkar. Se você tiver
-Editor da base de equipe para outra página já existente, a
-deliberadamente não os vincula. Feche com **Cancelar**: Se o
-Edite exatamente uma página que você criou desde que abriu, ela oferece
-para linkar. Caso contrário, selecione a nova página sob **Página**. 
+Resposta: O editor reconhece a nova página pelo facto de o Staffbase, após a
+**criação**, passar para essa página (no caso de uma publicação: após guardar). Enquanto
+apenas a janela de criação estiver aberta, ainda não há nada para vincular. Se, no
+editor da Staffbase, tiver clicado para aceder a outra página já existente, esta
+não será, deliberadamente, associada. Se fechar com **Cancelar**: caso o
+editor encontre exatamente uma página que tenha criado desde que o abriu, irá sugeri-la
+para associação. Caso contrário, selecione a nova página em **Página**.
 
-**Pergunta:** Um anexo não pode ser aberto. 
+**Pergunta:** Não é possível abrir um anexo.
 
-Resposta: Os anexos vêm da biblioteca de mídia da Staffbase e são enviados com
-os direitos da pessoa que lê. O arquivo foi deletado lá ou é isso
-não visível para essa pessoa, a abertura falha. Verifique o
-arquivar na Biblioteca de Mídia e anexá-la novamente se necessário. 
+Resposta: Os anexos provêm da biblioteca multimédia da Staffbase e são carregados com
+os direitos de acesso do utilizador. Se o ficheiro tiver sido eliminado da biblioteca ou se
+não estiver visível para esse utilizador, a tentativa de abertura falhará. Verifique o
+ficheiro na biblioteca multimédia e, se necessário, volte a anexá-lo.
 
-**Pergunta:** No topo do editor de planos está escrito "N não conseguia ler atalhos
-e se perdem quando são salvos." 
+**Pergunta:** Na parte superior do Editor de Planos aparece «N ligações não puderam ser lidas
+e serão perdidas ao guardar.»
 
-Resposta: No plano salvo, há um link ou
-um acessório com o qual o widget não pode fazer nada — geralmente porque o conteúdo
-do campo de texto **Plan** foi editado manualmente. A entrada em si permanece
-, apenas o link é omitido ao salvar. Link o
-Faça uma página ou poste na aba **Conteúdo**. 
+Resposta: No plano guardado, existe numa entrada um link ou
+um anexo que o widget não consegue processar — na maioria das vezes, porque o conteúdo
+do campo de texto **Plano** foi editado manualmente. A entrada em si permanece
+intacta, apenas o link é removido ao guardar. Volte a criar o
+link para a página ou publicação no separador **Conteúdo**.
 
-**Pergunta:** Ao girar a roda do mouse, aparece "Ctrl/⌘ pressed to zoom"
-". 
+**Pergunta:** Ao rodar a roda do rato, aparece a mensagem «Para ampliar, mantenha premida a tecla Ctrl/⌘
+».
 
-Resposta: A roda do mouse sozinha rola a página, como em qualquer outro lugar — fora isso
-Você ficaria preso no mapa enquanto rolava a rolagem. Para dar zoom, segure a tecla Ctrl pressionada
-(Mac: ⌘) e gire a roda do mouse. A mensagem só aparece
-Uma vez. 
+Resposta: A roda do rato, por si só, faz a rolagem da página, tal como em qualquer outro sítio — caso contrário,
+ficaria preso ao rolar o plano. Para ampliar, mantenha premida a tecla Ctrl
+(Mac: ⌘) enquanto gira a roda do rato. A mensagem aparece apenas
+uma vez.
 
-**Pergunta:** O editor de planos diz "A prévia aparece com a primeira
-Entrada." 
+**Pergunta:** No editor do plano aparece «A pré-visualização surge com a primeira
+entrada.»
 
-Resposta: O plano ainda não tem uma entrada, então não há nada para mostrar. 
-Na aba **Entradas** acima da lista, selecione um tipo e use
-**+** insira uma entrada. 
+Resposta: O plano ainda não tem nenhuma entrada, por isso não há nada para mostrar.
+Na separador **Entradas**, acima da lista, selecione um tipo e crie uma entrada com
+**+**.
 
-**Pergunta:** O editor de planos cobre toda a tela, incluindo a barra
-do estúdio. 
+**Pergunta:** O Editor de Planos ocupa todo o ecrã, incluindo a barra
+do Studio.
 
-Resposta: Isso é intencional: prévia, lista e formulário precisam de espaço. Você
-saia do editor no canto superior direito via **Aplicar** ou **Cancelar**; então
-o diálogo de configuração pode ser visto novamente, e **Editar plano ...** se abre
-O editor de novo. 
+Resposta: Isso é intencional: a pré-visualização, a lista e o formulário precisam de espaço. Pode
+sair do editor no canto superior direito através de **Aplicar** ou **Cancelar**; depois disso,
+a caixa de diálogo de configuração volta a ficar visível e **Editar plano…** abre
+novamente o editor.
 
-**Pergunta:** A prévia ocupa espaço demais para mim. 
+**Pergunta:** A pré-visualização ocupa demasiado espaço.
 
-Resposta: Arraste a barra estreita para cima abaixo da prévia, ou
-colapse completamente a prévia clicando em **Prévia**. Da mesma forma,
-A lista de inscritos pode ser exibida na barra entre a lista e o formulário
-mais estreito ou mais largo. Clicar duas vezes em uma barra estabelece o
-tamanho original. O navegador lembra os tamanhos; em um
-Janelas privadas, as especificações se aplicam novamente na próxima vez que forem abertas. 
+Resposta: Arraste a barra estreita por baixo da pré-visualização para cima ou
+oculte totalmente a pré-visualização clicando em **Pré-visualização**. Da mesma forma,
+é possível ajustar a largura da lista de entradas na barra entre a lista e o formulário,
+tornando-a mais estreita ou mais larga. Um duplo-clique numa barra restaura o
+tamanho original. O navegador guarda os tamanhos; numa
+janela privada, as predefinições voltam a aplicar-se na próxima vez que for aberta.
 
-**Pergunta:** Onde os leitores aprendem o que significam os personagens do plano? 
+**Pergunta:** Onde é que os leitores podem saber o que significam os símbolos no plano?
 
-**Resposta:** Usando o botão **Ajuda** na barra de ferramentas (no estreito
-telas em um **?**). A aba **Lenda** mostra cada personagem como um pequeno
-Exemplo com explicação e as categorias deste plano; a aba **Operação** 
-Explica o zoom, panorâmica, filtros e todos os atalhos de teclado. Se o foco estiver no
-Planejamento, também abre o botão **?** da ajuda. 
+**Resposta:** Através do botão **Ajuda** na barra de ferramentas (em ecrãs estreitos,
+um **?**). O separador **Legenda** mostra cada símbolo como um pequeno
+padrão com explicação e as categorias deste plano; o separador **Utilização**
+explica o zoom, o deslocamento, os filtros e todos os atalhos de teclado. Se o foco estiver no
+plano, a tecla **?** também abre a ajuda.
 
-**Pergunta:** Como faço zoom? 
+**Pergunta:** Como faço para ampliar?
 
-Resposta: De quatro maneiras: com os botões **−** e **+** no
-barra de ferramentas; com a tecla Ctrl pressionada (Mac: ⌘) e a roda do mouse, então
-o plano passa ao redor do ponto sob o ponteiro do rato; com dois dedos em cima
-trackpad ou tela sensível ao toque; ou com o teclado via **+** e **−**, assim que
-O plano tem o foco. **Mostrar tudo** (chave **0**) mostra o todo
-Plano. A seção pode ser movida arrastando com o mouse,
-Shift e a roda do mouse ou pelo quadro na visão geral abaixo da folha. 
+Resposta: De quatro formas: com os botões **−** e **+** na
+barra de ferramentas; mantendo premida a tecla Ctrl (Mac: ⌘) e rodando a roda do rato, o que faz com que
+o plano amplie a área sob o cursor do rato; com dois dedos no
+no trackpad ou no ecrã tátil; ou com o teclado através das teclas **+** e **−**, assim que
+a planta tiver o foco. **Mostrar tudo** (tecla **0**) volta a mostrar toda a
+planta. É possível deslocar a secção arrastando com o rato, com
+a tecla Shift e a roda do rato ou através da moldura na visão geral por baixo do plano.
 
-**Pergunta:** Por que eu não vejo o botão "Exportar"? 
+**Pergunta:** Porque é que não vejo o botão «Exportar»?
 
-Resposta: Ou **Exportação do Excel está configurada nas configurações do widget
-ou a tela é estreita (menos de 768 pixels)
-width): então **Export** está no menu **Mais** da barra de ferramentas. 
+Resposta: Ou a opção **Oferecer exportação para Excel** está desativada nas definições do widget,
+ou o ecrã é estreito (menos de 768 píxeis
+de largura): nesse caso, **Exportar** aparece no menu **Mais** da barra de ferramentas.
 
-**Pergunta:** Onde definir a forma de um marco? 
+**Pergunta:** Onde defino a forma de um marco?
 
-Resposta: Por sua categoria, não pelo marco: na aba **Categorias** 
-Usando o botão de forma ao lado do campo de cor. Você pode escolher entre losango, triângulo, triângulo com a ponta para baixo, quadrado, círculo, hexágono, estrela ou cruz. Todos
-Marcos em uma categoria têm o mesmo formato e cor — é assim que você pode saber
-a categoria na linha do tempo mesmo sem cor. Marcos sem categoria
-aparecer como um diamante cinza. 
+Resposta: Na sua categoria, não no próprio marco: no separador **Categorias**,
+através do botão de forma ao lado do campo de cor. As opções disponíveis são: losango, triângulo, triângulo com o vértice para baixo, quadrado, círculo, hexágono, estrela ou cruz. Todos os
+marcos de uma categoria têm a mesma forma e cor — assim, é possível reconhecer
+a categoria na linha do tempo mesmo sem cor. Os marcos sem categoria
+aparecem como um losango cinzento.
 
-**Pergunta:** O que significa uma borda ou formato tracejado que é usado apenas como
-Resumo? 
+**Pergunta:** O que significa uma borda tracejada ou uma forma que aparece apenas como
+contorno?
 
-Resposta: A entrada está marcada como **preliminar** — sua data ainda está pendente
-Não corrigido, no modelo dizia "a ser definido". Marcos então só aparecem
-Como esboço, os períodos se preenchiam mais brilhantes com bordas tracejadas. Nos detalhes
-Também diz "provisório". 
+Resposta: A entrada está marcada como **provisória** — a sua data ainda
+não está definida; no modelo, constava «tbd» para esse efeito. Os marcos surgem então apenas
+como contorno, com os períodos preenchidos de forma mais clara e com uma borda tracejada. Nos detalhes
+consta adicionalmente «provisório».
 
-**Pergunta:** O que significam as linhas pontilhadas? 
+**Pergunta:** O que significam as linhas tracejadas?
 
-Resposta: Existem dois tipos. Um **oblíquo ou traçado horizontal
-Linha com seta** é uma dependência: ela leva do predecessor ao
-Sucessor. Uma **linha vertical tracejada** por todas as camadas, na parte inferior
-com um triângulo e um título, é um prazo que se aplica a todo o plano
-Aplica-se. 
+Resposta: Existem dois tipos. Uma **linha tracejada oblíqua ou horizontal
+com uma seta** é uma dependência: liga o antecessor ao
+sucessor. Uma **linha tracejada vertical** que atravessa todos os níveis, na parte inferior
+com um triângulo e um título, é uma data-limite que se aplica a todo o plano
+.
 
-**Pergunta:** Uma dependência desapareceu. 
+**Pergunta:** Uma dependência desapareceu.
 
-Resposta: A linha só aparece se ambas as extremidades estiverem visíveis. Se o
-Predecessor ou sucessor oculto por um filtro ou sua camada
-desmarcada, a linha está faltando. Se uma das duas entradas foi excluída, a
-Dependência eliminada de vez. 
+Resposta: A linha só aparece quando ambas as extremidades estão visíveis. Se o
+antecessor ou o sucessor estiver oculto por um filtro ou se o seu nível
+estiver desmarcado, a linha não aparece. Se uma das duas entradas tiver sido eliminada, a
+dependência é removida definitivamente.
 
-**Pergunta:** As entradas de uma série não estão em uma única linha. 
+**Pergunta:** As entradas de uma série não estão na mesma linha.
 
-Resposta: Uma série é válida apenas dentro de um nível, e o nome deve ser exatamente
-— "TG Assist MY26" e "TG-Assist MY26" são duas séries. 
-Na forma de cada entrada, verifique o campo **Série** e seu **nível**. 
+Resposta: Uma série só é válida dentro de um nível, e o nome tem de corresponder exatamente
+— «TG Assist MY26» e «TG-Assist MY26» são duas séries diferentes.
+Verifique no formulário de cada entrada o campo **Série** e o seu **nível**.
 
-**Pergunta:** A linha Today não é visível. 
+**Pergunta:** A linha «Hoje» não está visível.
 
-Resposta: Verifique se a **Linha Mostrar Hoje** está ativada. A Linha
-também só aparece se today estiver na seção visível; 
-No caso de um plano que começa inteiramente no futuro, ele é somente após o
-ou com **Mostrar tudo** — se é que existe no
-ponto do plano. 
+Resposta: Verifique se a opção **Mostrar linha «Hoje»** está ativada. Além disso, a linha
+só aparece se o dia de hoje estiver na secção visível;
+num plano que comece inteiramente no futuro, só é visível após
+deslocar a linha do tempo ou com a opção **Mostrar tudo** — caso o dia de hoje se encontre, de todo, no
+período do plano.
 
-**Pergunta:** Posso mover entradas na linha do tempo com o mouse? 
+**Pergunta:** Posso deslocar entradas na linha do tempo com o rato?
 
-Resposta: Não. As nomeações são criadas e alteradas na forma do editor de planos. 
-Isso significa que nenhuma entrada pode ser deletada acidentalmente ao dar zoom ou mover a visão.
-Perca a nomeação. 
+Resposta: Não. Os compromissos são criados e alterados no formulário do Editor de Planos.
+Desta forma, nenhuma entrada perde acidentalmente a sua data ao ampliar ou deslocar a visualização.
 
-**Pergunta:** O editor de planos diz "Um plano tem mais de 300 entradas
-não." (ou o mesmo para 20 níveis ou 24 categorias). 
+**Pergunta:** No Editor de Planos aparece «Um plano não suporta mais de 300 entradas
+.» (ou o mesmo para 20 níveis ou 24 categorias).
 
-Resposta: Um plano tem no máximo 300 entradas, 20 níveis, e
-24 categorias; nada mais pode ser adicionado na borda. O editor
-Mostra no canto superior direito quantas inscrições o plano já tem. Para muito grande
-Se você pretende fazer isso, recomenda-se dividir o plano em vários widgets, como
-Um por série. 
+Resposta: Um plano suporta, no máximo, 300 entradas, 20 níveis e
+24 categorias; quando se atinge o limite, não é possível adicionar mais nada. O Editor
+mostra, no canto superior direito, quantas entradas o plano já contém. Para projetos muito grandes,
+recomenda-se dividir o plano em vários widgets, por exemplo,
+um por série de construção.
 
-**Pergunta:** O botão **+** pode ser usado em **marcos** e **períodos de tempo** 
-Não clique nele. 
+**Pergunta:** O botão **+** não pode ser clicado em **Marcos** e **Períodos**
+.
 
-Resposta: O plano não tem mais um nível, e sem um nível tem um marco
-ou período; o editor de plantas indica isso abaixo. Lay
-Na aba **Níveis**, selecione pelo menos um via **Nova Camada**. 
+Resposta: O plano já não tem mais nenhum nível e, sem um nível, um marco
+ou período não tem espaço; o editor do plano indica isso na parte inferior. Crie
+pelo menos uma camada no separador **Camadas**, através de **Nova camada**. As datas-chave podem ser criadas mesmo sem camada.
 
-**Pergunta:** Onde está a lixeira na lista de inscritos? 
+**Pergunta:** Onde fica a lixeira na lista de entradas?
 
-Resposta: Ele aparece quando você passa o mouse sobre uma linha ou abre um
-linha via teclado; sempre pode ser vista em dispositivos sensíveis ao toque. 
-A exclusão só é feita após a consulta. Se outras entradas dependerem do excluído
-, a consulta menciona seu número; suas conexões são removidas. 
+Resposta: Aparece quando passa o rato por cima de uma linha ou quando uma
+linha tem o foco através do teclado; em dispositivos táteis, está sempre visível.
+A eliminação só ocorre após a confirmação. Se outras entradas estiverem ligadas à entrada eliminada,
+a mensagem de confirmação indica o seu número; as ligações são removidas.
 
-**Pergunta:** Ao criar uma camada ou categoria, aparece "Uma camada "X" retorna
-ela já existe." ou "Já existe uma categoria "X". 
+**Pergunta:** Ao criar um nível ou uma categoria, aparece a mensagem «Já existe um nível «X»»
+ou «Já existe uma categoria «X»».
 
-Resposta: Cada nome pode ocorrer apenas uma vez, caso contrário níveis e
-Categorias nos campos de seleção, legenda e exportação do Excel
-. Letras maiúsculas e minúsculas e espaços na contagem das margens
-não. Escolha um nome diferente ou pegue a camada existente. 
+Resposta: Cada nome só pode aparecer uma vez; caso contrário, os níveis e
+as categorias nos campos de seleção, na legenda e na exportação para o Excel não seriam
+distinguíveis. As maiúsculas, minúsculas e espaços à margem não são
+tidos em conta. Escolha outro nome ou utilize o nível existente.
 
-**Pergunta:** Uma aba no formulário tem um ponto vermelho. 
+**Pergunta:** Um separador no formulário apresenta um ponto vermelho.
 
-Resposta: Um campo nesta aba contém uma entrada inválida, como um
-Data vazia. O plano mantém o último valor válido ali. Abra o
-tab e corrigir o campo; então o ponto desaparece. 
+Resposta: Um campo neste separador contém uma entrada inválida, por exemplo, uma
+data em branco. O plano mantém aí o último valor válido. Abra o
+separador e corrija o campo; o ponto desaparecerá.
 
-**Pergunta:** O formulário diz "Por favor, insira um título.", "Por favor, insira um título."
-Insira seu nome.", "Por favor, insira uma data.", "Por favor, insira uma data válida
-", "O fim é antes do começo.", "O começo é depois do
-Fim." ou "Por favor, especifique uma cor como #RRGGBB, como #E40045." 
+**Pergunta:** No formulário aparece «Indique um título.», «Indique um
+nome.», «Indique uma data, por favor.», «Indique uma data válida,
+por favor.», «O fim é anterior ao início.», «O início é posterior ao
+fim.» ou «Indique uma cor no formato #RRGGBB, por exemplo, #E40045.»
 
-Resposta: A entrada no campo não pode ser usada dessa forma. Desde que a mensagem
-, o plano mantém o último valor válido — então nada funciona
-Perdido, mas a mudança também não chegou. Correto
-a entrada; assim que ela é válida, a mensagem desaparece. No caso de um
-Ponto final, primeiro altere a data que restaura a ordem: 
-Se começar e terminar depois, primeiro **fim**, depois **começa**. 
+Resposta: A entrada no campo não é utilizável nesta forma. Enquanto a mensagem
+permanecer, o plano mantém o último valor válido — ou seja, nada se
+perde, mas a alteração também ainda não foi aplicada. Corrija
+a entrada; assim que estiver válida, a mensagem desaparecerá. No caso de um
+período, altere primeiro a data que restabelece a ordem:
+se quiser que comece e termine mais tarde, altere primeiro a **data de fim** e, em seguida, a **data de início**.
 
-**Pergunta:** O que acontece com o plano durante a tradução automática do
-Side? 
+**Pergunta:** O que acontece ao plano durante a tradução automática da
+página?
 
-Resposta: O título do plano, os títulos dos níveis e o
-categorias, assim como o título e a descrição de cada entrada. Datas, cores, 
-Dependências e nomes das séries permanecem inalterados — um nome de série é
-uma versão em chave e duas traduzidas de forma diferente formariam uma série
-Rasgar. 
+Resposta: São traduzidos o título do plano, os títulos dos níveis e
+das categorias, bem como o título e a descrição de cada entrada. As datas, cores,
+dependências e os nomes das séries permanecem inalterados — um nome de série é
+uma chave, e duas versões traduzidas de forma diferente separariam uma série
+.
 
-**Pergunta:** Após a tradução, "Plano do Projeto: O Conteúdo Pode Ser Resolvido
-não pode ser traduzido. Permanece na língua de origem e deve ser manualmente
-pode ser traduzido." 
+**Pergunta:** Após a tradução, aparece «Plano do projeto: O conteúdo não pôde
+ser traduzido. Permanece no idioma de origem e tem de ser traduzido manualmente
+.»
 
-Resposta: O serviço de tradução não estava disponível para o plano. O restante
-O artigo foi traduzido, o plano ainda está no idioma de origem. Traduzir
-Copie os textos manualmente no editor de planos ou comece a tradução
-novamente. O mesmo se aplica à mensagem "Plano do projeto: O conteúdo traduzido
-não pôde ser inserido. Permanece na língua de origem e deve ser
-traduzido manualmente."
+Resposta: O serviço de tradução não conseguiu aceder ao plano. O resto do
+artigo está traduzido, mas o plano ainda se encontra no idioma de origem. Traduza
+os textos manualmente no editor de planos ou reinicie a tradução
+. O mesmo se aplica à mensagem «Plano do projeto: O conteúdo traduzido
+não pôde ser inserido. Permanece no idioma de origem e tem de ser
+traduzido manualmente.»

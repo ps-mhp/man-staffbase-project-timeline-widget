@@ -1,240 +1,240 @@
-# FAQ
+# Veelgestelde vragen
 
-**Vraag:** Op de pagina staat "Geen vermeldingen voor deze filters". 
+**Vraag:** Op de pagina staat „Geen resultaten voor deze filters“.
 
-Antwoord: De geselecteerde filters laten geen enkele vermelding over — bijvoorbeeld omdat alle
-Categorieën zijn verborgen in de legende, een level wordt deselecteerd, of de
-Het ateljatiefilter raakt geen enkele invoer aan. Klik **Filter
-reset**; dan kan het hele plan opnieuw worden gezien. Filters zijn alleen van toepassing op
-Haar eigen bezoek, andere lezers zien het plan ongefilterd. 
+Antwoord: De geselecteerde filters laten geen resultaten over — bijvoorbeeld omdat alle
+categorieën in de legenda zijn verborgen, een laag is uitgeschakeld of het
+tijdsperiodefilter geen resultaten oplevert. Klik op **Filter
+resetten**; dan is het volledige schema weer zichtbaar. Filters gelden alleen voor
+uw eigen bezoek; andere lezers zien het schema ongefilterd.
 
-**Vraag:** Bij het exporteren: "De export is mislukt. Exporteer opnieuw alstublieft
-." 
+**Vraag:** Bij het exporteren verschijnt „Het exporteren is mislukt. Probeer het opnieuw
+.“
 
-Antwoord: Het Excel-bestand kon niet worden gegenereerd. De tool hiervoor is
-alleen geladen door op **Exporteren** te klikken; vaak was de verbinding
-kort onderbroken op dat moment. Klik opnieuw op **Excel.
-Download**. Als het niet steeds werkt, laad dan de pagina opnieuw. 
+Antwoord: Het Excel-bestand kon niet worden aangemaakt. De tool hiervoor wordt
+pas geladen wanneer u op **Exporteren** klikt; vaak was de verbinding
+op dat moment even onderbroken. Klik nogmaals op **Excel
+downloaden**. Als het herhaaldelijk niet lukt, ververs dan de pagina.
 
-**Vraag:** Bovenaan de planeditor staat "N invoeren konden niet worden gelezen
-en ze gaan verloren tijdens het sparen." 
+**Vraag:** Bovenaan in de pleneditor staat „N vermeldingen konden niet worden gelezen
+en gaan verloren bij het opslaan.“
 
-Antwoord: In het opgeslagen plan zijn er vermeldingen waar de widget niet mee bezig is
-— bijvoorbeeld zonder titel, met een ongeldige datum, of in een laag die
-bestaat niet meer. Dergelijke vermeldingen worden al op de gepubliceerde pagina getoond
-Niet. Bewaar het plan, ze verdwijnen voorgoed. Wil je
-, klik **Annuleren** in plaats van toepassen, en solliciteer
-Aan de persoon die het plan voor het laatst heeft gewijzigd — meestal was de inhoud
-van het **Plan**-tekstvak met de hand. 
+Antwoord: Het opgeslagen plan bevat vermeldingen waar de widget niets
+mee kan — bijvoorbeeld zonder titel, met een ongeldige datum of op een niveau dat
+niet meer bestaat. Dergelijke vermeldingen worden al niet weergegeven op de gepubliceerde pagina
+. Als u het plan opslaat, verdwijnen ze definitief. Wilt u ze
+redden, klik dan op **Annuleren** in plaats van op **Opslaan**, en neem
+contact op met de persoon die het plan als laatste heeft gewijzigd — meestal is de inhoud
+van het tekstveld **Plan** handmatig bewerkt.
 
-**Vraag:** Klikken op een gekoppelde vermelding toont "Deze post is
-niet beschikbaar of niet vrijgegeven." 
+**Vraag:** Als ik op een gekoppeld bericht klik, verschijnt de melding „Dit bericht is
+niet beschikbaar of niet vrijgegeven.“
 
-Antwoord: Het venster laadt het bericht met je eigen rechten. Het bericht
-verschijnt als de post nog een concept is, verwijderd is of in een
-kanaal dat je niet mag zien. Publiceer het bericht of 
-Controleer de zichtbaarheid van het kanaal. **Openen in nieuw tabblad** toont wat
-Staffbase zelf zegt hierover. 
+Antwoord: Het venster laadt het bericht op basis van uw eigen rechten. De melding
+verschijnt als het bericht nog een concept is, is verwijderd of zich in een
+kanaal bevindt dat u niet mag zien. Publiceer het bericht of
+controleer de zichtbaarheid van het kanaal. **In nieuw tabblad openen** laat zien wat
+Staffbase hier zelf over zegt.
 
-**Vraag:** Ik heb een pagina gemaakt met **Nieuwe pagina ...**, maar bovenaan staat er
-niet "Linked: ...". 
+**Vraag:** Ik heb met **Nieuwe pagina …** een pagina aangemaakt, maar bovenaan staat
+niet „Gekoppeld: …“.
 
-Antwoord: De redacteur herkent de nieuwe pagina aan het feit dat Staffbase is vernoemd naar de
-**Create** schakelt ernaar over (voor een bericht: na het opslaan). Zolang als
-Alleen de creatiedialoog is open, er is nog niets om te linken. Als je dat wel hebt
-Staffbase-editor naar een andere, al bestaande pagina, de
-koppelt ze opzettelijk niet. Sluit af met **Annuleren**: Als de
-Editor precies één pagina die je hebt aangemaakt sinds je hem opende, wordt aangeboden
-om te linken. Anders selecteer je de nieuwe pagina onder **Pagina**. 
+Antwoord: De editor herkent de nieuwe pagina doordat Staffbase ernaar overschakelt na het
+**aanmaken** (bij een bericht: na het opslaan). Zolang
+alleen het aanmaakvenster openstaat, is er nog niets om te koppelen. Als u in de
+Staffbase-editor naar een andere, reeds bestaande pagina bent doorgeklikt, wordt
+deze bewust niet gekoppeld. Sluit af met **Annuleren**: als de
+editor precies één pagina vindt die u sinds het openen hebt aangemaakt, biedt hij deze
+aan om te koppelen. Anders selecteert u de nieuwe pagina onder **Pagina**.
 
-**Vraag:** Een bijlage kan niet worden geopend. 
+**Vraag:** Een bijlage kan niet worden geopend.
 
-Antwoord: Bijlagen komen uit de mediabibliotheek van Staffbase en worden verzonden met
-de rechten van de lezer. Is het bestand daar verwijderd of is dat wel
-Niet zichtbaar voor die persoon, mislukt de opening. Controleer de
-bestand in de Mediabibliotheek en indien nodig opnieuw toevoegen. 
+Antwoord: Bijlagen komen uit de mediabibliotheek van Staffbase en worden geladen met
+de rechten van de lezer. Als het bestand daar is verwijderd of
+niet zichtbaar is voor deze persoon, mislukt het openen. Controleer het
+bestand in de mediabibliotheek en voeg het indien nodig opnieuw toe.
 
-**Vraag:** Bovenaan de planeditor staat "N kon geen sneltoetsen lezen
-en verloren zijn als ze gered worden." 
+**Vraag:** Bovenaan in de planningseditor staat „N koppelingen konden niet worden gelezen
+en gaan verloren bij het opslaan.“
 
-Antwoord: In het opgeslagen plan is er een link of
-een bijlage waar de widget niets mee kan doen — meestal omdat de inhoud
-van het **Plan**-tekstveld is met de hand bewerkt. De vermelding zelf blijft bestaan
-, alleen de link wordt weggelaten bij het opslaan. Link de
-Pagina of bericht in het **Inhoud**-tabblad. 
+Antwoord: In het opgeslagen plan staat bij een item een link of
+een bijlage waar de widget niets mee kan — meestal omdat de inhoud
+van het tekstveld **Plan** handmatig is bewerkt. Het item zelf blijft
+behouden, alleen de link verdwijnt bij het opslaan. Koppel de
+pagina of het bericht opnieuw in het tabblad **Inhoud**.
 
-**Vraag:** Bij het draaien van het muiswiel verschijnt "Ctrl/⌘ ingedrukt om te zoomen"
-". 
+**Vraag:** Bij het draaien aan het muiswiel verschijnt „Houd Ctrl/⌘ ingedrukt
+om in te zoomen“.
 
-Antwoord: Het muiswiel alleen scrolt over de pagina, net als overal elders — verder
-Je zou vast komen te zitten op de kaart tijdens het scrollen. Om in te zoomen, houd je de Ctrl-toets ingedrukt
-(Mac: ⌘) en draai aan het muiswiel. Het bericht verschijnt alleen
-Eén keer. 
+Antwoord: Het muiswiel alleen scrolt door de pagina, net als overal elders — anders
+zou je tijdens het scrollen vastlopen in het plan. Om in te zoomen houdt u de Ctrl-toets
+(Mac: ⌘) ingedrukt en draait u tegelijkertijd aan het muiswiel. De melding verschijnt slechts
+één keer.
 
-**Vraag:** De planeditor zegt: "De preview verschijnt samen met de eerste
-Binnenkomst." 
+**Vraag:** In de plattegrond-editor staat „Het voorbeeld verschijnt bij het eerste
+item.“
 
-Antwoord: Het plan heeft nog geen invoer, dus er is niets om aan te tonen. 
-Selecteer in het **Vermeldingen**-tabblad boven de lijst een type en gebruik het
-**+** voer een inzending in. 
+Antwoord: Het plan heeft nog geen vermelding, daarom is er niets te zien.
+Kies in het tabblad **Vermeldingen** boven de lijst een type en maak met
+**+** een vermelding aan.
 
-**Vraag:** De planeditor bestrijkt het hele scherm, inclusief de balk
-van de studio. 
+**Vraag:** De plan-editor bedekt het hele scherm, ook de balk
+van de Studio.
 
-Antwoord: Dit is bewust: preview, lijst en formulier hebben ruimte nodig. Jij
-verlaat de editor rechtsboven via **Apply** of **Annuleren**; daarna
-de configuratiedialoog is opnieuw te zien, en **Plan bewerken ...** opent
-De redacteur weer. 
+Antwoord: Dat is de bedoeling: het voorbeeld, de lijst en het formulier hebben ruimte nodig. Je
+verlaat de editor rechtsboven via **Toepassen** of **Annuleren**; daarna
+is het configuratievenster weer zichtbaar en opent **Plan bewerken …**
+de editor opnieuw.
 
-**Vraag:** De preview neemt voor mij te veel ruimte in. 
+**Vraag:** Het voorbeeld neemt te veel ruimte in beslag.
 
-Antwoord: Sleep de smalle balk onder de preview, of
-Vouw de preview volledig in door op **Preview** te klikken. Eveneens,
-De inschrijflijst kan worden weergegeven op de balk tussen de lijst en het formulier
-smaller of breder. Dubbelklikken op een balk stelt de
-originele grootte. De browser onthoudt de groottes; in een
-Privéramen, de specificaties gelden opnieuw de volgende keer dat ze worden geopend. 
+Antwoord: Sleep de smalle balk onder het voorbeeld naar boven, of
+vouw het voorbeeld volledig in door op **Voorbeeld** te klikken. Ook
+kan de invoerlijst aan de balk tussen de lijst en het formulier
+smaller of breder worden getrokken. Door te dubbelklikken op een balk wordt de
+oorspronkelijke grootte hersteld. De browser onthoudt de afmetingen; in een
+privévenster gelden bij de volgende keer openen weer de standaardinstellingen.
 
-**Vraag:** Waar leren lezers wat de personages in het plan betekenen? 
+**Vraag:** Waar kunnen lezers zien wat de symbolen in het plan betekenen?
 
-**Antwoord:** Gebruik de **Help**-knop in de werkbalk (op narrow
-schermen op een **?**). Het **Legend**-tabblad toont elk personage als een klein personage
-Voorbeeld met uitleg en de categorieën van dit plan; het **Operatie**-tabblad 
-Legt inzoomen, pannen, filters en alle sneltoetsen uit. Als de focus in de
-Plan, opent ook de **?**-knop de help. 
+**Antwoord:** Via de knop **Help** in de werkbalk (op smalle
+schermen een **?**). Het tabblad **Legenda** toont elk symbool als een klein
+voorbeeld met uitleg en de categorieën van dit plan; het tabblad **Bediening**
+legt zoomen, verschuiven, filters en alle sneltoetsen uit. Als de focus op de
+plattegrond ligt, opent ook de toets **?** de hulp.
 
-**Vraag:** Hoe zoom ik in? 
+**Vraag:** Hoe zoom ik in?
 
-Antwoord: Op vier manieren: met de **−** en **+** knoppen in de
-werkbalk; met de Ctrl-toets ingedrukt (Mac: ⌘) en het muiswiel, dan
-het plan zoomt rond de plek onder de muisaanwijzer; met twee vingers erop
-trackpad of touchscreen; of met het toetsenbord via **+** en **−**, zodra
-Het plan heeft de focus. **Toon alles** (sleutel **0**) toont het geheel
-Plan. De sectie kan worden verplaatst door met de muis te slepen,
-Shift en het muiswiel of via het frame in het overzicht onder het blad. 
+Antwoord: Op vier manieren: met de knoppen **−** en **+** in de
+werkbalk; met de Ctrl-toets (Mac: ⌘) ingedrukt en het muiswiel, dan
+wordt er ingezoomd op de plek onder de muisaanwijzer; met twee vingers op
+het trackpad of touchscreen; of met het toetsenbord via **+** en **−**, zodra
+de focus op de plattegrond ligt. **Alles weergeven** (toets **0**) toont weer de volledige
+plattegrond. Je kunt het uitsnedegebied verplaatsen door het met de muis te verslepen, met
+Shift en het muiswiel of via de randen in het overzicht onder de plattegrond.
 
-**Vraag:** Waarom zie ik de knop "Exporteren" niet? 
+**Vraag:** Waarom zie ik de knop „Exporteren“ niet?
 
-Antwoord: Ofwel **Excel Export is ingesteld in de instellingen van de widget
-of het scherm is smal (minder dan 768 pixels)
-breedte): dan is **Exporteren** in het **Meer**-menu van de werkbalk. 
+Antwoord: Ofwel is in de instellingen van de widget **Excel-export
+aanbieden** uitgeschakeld, ofwel is het scherm smal (minder dan 768 pixels
+breed): dan staat **Exporteren** in het menu **Meer** van de werkbalk.
 
-**Vraag:** Waar zet ik de vorm van een mijlpaal? 
+**Vraag:** Waar stel ik de vorm van een mijlpaal in?
 
-Antwoord: Op categorie, niet op mijlpaal: in het **Categorieën**-tabblad 
-via de vormknop naast het kleurveld. Je kunt kiezen tussen diamant, driehoek, driehoek met de punt naar beneden, vierkant, cirkel, zeshoek, ster of kruis. Alles
-Mijlpalen in een categorie hebben dezelfde vorm en kleur — zo kun je het zien
-de categorie in de tijdlijn zelfs zonder kleur. Mijlpalen zonder categorie
-verschijnen als een grijze diamant. 
+Antwoord: Bij de categorie, niet bij de mijlpaal zelf: in het tabblad **Categorieën**
+via de vormknop naast het kleurveld. Je kunt kiezen uit een ruit, driehoek, driehoek met de punt naar beneden, vierkant, cirkel, zeshoek, ster of kruis. Alle
+mijlpalen van een categorie hebben dezelfde vorm en kleur — zo herken je
+de categorie in de tijdlijn ook zonder kleur. Mijlpalen zonder categorie
+worden weergegeven als een grijze ruit.
 
-**Vraag:** Wat betekent een getekende rand of vorm die alleen als een wordt gebruikt
-Schema? 
+**Vraag:** Wat betekent een gestreepte rand of een vorm die alleen als
+omtrek wordt weergegeven?
 
-Antwoord: De inschrijving is gemarkeerd als **voorlopig** — de datum is nog in behandeling
-Niet opgelost, in het sjabloon stond "TBD". Mijlpalen verschijnen dan alleen nog maar
-Als omtrek vulden de periodes zich helderder met een stippel. In de details
-Er staat ook "voorlopig". 
+Antwoord: Het item is gemarkeerd als **voorlopig** — de datum staat nog
+niet vast; in het sjabloon stond hiervoor „tbd“. Mijlpalen verschijnen dan alleen
+als omtrek, tijdsperioden zijn lichter ingevuld met een gestreepte rand. In de details
+staat bovendien „voorlopig“.
 
-**Vraag:** Wat betekenen de stippellijnen? 
+**Vraag:** Wat betekenen de gestreepte lijnen?
 
-Antwoord: Er zijn twee typen. Een schuine of horizontaal gestippelde
-Lijn met pijl** is een afhankelijkheid: deze leidt van de voorganger naar de
-Opvolger. Een **verticale stippellijn** door alle lagen, onderaan
-Met een driehoek en een titel is een deadline die geldt voor het hele plan
-geldt. 
+Antwoord: Er zijn twee soorten. Een **schuine of horizontale gestreepte
+lijn met een pijl** is een afhankelijkheid: deze loopt van de voorganger naar de
+opvolger. Een **verticale gestreepte lijn** door alle lagen, onderaan
+met een driehoek en een titel, is een peildatum die voor het hele plan
+geldt.
 
-**Vraag:** Een afhankelijkheid is verdwenen. 
+**Vraag:** Een afhankelijkheid is verdwenen.
 
 Antwoord: De lijn verschijnt alleen als beide uiteinden zichtbaar zijn. Als de
-Voorganger of opvolger verborgen door een filter of zijn laag
-uitgeschakeld, ontbreekt de regel. Als een van de twee vermeldingen is verwijderd, is de
-Afhankelijkheid voorgoed verwijderd. 
+voorganger of de opvolger door een filter is verborgen of als het niveau ervan
+niet is geselecteerd, ontbreekt de lijn. Als een van de twee vermeldingen is verwijderd, is de
+afhankelijkheid definitief verwijderd.
 
-**Vraag:** De inzendingen van een serie staan niet op één lijn. 
+**Vraag:** De vermeldingen van een serie staan niet op één regel.
 
-Antwoord: Een serie is alleen geldig binnen één niveau, en de naam moet exact zijn
-— "TG Assist MY26" en "TG-Assist MY26" zijn twee series. 
-Controleer in de vorm van elke vermelding het **Series**-veld en het **level**. 
+Antwoord: Een serie geldt alleen binnen één laag, en de naam moet exact
+overeenkomen — „TG Assist MY26“ en „TG-Assist MY26“ zijn twee series.
+Controleer in het formulier van elke vermelding het veld **Serie** en het **niveau**.
 
-**Vraag:** De Today-lijn is niet zichtbaar. 
+**Vraag:** De ‘Vandaag’-lijn is niet zichtbaar.
 
-Antwoord: Controleer of **Show Today Line** is ingeschakeld. De Line
-verschijnt ook alleen als Today in het zichtbare gedeelte staat; 
-in het geval van een plan dat volledig in de toekomst begint, is het pas na de
-of met **Show all** — als dat al in de
-periode van het plan. 
+Antwoord: Controleer of **‘Vandaag’-lijn weergeven** is ingeschakeld. De lijn
+verschijnt bovendien alleen als de huidige dag binnen het zichtbare gedeelte valt;
+bij een plan dat volledig in de toekomst begint, is deze pas te zien na het
+verslepen of met **Alles weergeven** — als vandaag überhaupt binnen de
+periode van het plan valt.
 
-**Vraag:** Kan ik met de muis invoeren in de tijdlijn verplaatsen? 
+**Vraag:** Kan ik items in de tijdlijn met de muis verplaatsen?
 
-Antwoord: Nee. Afspraken worden aangemaakt en gewijzigd in de vorm van de planeditor. 
-Dit betekent dat geen enkel item per ongeluk kan worden verwijderd bij het inzoomen of het verplaatsen van het beeld.
-Zijn afspraak verliezen. 
+Antwoord: Nee. Afspraken worden aangemaakt en gewijzigd in het formulier van de plan-editor.
+Zo kan geen enkel item per ongeluk zijn datum kwijtraken bij het inzoomen of
+verplaatsen van het beeld.
 
-**Vraag:** De planeditor zegt: "Een plan heeft meer dan 300 vermeldingen
-niet." (of hetzelfde voor 20 niveaus of 24 categorieën). 
+**Vraag:** In de plan-editor staat „Een plan bevat niet meer dan 300 items
+.“ (of hetzelfde voor 20 niveaus of 24 categorieën).
 
-Antwoord: Een plan heeft maximaal 300 ingangen, 20 niveaus, en
-24 categorieën; er kan niets meer aan de rand worden toegevoegd. De redacteur
-Rechtsboven staat hoeveel ingangen het plan al heeft. Voor zeer grote
-Als je dit wilt doen, wordt aanbevolen het plan op te splitsen in verschillende widgets, zoals
-Eén per serie. 
+Antwoord: Een plan bevat maximaal 300 items, 20 niveaus en
+24 categorieën; bij het bereiken van deze limiet kan er niets meer worden toegevoegd. De editor
+geeft rechtsboven aan hoeveel items het plan al bevat. Voor zeer grote
+projecten is het raadzaam om het plan over meerdere widgets te verdelen, bijvoorbeeld
+één per bouwreeks.
 
-**Vraag:** De **+**-knop kan worden gebruikt bij **mijlpalen** en **tijdsperioden** 
-Klik er niet op. 
+**Vraag:** De knop **+** kan bij **Mijlpalen** en **Periodes**
+niet worden aangeklikt.
 
-Antwoord: Het plan heeft geen level meer, en zonder level is er een mijlpaal
-of punt; de planeditor geeft dit hieronder aan. Lay
-Selecteer in het tabblad **Levels** minstens één via **Nieuwe Laag**. 
+Antwoord: Het plan heeft geen niveau meer, en zonder niveau heeft een mijlpaal
+of periode geen plaats; de plan-editor wijst hieronder op. Maak
+in het tabblad **Lagen** via **Nieuwe laag** ten minste één laag aan. Streefdata kunnen ook zonder laag worden aangemaakt.
 
-**Vraag:** Waar is de vuilnisbak op de inzendlijst? 
+**Vraag:** Waar is de prullenbak in de invoerlijst?
 
-Antwoord: Het verschijnt wanneer je over een rij zweeft of een open
-lijn via toetsenbord; het is altijd zichtbaar op touchapparaten. 
-Verwijdering gebeurt pas na de query. Als andere vermeldingen afhankelijk zijn van de verwijderde
-, vermeldt de zoekopdracht het nummer; de verbindingen worden verwijderd. 
+Antwoord: Deze verschijnt wanneer u met de muis over een regel beweegt of een
+regel via het toetsenbord selecteert; op touch-apparaten is deze altijd zichtbaar.
+Verwijdering vindt pas plaats na de bevestigingsvraag. Als andere vermeldingen afhankelijk zijn van de verwijderde
+vermelding, wordt in de bevestigingsvraag het aantal vermeld; de koppelingen worden verwijderd.
 
-**Vraag:** Bij het aanmaken van een laag of categorie zegt het "A layer "X" returneert
-het bestaat al." of "Er is al een categorie "X". 
+**Vraag:** Bij het aanmaken van een niveau of categorie verschijnt de melding „Er bestaat al een niveau „X““
+of „Er bestaat al een categorie „X““.
 
-Antwoord: Elke naam mag slechts één keer voorkomen, anders levelt en
-Categorieën in selectievelden, legende en Excel-export
-. Hoofd- en kleine letters en spaties in de marge tellen
-niet. Kies een andere naam of neem de bestaande laag. 
+Antwoord: Elke naam mag slechts één keer voorkomen, anders zouden niveaus en
+categorieën in keuzelijsten, de legenda en de Excel-export niet van elkaar te
+onderscheiden zijn. Hoofdletters, kleine letters en spaties aan het begin of einde tellen daarbij
+niet mee. Kies een andere naam of gebruik het bestaande niveau.
 
-**Vraag:** Een tabblad in het formulier heeft een rode stip. 
+**Vraag:** Een tabblad in het formulier is gemarkeerd met een rood puntje.
 
-Antwoord: Een veld in dit tabblad bevat een ongeldige invoer, zoals een
-lege datum. Het plan behoudt daar de laatst geldige waarde. Open de
-tab en corrigeer het veld; dan verdwijnt het punt. 
+Antwoord: Een veld in dit tabblad bevat een ongeldige invoer, bijvoorbeeld een
+lege datum. Het plan behoudt daar de laatste geldige waarde. Open het
+tabblad en corrigeer het veld; dan verdwijnt het puntje.
 
-**Vraag:** Het formulier zegt "Voer een titel in.", "Voer een titel in."
-Voer uw naam in.", "Voer een datum in.", "Voer een geldige datum in,
-", "Het einde is vóór het begin.", "Het begin is na de
-Einde." of "Geef alstublieft een kleur aan als #RRGGBB, zoals #E40045." 
+**Vraag:** In het formulier staat „Geef een titel op.“, „Geef een
+naam op.“, „Geef een datum op.“, „Geef een geldige datum
+op.“, „Het einde ligt vóór het begin.“, „Het begin ligt na het
+einde.“ of „Geef een kleur op als #RRGGBB, bijvoorbeeld #E40045.“
 
-Antwoord: De invoer in het veld kan niet op deze manier worden gebruikt. Zolang het bericht
-, het plan behoudt de laatste geldige waarde — dus werkt niets.
-Verloren, maar de verandering is ook nog niet gekomen. Correct
-de invoer; zodra deze geldig is, verdwijnt het bericht. In het geval van een
-Punt, verander eerst de datum waarop de bestelling wordt hersteld: 
-Moet het beginnen en later eindigen, eerst **einde**, dan **begin**. 
+Antwoord: De invoer in het veld is in deze vorm niet bruikbaar. Zolang de melding
+wordt weergegeven, behoudt het plan de laatste geldige waarde — er gaat dus niets
+verloren, maar de wijziging is ook nog niet doorgevoerd. Corrigeer
+de invoer; zodra deze geldig is, verdwijnt de melding. Bij een
+periode wijzigt u eerst de datum die de volgorde herstelt:
+moet het later beginnen en eindigen, dan eerst **Einde**, daarna **Begin**.
 
-**Vraag:** Wat gebeurt er met het plan tijdens de automatische vertaling van de
-Zij? 
+**Vraag:** Wat gebeurt er met het plan bij de automatische vertaling van de
+pagina?
 
-Antwoord: De titel van het plan, de titels van de levels en de
-categorieën evenals de titel en beschrijving van elke inzending. Data, kleuren, 
-Afhankelijkheden en de serienamen blijven ongewijzigd — een serienaam is
-één sleutel en twee verschillend vertaalde versies vormden een reeks
-Scheur. 
+Antwoord: De koptekst van het plan, de titels van de niveaus en
+categorieën, evenals de titel en beschrijving van elk item worden vertaald. Data, kleuren,
+afhankelijkheden en de serienamen blijven ongewijzigd — een serienaam is
+een sleutel, en twee verschillend vertaalde versies zouden een serie
+uit elkaar halen.
 
-**Vraag:** Na vertaling, "Projectplan: De inhoud kan worden opgelost
-kan niet worden vertaald. Het blijft in de brontaal en moet handmatig worden uitgevoerd
-vertaald kan worden." 
+**Vraag:** Na de vertaling verschijnt „Projectplan: De inhoud kon
+niet worden vertaald. Het blijft in de brontaal en moet handmatig
+worden vertaald.”
 
-Antwoord: De vertaaldienst was niet beschikbaar voor het plan. De rest
-Het artikel is vertaald, het plan is nog steeds in de brontaal. Vertaal
-Kopieer de teksten met de hand in de planeditor of begin met de vertaling
-Weer. Hetzelfde geldt voor het bericht "Projectplan: De vertaalde inhoud
-kon niet worden ingevoegd. Het blijft in de brontaal en moet worden ingevoegd
-handmatig vertaald."
+Antwoord: De vertaaldienst had geen toegang tot het plan. De rest van het
+artikel is vertaald, het plan staat nog in de brontaal. Vertaal
+de teksten handmatig in de plan-editor of start de vertaling
+opnieuw. Hetzelfde geldt voor de melding „Projectplan: De vertaalde inhoud
+kon niet worden ingevoegd. Deze blijft in de brontaal en moet
+handmatig worden vertaald.“

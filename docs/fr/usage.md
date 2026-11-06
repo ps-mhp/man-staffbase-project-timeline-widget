@@ -1,335 +1,335 @@
-# Pas à pas
+# Étape par étape
 
-## Crée le plan
+## Créer le plan
 
-1. Mettre le widget **Plan de projet** sur la page, de préférence dans un
-   colonne large : Une timeline a besoin d’espace dans la largeur. Dans un
-   Colonne étroite, elle reste utilisable, mais montre moins à la fois. 
-2. Ouvrez les paramètres du widget. L’éditeur de plans s’ouvre depuis
-   lui-même, remplissant l’écran ; il couvre aussi la barre du studio. 
-3. Un plan vide offre deux façons : **Commencer vide** pose un niveau
-   « Niveau 1 » ; si vous préférez partir d’un modèle terminé, suivez le
-   Commencez par une section modèle. 
-4. Dans la barre d’en-tête de l’éditeur de plans, sous **Titre** 
-   Saisissez optionnellement un titre pour le plan. Il se place au-dessus du plan et donne le
-   Fichier Excel sur leur nom. 
-5. Créez les calques dans l’onglet **Couches** — voir « Maintenir les calques ». 
-6. Dans l’onglet **Catégories**, créez les catégories avec leurs couleurs — 
-   voir « Catégories de maintien ». 
-7. Dans l’onglet **Entrées**, définissez les jalons, les périodes et les délais
-   — voir les sections suivantes. 
-8. Cliquez sur **Appliquer** en haut à droite. 
-9. Dans la boîte de dialogue, cochez les boutons **Afficher la ligne Aujourd’hui** et
-   **Proposer l’exportation Excel** ; les deux sont pré-activés. 
-10. Sauvegarder la page et prévisualiser le résultat. 
+1. Placez le widget **Plan de projet** sur la page, de préférence dans une
+   colonne large : une frise chronologique a besoin d'espace en largeur. Dans une
+   colonne étroite, elle reste utilisable, mais affiche moins d'informations à la fois.
+2. Ouvrez les paramètres du widget. L'éditeur de plan s'ouvre
+   automatiquement en plein écran ; il masque alors également la barre du Studio.
+3. Un plan vierge offre deux possibilités : **Commencer à partir d’un plan vierge** crée un niveau
+   « Niveau 1 » ; si vous préférez partir d’un modèle prêt à l’emploi, suivez la
+   section « Commencer avec un modèle ».
+4. Dans la barre d’en-tête de l’éditeur de plan, sous **Titre**,
+   saisissez éventuellement un titre pour le plan. Il apparaîtra au-dessus du plan et donnera son
+   nom au fichier Excel.
+5. Créez les niveaux dans l’onglet **Niveaux** — voir « Gérer les niveaux ».
+6. Créez les catégories avec leurs couleurs dans l’onglet **Catégories** —
+   voir « Gérer les catégories ».
+7. Dans l'onglet **Entrées**, créez les jalons, les périodes et les dates de référence
+   — voir les sections suivantes.
+8. Cliquez sur **Appliquer** en haut à droite.
+9. Dans la boîte de dialogue, vérifiez que les cases **Afficher la ligne « Aujourd’hui »** et
+   **Proposer l’exportation vers Excel** sont cochées ; elles sont toutes deux cochées par défaut.
+10. Enregistrez la page et vérifiez le résultat dans l’aperçu.
 
-## Commence par un modèle
+## Commencer avec un modèle
 
-1. Ouvrir les paramètres d’un widget dont le plan est toujours vide. 
-2. Dans l’éditeur de plans, cliquez sur **Commencer par le modèle**. L’éditeur s’affiche
-   les modèles sous forme de cartes, chacun avec une miniature, une description et quoi
-   Elle apporte : 
-   - **Feuille de route produit** — plusieurs années et gammes de produits basées sur le modèle
-     du plan Sales Truck Launch : trois niveaux, sept catégories, et chacun
-     Type d’entrée. 
-   - **Report** — une date reportée sur quelques mois : 
-     les dates anciennes et nouvelles comme dates clés, un niveau par fonction affectée. 
-3. Cliquez sur la carte appropriée. L’éditeur remplira avec le modèle ; 
-   un titre déjà entré subsiste. **En arrière** mène sans changement
-   Retour aux deux chemins. 
-4. Personnalisez le titre, les calques, les catégories et les entrées pour les adapter à votre projet
-   Ou supprimez ce dont vous n’avez pas besoin. 
-5. Cliquez sur **Appliquer** en haut à droite et enregistrez la page. 
+1. Ouvrez les paramètres d’un widget dont le plan est encore vide.
+2. Dans l’éditeur de plan, cliquez sur **Commencer avec un modèle**. L’éditeur affiche
+   les modèles sous forme de fiches, chacune avec une vignette, une description et ce qu’
+   elle propose :
+   - **Feuille de route produit** — plusieurs années et gammes de produits, sur le modèle
+     du plan « Sales Truck Launch » : trois niveaux, sept catégories et tous les
+     types d’entrées.
+   - **Report de date** — un report de quelques mois :
+     ancienne et nouvelle date comme dates de référence, un niveau par fonction concernée.
+3. Cliquez sur la carte correspondante. L’éditeur s’affiche avec le modèle ;
+   un titre déjà saisi est conservé. **Retour** vous ramène aux deux options sans apporter de modification
+  .
+4. Adaptez le titre, les niveaux, les catégories et les entrées à votre projet
+   ou supprimez ce dont vous n’avez pas besoin.
+5. Cliquez sur **Appliquer** en haut à droite et enregistrez la page.
 
-## Mise en place de l’éditeur de plans
+## Configurer l’éditeur de plan
 
-- **Aperçu de l’effondrement :** Cliquer sur **Aperçu** ouvre la chronologie
-  et laisse la place aux cavaliers en dessous. Il a déplié le
-  Dernière hauteur sélectionnée. 
-- **Redimensionnement :** La ligne de démarcation entre l’aperçu et les onglets modifie le
-  La hauteur de l’aperçu (au moins assez haute pour garder la chronologie visible), 
-  entre la liste des entrées et le formulaire. Glissez avec la souris ou mettez le focus dessus et
-  utilisez les flèches (avec Shift par incréments plus importants). A
-  Double-cliquez pour restaurer la taille d’origine. Le navigateur se souvient
-  Les tailles pour le prochain ouvrent la main. 
-- Liste, forme, calques et catégories défilent chacun de leur côté ; barre d’en-tête, 
-  Les passagers et les boutons au-dessus de chaque zone restent en place. 
+- **Réduire l’aperçu :** un clic sur **Aperçu** réduit la chronologie
+  et libère de l’espace pour les onglets situés en dessous. Une fois déployée, elle reprend la
+  hauteur sélectionnée en dernier.
+- **Modifier la taille :** la ligne de séparation entre l’aperçu et les onglets modifie la
+  hauteur de l’aperçu (au moins suffisamment pour que la chronologie reste visible),
+  celle entre la liste des entrées et le formulaire modifie la largeur de la liste. Faites-la glisser avec la souris ou placez le curseur dessus et
+  utilisez les touches fléchées (avec la touche Maj pour des incréments plus importants). Un
+  double-clic rétablit la taille d’origine. Le navigateur mémorise
+  ces tailles pour la prochaine ouverture.
+- La liste, le formulaire, les niveaux et les catégories défilent chacun de leur côté ; la barre d’en-tête,
+  les onglets et les boutons situés au-dessus de chaque zone restent fixes.
 
 ## La liste des entrées
 
-- Au-dessus de la liste en haut se trouvent **Entrées de recherche**, en dessous un toggle
-  pour le type : **jalons**, **périodes** ou **dates clés**, chacune avec
-  de leur numéro. La liste ne montre que des entrées de ce type. 
-- Le bouton **+** à droite de la bascule affiche une entrée de la
-  Espèces choisies. 
-- Devant chaque titre, il y a une petite forme dans la couleur de sa catégorie — donc
-  Vous trouverez une entrée de la chronologie dans la liste. 
-- La recherche fonctionne dans le type sélectionné ; les chiffres dans le toggle
-  Puis montrez combien de coups il y a dans chaque type. 
-- Si vous sélectionnez une entrée d’un autre type dans l’aperçu, le
-  Échangez avec ça. 
-- Pour supprimer, survolez une ligne et cliquez sur le
-  Poubelle à droite (elle est toujours visible sur les appareils tactiles). Un petit
-  La requête indique également combien d’entrées dépendent de la version supprimée ; confirmer
-  Toi avec **Supprimer**. 
+- Au-dessus de la liste se trouve **Parcourir les entrées**, et en dessous un bouton de sélection
+  du type : **Jalons**, **Périodes** ou **Dates de référence**, avec respectivement
+  leur nombre. La liste n’affiche que les entrées de ce type.
+- Le bouton **+** situé à droite du sélecteur permet de créer une entrée du
+  type sélectionné.
+- Devant chaque titre figure en petit une icône de la couleur de sa catégorie — cela
+  permet de retrouver dans la liste une entrée issue de la chronologie.
+- La recherche s'effectue au sein du type sélectionné ; les chiffres du bouton de sélection
+  indiquent alors le nombre de résultats pour chaque type.
+- Si vous sélectionnez dans l'aperçu une entrée d'un autre type, le
+  bouton de sélection s'adapte en conséquence.
+- Pour supprimer une entrée, passez la souris sur une ligne et cliquez sur la
+  corbeille à droite (elle est toujours visible sur les appareils tactiles). Une petite
+  fenêtre de confirmation indique également le nombre d’entrées dépendant de celle supprimée ; confirmez
+  en cliquant sur **Supprimer**.
 
-## La forme d’une entrée
+## Le formulaire d’une entrée
 
-À droite de la liste se trouve la forme de l’entrée sélectionnée. En haut se trouvent
-son titre et les boutons **Dupliquer** et **Supprimer**, dont cinq
-Coureurs : 
+À droite de la liste se trouve le formulaire de l’entrée sélectionnée. En haut figurent
+son titre et les boutons **Dupliquer** et **Supprimer**, suivis de cinq
+onglets :
 
-- **Général** — Type, Titre, Description
-- **Classification** — Niveau, Catégorie, Série
-- **Date** — date ou début et fin, flèche à la fin de la période, 
+- **Général** — Type, titre, description
+- **Classification** — Niveau, catégorie, série
+- **Date** — Date ou début et fin ; pour une période, une flèche à la fin,
   Provisoire
-- **Dépendances** — les prédécesseurs ; le nombre derrière elles indique combien
-  . Les dates limites n’ont pas cet onglet. 
-- **Contenu** — la page Staffbase ou le post d’actualité qui clique
-  ouvre l’entrée
+- **Dépendances** — les prédécesseurs ; le chiffre qui suit indique combien
+  sont sélectionnés. Les dates butoirs ne disposent pas de cet onglet.
+- **Contenu** — la page Staffbase ou l’article d’actualité qui s’ouvre lorsque l’on clique sur
+  l’entrée
 
-L’onglet sélectionné restera ouvert lorsque vous changez d’entrée
-— si vous maintenez les dates de plusieurs entrées, vous restez sur **Date**. Garde une
-Si l’onglet entre une entrée invalide, un point rouge apparaît. 
+L'onglet sélectionné reste ouvert lorsque vous passez à une autre entrée
+— si vous gérez les dates de plusieurs entrées, restez sur **Date**. Si un
+onglet contient une saisie non valide, il affiche un point rouge.
 
-## Maintenir les couches
+## Gérer les niveaux
 
-1. Dans l’éditeur de plans, ouvrez l’onglet **Couches**. 
-2. Pour créer un calque, cliquez sur **Nouveau calque** et entrez
-   Saisissez leur nom. Vous pouvez aussi le faire directement sous la forme d’une entrée : sous
-   **Classification** dans le champ **Niveau**, sélectionnez le **Nouveau niveau ...**, sélectionnez le
-   Entrez le nom et cliquez sur **Créer** — le nouveau calque est alors le même
-   assigné à l’entrée. 
-3. Pour renommer une couche, changez son nom directement dans la liste. 
-   À côté de chaque nom, il y a le nombre d’entrées que contient la couche. Chaque nom
-   peut ne se produire qu’une seule fois (quelle que soit la majuscule ou la minuscule). 
-4. Pour changer l’ordre, déplacer la couche avec les flèches
-   Haut ou Bas. L’ordre ici est l’ordre sur le
-   et dans l’export Excel. 
-5. Pour supprimer un calque, cliquez **Supprimer**. Est-ce qu’il contient toujours
-   l’éditeur demande si elles sont déplacées à une autre couche
-   — que vous sélectionnez sous **Niveau cible** — ou bien s’ils sont également supprimés
-   . Confirmer avec **Supprimer** ou interrompre avec **Annuler** 
-   . 
+1. Dans l’éditeur de plan, ouvrez l’onglet **Niveaux**.
+2. Pour créer un niveau, cliquez sur **Nouveau niveau** et saisissez
+   son nom. Vous pouvez également procéder directement dans le formulaire d’une entrée : sous
+   **Classification**, dans le champ **Niveau**, sélectionnez l’option **Nouveau niveau…**, saisissez le
+   nom et cliquez sur **Créer** — le nouveau niveau est alors immédiatement
+   attribué à l’entrée.
+3. Pour renommer un niveau, modifiez son nom directement dans la liste.
+   À côté de chaque nom figure le nombre d’entrées que contient le niveau. Chaque nom
+   ne peut apparaître qu’une seule fois (sans distinction entre majuscules et minuscules).
+4. Pour modifier l’ordre, déplacez le niveau à l’aide des flèches
+   vers le haut ou vers le bas. L’ordre indiqué ici correspond à celui affiché sur la
+   page et dans l’exportation Excel.
+5. Pour supprimer un niveau, cliquez sur **Supprimer**. S’il contient encore
+   des entrées, l’éditeur vous demande si celles-ci doivent être déplacées vers un autre niveau
+   — que vous sélectionnez sous **Niveau de destination** — ou si elles doivent être supprimées
+   également. Confirmez avec **Supprimer** ou annulez l’opération avec **Annuler**
+  .
 
-## Maintenir les catégories
+## Gérer les catégories
 
-1. Dans l’éditeur de plans, ouvrez l’onglet **Catégories**. 
+1. Dans l’éditeur de plan, ouvrez l’onglet **Catégories**.
 2. Pour créer une catégorie, cliquez sur **Nouvelle catégorie** et
-   Saisissez leur nom — ou sélectionnez dans le formulaire d’une entrée
-   sous **Classification** dans le champ **Catégorie**, sélectionnez **Nouvelle Catégorie ...** ; 
-   Là, vous saisissez le nom, la couleur et la forme. 
-3. Cliquez sur le champ de couleur devant le nom. Il déploie les douze couleurs ; 
-   choisis-en une ou saiis ta propre couleur sous **Valeur hexagonale**
-   par exemple '#E40045'. Esc ou un clic à côté ferme le
-   Sélection. 
-4. Cliquez sur le bouton forme à côté et sélectionnez la forme avec laquelle le
-   Les jalons de cette catégorie apparaissent : losange, triangle, triangle avec la pointe vers le bas, carré, cercle, hexagone, étoile ou croix. Les touches flèches
-   changement de forme en forme. Une nouvelle catégorie reçoit la première forme, qui
-   Personne d’autre ne porte encore la porte. 
-5. Pour changer l’ordre de la légende, déplacer la catégorie
-   avec les flèches pointant vers le haut ou vers le bas. 
-6. Pour supprimer une catégorie, cliquez **Supprimer**. Vos participations
-   sont conservés et deviennent « sans catégorie » (gris) ; la requête mentionne, 
-   combien d’entrées cela affecte. 
+   saisissez son nom — ou sélectionnez, dans le formulaire d’une entrée
+   sous **Classification**, dans le champ **Catégorie**, l’option **Nouvelle catégorie…** ;
+   indiquez-y le nom, la couleur et la forme.
+3. Cliquez sur la case de couleur située devant le nom. Les douze couleurs s’affichent ;
+   sélectionnez-en une ou saisissez votre propre couleur sous **Valeur hexadécimale**,
+   par exemple `#E40045`. Appuyez sur Échap ou cliquez à côté pour fermer la
+   sélection.
+4. Cliquez sur le bouton de forme situé à côté et sélectionnez la forme sous laquelle les
+   jalons de cette catégorie s'afficheront : losange, triangle, triangle pointant vers le bas, carré, cercle, hexagone, étoile ou croix. Les touches fléchées
+   permettent de passer d’une forme à l’autre. Une nouvelle catégorie se voit attribuer la première forme qui
+   n’est pas encore utilisée.
+5. Pour modifier l’ordre de la légende, déplacez la catégorie
+   vers le haut ou vers le bas à l’aide des flèches.
+6. Pour supprimer une catégorie, cliquez sur **Supprimer**. Vos entrées
+   sont conservées et apparaissent « sans catégorie » (en gris) ; la fenêtre de confirmation indique
+   le nombre d’entrées concernées.
 
-## Crée un jalon
+## Créer un jalon
 
-1. Dans l’éditeur de plans, ouvrez l’onglet **Entrées**. 
-2. Sélectionnez **Jalons** au-dessus de la liste et cliquez sur **+**. Le
-   la nouvelle entrée s’appelle « Nouvelle étape », se trouve au milieu de l’aperçu
-   et dans le premier niveau ; à droite, sa forme apparaît dans l’onglet
-   **Général**, le titre est surligné. 
-3. Saisissez le **titre** et éventuellement une **description**. Le
-   La description apparaît dans les détails, les coupures de ligne sont conservées. 
-4. Sous **Classification**, sélectionnez **Niveau** et **Catégorie** — 
-   ou « Sans catégorie ». 
-5. Entrez la **date** sous **Date**. 
-6. La forme et la couleur du jalon proviennent de sa catégorie ; sans
-   catégorie Il apparaît sous la forme d’un losange gris. Sous **Classification**, il y a un
-   Notez la forme qu’il porte actuellement. 
-7. Fixer **provisoire** si la date n’est pas encore fixée. 
-8. Cliquez sur **Appliquer** en haut à droite une fois toutes les participations terminées
-   sont. 
+1. Dans l’éditeur de plan, ouvrez l’onglet **Entrées**.
+2. Sélectionnez **Jalons** au-dessus de la liste et cliquez sur **+**. La
+   nouvelle entrée s’intitule « Nouveau jalon », elle se trouve au centre de l’aperçu
+   et au premier niveau ; à droite, son formulaire apparaît dans l’onglet
+   **Général**, le titre est sélectionné.
+3. Saisissez le **Titre** et, si vous le souhaitez, une **Description**. La
+   description apparaît dans les détails, les sauts de ligne sont conservés.
+4. Sous **Classement**, sélectionnez le **niveau** et la **catégorie** —
+   ou « Sans catégorie ».
+5. Sous **Date**, saisissez la **date**.
+6. La forme et la couleur du jalon dépendent de sa catégorie ; sans
+   catégorie, il apparaît sous la forme d’un losange gris. Sous **Classification**, une
+   remarque indique la forme qu’il revêt actuellement.
+7. Cochez **Provisoire** si la date n’est pas encore fixée.
+8. Cliquez sur **Appliquer** en haut à droite dès que toutes les entrées sont
+   terminées.
 
 ## Créer une période
 
-1. Dans l’onglet **Entrées** au-dessus de la liste, sélectionnez **Périodes temporelles** et cliquez
-   Cliquez sur **+**. La nouvelle entrée s’appelle « Nouvelle période ». 
-2. Sous **Général**, entrez le **titre** et éventuellement un
-   **Description**, sous **Classification** **Niveau** et **Catégorie**. 
-3. Saisissez **Date** **Début** et **Fin** sous **Date**. Les deux jours
-   appartiennent à cette période. 
-4. Mettre **flèche à la fin** si la période dépasse la fin
-   continue. 
-5. Définir **Provisoire** si le début ou la fin n’est pas encore fixé. 
+1. Dans l’onglet **Entrées**, au-dessus de la liste, sélectionnez **Périodes** et cliquez
+   sur **+**. La nouvelle entrée s’intitule « Nouvelle période ».
+2. Sous **Général**, saisissez le **titre** et, si vous le souhaitez, une
+   **description** ; sous **Classification**, indiquez le **niveau** et la **catégorie**.
+3. Sous **Date**, saisissez la **Date de début** et la **Date de fin**. Ces deux dates
+   font partie de la période.
+4. Cochez **Flèche à la fin** si la période se prolonge au-delà de la date de fin
+  .
+5. Cochez **Provisoire** si le début ou la fin ne sont pas encore fixés.
 
-Un jalon peut être modifié à une période à tout moment sous **Art**
-et inversement. 
+Un jalon peut à tout moment être converti en période sous **Type**
+et inversement.
 
-## Fixe une date limite
+## Créer une date de référence
 
-1. Dans l’onglet **Entrées** au-dessus de la liste, sélectionnez **Dates clés** et cliquez
-   Tu cliques sur **+**. 
-2. Saisissez **Titre**, **Description**, **Catégorie** et
-   **Date**. Il n’y a pas de niveau ici : Une date limite s’applique à la
-   Le plan complet traverse tous les niveaux. 
+1. Dans l’onglet **Entrées**, sélectionnez **Dates de référence** au-dessus de la liste et cliquez
+   sur **+**.
+2. Saisissez le **Titre**, éventuellement une **Description**, **Catégorie** et
+   **Date**. Il n’y a pas de niveau ici : une date butoir s’applique à l’
+  ensemble du plan et s’étend à tous les niveaux.
 
-Si un jalon ou une période sous **Art** devient la date limite, cela ne s’applique pas.
-niveau. 
+Si un jalon ou une période devient une date butoir sous **Type**, son
+niveau est supprimé.
 
-## Des participations combinées dans une série
+## Regrouper des entrées dans une série
 
 1. Dans l’onglet **Entrées**, sélectionnez la première entrée de la série et
-   ouvert **Classification**. 
-2. Cliquez dans le champ **Série**. Il déploie la série qu’il a dans
-   de cette couche, chacune avec le nombre de ses entrées. Tap
-   un nouveau nom, par exemple « TG Assist MY26 », et sélectionnez
-   **Créez « TG Assist MY26 » comme nouvelle série** (ou appuyez sur Entrée). 
-3. Sélectionnez la prochaine entrée du même niveau et sélectionnez
-   **Séries** la série que tu viens de créer à partir de la liste. 
-4. Répétez l’étape 3 pour toutes les entrées de la série. **Pas de série** jusqu’au bout
-   en haut de la liste se retire une entrée ; Esc représente le
-   valeur antérieure. 
+   ouvrez **Classement**.
+2. Cliquez dans le champ **Série**. Cela affiche les séries qui existent déjà à
+   ce niveau, avec le nombre d’entrées de chacune. Saisissez
+   un nouveau nom, par exemple « TG Assist MY26 », puis sélectionnez
+   **« Créer une nouvelle série « TG Assist MY26 » »** (ou appuyez sur Entrée).
+3. Sélectionnez l'entrée suivante du même niveau, puis, sous
+   **Série**, sélectionnez dans la liste la série que vous venez de créer.
+4. Répétez l'étape 3 pour toutes les entrées de la série. L'option **Aucune série**, tout
+   en haut de la liste, supprime une entrée ; la touche Échap rétablit la
+   valeur précédente.
 
-Les séries ne sont valables que dans un seul niveau. Jeux majuscules et minuscules
-pas de rôle : lorsqu’on le retrouve, les traits d’union et les accents font : « TG Assist
-MY26 » et « TG-Assist MY26 » sont deux séries différentes. 
+Les séries ne s’appliquent qu’au sein d’un même niveau. La casse (majuscules/minuscules) n’a
+aucune incidence sur la recherche, contrairement aux traits d’union et aux accents : « TG Assist
+MY26 » et « TG-Assist MY26 » sont deux séries différentes.
 
 ## Définir une dépendance
 
-1. Dans l’onglet **Entrées**, sélectionnez l’entrée créée par une autre personne
-   (le successeur), et ouvrent **Dépendances**. 
-2. Sous **Dépend de**, trouvez et sélectionnez le prédécesseur. Multiple
-   Les prédécesseurs sont possibles. 
+1. Dans l’onglet **Entrées**, sélectionnez l’entrée qui dépend d’une autre
+   (le successeur), puis ouvrez **Dépendances**.
+2. Sous **Dépend de**, recherchez et sélectionnez le prédécesseur. Il est possible d’avoir plusieurs
+   prédécesseurs.
 3. Sur la page, une ligne pointillée avec une flèche relie désormais le
-   Prédécesseur avec successeur. 
+   prédécesseur au successeur.
 
-Les dépendances n’existent qu’entre les jalons et les périodes de temps, pas pour
-Échéances. Si une entrée est supprimée, elle disparaîtra également de toutes
-Dépendances. 
+Les dépendances n’existent qu’entre les jalons et les périodes, et non pour les
+dates clés. Si une entrée est supprimée, elle disparaît également de toutes les
+dépendances.
 
-## Lien vers une page ou un article
+## Lier une page ou un article
 
-Une page Staffbase ou un article d’actualité peut être lié par entrée — 
-par exemple, la page contenant toutes les informations sur une mise à jour logicielle. Le plan reste le
-En résumé, les détails sont là où ils sont conservés de toute façon. 
+Pour chaque entrée, il est possible de lier une page Staffbase ou un article d’actualité —
+par exemple, la page contenant toutes les informations relatives à une mise à jour logicielle. Le plan sert de
+vue d’ensemble, tandis que les détails se trouvent là où ils sont de toute façon gérés.
 
-1. Sélectionnez l’entrée dans l’onglet **Entrées** et ouvrez le
-   Onglet **Contenu**. 
-2. Sous **Lien**, sélectionnez **Page** ou **Article d’actualité**. 
-3. Pour une page, sélectionnez-la sous **Page**. Pour un article
-   Sélectionnez la **chaîne**, puis la **publication**. Les brouillons sont avec
-   « (brouillon) » ; ils peuvent déjà être liés, lecteurs
-   Mais ne les voyez qu’après publication. 
-4. **Ouvrir dans un nouvel onglet** montre ce qui est lié. 
+1. Sélectionnez l’entrée dans l’onglet **Entrées** et ouvrez l’
+  onglet **Contenu**.
+2. Sous **Lien**, sélectionnez **Page** ou **Article d’actualité**.
+3. S’il s’agit d’une page, sélectionnez-la sous **Page**. S’il s’agit d’un article,
+   sélectionnez d’abord la **chaîne**, puis l’**article**. Les brouillons sont signalés par
+   « (Brouillon) » ; vous pouvez déjà y ajouter un lien, mais les lectrices et lecteurs
+   ne les verront qu’après leur publication.
+4. **Ouvrir dans un nouvel onglet** permet de voir ce qui est lié.
 
-Si la page ou l’article n’existe pas encore, créez-le ici : 
+Si la page ou l’article n’existe pas encore, créez-la directement ici :
 
-1. Sous la sélection, cliquez **Nouvelle page ...** — ou sur un
-   Postez, après avoir sélectionné la **chaîne**, cliquez sur **Nouveau post ...**. 
-2. Au-dessus de l’éditeur de plans, l’éditeur Staffbase s’ouvre. Définir la page
-   là (**Créer**) ou sauvegarder le post en brouillon. 
-3. Une fois que Staffbase a été enregistré, le contenu est lié à l’entrée ; 
-   en haut, il est écrit « Lien : ... ». Vous pouvez utiliser l’éditeur Staffbase pour
-   Continue. **Fait** la ferme. 
+1. Cliquez sur **Nouvelle page…** sous la liste de sélection — ou, pour un
+   article, après avoir sélectionné la **chaîne**, sur **Nouvel article…**.
+2. L’éditeur Staffbase s’ouvre au-dessus de l’éditeur de plan. Créez la page
+   à cet endroit (**Créer**) ou enregistrez l’article en tant que brouillon.
+3. Dès que Staffbase a enregistré, le contenu est lié à l’entrée ;
+   la mention « Lié à : … » s’affiche alors en haut. Vous pouvez continuer à rédiger dans l’éditeur Staffbase
+  . **Terminé** permet de le fermer.
 
-Fermez avec **Annuler** ou Échap avant que quoi que ce soit soit lié, le
-Rédacteur à : A-t-il entre-temps exactement une nouvelle page ou une nouvelle
-contribution trouvée par vous, il propose de les lier ; sinon il demande, 
-la question de savoir si la création doit vraiment être abandonnée — ce qui est encore le cas
-est perdu. 
+Si vous fermez avec **Annuler** ou la touche Échap avant qu’un lien ne soit établi, l’
+éditeur vous demande : s’il a détecté exactement une nouvelle page ou un nouveau
+article de votre part, il vous proposera de les associer ; sinon, il vous demandera
+si vous souhaitez vraiment annuler la création — tout ce qui n’a pas encore
+été enregistré dans l’éditeur Staffbase sera alors perdu.
 
-Sous le lien se trouvent les **Pièces jointes** : Fichiers et images de la
-Bibliothèque médiatique de Staffbase, jusqu’à dix par entrée. 
+Sous le lien se trouvent les **pièces jointes** : fichiers et images issus de la
+bibliothèque multimédia de Staffbase, jusqu’à dix par entrée.
 
-1. Dans l’onglet **Contenu**, cliquez sur **Ajouter un fichier ou une image...** et
-   sélectionnez un fichier dans la Bibliothèque média — ou téléchargez un fichier depuis la Bibliothèque
-   Nouveau sommet. 
-2. Si nécessaire, lui donner une **étiquette** ; sinon, il est indiqué le
-   Nom du fichier. 
-3. Avec **↑** et **↓**, vous changez l’ordre, **×** retire l’attachement. 
+1. Dans l’onglet **Contenu**, cliquez sur **Ajouter un fichier ou une image…** et
+   sélectionnez un fichier dans la bibliothèque multimédia — ou téléchargez-y un
+   nouveau fichier.
+2. Si nécessaire, attribuez-lui une **légende** ; sinon, c’est le
+   nom du fichier qui s’affiche.
+3. Les boutons **↑** et **↓** permettent de modifier l’ordre, tandis que **×** supprime la pièce jointe.
 
-Les pièces jointes restent derrière l’enregistrement : les lecteurs les ouvrent avec les leurs
-Des droits, comme n’importe quel fichier de la bibliothèque multimédia. 
+Les pièces jointes sont conservées après la connexion : les lecteurs et lectrices les ouvrent avec leurs propres
+droits, comme n’importe quel fichier de la médiathèque.
 
-Sur la page, la légende d’une entrée liée est soulignée. 
-Cliquer dessus ouvre la page ou le post dans une fenêtre au-dessus de
-planifier, au lieu des détails ; **Ouvrir dans un nouvel onglet** est toujours en haut, le
-Les pièces jointes sont à côté. Dans le cas d’une entrée sans contenu lié, le
-détaille ses attachements. Avec
-**Lien : Aucun** délier à nouveau. 
+Sur la page, la légende d’une entrée liée est soulignée.
+Un clic dessus ouvre la page ou l’article dans une fenêtre au-dessus du
+plan, à la place des détails ; **Ouvrir dans un nouvel onglet** apparaît toujours en haut, les
+pièces jointes se trouvent à côté. Pour une entrée sans contenu lié, les
+détails affichent ses pièces jointes. Avec
+**Lien : Aucun**, vous supprimez le lien.
 
-## Dupliquer et supprimer les entrées
+## Dupliquer et supprimer des entrées
 
-1. Sélectionnez l’entrée dans l’onglet **Entrées**. 
-2. **Duplique** (en haut à droite du formulaire) crée une copie que vous pouvez
-   Puis ajustez-vous. 
-3. **Supprimer** (à côté) demande puis supprime l’entrée et tout
-   dépendances qui pointent vers elle. La même requête apparaît sur
-   Des déchets dans la liste. Ensuite, la prochaine entrée de la liste est sélectionnée. 
+1. Sélectionnez l’entrée dans l’onglet **Entrées**.
+2. **Dupliquer** (en haut à droite du formulaire) crée une copie que vous
+   pouvez ensuite modifier.
+3. **Supprimer** (à côté) vous demande de confirmer, puis supprime l’entrée et toutes les
+   dépendances qui y font référence. La même demande de confirmation s’affiche au niveau de la
+   corbeille dans la liste. L’entrée suivante de la liste est alors sélectionnée.
 
-## Réglez la vue d’accueil
+## Définir la vue d'accueil
 
-Sans vue de démarrage, le widget affiche tout le plan lors du chargement. Devrait-il le faire
-À la place, montrez un certain extrait, par exemple les deux années suivantes : 
+Sans vue d'accueil, le widget affiche l'intégralité du plan lors du chargement. Si vous souhaitez
+qu'il affiche plutôt une section spécifique, par exemple les deux prochaines années :
 
-1. Zoomez et panoramiquez l'**Aperçu** dans l’éditeur de plans jusqu’à ce que le
-   peut être vu dans la section désirée. 
-2. Cliquez sur **Cette section en vue d’accueil**. Sauvegarde
-   Au mois. 
-3. Pour afficher à nouveau le plan complet, cliquez sur **Démarrer la vue
-   Supprimer**. 
-4. **Postuler**, sauvegarder, vérifier dans l’aperçu de la page. 
+1. Zoomez et déplacez l’**aperçu** dans l’éditeur de plan jusqu’à ce que la
+   section souhaitée soit visible.
+2. Cliquez sur **Utiliser cette section comme vue d’accueil**. L’enregistrement s’effectue
+   au mois près.
+3. Pour afficher à nouveau l'intégralité du planning, cliquez sur **Supprimer la vue d'accueil**.
+  .
+4. **Appliquer**, enregistrer, vérifier dans l'aperçu de la page.
 
-Les lecteurs peuvent zoomer à tout moment depuis la vue principale ou
-**Afficher tout** voir le plan complet. 
+Les lecteurs peuvent à tout moment zoomer davantage à partir de la vue d’accueil ou afficher
+l’intégralité du plan avec **Tout afficher**.
 
-## Changement après
+## Modifier ultérieurement
 
-1. Ouvrez à nouveau les paramètres du widget. L’éditeur de plans affichera le
-   Plan sauvegardé. 
-2. Sélectionnez l’entrée dans la liste de l’onglet **Entrées** ou par
-   Un clic dans l’aperçu et modifie sa forme. Un clic dans
-   de l’aperçu passe à l’onglet **Entrées** et récupère le
-   Entrée dans la liste en vue. 
-3. Cliquez sur **Appliquer** en haut à droite et enregistrez la page. 
-   La date après « Statut : » est fixée au jour du changement. 
+1. Ouvrez à nouveau les paramètres du widget. L’éditeur de plan affiche le
+   plan enregistré.
+2. Sélectionnez l’entrée dans la liste de l’onglet **Entrées** ou en
+   cliquant dans l’aperçu, puis modifiez son formulaire. Un clic dans
+   l’aperçu fait basculer vers l’onglet **Entrées** et affiche l’
+   entrée correspondante dans la liste.
+3. Cliquez en haut à droite sur **Appliquer** et enregistrez la page.
+   La date indiquée après « État : » est alors mise à jour au jour de la modification.
 
-Tant que les modifications n’ont pas encore été appliquées, la barre d’en-tête indique
-« Modifications non enregistrées ». Cliquez **Annuler** pour supprimer toutes les modifications
-depuis la dernière ouverture de l’éditeur de plans ; l’éditeur demande à l’avance. 
+Tant que les modifications n’ont pas été enregistrées, la barre d’en-tête affiche
+« Modifications non enregistrées ». En cliquant sur **Annuler**, vous rejetez toutes les modifications
+effectuées depuis la dernière ouverture de l’éditeur de plan ; l’éditeur vous demande au préalable si vous souhaitez vraiment annuler.
 
-## Téléchargez le plan sous forme de tableau Excel (en tant que lecteur)
+## Télécharger le plan sous forme de tableau Excel (en tant que lecteur/lectrice)
 
-1. Filtrez et zoomez le plan pour voir ce dont vous avez besoin. 
-2. Cliquez sur **Exporter** dans la barre d’outils. En mode étroit
-   le bouton se trouve dans le menu **Plus**. 
-3. Choisissez le périmètre : 
-   - **Vue actuelle** — uniquement les entrées dans la section visible qui
-     remplir tous les filtres actifs ; si la recherche est active, seuls les résultats. 
-   - **Plan complet** — toutes les entrées, sans filtres ni sections. 
+1. Filtrez et zoomez sur le plan de manière à voir ce dont vous avez besoin.
+2. Cliquez sur **Exporter** dans la barre d’outils. Sur les écrans étroits,
+   le bouton se trouve dans le menu **Plus**.
+3. Choisissez l’étendue :
+   - **Vue actuelle** — uniquement les entrées de la section visible qui
+     répondent à tous les filtres actifs ; si une recherche est active, uniquement les résultats.
+   - **Plan complet** — toutes les entrées, sans filtre ni section.
 
-   Derrière chaque élection se trouve le nombre d’entrées qu’elle contient. 
-4. Cliquez sur **Télécharger Excel**. Le fichier porte un nom similaire au
-   Tête du plan avec la date d’aujourd’hui, sans direction
-   « Projektplan_JJJJ-MM-TT.xlsx ». 
+   Le nombre d’entrées comprises est indiqué pour chaque option.
+4. Cliquez sur **Télécharger vers Excel**. Le fichier porte le même nom que l’
+  en-tête du plan, suivi de la date du jour, sans l’en-tête
+  `Plan_du_projet_AAAA-MM-JJ.xlsx`.
 
-Le fichier contient la feuille **Planning** avec une ligne par entrée (level, 
-Type, Titre, Catégorie, Début, Fin, Série, Préliminaire, Prédécesseur, 
-description) et la feuille **Info** avec le titre, le statut, la date d’exportation, le périmètre et
-Les filtres actifs. 
+Le fichier contient la feuille **Planification** avec une ligne par entrée (niveau,
+type, titre, catégorie, début, fin, série, provisoire, prédécesseur,
+description) et la feuille **Info** avec le titre, l'état, la date d'exportation, le volume et
+les filtres actifs.
 
-## Quand quelque chose ne marche pas
+## Si quelque chose ne fonctionne pas
 
-1. **Le widget n’affiche rien sur la page.** Le plan n’en a pas encore.
-   entrée. Ouvre les paramètres et en définis au moins un
-   Jalon, période ou date limite. 
-2. **L’éditeur de plans ne s’ouvre pas.** Sous **Plan** il n’y en a qu’un seul
-   Boîte de texte. Fermez et rouvrez les paramètres. Modifier
-   Ne modifiez pas le contenu du champ de texte à la main — c’est le contenu technique
-   Version approximative du plan. 
-3. **En haut de l’éditeur de plans, il est indiqué que les entrées n’ont pas pu être lues.** 
-   Voir la FAQ de ce rapport. 
-4. **Les lecteurs ne trouvent pas le bouton « Exporter ».** Vérifiez si
-   **Offrir l’export Excel** est activé.
+1. **Le widget n’affiche rien sur la page.** Le plan ne contient encore aucune
+   entrée. Ouvrez les paramètres et créez au moins un
+   jalon, une période ou une date butoir.
+2. **L’éditeur de plan ne s’ouvre pas.** Sous **Plan**, il n’y a alors qu’un
+   champ de texte. Fermez les paramètres et rouvrez-les. Ne modifiez
+   pas manuellement le contenu du champ de texte — il s’agit de la
+   version brute technique du plan.
+3. **En haut de l’éditeur de plan, un message indique que les entrées n’ont pas pu être lues.**
+   Consultez la FAQ relative à ce message.
+4. **Les lecteurs et lectrices ne trouvent pas le bouton « Exporter ».** Vérifiez si
+   l’option **« Proposer l’exportation vers Excel »** est activée.

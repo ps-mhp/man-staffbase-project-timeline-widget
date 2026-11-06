@@ -1,6 +1,6 @@
 {
-  "title": "Plan de projet",
-  "summary": "Un plan de projet comme une chronologie : des niveaux avec des étapes et des périodes, des dates clés et des dépendances — zoomables à l’infini, filtrables et téléchargeables sous forme de tableau Excel.",
+  "title": "Plan du projet",
+  "summary": "Un plan de projet sous forme de frise chronologique : niveaux avec jalons et périodes, dates butoirs et dépendances — zoomable en continu, filtrable et téléchargeable sous forme de tableau Excel.",
   "icon": "📅",
   "pages": [
     {
@@ -15,7 +15,7 @@
     },
     {
       "id": "settings",
-      "title": "Décors",
+      "title": "Paramètres",
       "file": "settings.md"
     },
     {
@@ -26,7 +26,7 @@
   ],
   "examples": [
     {
-      "title": "Plan d’exemple avec la ligne Today et l’export Excel",
+      "title": "Exemple de planning avec la ligne « Aujourd'hui » et exportation vers Excel",
       "attributes": {
         "show-today": "true",
         "allow-export": "true"
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "title": "Report d’une sortie logicielle",
+      "title": "Report de la date de sortie d'une version logicielle",
       "attributes": {
         "show-today": "false",
         "allow-export": "true"
@@ -47,7 +47,7 @@
       "variant": "postponement"
     },
     {
-      "title": "Sans la ligne actuelle et sans exportation",
+      "title": "Sans la ligne « Aujourd'hui » et sans exportation",
       "attributes": {
         "show-today": "false",
         "allow-export": "false"

@@ -1,335 +1,335 @@
 # Stap voor stap
 
-## Maak het plan
+## Het plan aanmaken
 
-1. Zet de widget **Projectplan** op de pagina, bij voorkeur in een
-   brede kolom: Een tijdlijn heeft ruimte nodig in de breedte. In een
-   Smalle kolom, blijft hij nog steeds bewerkbaar, maar vertoont minder per tegelijk. 
-2. Open de instellingen van de widget. De planeditor opent vanaf
-   zelf, die het scherm vult; het bedekt ook de balk van de studio. 
-3. Een leeg plan biedt twee mogelijkheden: **Leeg beginnen** legt een niveau
-   "Niveau 1"; als je liever begint met een voltooid sjabloon, volg dan de
-   Begin met een sjabloonsectie. 
-4. In de headerbalk van de Plan Editor, onder **Kop** 
-   Voer optioneel een titel in voor het plan. Deze staat boven het plan en geeft de
-   Excel-bestand bestand hun naam. 
-5. Maak de lagen aan in het **Lagen**-tabblad — zie "Lagen onderhouden". 
-6. Maak in het **Categorieën**-tabblad de categorieën aan met hun kleuren — 
-   zie "Categorieën behouden". 
-7. Stel in het **Vermeldingen**-tabblad de mijlpalen, tijdsperioden en deadlines in
-   — zie de volgende secties. 
-8. Klik rechtsboven op **Toepassen**. 
-9. Controleer in het dialoogvenster de knoppen **Toon vandaag Lijn** en
-   **Excel-export aanbieden**; beide zijn vooraf ingeschakeld. 
-10. Sla de pagina op en bekijk het resultaat. 
+1. Plaats de widget **Projectplan** op de pagina, bij voorkeur in een
+   brede kolom: een tijdlijn heeft ruimte in de breedte nodig. In een
+   smalle kolom blijft hij bruikbaar, maar er wordt minder in één keer weergegeven.
+2. Open de instellingen van de widget. De plan-editor opent van
+  zelf, schermvullend; daarbij verbergt hij ook de balk van de Studio.
+3. Een leeg plan biedt twee mogelijkheden: **Leeg beginnen** maakt een laag
+   „Laag 1“ aan; wie liever uitgaat van een kant-en-klaar sjabloon, volgt het
+   gedeelte „Beginnen met een sjabloon“.
+4. Voer in de kopbalk van de plan-editor onder **Koptekst**
+   optioneel een titel voor het plan in. Deze staat boven het plan en geeft het
+   Excel-bestand zijn naam.
+5. Maak in het tabblad **Lagen** de lagen aan — zie „Lagen beheren“.
+6. Maak in het tabblad **Categorieën** de categorieën met hun kleuren aan —
+   zie „Categorieën beheren“.
+7. Maak in het tabblad **Items** de mijlpalen, periodes en peildata
+   aan — zie de volgende paragrafen.
+8. Klik rechtsboven op **Toepassen**.
+9. Controleer in het dialoogvenster of de schakelaars **Vandaag-lijn weergeven** en
+   **Excel-export aanbieden** zijn ingeschakeld; beide zijn standaard ingeschakeld.
+10. Sla de pagina op en controleer het resultaat in het voorbeeld.
 
-## Begin met een sjabloon
+## Beginnen met een sjabloon
 
-1. Open de instellingen van een widget waarvan het abonnement nog leeg is. 
-2. Klik in de Planeditor op **Start met Sjabloon**. De editor toont
-   De sjablonen als kaarten, elk met een thumbnail, beschrijving en wat
-   Zij brengt: 
-   - **Productroadmap** — meerdere jaren en productlijnen gebaseerd op het model
-     van het Sales Truck Launch-plan: drie niveaus, zeven categorieën, en elk
-     Type inzending. 
-   - **Uitstel** — een uitgestelde datum over enkele maanden: 
-     oude en nieuwe data zijn sleuteldata, één niveau per getroffen functie. 
-3. Klik op de juiste kaart. De editor vult zich met het sjabloon; 
-   Er blijft een reeds ingevoerde koers over. **Terug** leidt zonder wijziging
-   Terug naar de twee paden. 
-4. Pas de kop, lagen, categorieën en vermeldingen aan om bij je project te passen
-   Of verwijder wat je niet nodig hebt. 
-5. Klik rechtsboven op **Toepassen** en sla de pagina op. 
+1. Open de instellingen van een widget waarvan het plan nog leeg is.
+2. Klik in de plan-editor op **Beginnen met een sjabloon**. De editor toont
+   de sjablonen als kaarten, elk met een voorbeeldafbeelding, beschrijving en wat
+   ze te bieden hebben:
+   - **Productroadmap** — meerdere jaren en productlijnen naar het voorbeeld
+     van het plan „Sales Truck Launch“: drie niveaus, zeven categorieën en elk
+     soort item.
+   - **Uitstel** — een uitgestelde datum over enkele maanden:
+     oude en nieuwe datum als peildata, één niveau per betrokken functie.
+3. Klik op de juiste kaart. De editor wordt gevuld met het sjabloon;
+   een reeds ingevoerde kop blijft behouden. **Terug** brengt u zonder wijzigingen
+   terug naar de twee opties.
+4. Pas de titel, niveaus, categorieën en items aan uw project aan
+   of verwijder wat u niet nodig hebt.
+5. Klik rechtsboven op **Toepassen** en sla de pagina op.
 
-## De planeditor instellen
+## De plan-editor instellen
 
-- **Vouw preview:** Door op **Preview** te klikken opent de tijdlijn
-  en geeft de ruimte aan de ruiters beneden. Hij heeft de
-  Laatst gekozen hoogte. 
-- **Groottewijziging:** De scheidslijn tussen de preview en tabbladen verandert de
-  Hoogte van de preview (in ieder geval hoog genoeg om de tijdlijn zichtbaar te houden), 
-  tussen de inschrijflijst en het formulier. Sleep het met de muis of leg de focus erop en
-  gebruik de pijltjestoetsen (met Shift in grotere stapjes). A
-  Dubbelklik om de oorspronkelijke grootte te herstellen. De browser onthoudt het
-  De maten voor de volgende komen open. 
-- Lijst, vorm, lagen en categorieën scrollen elk op zichzelf; kopbalk, 
-  Rijders en de knoppen boven elk gebied blijven op hun plaats. 
+- **Voorbeeld inklappen:** Een klik op **Voorbeeld** klapt de tijdlijn
+  in en maakt ruimte vrij voor de tabbladen eronder. Uitgeklapt heeft deze weer de
+  laatst gekozen hoogte.
+- **Grootte aanpassen:** De scheidingslijn tussen het voorbeeld en de tabbladen bepaalt de
+  hoogte van het voorbeeld (minimaal zo hoog dat de tijdlijn zichtbaar blijft),
+  die tussen de lijst met items en het formulier bepaalt de breedte van de lijst. Sleep de lijn met de muis of plaats de cursor erop en
+  gebruik de pijltjestoetsen (met Shift in grotere stappen). Een
+  dubbelklik herstelt de oorspronkelijke grootte. De browser onthoudt
+  de afmetingen voor de volgende keer dat u de pagina opent.
+- De lijst, het formulier, de niveaus en de categorieën scrollen elk afzonderlijk; de kopbalk,
+  de tabbladen en de knoppen boven elk gebied blijven op hun plaats.
 
-## De Inzendingslijst
+## De lijst met vermeldingen
 
-- Boven de lijst staat **Zoeken**, daaronder een schakelaar
-  voor het type: **mijlpalen**, **periodes** of **sleuteldata**, elk met
-  van hun nummer. De lijst toont alleen dit soort vermeldingen. 
-- De **+**-knop rechts van de schakelaar toont een invoer van de
-  gekozen soort. 
-- Voor elke titel staat een kleine vorm in de kleur van de categorie — dus
-  Je vindt een vermelding uit de tijdlijn in de lijst. 
-- De zoekopdracht functioneert binnen het geselecteerde type; de cijfers in de schakelaar
-  Laat dan zien hoeveel hits er in elk type zitten. 
-- Als je een invoer van een ander type selecteert in de preview, de
-  Wissel met. 
-- Om te verwijderen, beweeg je muis over een rij en klik je op de
-  Prullenbak rechts (altijd zichtbaar op touchapparaten). Een kleine
-  De query geeft ook aan hoeveel entries afhankelijk zijn van de verwijderde post; bevestig
-  Jij met **Verwijderen**. 
+- Boven de lijst staat **Verzoeken doorzoeken**, daaronder een schakelaar
+  voor het type: **Mijlpalen**, **Tijdvakken** of **Referentiedata**, telkens met
+  het bijbehorende aantal. De lijst toont alleen verzoeken van dit type.
+- De knop **+** rechts naast de keuzeschakelaar maakt een item van het
+  geselecteerde type aan.
+- Voor elke titel staat in kleine letters de vorm in de kleur van de categorie — zo
+  vindt men een item uit de tijdlijn terug in de lijst.
+- De zoekfunctie werkt binnen het geselecteerde type; de getallen in de schakelaar
+  geven dan aan hoeveel resultaten er per type zijn.
+- Als u in het voorbeeld een item van een ander type selecteert, verandert de
+  schakelaar mee.
+- Om te verwijderen, beweeg je de muis over een regel en klik je op de
+  prullenbak aan de rechterkant (op touch-apparaten is deze altijd zichtbaar). Een klein
+  bevestigingsvenster geeft ook aan hoeveel vermeldingen afhankelijk zijn van de te verwijderen vermelding; bevestig
+  met **Verwijderen**.
 
-## De vorm van een inschrijving
+## Het formulier van een item
 
-Rechts van de lijst staat de vorm van de geselecteerde intekening. Bovenaan staan
-de titel en de knoppen **Dupliceren** en **Verwijderen**, inclusief vijf
-Rijders: 
+Rechts naast de lijst staat het formulier van het geselecteerde item. Bovenaan staan
+de titel en de knoppen **Dupliceren** en **Verwijderen**, daaronder vijf
+tabbladen:
 
-- **Algemeen** — Type, Titel, Beschrijving
-- **Classificatie** — Niveau, Categorie, Serie
-- **Datum** — datum of begin en einde, pijl aan het einde van de periode, 
+- **Algemeen** — Type, titel, beschrijving
+- **Indeling** — Niveau, categorie, serie
+- **Datum** — Datum of begin- en einddatum; bij een periode staat er een pijl aan het einde,
   Voorlopig
-- **Afhankelijkheden** — de voorgangers; het nummer erachter geeft aan hoeveel
-  . Uiterste data hebben dit tabblad niet. 
-- **Content** — de Staffbase-pagina of nieuwspost waar je op klikt
-  Opent de invoer
+- **Afhankelijkheden** — de voorgangers; het getal erachter geeft aan hoeveel
+  er zijn geselecteerd. Streefdata hebben dit tabblad niet.
+- **Inhoud** — de Staffbase-pagina of het nieuwsbericht dat wordt geopend door op
+  het item te klikken
 
-Het geselecteerde tabblad blijft open wanneer je naar een andere vermelding wisselt
-— als je de data van meerdere vermeldingen bijhoudt, blijf je op **Datum**. Houdt een
-Als het tabblad een ongeldige vermelding invoert, toont het een rood stipje. 
+Het geselecteerde tabblad blijft openstaan wanneer u naar een ander item overschakelt
+— wie de data van meerdere items bijhoudt, blijft op **Datum**. Als een
+tabblad een ongeldige invoer bevat, wordt er een rode stip weergegeven.
 
-## Behoud lagen
+## Niveaus beheren
 
-1. Open in de Planeditor het **Lagen**-tabblad. 
-2. Om een laag aan te maken, klik je op **Nieuwe laag** en voer je in
-   Voer hun naam in. Je kunt het ook direct doen in de vorm van een invoer: onder
-   **Classificatie** Selecteer in het **Level**-veld het **Nieuwe niveau ...**, selecteer de
-   Voer de naam in en klik op **Aanmaken** — de nieuwe laag is dan hetzelfde
-   toegewezen aan de ingang. 
-3. Om een laag te hernoemen, verander je de naam direct in de lijst. 
-   Naast elke naam staat hoeveel vermeldingen de laag bevat. Elke naam
-   kan slechts één keer voorkomen (ongeacht de hoofdletter en kleine letters). 
-4. Om de volgorde te veranderen, verplaats je de laag met de pijlen
-   Omhoog of omlaag. De volgorde hier is de volgorde op de
-   pagina en in de Excel-export. 
-5. Om een laag te verwijderen, klik je op **Verwijderen**. Bevat het nog steeds
-   Entries vraagt de editor of ze naar een andere laag zijn verplaatst.
-   — die je selecteert onder **Doelniveau** — of dat ze ook verwijderd zijn
-   . Bevestig met **Verwijderen** of breek met **Annuleren** 
-   . 
+1. Open in de planningseditor het tabblad **Niveaus**.
+2. Om een niveau aan te maken, klikt u op **Nieuw niveau** en voert u
+   de naam in. Dit kan ook rechtstreeks in het formulier van een item: selecteer onder
+   **Indeling** in het veld **Laag** de optie **Nieuwe laag …**, voer de
+   naam in en klik op **Aanmaken** — de nieuwe laag wordt dan direct
+   aan het item toegewezen.
+3. Om een laag te hernoemen, wijzigt u de naam rechtstreeks in de lijst.
+   Naast elke naam staat vermeld hoeveel vermeldingen de laag bevat. Elke naam
+   mag slechts één keer voorkomen (hoofdlettergevoelig).
+4. Om de volgorde te wijzigen, verplaatst u het niveau met de pijltjes
+   omhoog of omlaag. De volgorde hier is de volgorde op de
+   pagina en in de Excel-export.
+5. Om een niveau te verwijderen, klikt u op **Verwijderen**. Als het nog
+   vermeldingen, vraagt de editor of deze naar een ander niveau moeten worden verplaatst
+   — dat kiest u onder **Doelniveau** — of dat ze mee worden verwijderd
+  . Bevestig met **Verwijderen** of annuleer met **Annuleren**
+  .
 
-## Behoud categorieën
+## Categorieën beheren
 
-1. Open in de planeditor het **Categorieën**-tabblad. 
-2. Om een categorie aan te maken, klik je op **Nieuwe categorie** en
-   Voer hun naam in — of kies uit het formulier van een inzending
-   onder **Classificatie** in het **Categorie**veld, selecteer **Nieuwe Categorie ...**; 
-   Daar voer je naam, kleur en vorm in. 
-3. Klik op het kleurveld voor de naam. Het ontvouwt de twaalf kleuren; 
-   Kies er één of voer je eigen kleur in onder **Hex Waarde**
-   bijvoorbeeld '#E40045'. Esc of een klik ernaast sluit de
-   Selectie. 
-4. Klik op de vormknop ernaast en selecteer de vorm waarmee de
-   Mijlpalen in deze categorie verschijnen: diamant, driehoek, driehoek met de punt naar beneden, vierkant, cirkel, zeshoek, ster of kruis. De pijltjestoetsen
-   van vorm naar vorm verandert. Een nieuwe categorie krijgt de eerste vorm, die
-   Niemand anders draagt nog iets. 
-5. Om de volgorde van de legende te veranderen, verplaats je de categorie
-   met pijlen die omhoog of omlaag wijzen. 
-6. Om een categorie te verwijderen, klik je op **Verwijderen**. Je vermeldingen
-   behouden worden en worden "zonder categorie" (grijs); de zoekopdracht vermeldt, 
-   Hoeveel entries dit beïnvloedt. 
+1. Open in de plan-editor het tabblad **Categorieën**.
+2. Om een categorie aan te maken, klikt u op **Nieuwe categorie** en
+   voert u de naam in — of selecteert u in het formulier van een item
+   in het veld **Categorie** onder **Indeling** de optie **Nieuwe categorie …**;
+   daar voert u de naam, kleur en vorm in.
+3. Klik op het kleurvakje voor de naam. Er verschijnen twaalf kleuren;
+   kies er een uit of voer onder **Hex-waarde** een eigen kleur
+   in, bijvoorbeeld `#E40045`. Druk op Esc of klik ernaast om de
+   selectie te sluiten.
+4. Klik op de vormknop ernaast en kies de vorm waarin de
+   mijlpalen van deze categorie worden weergegeven: ruit, driehoek, omgekeerde driehoek, vierkant, cirkel, zeshoek, ster of kruis. Met de pijltjestoetsen
+   schakelt u tussen de verschillende vormen. Een nieuwe categorie krijgt de eerste vorm die
+   nog niet door een andere categorie wordt gebruikt.
+5. Om de volgorde van de legenda te wijzigen, verplaatst u de categorie
+   met de pijltjes omhoog of omlaag.
+6. Om een categorie te verwijderen, klikt u op **Verwijderen**. Uw vermeldingen
+   blijven behouden en krijgen de status „zonder categorie“ (grijs); in het bevestigingsvenster wordt aangegeven
+   hoeveel vermeldingen hierdoor worden beïnvloed.
 
-## Creëer een mijlpaal
+## Een mijlpaal aanmaken
 
-1. Open in de planeditor het **Inzendingen**-tabblad. 
-2. Selecteer **Mijlpalen** boven de lijst en klik op **+**. De
-   de nieuwe inzending heet "New milestone" en staat midden in de preview
-   en in het eerste niveau; rechts verschijnt zijn vorm in het tabblad
-   **Generaal**, de titel is gemarkeerd. 
-3. Voer de **titel** in en optioneel een **beschrijving**. De
-   Beschrijving verschijnt in de details, regelafbrekingen worden behouden. 
-4. Selecteer onder **Classificatie** **Niveau** en **Categorie** — 
-   of "Zonder Categorie". 
-5. Voer de **datum** in onder **Datum**. 
-6. Vorm en kleur van de mijlpaal komen uit zijn categorie; zonder
-   categorie het verschijnt als een grijze diamant. Onder **Classificatie** is er een
-   Let op de vorm die hij nu draagt. 
-7. Stel **voorlopig** vast als de datum nog niet is vastgesteld. 
-8. Klik rechtsboven op **Solliciteren** zodra alle inzendingen zijn afgerond
-   zijn. 
+1. Open in de plan-editor het tabblad **Invoer**.
+2. Selecteer boven de lijst **Mijlpalen** en klik op **+**. De
+   nieuwe invoer heet „Nieuwe mijlpaal“, staat in het midden van het voorbeeld
+   en op het eerste niveau; rechts verschijnt het formulier in het tabblad
+   **Algemeen**, waarbij de titel is gemarkeerd.
+3. Voer de **Titel** in en eventueel een **Beschrijving**. De
+   beschrijving verschijnt in de details, regeleinden blijven behouden.
+4. Kies onder **Indeling** het **niveau** en de **categorie** —
+   of „Zonder categorie“.
+5. Voer onder **Datum** de **datum** in.
+6. De vorm en kleur van de mijlpaal zijn afhankelijk van de categorie; zonder
+   categorie verschijnt deze als een grijze ruit. Onder **Indeling** staat hierover een
+   opmerking met de vorm die de mijlpaal op dat moment heeft.
+7. Vink **Voorlopig** aan als de datum nog niet vaststaat.
+8. Klik rechtsboven op **Toepassen** zodra alle vermeldingen klaar
+   zijn.
 
-## Creëer een tijdsperiode
+## Een periode aanmaken
 
-1. Selecteer in het **Vermeldingen**-tabblad boven de lijst **Tijdsperioden** en klik
-   Klik op **+**. De nieuwe vermelding heet "Nieuwe periode". 
-2. Onder **Algemeen** voer je de **titel** in en optioneel een
-   **Beschrijving**, onder **Classificatie** **Niveau** en **Categorie**. 
-3. Voer **Datum** **Start** en **Einde** in onder **Datum**. Beide dagen
-   behoren tot die periode. 
-4. Zet **pijl aan het einde** als de periode voorbij het einde is.
-   gaat verder. 
-5. Stel **Tentatief** in als het begin of einde nog niet vaststaat. 
+1. Selecteer in het tabblad **Vermeldingen** boven de lijst **Periodes** en klik
+   op **+**. De nieuwe invoer heet „Nieuwe periode“.
+2. Voer onder **Algemeen** de **Titel** en eventueel een
+   **Beschrijving** in, en onder **Classificatie** **Niveau** en **Categorie**.
+3. Voer onder **Datum** **Begin** en **Einde** in. Beide dagen
+   maken deel uit van de periode.
+4. Vink **Pijl aan het einde** aan als de periode na het einde
+   doorloopt.
+5. Vink **Voorlopig** aan als de begin- of einddatum nog niet vaststaat.
 
-Een mijlpaal kan op elk moment worden gewijzigd naar een bepaalde periode onder **Art**
-en andersom. 
+Een mijlpaal kan onder **Type** op elk moment worden omgezet in een periode
+en omgekeerd.
 
-## Stel een deadline
+## Een peildatum aanmaken
 
-1. Selecteer in het **Vermeldingen**-tabblad boven de lijst **Belangrijke data** en klik
-   Je klikt op **+**. 
-2. Voer **Titel**, optionele **Beschrijving**, **Categorie** en
-   **Datum**. Er is hier geen niveau: Een afkapdatum geldt voor de
-   Het hele plan en loopt door alle niveaus. 
+1. Selecteer in het tabblad **Invoer** boven de lijst **Peildata** en klik
+   op **+**.
+2. Voer **Titel**, optioneel **Beschrijving**, **Categorie** en
+   **Datum** in. Er is hier geen niveau: een peildatum geldt voor het
+   gehele plan en loopt door alle niveaus heen.
 
-Als een mijlpaal of periode onder **Art** de uiterste datum wordt, geldt deze niet.
-Niveau. 
+Als een mijlpaal of periode onder **Type** een peildatum wordt, vervalt het
+niveau ervan.
 
-## Voeg de inzendingen samen tot een serie
+## Vermeldingen samenvoegen tot een reeks
 
-1. Selecteer in het tabblad **Binnenkomsten** de eerste vermelding in de serie en
-   open **Classificatie**. 
-2. Klik in het **Series**-veld. Het ontvouwt de reeks die het heeft in
-   van deze laag, elk met het aantal van zijn elementen. Tap
-   een nieuwe naam, bijvoorbeeld "TG Assist MY26", en selecteren
-   **Maak "TG Assist MY26" aan als een nieuwe serie** (of druk op Enter). 
-3. Selecteer de volgende vermelding van hetzelfde niveau en selecteer
-   **Serie** de serie die je net hebt gemaakt uit de lijst. 
-4. Herhaal stap 3 voor alle delen in de serie. **Geen serie** helemaal
-   bovenaan de lijst staat een item; Esc vertegenwoordigt de
-   vorige waarde. 
+1. Selecteer in het tabblad **Vermeldingen** de eerste vermelding van de reeks en
+   open **Indeling**.
+2. Klik in het veld **Reeks**. Er verschijnen de reeksen die al in
+   dit niveau al bestaan, telkens met het aantal vermeldingen. Typ
+   een nieuwe naam, bijvoorbeeld „TG Assist MY26“, en selecteer
+   **„TG Assist MY26“ als nieuwe reeks aanmaken** (of druk op Enter).
+3. Selecteer het volgende item op hetzelfde niveau en kies onder
+   **Reeks** de zojuist aangemaakte reeks uit de lijst.
+4. Herhaal stap 3 voor alle items van de reeks. **Geen reeks** helemaal
+   bovenaan de lijst verwijdert een item; Esc herstelt de
+   vorige waarde.
 
-Series zijn slechts geldig binnen één niveau. Hoofd- en kleine letters
-geen rol als ze weer gevonden worden, koppeltekens en accenten doen: "TG Assist
-MY26" en "TG-Assist MY26" zijn twee verschillende series. 
+Series gelden alleen binnen één niveau. Hoofdletters en kleine letters spelen
+bij het terugvinden geen rol, maar koppeltekens en accenten wel: „TG Assist
+MY26“ en „TG-Assist MY26“ zijn twee verschillende series.
 
-## Stel een afhankelijkheid in
+## Een afhankelijkheid instellen
 
-1. Selecteer in het tabblad **Vermeldingen** de invoer die door een ander is aangemaakt
-   (de opvolger), en open **Afhankelijkheden**. 
-2. Onder **Hangt ervan** af, zoek en selecteer de voorganger. Meervoudig
-   Voorgangers zijn mogelijk. 
-3. Op de pagina verbindt een stippellijn met een pijl nu de
-   Voorganger met opvolger. 
+1. Selecteer in het tabblad **Vermeldingen** de vermelding die afhankelijk is van een andere
+   (de opvolger) en open **Afhankelijkheden**.
+2. Zoek en selecteer onder **Afhankelijk van** de voorganger. Meerdere
+   voorgangers zijn mogelijk.
+3. Op de pagina verbindt nu een stippellijn met een pijl de
+   voorganger met de opvolger.
 
-Afhankelijkheden bestaan alleen tussen mijlpalen en tijdsperioden, niet voor mijlpalen
-deadlines. Als een item wordt verwijderd, verdwijnt het ook uit alle
-Afhankelijkheden. 
+Afhankelijkheden bestaan alleen tussen mijlpalen en tijdsperioden, niet voor
+peildata. Als een item wordt verwijderd, verdwijnt het ook uit alle
+afhankelijkheden.
 
-## Link naar een pagina of bericht
+## Een pagina of bericht koppelen
 
-Per bericht kan één Staffbase-pagina of nieuwsbericht worden gelinkt — 
-bijvoorbeeld de pagina met alle informatie over een software-update. Het plan blijft de
-Overzicht, de details liggen toch waar ze worden bewaard. 
+Per item kan een Staffbase-pagina of een nieuwsbericht worden gekoppeld —
+bijvoorbeeld de pagina met alle informatie over een software-update. Het plan blijft het
+overzicht, de details staan daar waar ze sowieso worden bijgehouden.
 
-1. Selecteer de vermelding in het **Inszeneringen**-tabblad en open de
-   Tab **Inhoud**. 
-2. Selecteer onder **Link** **Pagina** of **Nieuwsbericht**. 
-3. Selecteer deze voor een pagina onder **Pagina**. Voor een bericht
-   Selecteer het **kanaal**, en dan het **post**. Concepten zijn bij
-   "(concept)"; ze kunnen al gekoppeld zijn, lezers
-   maar zie ze pas na publicatie. 
-4. **Openen in nieuw tabblad** toont wat gelinkt is. 
+1. Selecteer het item in het tabblad **Items** en open het
+   tabblad **Inhoud**.
+2. Selecteer onder **Koppeling** **Pagina** of **Nieuwsbericht**.
+3. Bij een pagina selecteert u deze onder **Pagina**. Bij een bericht
+   selecteert u eerst het **Kanaal** en vervolgens het **Bericht**. Concepten zijn gemarkeerd met
+   „(Concept)“; u kunt er al naar linken, maar lezers
+   ze pas na publicatie te zien.
+4. **In nieuw tabblad openen** laat zien wat er is gekoppeld.
 
-Als de pagina of post nog niet bestaat, maak deze dan hier aan: 
+Bestaat de pagina of het bericht nog niet, maak deze dan hier direct aan:
 
-1. Klik onder de selectie op **Nieuwe pagina ...** — of op een
-   Plaats, nadat je het **kanaal** hebt geselecteerd, klik je op **Nieuwe post ...**. 
-2. Boven de planeditor opent de Staffbase-editor. Zet de pagina in
-   daar (**Aanmaken**) of sla het bericht op als concept. 
-3. Zodra Staffbase is opgeslagen, wordt de inhoud gekoppeld aan de invoer; 
-   bovenaan staat "Linked: ...". Je kunt de Staffbase-editor gebruiken om
-   Ga door. **Klaar** sluit het. 
+1. Klik onder de selectie op **Nieuwe pagina …** — of bij een
+   bericht, nadat je het **kanaal** hebt gekozen, op **Nieuw bericht …**.
+2. Boven de planningseditor opent de Staffbase-editor. Maak de pagina
+   daar aan (**Aanmaken**) of sla het bericht op als concept.
+3. Zodra Staffbase heeft opgeslagen, is de inhoud aan het item gekoppeld;
+   bovenaan staat dan „Gekoppeld: …“. U kunt in de Staffbase-editor
+   verder schrijven. Met **Klaar** sluit u deze.
 
-Sluit af met **Annuleren** of Esc voordat er iets wordt gekoppeld, de
-Redacteur van: Heeft hij in de tussentijd precies één nieuwe pagina of een nieuwe
-bijdrage gevonden door jou, biedt hij aan ze te verbinden; anders vraagt hij, 
-of de creatie echt afgebroken moet worden — wat nog steeds het geval is
-is verloren. 
+Als u met **Annuleren** of Esc sluit voordat er iets is gekoppeld, vraagt de
+editor: Als hij in de tussentijd precies één nieuwe pagina of één nieuw
+bericht van u gevonden, biedt hij aan om deze te koppelen; anders vraagt hij of
+het aanmaken echt moet worden afgebroken — wat in de Staffbase-editor nog
+niet is opgeslagen, gaat daarbij verloren.
 
-Onder de link staan de **Bijlagen**: Bestanden en afbeeldingen van de
-Mediabibliotheek van Staffbase, tot tien per ingang. 
+Onder de koppeling staan de **bijlagen**: bestanden en afbeeldingen uit de
+mediabibliotheek van Staffbase, maximaal tien per item.
 
-1. Klik in het tabblad **Content** op **Voeg bestand of afbeelding toe...** en
-   selecteer een bestand in de Mediabibliotheek — of download een bestand uit de Mediabibliotheek
-   Nieuwe high. 
-2. Indien nodig, geef het een **label**; anders staat er de
-   Bestandsnaam. 
-3. Met **↑** en **↓** verander je de volgorde, **×** verwijdert de bijvoegsel. 
+1. Klik in het tabblad **Inhoud** op **Bestand of afbeelding toevoegen …** en
+   selecteer een bestand in de mediabibliotheek — of upload daar een
+   nieuw bestand.
+2. Geef het indien nodig een **bijschrift**; anders staat daar de
+   bestandsnaam.
+3. Met **↑** en **↓** wijzigt u de volgorde, **×** verwijdert de bijlage.
 
-Bijlagen blijven achter de registratie: Lezers openen ze met hun eigen
-Rechten, zoals elk bestand uit de mediabibliotheek. 
+Bijlagen blijven behouden na het inloggen: lezers openen ze met hun eigen
+rechten, net als elk bestand uit de mediabibliotheek.
 
-Op de pagina is het bijschrift van een gekoppelde vermelding onderstreept. 
-Door erop te klikken opent je de pagina of post in een venster boven de
-plan, in plaats van de details; **Openen in nieuw tabblad** staat altijd bovenaan, de
-Bijlagen staan ernaast. In het geval van een item zonder gekoppelde inhoud, de
-beschrijft zijn gehechtheden. Met
-**Link: Geen** link weer los. 
+Op de pagina is het bijschrift van een gekoppeld bericht onderstreept.
+Als je erop klikt, wordt de pagina of het bericht geopend in een venster boven het
+plan, in plaats van de details; **In nieuw tabblad openen** staat daar altijd bovenaan, de
+bijlagen staan ernaast. Bij een item zonder gekoppelde inhoud tonen de
+details de bijlagen ervan. Met
+**Koppeling: Geen** maakt u de koppeling weer ongedaan.
 
-## Dupliceer en verwijder vermeldingen
+## Vermeldingen dupliceren en verwijderen
 
-1. Selecteer de vermelding in het **Inzendingen**-tabblad. 
-2. **Duplicaat** (rechtsboven op het formulier) maakt een kopie die je kunt
-   Pas je dan aan. 
-3. **Verwijderen** (ernaast) vraagt om en verwijdert vervolgens de invoer en alles
-   afhankelijkheden die ernaar wijzen. Dezelfde zoekopdracht verschijnt op
-   Prullenbak in de lijst. Daarna wordt de volgende vermelding in de lijst geselecteerd. 
+1. Selecteer de vermelding in het tabblad **Vermeldingen**.
+2. Met **Dupliceren** (rechtsboven in het formulier) maakt u een kopie die u
+   vervolgens kunt aanpassen.
+3. **Verwijderen** (ernaast) vraagt om bevestiging en verwijdert vervolgens het item en alle
+   afhankelijkheden die ernaar verwijzen. Dezelfde bevestigingsvraag verschijnt bij de
+   prullenbak in de lijst. Daarna wordt het volgende item in de lijst geselecteerd.
 
-## Zet het huis in
+## De startweergave instellen
 
-Zonder startweergave toont de widget het hele plan bij het laden. Moet het
-toon in plaats daarvan een bepaald fragment, bijvoorbeeld de komende twee jaar: 
+Zonder startweergave toont de widget bij het laden het volledige plan. Als u
+in plaats daarvan een bepaald fragment wilt weergeven, bijvoorbeeld de komende twee jaar:
 
-1. Zoom in en pan de **Preview** in de Plan Editor totdat de
-   is te zien in de gewenste sectie. 
-2. Klik op **Dit gedeelte als startweergave**. Opslaan
-   Op de maand. 
-3. Om het hele plan opnieuw te tonen, klik op **Startweergave
-   Verwijder het**. 
-4. **Aanbrengen**, opslaan, in de preview van de pagina kijken. 
+1. Zoom in en verschuif het **voorbeeld** in de plan-editor totdat het
+   gewenste gedeelte zichtbaar is.
+2. Klik op **Dit gedeelte als startweergave**. Dit wordt
+   per maand opgeslagen.
+3. Om weer het volledige plan weer te geven, klikt u op **Startweergave
+   verwijderen**.
+4. **Toepassen**, opslaan, controleren in het voorbeeld van de pagina.
 
-Lezers kunnen op elk moment inzoomen vanuit het startscherm of
-**Laat alles zien** bekijk het volledige plan. 
+Lezers kunnen vanuit het startscherm op elk moment verder inzoomen of met
+**Alles weergeven** het volledige plan bekijken.
 
-## Verander daarna
+## Achteraf wijzigen
 
-1. Open de instellingen van de widget opnieuw. De Plan Editor toont de
-   Opgeslagen plan. 
-2. Selecteer de vermelding in de lijst van het **Vermeldingen**-tabblad of door
-   één klik in de preview en het formulier wijzigen. Eén klik in
-   van de preview schakelt naar het **Invoer**-tabblad en haalt de
-   Vermelding in de lijst in zicht. 
-3. Klik rechtsboven op **Apply** en sla de pagina op. 
-   De datum na "Status:" wordt ingesteld op de dag van de wijziging. 
+1. Open de instellingen van de widget opnieuw. De plan-editor toont het
+   opgeslagen plan.
+2. Selecteer het item in de lijst op het tabblad **Items** of door
+   erop te klikken in het voorbeeld en wijzig de inhoud ervan. Als u in
+   het voorbeeld klikt, schakelt u over naar het tabblad **Items** en wordt het
+   item in de lijst in beeld.
+3. Klik rechtsboven op **Toepassen** en sla de pagina op.
+   De datum achter „Stand:“ wordt daarbij ingesteld op de dag van de wijziging.
 
-Zolang er nog geen wijzigingen zijn doorgevoerd, zegt de headerbalk
-"Wijzigingen niet opgeslagen". Klik op **Annuleren** om alle wijzigingen weg te gooien
-sinds de laatste keer dat de planeditor werd geopend; vraagt de editor van tevoren. 
+Zolang wijzigingen nog niet zijn opgeslagen, staat er in de kopbalk
+„Ongeslagen wijzigingen“. Met **Annuleren** verwijdert u alle wijzigingen
+sinds de laatste keer dat u de plan-editor hebt geopend; de editor vraagt eerst om bevestiging.
 
-## Download het plan als Excel-spreadsheet (als lezer)
+## Het plan als Excel-tabel downloaden (als lezer)
 
-1. Filter en zoom het plan in zodat je kunt zien wat je nodig hebt. 
-2. Klik **Exporteren** in de werkbalk. Op narrow
-   schermen, de knop staat in het menu **Meer**. 
-3. Kies de scope: 
-   - **Huidige weergave** — alleen de vermeldingen in de zichtbare sectie die
-     Voldoen aan alle actieve filters; als de zoekfunctie actief is, alleen de treffers. 
-   - **Volledig plan** — alle inzendingen, zonder filters en secties. 
+1. Filter en zoom het plan zo in dat u ziet wat u nodig hebt.
+2. Klik in de werkbalk op **Exporteren**. Op smalle
+   schermen staat de knop in het menu **Meer**.
+3. Kies de omvang:
+   - **Huidige weergave** — alleen de vermeldingen in het zichtbare gedeelte die
+     aan alle actieve filters voldoen; bij een actieve zoekopdracht alleen de treffers.
+   - **Volledig plan** — alle vermeldingen, zonder filters en uitsnede.
 
-   Achter elke verkiezing staat het aantal vermeldingen dat het bevat. 
-4. Klik op **Excel downloaden**. Het bestand heet als de
-   Kop van het plan met de datum van vandaag, zonder kop
-   'Projektplan_JJJJ-MM-TT.xlsx'. 
+   Achter elke keuze staat vermeld hoeveel vermeldingen deze omvat.
+4. Klik op **Excel downloaden**. Het bestand krijgt dezelfde naam als de
+   koptekst van het plan, met de datum van vandaag, zonder koptekst
+   `Projectplan_JJJJ-MM-TT.xlsx`.
 
-Het bestand bevat het blad **Planning** met één regel per invoer (niveau, 
-Type, Titel, Categorie, Start, Einde, Serie, Voorloper, Voorganger, 
-beschrijving) en het blad **Info** met titel, status, exportdatum, scope en
-De actieve filters. 
+Het bestand bevat het blad **Planning** met één rij per item (niveau,
+type, titel, categorie, begin, einde, reeks, voorlopig, voorganger,
+beschrijving) en het blad **Info** met titel, status, exportdatum, omvang en
+de actieve filters.
 
 ## Als iets niet werkt
 
-1. **De widget toont niets op de pagina.** Het abonnement heeft er nog geen.
-   Invoer. Open Instellingen en stel er minstens één in
-   mijlpaal, tijdsperiode of deadline. 
-2. **De planeditor opent niet.** Onder **Plan** is er maar één
-   Tekstvak. Sluit en open de instellingen opnieuw. Verander
-   Verander de inhoud van het tekstveld niet met de hand — het is de technische
-   Ruwe versie van het plan. 
-3. **Bovenaan de planeditor staat dat de vermeldingen niet gelezen konden worden.** 
-   Zie de FAQ voor dit rapport. 
-4. **Lezers kunnen de knop "Exporteren" niet vinden.** Controleer of
-   **Excel Aanbied Export** is ingeschakeld.
+1. **De widget geeft niets weer op de pagina.** Het plan heeft nog geen
+   vermelding. Open de instellingen en maak ten minste één
+   mijlpaal, periode of streefdatum aan.
+2. **De plan-editor opent niet.** Onder **Plan** staat dan alleen een
+   tekstveld. Sluit de instellingen en open ze opnieuw. Wijzig
+   de inhoud van het tekstveld niet handmatig — dit is de technische
+   ruwe versie van het plan.
+3. **Bovenaan in de plan-editor staat dat items niet konden worden gelezen.**
+   Zie de FAQ over deze melding.
+4. **Lezers kunnen de knop „Exporteren“ niet vinden.** Controleer of
+   **Excel-export aanbieden** is ingeschakeld.

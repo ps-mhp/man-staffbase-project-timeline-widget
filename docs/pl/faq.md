@@ -1,240 +1,240 @@
 # FAQ
 
-**Pytanie:** Na stronie jest napisane "Brak wpisów dla tych filtrów". 
+**Pytanie:** Na stronie widnieje komunikat „Brak wpisów dla tych filtrów”.
 
-Odpowiedź: Wybrane filtry nie pozostawiają żadnego wpisu — na przykład, ponieważ wszystkie
-Kategorie są ukryte w legendzie, poziom jest odznaczany lub
-Filtr kropki nie dotyka żadnego wpisu. Kliknij **Filtr
-reset**; wtedy cały plan można zobaczyć ponownie. Filtry dotyczą tylko do
-Podczas jej własnej wizyty, inni czytelnicy widzą plan bez filtrów. 
+Odpowiedź: Wybrane filtry nie pozostawiają żadnych wpisów — na przykład dlatego, że wszystkie
+kategorie w legendzie są ukryte, odznaczono jedną warstwę lub
+filtr okresu nie obejmuje żadnego wpisu. Kliknij **Zresetuj
+filtry**; wówczas ponownie wyświetli się cały plan. Filtry dotyczą wyłącznie
+Twojej własnej wizyty, inni czytelnicy widzą plan bez filtrów.
 
-**Pytanie:** Podczas eksportu: "Eksport się nie powiódł. Proszę o ponowny eksport
-." 
+**Pytanie:** Podczas eksportu pojawia się komunikat „Eksport nie powiódł się. Proszę spróbować
+ponownie”.
 
-Odpowiedź: Pliku Excel nie udało się wygenerować. Narzędzie do tego jest
-ładowano tylko po kliknięciu **Eksport**; często połączenie było
-Chwilowo przerwane w tym momencie. Kliknij ponownie **Excel.
-Pobierz **. Jeśli nie działa wielokrotnie, wczytaj stronę ponownie. 
+Odpowiedź: Nie udało się utworzyć pliku Excel. Narzędzie do tego celu jest
+ładowane dopiero po kliknięciu przycisku **Eksportuj**; często w tym momencie
+nastąpiła krótka przerwa w połączeniu. Kliknij ponownie **Pobierz plik Excel**.
+Jeśli nadal nie działa, odśwież stronę.
 
-**Pytanie:** Na górze edytora planu jest napisane "N wpisów nie można odczytać
-i giną podczas zapisywania." 
+**Pytanie:** U góry w edytorze planu widnieje komunikat „N wpisów nie udało się odczytać
+i zostaną utracone podczas zapisywania.”
 
-Odpowiedź: W zapisanym planie są wpisy, których widżet nie ma
-— na przykład bez tytułu, z nieważną datą lub w warstwie, która
-już nie istnieje. Takie wpisy są już widoczne na opublikowanej stronie
-Nie. Zachowaj plan, znikną na zawsze. Chcesz
-, kliknij **Anuluj** zamiast zastosować i zastosować
-Do osoby, która ostatnio zmieniła plan — zwykle treść była
-ręcznie z pola tekstowego **Plan**. 
+Odpowiedź: W zapisanym planie znajdują się wpisy, z którymi widżet nie
+wie, co zrobić — na przykład bez tytułu, z nieprawidłową datą lub na poziomie, który
+już nie istnieje. Takie wpisy nie są wyświetlane nawet na opublikowanej stronie.
+Po zapisaniu planu znikną one na stałe. Jeśli chcesz je
+uratować, kliknij **Anuluj** zamiast zatwierdzać zmiany i skontaktuj się
+z osobą, która ostatnio edytowała plan — zazwyczaj treść
+pola tekstowego **Plan** została edytowana ręcznie.
 
-**Pytanie:** Kliknięcie w powiązany wpis pokazuje "Ten post to
-niedostępny lub niewydany." 
+**Pytanie:** Po kliknięciu na link do wpisu pojawia się komunikat „Ten wpis jest
+niedostępny lub nie został opublikowany”.
 
-Odpowiedź: Okno ładuje post z twoimi własnymi prawami. Wiadomość
-pojawia się, jeśli post nadal jest szkicą, został usunięty lub znajduje się w
-kanał, którego nie wolno Ci widzieć. Opublikuj post lub 
-Sprawdź widoczność kanału. **Otwórz w nowej karcie** pokazuje, co
-Sama Staffbase o tym mówi. 
+Odpowiedź: Okno ładuje wpis zgodnie z Twoimi uprawnieniami. Komunikat
+pojawia się, gdy wpis jest nadal w fazie szkicu, został usunięty lub znajduje się w
+kanale, do którego nie masz dostępu. Opublikuj wpis lub
+sprawdź widoczność kanału. **Otwórz w nowej karcie** pokazuje, co
+na ten temat mówi sama platforma Staffbase.
 
-**Pytanie:** Stworzyłem stronę z **Nową stroną ...**, ale na górze jest napisane
-a nie "Linked: ...". 
+**Pytanie:** Utworzyłem stronę za pomocą opcji **Nowa strona…**, ale u góry nie ma
+napisu „Powiązane: …”.
 
-Odpowiedź: Redaktor rozpoznaje nową stronę po tym, że Staffbase została nazwana od
-**Create** przełącza się na to (w postie: po zapisaniu). Dopóki
-Otwarty jest tylko dialog tworzenia, na razie nie ma nic do podlinkowania. Jeśli masz
-Edytor staffbase na inną, już istniejącą stronę,
-celowo ich nie łączy. Zakończ się **Anuluj**: Jeśli
-Edytuję dokładnie jedną stronę, którą stworzyłeś od momentu otwarcia, oferuje ją
-aby linkować. W przeciwnym razie wybierz nową stronę w **Strona**. 
+Odpowiedź: Edytor rozpoznaje nową stronę po tym, że Staffbase przechodzi do niej po
+**utworzeniu** (w przypadku wpisu: po zapisaniu). Dopóki
+otwarte jest tylko okno dialogowe tworzenia, nie ma jeszcze czego łączyć. Jeśli w
+edytorze Staffbase kliknąłeś, aby przejść do innej, już istniejącej strony,
+nie zostanie ona celowo powiązana. Zamknij okno, klikając **Anuluj**: jeśli
+edytor znajdzie dokładnie jedną stronę, którą utworzyłeś od momentu otwarcia okna, zaproponuje ją
+do powiązania. W przeciwnym razie wybierz nową stronę w sekcji **Strona**.
 
-**Pytanie:** Załącznik nie może być otwarty. 
+**Pytanie:** Nie można otworzyć załącznika.
 
-Odpowiedź: Załączniki pochodzą z biblioteki mediów Staffbase i są wysyłane razem
-Prawa osoby czytającej. Czy plik został tam usunięty, czy tak jest.
-niewidoczne dla tej osoby, otwarcie się nie udaje. Sprawdź
-pliku w Media Library i ponownie dołącz, jeśli zajdzie taka potrzeba. 
+Odpowiedź: Załączniki pochodzą z biblioteki multimediów Staffbase i są ładowane z
+uprawnieniami osoby czytającej. Jeśli plik został tam usunięty lub jest
+niewidoczny dla tej osoby, otwarcie zakończy się niepowodzeniem. Sprawdź
+plik w bibliotece multimediów i w razie potrzeby dołącz go ponownie.
 
-**Pytanie:** Na górze edytora planu jest napisane "N nie potrafił odczytać skrótów
-i są tracone, gdy zostaną zbawione." 
+**Pytanie:** U góry w edytorze planu widnieje komunikat „Nie udało się odczytać N odnośników
+i zostaną one utracone podczas zapisywania”.
 
-Odpowiedź: W zapisanym planie znajduje się link lub
-załącznik, z którym widżet nie może nic zrobić — zwykle dlatego, że treść
-pola tekstowego **Plan** zostało edytowane ręcznie. Sam wpis pozostał
-, jedynie link jest pomijany podczas zapisywania. Link
-Strona lub post w zakładce **Content**. 
+Odpowiedź: W zapisanym planie przy jednym z wpisów znajduje się odnośnik lub
+załącznik, z którym widżet nie może nic zrobić — zazwyczaj dlatego, że zawartość
+pola tekstowego **Plan** została edytowana ręcznie. Sam wpis pozostaje
+zachowany, jedynie link jest usuwany podczas zapisywania. Proszę ponownie podłączyć
+stronę lub wpis w zakładce **Treść**.
 
-**Pytanie:** Podczas obracania kółka pojawia się "Ctrl/⌘ pressed to zoom"
-". 
+**Pytanie:** Podczas obracania kółkiem myszy pojawia się komunikat „Aby powiększyć, przytrzymaj klawisz Ctrl/⌘
+”.
 
-Odpowiedź: Sama kółko myszy przewija stronę, tak jak wszędzie indziej — poza tym
-Podczas przewijania utknąłeś na mapie. Aby powiększyć, przytrzymaj klawisz Ctrl
-(Mac: ⌘) i przekręcę kółko myszy. Komunikat pojawia się tylko
-Raz. 
+Odpowiedź: Samo kółko myszy przewija stronę, tak jak wszędzie indziej — w przeciwnym razie
+podczas przewijania utknąłbyś w planie. Aby powiększyć, należy przytrzymać klawisz Ctrl
+(Mac: ⌘) i jednocześnie obracać kółkiem myszy. Komunikat pojawia się tylko
+raz.
 
-**Pytanie:** Edytor planu mówi: "Podgląd pojawia się razem z pierwszym
-Wejście." 
+**Pytanie:** W edytorze planu widnieje komunikat „Podgląd pojawi się wraz z pierwszym
+wpisem”.
 
-Odpowiedź: Plan nie ma jeszcze wpisu, więc nie ma nic do pokazania. 
-W zakładce **Wpisy** powyżej listy wybierz typ i użyj
-**+** wpis wpis. 
+Odpowiedź: Plan nie ma jeszcze żadnego wpisu, dlatego nie ma czego wyświetlać.
+W zakładce **Wpisy** nad listą wybierz typ i utwórz wpis za pomocą
+przycisku **+**.
 
-**Pytanie:** Edytor planów obejmuje cały ekran, włącznie z paskiem
-studia. 
+**Pytanie:** Edytor planu zasłania cały ekran, w tym pasek
+studia.
 
-Odpowiedź: To jest celowe: podgląd, lista i formularz potrzebują miejsca. Ty
-wyjdź z edytora w prawym górnym rogu przez **Zastosuj** lub **Anuluj**; następnie
-ponownie można zobaczyć dialog konfiguracyjny, a **Edytuj plan ...** otwiera się
-Znowu redaktor. 
+Odpowiedź: Jest to zamierzone: podgląd, lista i formularz wymagają miejsca. Można
+opuścić edytor w prawym górnym rogu, klikając **Zastosuj** lub **Anuluj**; po tym
+ponownie pojawi się okno dialogowe konfiguracji, a opcja **Edytuj plan…** ponownie
+otworzy edytor.
 
-**Pytanie:** Zapowiedź zajmuje dla mnie za dużo miejsca. 
+**Pytanie:** Podgląd zajmuje mi zbyt dużo miejsca.
 
-Odpowiedź: Przeciągnij wąski pasek poniżej podglądu, albo
-całkowicie zwij podgląd, klikając na **Podgląd**. Podobnie,
-Lista zgłoszeń może być wyświetlana na pasku pomiędzy listą a formularzem
-węższe lub szersze. Podwójne kliknięcie na pasek ustawia
-oryginalny rozmiar. Przeglądarka zapamiętuje rozmiary; w
-Prywatne okna, specyfikacje ponownie obowiązują przy następnym otwarciu. 
+Odpowiedź: Przeciągnij wąski pasek pod podglądem w górę lub
+całkowicie zwinąć podgląd, klikając **Podgląd**. Podobnie
+listę wpisów można przeciągnąć w pasku między listą a formularzem,
+zmniejszając lub zwiększając jej szerokość. Podwójne kliknięcie na pasku przywraca
+pierwotny rozmiar. Przeglądarka zapamiętuje rozmiary; w
+oknie prywatnym przy następnym otwarciu ponownie obowiązują ustawienia domyślne.
 
-**Pytanie:** Gdzie czytelnicy dowiadują się, co oznaczają postacie z planu? 
+**Pytanie:** Gdzie czytelnicy mogą dowiedzieć się, co oznaczają symbole na planie?
 
-**Odpowiedź:** Używając przycisku **Pomoc** na pasku narzędzi (na wąskim poziomie
-ekrany na **?**). Zakładka **Legend** pokazuje każdą postać jako małą
-Przykładka z wyjaśnieniem i kategoriami tego planu; zakładka **Operacja** 
-Wyjaśnia powiększanie, przesuwanie, filtry i wszystkie skróty klawiaturowe. Jeśli ostrość jest w
-Plan, otwiera też przycisk **?** i pomoc. 
+**Odpowiedź:** Za pomocą przycisku **Pomoc** na pasku narzędzi (na wąskich
+ekranach jest to symbol **?**). Zakładka **Legenda** pokazuje każdy symbol jako mały
+wzór wraz z objaśnieniem oraz kategorie tego planu; zakładka **Obsługa**
+wyjaśnia powiększanie, przesuwanie, filtrowanie oraz wszystkie skróty klawiszowe. Jeśli kursor znajduje się na
+mapie, klawisz **?** również otwiera pomoc.
 
-**Pytanie:** Jak zrobić zoom? 
+**Pytanie:** Jak powiększyć widok?
 
-Odpowiedź: na cztery sposoby: za pomocą przycisków **−** i **+** w
-paska narzędzi; z naciskiem klawisza Ctrl (Mac: ⌘) i kółkiem myszy, potem
-Plan przewija się wokół miejsca pod wskaźnikiem myszy; z dwoma palcami na
-touchpad lub ekran dotykowy; lub klawiatura przez **+** i **−**, gdy tylko
-Plan ma cel. **Pokaż wszystko** (klawisz **0**) pokazuje całość
-Plan. Sekcję można przesunąć, przeciągając myszką,
-Przesuń się i przesuń kółko myszy lub przez ramę w przeglądzie poniżej arkusza. 
+Odpowiedź: Na cztery sposoby: za pomocą przycisków **−** i **+** na
+pasku narzędzi; przytrzymując klawisz Ctrl (Mac: ⌘) i obracając kółkiem myszy, co powoduje
+powiększenie planu w miejscu pod kursorem myszy; dwoma palcami na
+trackpada lub ekranu dotykowego; albo za pomocą klawiatury przyciskami **+** i **−**, gdy tylko
+plan ma fokus. Przycisk **Pokaż wszystko** (klawisz **0**) ponownie wyświetla cały
+plan. Wycinek można przesuwać, przeciągając go myszą, za pomocą
+klawisza Shift i kółka myszy lub za pomocą ramki w podglądzie pod planem.
 
-**Pytanie:** Dlaczego nie widzę przycisku "Eksport"? 
+**Pytanie:** Dlaczego nie widzę przycisku „Eksportuj”?
 
-Odpowiedź: Albo **Excel Export jest ustawiony w ustawieniach widgetu
-lub ekran jest wąski (mniej niż 768 pikseli)
-szerokość): wtedy **Eksport** znajduje się w menu **Więcej** na pasku narzędzi. 
+Odpowiedź: Albo w ustawieniach widżetu opcja **Oferuj eksport do Excela**
+jest wyłączona, albo ekran jest wąski (szerokość poniżej 768 pikseli
+): w takim przypadku przycisk **Eksportuj** znajduje się w menu **Więcej** na pasku narzędzi.
 
-**Pytanie:** Gdzie ustawić kształt kamienia milowego? 
+**Pytanie:** Gdzie ustawiam kształt kamienia milowego?
 
-Odpowiedź: według kategorii, a nie według kamienia milowego: w zakładce **Kategorie** 
-za pomocą przycisku kształtu obok pola koloru. Możesz wybrać między diamentem, trójkątem, trójkątem z czubkiem w dół, kwadratem, kołem, sześciokątem, gwiazdą lub krzyżem. Wszystkie
-Kamienie milowe w danej kategorii mają ten sam kształt i kolor — to właśnie można to rozpoznać
-kategoria na osi czasu nawet bez koloru. Kamienie milowe bez kategorii
-wygląda jak szary diament. 
+Odpowiedź: W jego kategorii, a nie w samym kamieniu milowym: w zakładce **Kategorie**
+za pomocą przycisku kształtu obok pola koloru. Do wyboru są: romb, trójkąt, trójkąt z wierzchołkiem skierowanym w dół, kwadrat, okrąg, sześciokąt, gwiazdka lub krzyżyk. Wszystkie
+kamienie milowe w danej kategorii mają ten sam kształt i kolor — dzięki temu można rozpoznać
+kategorię na osi czasu nawet bez koloru. Kamienie milowe bez kategorii
+wyświetlają się jako szary romb.
 
-**Pytanie:** Co oznacza przerywana ramka lub kształt, który jest używany wyłącznie jako
-Konspekt? 
+**Pytanie:** Co oznacza przerywana krawędź lub kształt, który pojawia się tylko jako
+kontur?
 
-Odpowiedź: Wpis jest oznaczony jako **wstępny** — jego data wciąż jest oczekiwana
-Nie naprawione, w szablonie było napisane "do ustalenia". Wtedy pojawiają się tylko kamienie milowe
-W zagłębieniu okresy wypełniały się jaśniej, z przerywaną ramką. W szczegółach
-Jest też napisane "tymczasowe". 
+Odpowiedź: Wpis jest oznaczony jako **wstępny** — jego termin nie jest jeszcze
+ustalony, w szablonie widniało w tym miejscu „tbd”. Kamienie milowe pojawiają się wtedy tylko
+jako kontur, a okresy są wypełnione jaśniejszym kolorem z przerywaną krawędzią. W szczegółach
+znajduje się dodatkowo adnotacja „wstępny”.
 
-**Pytanie:** Co oznaczają te przerywane linie? 
+**Pytanie:** Co oznaczają linie przerywane?
 
-Odpowiedź: Są dwa typy. **skośny lub poziomy z przerwanym przerywaniem
-Linia ze strzałką** jest zależnością: prowadzi od poprzednika do
-Następca. **Pionowa linia przerywana** przez wszystkie warstwy, na dole
-Z trójkątem i tytułem to termin obowiązujący do całego planu
-ma zastosowanie. 
+Odpowiedź: Istnieją dwa rodzaje. **Ukośna lub pozioma linia przerywana
+z strzałką** oznacza zależność: prowadzi od poprzednika do
+następcy. **Pionowa linia przerywana** przebiegająca przez wszystkie warstwy, na dole
+z trójkątem i tytułem, oznacza termin, który dotyczy całego planu
+.
 
-**Pytanie:** Zależność zniknęła. 
+**Pytanie:** Zniknęła zależność.
 
-Odpowiedź: Linia pojawia się tylko wtedy, gdy oba końce są widoczne. Jeśli
-Poprzednik lub następca ukryty przez filtr lub jego warstwę
-odznaczone, linia jest nieobecna. Jeśli jeden z dwóch wpisów został usunięty,
-Zależność usunięta na dobre. 
+Odpowiedź: Linia pojawia się tylko wtedy, gdy widoczne są oba jej końce. Jeśli
+poprzednik lub następnik jest ukryty przez filtr lub jego poziom
+został odznaczony, linia nie jest widoczna. Jeśli jeden z tych dwóch wpisów został usunięty,
+zależność zostaje trwale usunięta.
 
-**Pytanie:** Wpisy z serii nie są w jednej linii. 
+**Pytanie:** Wpisy z tej samej serii nie znajdują się w jednym wierszu.
 
-Odpowiedź: Seria jest ważna tylko w jednym poziomie, a nazwa musi być dokładnie
-— "TG Assist MY26" i "TG-Assist MY26" to dwie serie. 
-W formie każdego wpisu sprawdź pole **Seria** i jego **poziom**. 
+Odpowiedź: Seria obowiązuje tylko w ramach jednej warstwy, a nazwa musi być dokładnie
+zgodna — „TG Assist MY26” i „TG-Assist MY26” to dwie różne serie.
+Sprawdź w formularzu każdego wpisu pole **Seria** i jego **Poziom**.
 
-**Pytanie:** Linia Today nie jest widoczna. 
+**Pytanie:** Linia „Dzisiaj” nie jest widoczna.
 
-Odpowiedź: Sprawdź, czy **Linia Pokaż Dziś** jest włączona. Linia
-pojawia się także tylko wtedy, gdy Today znajduje się w widocznej części; 
-w przypadku planu, który zaczyna się całkowicie w przyszłości, dzieje się dopiero po
-lub z **Pokaż wszystko** — jeśli w ogóle w
-Koniec planu. 
+Odpowiedź: Sprawdź, czy opcja **Pokaż linię „Dzisiaj”** jest włączona. Linia ta
+pojawia się ponadto tylko wtedy, gdy dzisiejszy dzień znajduje się w widocznym fragmencie;
+w przypadku planu, który rozpoczyna się całkowicie w przyszłości, jest ona widoczna dopiero po
+przesunięciu lub po użyciu opcji **Pokaż wszystko** — o ile dzisiejszy dzień w ogóle mieści się w
+okresie planu.
 
-**Pytanie:** Czy mogę przesuwać wpisy w osi czasu za pomocą myszy? 
+**Pytanie:** Czy mogę przesuwać wpisy na osi czasu za pomocą myszki?
 
-Odpowiedź: Nie. Spotkania są tworzone i zmieniane w formie edytora planu. 
-Oznacza to, że żaden wpis nie może zostać przypadkowo usunięty podczas powiększania lub przesuwania widoku.
-Stracił wizytę. 
+Odpowiedź: Nie. Terminy są tworzone i modyfikowane w formularzu edytora planu.
+Dzięki temu żaden wpis nie straci przypadkowo swojego terminu podczas powiększania lub przesuwania widoku
+.
 
-**Pytanie:** Redaktor planu mówi: "Plan ma ponad 300 wpisów
-nie." (albo tak samo dla 20 poziomów czy 24 kategorii). 
+**Pytanie:** W edytorze planu widnieje komunikat: „Plan nie może zawierać więcej niż 300 wpisów
+” (lub to samo dotyczy 20 poziomów lub 24 kategorii).
 
-Odpowiedź: Plan ma maksymalnie 300 wpisów, 20 poziomów oraz
-24 kategorie; na granicy nie można dodać nic więcej. Redaktor
-W prawym górnym rogu pokazuje liczbę wpisów już w planie. Dla bardzo dużych
-Jeśli planujesz to zrobić, zaleca się podzielenie planu na kilka widgetów, takich jak
-po jednym na serię. 
+Odpowiedź: Plan może zawierać maksymalnie 300 wpisów, 20 poziomów i
+24 kategorie; po osiągnięciu limitu nie można już nic dodać. Edytor
+wyświetla w prawym górnym rogu liczbę wpisów zawartych w planie. W przypadku bardzo dużych
+projektów zaleca się podzielenie planu na kilka widżetów, na przykład
+po jednym na każdą serię budowlaną.
 
-**Pytanie:** Przycisk **+** można używać w **kamieniach milowych** i **okresach czasowych** 
-Nie klikaj w to. 
+**Pytanie:** Przycisk **+** nie daje się kliknąć w sekcjach **Kamienie milowe** i **Okresy**
+.
 
-Odpowiedź: Plan nie ma już poziomu, a bez niego ma kamień milowy
-lub kropka; redaktor planu wskazuje to poniżej. Lay
-W zakładce **Poziomy** wybierz przynajmniej jeden przez **Nową warstwę**. 
+Odpowiedź: Plan nie ma już żadnych poziomów, a bez poziomu kamień milowy
+lub okres nie mają gdzie się znaleźć; edytor planu wyświetla poniżej odpowiednią informację. Utwórz
+co najmniej jedną warstwę w zakładce **Warstwy**, korzystając z opcji **Nowa warstwa**. Terminy kluczowe można tworzyć również bez warstwy.
 
-**Pytanie:** Gdzie jest kosz na śmieci na liście zgłoszeń? 
+**Pytanie:** Gdzie znajduje się kosz na liście wpisów?
 
-Odpowiedź: Pojawia się, gdy najedziesz kursorem na wiersz lub otworzysz
-linię przez klawiaturę; zawsze można ją zobaczyć na urządzeniach dotykowych. 
-Usunięcie następuje dopiero po zapytaniu. Jeśli inne wpisy zależą od usuniętych
-, zapytanie podaje jego liczbę; jego połączenia są usuwane. 
+Odpowiedź: Pojawia się, gdy najedziesz myszką na wiersz lub gdy
+wiersz ma fokus za pomocą klawiatury; na urządzeniach dotykowych jest zawsze widoczny.
+Usunięcie nastąpi dopiero po potwierdzeniu. Jeśli inne wpisy są powiązane z usuniętym,
+w oknie potwierdzenia podana zostanie ich liczba; powiązania zostaną usunięte.
 
-**Pytanie:** Podczas tworzenia warstwy lub kategorii pojawia się komunikat "Warstwa "X" zwraca
-już istnieje." albo "Kategoria "X" już istnieje". 
+**Pytanie:** Podczas tworzenia poziomu lub kategorii pojawia się komunikat „Poziom „X” już
+istnieje” lub „Kategoria „X” już istnieje”.
 
-Odpowiedź: Każde imię może pojawić się tylko raz, w przeciwnym razie poziomy i
-Kategorie w polach wyboru, legenda i eksport Excela
-. Duże i małe litery oraz space na marginesie liczą się
-nie. Wybierz inną nazwę lub weź istniejącą warstwę. 
+Odpowiedź: Każda nazwa może pojawić się tylko raz, w przeciwnym razie nie dałoby się
+rozróżnić poziomów i
+kategorii w polach wyboru, legendzie i eksporcie do Excela. Wielkość liter i spacje na początku lub końcu nie mają
+znaczenia. Wybierz inną nazwę lub użyj istniejącego poziomu.
 
-**Pytanie:** Zakładka w formularzu ma czerwoną kropkę. 
+**Pytanie:** Jedna z zakładek w formularzu jest oznaczona czerwoną kropką.
 
-Odpowiedź: Pole w tej zakładce zawiera nieprawidłowe wejście, takie jak
-Pusta data. Plan zachowuje ostatnią ważną wartość tam. Otwórz
-tabulator i poprawa pole; wtedy punkt znika. 
+Odpowiedź: Pole w tej zakładce zawiera nieprawidłową wartość, na przykład
+pustą datę. Plan zachowuje tam ostatnią prawidłową wartość. Otwórz tę
+zakładkę i popraw pole; wtedy kropka zniknie.
 
-**Pytanie:** Formularz mówi "Proszę wpisać tytuł.", "Proszę wpisać tytuł."
-Wpisz swoje imię.", "Proszę podać datę.", "Proszę podać ważną datę
-", "Koniec jest przed początkiem.", "Początek jest po
-Koniec." lub "Proszę podać kolor jako #RRGGBB, na przykład #E40045." 
+**Pytanie:** W formularzu widnieje komunikat „Proszę podać tytuł”, „Proszę podać
+nazwę”, „Proszę podać datę”, „Proszę podać prawidłową datę”,
+„Koniec jest przed początkiem”, „Początek jest po
+końcu” lub „Proszę podać kolor w formacie #RRGGBB, na przykład #E40045”.
 
-Odpowiedź: Dane wejściowe w polu nie mogą być użyte w ten sposób. Dopóki komunikat
-, plan zachowuje ostatnią wartość poprawną — więc nic nie działa
-Zgubiłem, ale zmiana też jeszcze nie nadeszła. Zgadza się
-wejście; gdy tylko jest ważne, wiadomość znika. W przypadku
-Kropka, najpierw zmień datę, która przywraca kolejność: 
-Czy powinno się zaczynać i kończyć później, najpierw **koniec**, potem **początek**. 
+Odpowiedź: Wpis w polu nie jest w tej postaci poprawny. Dopóki komunikat
+jest wyświetlany, plan zachowuje ostatnią prawidłową wartość — nic więc
+nie zostaje utracone, ale zmiana również nie została jeszcze zastosowana. Popraw
+wprowadzone dane; gdy tylko będą prawidłowe, komunikat zniknie. W przypadku
+okresu najpierw zmień datę, która przywróci właściwą kolejność:
+jeśli plan ma rozpocząć się i zakończyć później, najpierw **koniec**, a następnie **początek**.
 
 **Pytanie:** Co dzieje się z planem podczas automatycznego tłumaczenia
-Bok? 
+strony?
 
-Odpowiedź: tytuł planu, tytuły poziomów oraz
-kategorie oraz tytuł i opis każdego wpisu. Daty, kolory, 
-Zależności i nazwy serii pozostają niezmienione — nazwa serii to
-jeden klucz i dwie różnie przetłumaczone wersje tworzyły serię
-rozerwać na kawałki. 
+Odpowiedź: Tłumaczone są nagłówek planu, tytuły poziomów i
+kategorii, a także tytuły i opisy poszczególnych wpisów. Terminy, kolory,
+zależności i nazwy serii pozostają niezmienione — nazwa serii jest
+kluczem, a dwie różnie przetłumaczone wersje spowodowałyby rozdzielenie
+serii.
 
-**Pytanie:** Po tłumaczeniu, "Plan Projektu: Treść mogłaby zostać rozwiązana
-nie można przetłumaczyć. Pozostaje w języku źródłowym i musi być ręcznie
-można przetłumaczyć." 
+**Pytanie:** Po tłumaczeniu pojawia się komunikat „Plan projektu: Treści nie
+udało się przetłumaczyć. Pozostaje on w języku źródłowym i musi zostać ręcznie
+przetłumaczony”.
 
-Odpowiedź: Usługa tłumaczeniowa nie była dostępna dla planu. Reszta
-Artykuł został przetłumaczony, plan nadal jest w języku źródłowym. Tłumaczenie
-Przepisz teksty ręcznie w edytorze planów lub rozpocznij tłumaczenie
-ponownie. To samo dotyczy wiadomości "Plan projektu: Przetłumaczona treść
-nie można go wstawić. Pozostaje w języku źródłowym i musi być
-ręcznie przetłumaczone."
+Odpowiedź: Usługa tłumaczeniowa nie miała dostępu do planu. Pozostała
+część artykułu została przetłumaczona, ale plan nadal pozostaje w języku źródłowym. Przetłumacz
+teksty ręcznie w edytorze planu lub uruchom tłumaczenie
+ponownie. To samo dotyczy komunikatu „Plan projektu: Przetłumaczona treść
+nie mogła zostać wstawiona. Pozostaje ona w języku źródłowym i musi
+zostać przetłumaczona ręcznie.”

@@ -1,6 +1,6 @@
 {
-  "title": "Project plan",
-  "summary": "A project plan as a timeline: levels with milestones and periods, key dates and dependencies — infinitely zoomable, filterable and downloadable as an Excel spreadsheet.",
+  "title": "Project Plan",
+  "summary": "A project plan as a timeline: layers with milestones and time periods, deadlines, and dependencies—with seamless zooming, filtering, and the option to download as an Excel spreadsheet.",
   "icon": "📅",
   "pages": [
     {
@@ -26,7 +26,7 @@
   ],
   "examples": [
     {
-      "title": "Sample plan with Today line and Excel export",
+      "title": "Sample Schedule with \"Today\" Line and Excel Export",
       "attributes": {
         "show-today": "true",
         "allow-export": "true"
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "title": "Postponement of a software release",
+      "title": "Postponement of a Software Release",
       "attributes": {
         "show-today": "false",
         "allow-export": "true"
@@ -47,7 +47,7 @@
       "variant": "postponement"
     },
     {
-      "title": "Without today line and without export",
+      "title": "Without the \"Today\" line and without export",
       "attributes": {
         "show-today": "false",
         "allow-export": "false"

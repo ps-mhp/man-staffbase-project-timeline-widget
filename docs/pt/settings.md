@@ -1,124 +1,124 @@
-# Configurações
+# Definições
 
-A caixa de diálogo de configuração do widget possui três campos. "Plano" é exibido no
-editor de planos, que aparece ao abrir as configurações; 
-O campo de texto atrás dele é a versão técnica bruta e não deve ser feito manualmente.
-podem ser editados. Os dois campos restantes estão diretamente no diálogo. O
-O cabeçalho do plano não é um campo do diálogo, mas é exibido no editor de planos
-(veja abaixo). 
+A caixa de diálogo de configuração do widget apresenta três campos. «Plano» é
+preenchido no Editor de Planos, que aparece automaticamente ao abrir as definições;
+o campo de texto a seguir é a versão técnica preliminar e não deve ser
+editado manualmente. Os restantes dois campos encontram-se diretamente na caixa de diálogo. O
+título do plano não é um campo da caixa de diálogo, mas sim é preenchido no Editor de Planos
+(ver abaixo).
 
-| Atributo | Rótulo no Diálogo | Descrição |
+| Atributo | Rótulo na caixa de diálogo | Descrição |
 | --- | --- | --- |
-| 'plano' | Plano | Cabeçalho, níveis, categorias, entradas e a visualização inicial. Mantido no editor de planos. Padrão: vazio. |
-| 'mostrar-hoje' | Linha Mostrar Hoje | Uma linha vertical escura com "Hoje" no eixo marca hoje, se estiver na seção visível. Padrão: ativado. |
-| 'permitir-exportar' | Oferecer exportação em Excel | Mostra aos leitores o botão **Export**, que eles usam para baixar as entradas como uma planilha Excel. Padrão: ativado. |
+| `plan` | Plano | Título, níveis, categorias, entradas e a vista inicial. É preenchido no Editor de Planos. Predefinição: vazio. |
+| `show-today` | Mostrar linha de «Hoje» | Uma linha vertical escura com «Hoje» no eixo marca o dia de hoje, desde que este se encontre na secção visível. Predefinição: ativado. |
+| `allow-export` | Oferecer exportação para Excel | Mostra aos leitores o botão **Exportar**, através do qual podem descarregar as entradas como uma folha de cálculo do Excel. Predefinição: ativado. |
 
 ## O Editor de Planos
 
-O editor de plantas preenche toda a tela. No topo está a barra de cabeçalho, abaixo dela
-a **Prévia** e três abas. Entre a Prévia e as abas, e entre
-Lista de inscrições e formulário possuem cada um uma alça de puxar com a altura do
-e alterar a largura da lista (mouse ou setas tecladas, 
-O duplo clique restaura o padrão; o navegador lembra os tamanhos). 
+O Editor de Planos ocupa todo o ecrã. Na parte superior encontra-se a barra de título, abaixo dela
+a **Pré-visualização** e três separadores. Entre a pré-visualização e os separadores, bem como entre
+a lista de registos e o formulário, existe uma alça de arrastar que permite alterar a altura da
+pré-visualização e a largura da lista (com o rato ou as setas do teclado;
+um duplo-clique restabelece as predefinições; o navegador guarda as dimensões).
 
-### Cabeçalho
+### Barra de título
 
-| Elemento de controle | Descrição |
+| Elemento de controlo | Descrição |
 | --- | --- |
-| Cabeçalho | Fica acima do plano e dá nome ao arquivo Excel. Opcional: Deixe em branco se a página já tiver um título adequado; o arquivo então é chamado de 'Projektplan_JJJJ-MM-TT.xlsx'. |
-| "42 / 300 inscrições" | Quantas entradas o plano contém, medidas em relação ao limite máximo. |
-| "Alterações Não Salvas" | Aparece assim que o plano no editor difere do que foi salvo. |
-| Cancelar | Fecha o editor; no caso de alterações não salvas, ele pergunta antecipadamente se elas devem ser descartadas. |
-| Aplicar | Escreva o plano nas configurações e feche o editor. Ele é salvo junto com a página. |
+| Título | Situa-se acima do plano e atribui um nome ao ficheiro do Excel. Opcional: deixar em branco se a página já tiver um título adequado; o ficheiro passa então a chamar-se `Plano do Projeto_AAAA-MM-DD.xlsx`. |
+| «42 / 300 entradas» | Indica quantas entradas o plano contém, em relação ao limite máximo. |
+| «Alterações não guardadas» | Aparece assim que o plano no editor diferir da versão guardada. |
+| Cancelar | Fecha o editor; caso existam alterações não guardadas, pergunta previamente se estas devem ser descartadas. |
+| Aplicar | Grava o plano nas definições e fecha o editor. É guardado juntamente com a página. |
 
-### Visão rápida
+### Pré-visualização
 
-| Elemento de controle | Descrição |
+| Elemento de controlo | Descrição |
 | --- | --- |
-| Prévia | A mesma linha do tempo da página, com zoom, sem filtro e exportação. Clicar em uma entrada seleciona-a na aba "Entradas" e a traz para a vista na lista. Clicar em **Prévia** colapsa; desdobrada, tem a última altura desenhada. |
-| Esta seção como visualização inicial | Salva a seção visível da prévia, até o mês, como visualização quando a página carrega. |
-| Remover a Visualização Inicial | Exclui a visualização inicial; o widget mostra o plano completo novamente ao carregar. |
-| Comece com o Template | Somente se o plano estiver vazio: mostra os templates para escolher ("Product Roadmap", "Reagendamento"). Clicar em um cartão preenche o editor com ele; **Return** retorna sem alteração. |
-| Comece vazio | Somente se o plano estiver vazio: crie uma camada "Nível 1". |
+| Pré-visualização | A mesma linha do tempo que na página, com zoom, sem filtros e sem exportação. Um clique numa entrada seleciona-a no separador «Entradas» e coloca-a à vista na lista. Um clique em **Pré-visualização** a recolhe; quando expandida, volta à altura em que foi deixada pela última vez. |
+| Esta secção como vista inicial | Guarda a secção visível da pré-visualização, com precisão mensal, como vista inicial ao carregar a página. |
+| Remover vista inicial | Apaga a vista inicial; ao carregar, o widget volta a mostrar o plano completo. |
+| Começar com modelo | Apenas se o plano estiver vazio: mostra os modelos à escolha («Roteiro do produto», «Adiamento de prazo»). Um clique num cartão preenche o editor com o mesmo; **Voltar** regressa sem alterações. |
+| Começar do zero | Apenas se o plano estiver vazio: cria um nível «Nível 1». |
 
-### Aba "Inscrições" 
+### Separador «Entradas»
 
-À esquerda está a lista de entradas, ordenadas por data. Acima estão
-**Navegue por entradas** e abaixo uma opção para o tipo — 
-**Marcos**, **Pontos**, **Prazos**, cada um com número (se ativo
-search: hits); o botão **+** ao lado cria uma entrada desse tipo, 
-e a busca funciona dentro da espécie. 
-Ao passar o mouse sobre uma linha, uma lixeira de reciclagem aparece à direita para exclusão (com
-Consulta). 
+À esquerda, a lista de entradas, ordenada por data. Acima, encontra-se
+**Pesquisar entradas** e, abaixo, um botão para alternar o tipo —
+**Marcos**, **Períodos**, **Datas-limite**, cada um com o respetivo número (quando a
+pesquisa: resultados); o botão **+** ao lado cria uma entrada desse tipo,
+e a pesquisa atua dentro desse tipo.
+Ao passar o cursor por cima de uma linha, aparece à direita um caixote do lixo para eliminar (com
+confirmação).
 
-À direita, a forma da entrada selecionada; acima dela está seu título e
-os botões **Duplicar** e **Excluir**, abaixo dos quais estão as abas **Geral** 
-(Tipo, Título, Descrição), **Classificação** (Nível, Categoria, Série), 
-**Data** (data ou início e fim, para a seta do ponto final, provisória)
-**Dependências** e **Conteúdo** (página linkada ou post de notícia). A
-o ponto vermelho na aba mostra uma entrada inválida; para datas-chave
-**Dependências** eliminadas: 
+À direita, encontra-se o formulário da entrada selecionada; acima dele, o título e
+os botões **Duplicar** e **Apagar**; abaixo, os separadores **Geral**
+(Tipo, Título, Descrição), **Classificação** (Nível, Categoria, Série),
+**Data** (data ou início e fim; no caso de um período, uma seta no final; Provisório)
+**Dependências** e **Conteúdo** (página ou notícia associada). Um
+ponto vermelho na separador indica uma entrada inválida nessa secção; no caso de datas-limite,
+a secção **Dependências** não se aplica:
 
 | Campo | Aplica-se a | Descrição |
 | --- | --- | --- |
-| Tipo | Todos | Marco, período ou prazo. Se você mudar para o prazo, o nível é omitido. |
-| Título | Todos | Obrigatório. Escrito na entrada e nos detalhes. |
-| Descrição | Todos | Opcional, multilinha. Aparece apenas nos detalhes e na exportação do Excel. |
-| Nível | Marco, Ponto | O nível em que a entrada está localizada. **Nova camada ...** cria um (nome) e o atribui imediatamente. |
-| Categoria | todos | Determina a cor e, para marcos, a forma. "Sem categoria" aparece cinza, marcos como losango. **Nova categoria ...** cria um (nome, cor e forma) e o atribui imediatamente. |
-| Data | Marco, prazo | A data. |
-| Início, fim | Ponto | Primeiro e último dia; ambos pertencem ao período. |
-| Flecha no final | Ponto final | A barra termina em uma ponta de flecha — "segue em frente". |
-| Série | Marco, Ponto | Entradas do mesmo nível com o mesmo nome de série estão em uma linha. O campo expande a série deste nível com o número de suas entradas; um novo nome digitado é assumido via ""..." criar como uma nova série", **Nenhuma série** remove a entrada. |
-| Provisório | todos | A data ainda não foi definida; a entrada aparece como um contorno ou com uma borda tracejada. |
-| Depende de | Marco, Ponto | Os predecessores da entrada; na página como uma linha tracejada com uma seta. |
-| Link | todos | **Nenhum**, **Página** ou **Artigo de notícias**. Uma mudança quebra um link existente. Na página, a inscrição da entrada é então sublinhada, e um clique abre o conteúdo em uma janela acima do plano. |
-| Página | Todos | A página Staffbase da lista de páginas (as 100 mais recentemente editadas). **Nova página ...** cria no editor Staffbase, que sobrepõe o editor de planos; após criá-la, ela é vinculada. |
-| Canal, Post | todos | Primeiro o canal de notícias (com seu tipo: artigo, mensagem curta, post com imagem), depois o post. Os rascunhos são selecionáveis e marcados com "(rascunho)" — os leitores só os veem após a publicação. **Nova postagem ...** cria uma no canal selecionado; após salvar, ela é vinculada. **Abrir em nova aba** mostra o conteúdo vinculado. |
-| Anexos | Todos | Até dez arquivos ou imagens da biblioteca de mídia, cada um com legenda opcional (caso contrário, o nome do arquivo). **Adicionar arquivo ou imagem ...** abre a biblioteca; **↑**/**↓** organizar, **×** removido. Anexos permanecem atrás do login. Na página, eles ficam ao lado do conteúdo vinculado ou nos detalhes, na exportação do Excel na coluna "Anexos". |
-| Duplicar | Todos | Crie uma cópia da entrada. |
-| Delete | todos | Pede e então remove a entrada e todas as dependências que apontam para ela; a consulta nomeia as entradas dependentes. |
+| Tipo | todos | Marco, período ou data-limite. Ao mudar para data-limite, o nível deixa de se aplicar. |
+| Título | todos | Obrigatório. Aparece na entrada e nos detalhes. |
+| Descrição | todos | Opcional, várias linhas. Aparece apenas nos detalhes e na exportação para Excel. |
+| Nível | Marco, período | O nível em que a entrada se encontra. **Novo nível …** cria um (nome) e atribui-o imediatamente. |
+| Categoria | todas | Determina a cor e, no caso dos marcos, a forma. «Sem categoria» aparece a cinzento; os marcos aparecem como losangos. **Nova categoria …** cria uma (nome, cor e forma) e atribui-a imediatamente. |
+| Data | Marco, data de referência | A data. |
+| Início, Fim | Período | Primeiro e último dia; ambos fazem parte do período. |
+| Seta no final | Período | A barra termina numa ponta de seta — «continua». |
+| Série | Marco, Período | As entradas do mesmo nível com o mesmo nome de série ficam numa linha. O campo expande as séries deste nível com o número das suas entradas; um novo nome digitado é aceite através de «Criar como nova série com “...”», **Sem série** remove a entrada. |
+| Provisório | todos | A data ainda não está definida; a entrada aparece como um contorno ou com uma borda tracejada. |
+| Depende de | Marco, Período | Os antecessores da entrada; apresentados na página como uma linha tracejada com uma seta. |
+| Ligação | todas | **Nenhuma**, **Página** ou **Artigo de notícias**. Uma alteração anula uma ligação existente. Na página, o título da entrada fica então sublinhado e, ao clicar, o conteúdo abre-se numa janela sobre o plano. |
+| Página | todas | A página do Staffbase da lista de páginas (as 100 últimas editadas). **Nova página…** cria-a no Editor do Staffbase, que se sobrepõe ao Editor do plano; após a criação, fica ligada. |
+| Canal, Publicação | todas | Primeiro o canal de notícias (com o seu tipo: artigo, notícia curta, publicação com imagem), depois a publicação. Os rascunhos podem ser selecionados e estão identificados com «(Rascunho)» — os leitores só os verão após a publicação. **Nova publicação…** cria uma no canal selecionado; após o armazenamento, fica associada. **Abrir num novo separador** mostra o conteúdo associado. |
+| Anexos | todos | Até dez ficheiros ou imagens da biblioteca multimédia, cada um com uma legenda opcional (caso contrário, o nome do ficheiro). **Adicionar ficheiro ou imagem…** abre a biblioteca; **↑**/**↓** ordena, **×** elimina. Os anexos permanecem após o início de sessão. Na página, aparecem ao lado do conteúdo associado ou nos detalhes; na exportação para Excel, na coluna «Anexos». |
+| Duplicar | todos | Cria uma cópia da entrada. |
+| Eliminar | todos | Solicita confirmação e, em seguida, elimina a entrada e todas as dependências que apontam para ela; a mensagem de confirmação indica as entradas dependentes. |
 
-### Aba de camadas 
+### Separador «Níveis»
 
-| Elemento de controle | Descrição |
+| Elemento de controlo | Descrição |
 | --- | --- |
-| Nova camada | No canto superior direito da aba. Crie uma nova camada. |
-| Nome | O nome da camada, à esquerda de sua órbita. Deve ser única. Ao lado dela está quantas entradas ela contém. |
-| Setas para cima / para baixo | Ordenar na página e na exportação do Excel. |
-| Excluir | Remove a camada. Se ela contiver entradas, o editor pergunta se elas devem ser movidas para outra camada (selecione **Camada de Alvo**) ou se também devem ser excluídas. |
+| Novo nível | No canto superior direito do separador. Cria um novo nível. |
+| Nome | O nome do nível, à esquerda da sua linha. Deve ser único. Ao lado, indica-se quantas entradas contém. |
+| Setas para cima / para baixo | Ordem na página e na exportação para o Excel. |
+| Apagar | Elimina a camada. Se esta contiver entradas, o editor pergunta se estas devem ser movidas para outra camada (seleção **Camada de destino**) ou se devem ser eliminadas juntamente com a camada. |
 
-### Aba "Categorias" 
+### Separador «Categorias»
 
-| Elemento de controle | Descrição |
+| Elemento de controlo | Descrição |
 | --- | --- |
-| Nova Categoria | Canto superior direito da aba. Crie uma nova categoria. |
-| Campo de Cor | Na frente do nome; mostra a cor. Um clique expande as doze cores e o campo **Valor Hex**; Esc ou um clique ao lado fecha. |
-| Valor hexadecimal | Uma cor personalizada no formato '#RRGGBB', por exemplo '#E40045'. |
-| Botão de Forma | Ao lado do campo de cor; mostra a forma com a qual aparecem os marcos da categoria. Um clique abre as oito formas: losango, triângulo, triângulo com a ponta para baixo, quadrado, círculo, hexágono, estrela ou cruz. Teclas de seta mudam a forma. |
-| Nome | O nome na legenda e nos detalhes. Deve ser único. Ao lado está quantas entradas a categoria está atribuída. |
-| Flechas para Cima / Para Baixo | Ordem da lenda. |
-| Delete | Remove a categoria; suas entradas passam a ser "sem categoria". A consulta fornece seu número. |
+| Nova categoria | No canto superior direito do separador. Cria uma nova categoria. |
+| Campo de cor | À frente do nome; mostra a cor. Um clique expande as doze cores e o campo **Valor hexadecimal**; a tecla Esc ou um clique ao lado fecha-o. |
+| Valor hexadecimal | Uma cor personalizada no formato `#RRGGBB`, por exemplo, `#E40045`. |
+| Botão de forma | Ao lado do campo de cor; mostra a forma com que os marcos da categoria aparecem. Um clique expande as oito formas: losango, triângulo, triângulo com a ponta para baixo, quadrado, círculo, hexágono, estrela ou cruz. As setas do teclado alteram a forma. |
+| Nome | O nome na legenda e nos detalhes. Deve ser único. Ao lado, indica a quantidade de entradas atribuídas à categoria. |
+| Setas para cima / para baixo | Ordem na legenda. |
+| Apagar | Remove a categoria; as suas entradas passam a ficar «sem categoria». A mensagem de confirmação indica o seu número. |
 
-## Fronteiras
+## Limites
 
-- Um plano tem no máximo **300 entradas**, **20 níveis** e
-  **24 categorias**. Além disso, o editor não aceita mais nada. 
-- Consultas são **dias inteiros** sem tempo. A visualização inicial é
-  **Mensal**. 
-- O texto nunca está na cor da categoria — cores vivas como amarelo permanecem
-  de outra forma, ilegível no branco. A cor é transmitida apenas pela forma, barras e
-  ponto de lenda; a escrita no bar é preta ou branca, dependendo do que
-  é mais fácil de ler. 
-- **Sem entradas, o widget não mostra nada** — nem um quadro vazio nem
-  Uma mensagem. 
+- Um plano pode conter, no máximo, **300 entradas**, **20 níveis** e
+  **24 categorias**. O editor não aceita mais do que isso.
+- Os compromissos são **dias inteiros** sem hora. A vista inicial é
+  **por mês**.
+- O texto nunca aparece na cor da categoria — cores claras como o amarelo ficariam
+  ilegíveis sobre fundo branco. A cor aplica-se apenas à forma, à barra e
+  ao ponto da legenda; a fonte na barra é preta ou branca, consoante o que
+  for mais legível.
+- **Sem entradas, o widget não mostra nada** — nem uma moldura vazia nem
+  uma mensagem.
 
-## Dependências entre configurações
+## Dependências entre as definições
 
-- **Linha Mostrar hoje** só funciona se hoje estiver visível
-  trecho. No caso de um plano que seja totalmente passado ou
-  Futuro, a linha só pode ser vista depois de ser movida. 
-- O **cabeçalho** também determina o nome do arquivo Excel; sem
-  Funciona apenas como manchete. 
-- **Cabeçalho** e **Visualização inicial** estão definidos no editor de planos, não no
-  diálogo; ambos fazem parte do plano.
+- **Mostrar linha de hoje** só funciona se o dia de hoje estiver na
+  secção visível. Num plano que se situe inteiramente no passado ou
+  no futuro, a linha só será visível após o deslocamento.
+- O **título** determina também o nome do ficheiro Excel; sem
+  a exportação ativada, funciona apenas como título.
+- O **título** e a **visualização inicial** são definidos no editor de planos, não na
+  caixa de diálogo; ambos fazem parte do plano.
