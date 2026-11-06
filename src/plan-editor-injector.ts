@@ -41,16 +41,6 @@ export interface PlanEditorValue {
   droppedLinks?: number;
 }
 
-const FULL_SCREEN_PANEL: React.CSSProperties = {
-  width: "100vw",
-  height: "100vh",
-  maxWidth: "none",
-  maxHeight: "none",
-  padding: 0,
-  borderRadius: 0,
-  boxShadow: "none",
-};
-
 export function startPlanEditorInjector(): () => void {
   return startFieldModalInjector<PlanEditorValue>({
     fieldKey: PLAN_ATTRIBUTE,
@@ -65,6 +55,6 @@ export function startPlanEditorInjector(): () => void {
     // ein Plan mit Hunderten Einträgen ist Arbeit für eine ganze Sitzung. Die
     // Leiste des Staffbase-Studios darüber verschwindet dabei — gewollt, der
     // Dialog ist ohnehin modal. Rahmen und Abstand zeichnet der Editor selbst.
-    panelStyle: FULL_SCREEN_PANEL,
+    panelClassName: "h-screen w-screen max-h-none max-w-none rounded-none p-0 shadow-none",
   });
 }

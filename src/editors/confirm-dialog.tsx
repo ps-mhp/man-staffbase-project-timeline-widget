@@ -14,11 +14,11 @@
 /**
  * Die Rückfrage vor dem Löschen einer Ebene oder Kategorie.
  *
- * Bewusst ohne Portal: der Editor steckt selbst in einem Overlay, das Klicks
- * und Fokuswechsel nur für seinen eigenen Teilbaum vom Staffbase-Dialog
- * fernhält (`useStopOutsideDismissPropagation` in `@shared/config-modal`). Ein
- * eigenes Portal an `document.body` läge außerhalb davon, und jeder Klick
- * hinein schlösse den ganzen Konfigurationsdialog.
+ * Bewusst ohne Portal: der Editor steckt im Shadow Root des Config-Modals,
+ * dessen Host Klicks und Fokuswechsel vom Staffbase-Dialog fernhält
+ * (`@shared/ui/config-modal`). Ein eigenes Portal an `document.body` läge
+ * außerhalb davon, und jeder Klick hinein schlösse den ganzen
+ * Konfigurationsdialog.
  */
 
 import * as React from "react";
@@ -30,6 +30,8 @@ import {
   useId,
   useRef,
 } from "react";
+
+import { activeElementOf } from "@shared/shadow-dom";
 
 const FOCUSABLE =
   "button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])";
@@ -68,10 +70,13 @@ export function ConfirmDialog({
   useEffect(() => {
     // Woher der Fokus kam — dorthin gehört er beim Schließen zurück, sonst
     // stünde er am Anfang des Dialogs und die Tastaturbedienung begänne von vorn.
-    const opener =
-      document.activeElement instanceof HTMLElement
+    // In der Wurzel des Dialogs gefragt: im Shadow Root des Config-Modals
+    // wäre `document.activeElement` nur der Host.
+    const active =
+      dialogRef.current === null
         ? document.activeElement
-        : null;
+        : activeElementOf(dialogRef.current);
+    const opener = active instanceof HTMLElement ? active : null;
     // Gibt es eine Auswahl, ist sie das Erste, was zu entscheiden ist; sonst
     // steht der Fokus auf dem harmlosen Knopf, damit Enter nichts löscht.
     const choice = dialogRef.current?.querySelector<HTMLElement>(
@@ -91,10 +96,11 @@ export function ConfirmDialog({
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
     if (first === undefined || last === undefined) return;
-    if (event.shiftKey && document.activeElement === first) {
+    const current = activeElementOf(first);
+    if (event.shiftKey && current === first) {
       event.preventDefault();
       last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
+    } else if (!event.shiftKey && current === last) {
       event.preventDefault();
       first.focus();
     }

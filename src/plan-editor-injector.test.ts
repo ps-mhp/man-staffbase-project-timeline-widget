@@ -48,12 +48,9 @@ describe("startPlanEditorInjector", () => {
       reopenTestId: "plan-editor-reopen",
     });
     // Vollbild: der Editor zeichnet Rahmen und Abstände selbst.
-    expect(options().panelStyle).toMatchObject({
-      width: "100vw",
-      height: "100vh",
-      padding: 0,
-      borderRadius: 0,
-    });
+    expect(options().panelClassName?.split(" ")).toEqual(
+      expect.arrayContaining(["h-screen", "w-screen", "p-0", "rounded-none"]),
+    );
   });
 
   it("gibt die Aufräumfunktion des Injektors zurück", () => {
