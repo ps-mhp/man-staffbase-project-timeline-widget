@@ -38,6 +38,8 @@ import {
   useState,
 } from "react";
 
+import { activeElementOf } from "@shared/shadow-dom";
+
 import { Box, PopoverPosition, popoverPosition } from "./popover-position";
 
 /** Die Fläche, in der Popover ganz bleiben sollen: der Editor, sonst das Fenster. */
@@ -107,7 +109,9 @@ export function AnchoredPopover({
     // sonst sein erstes Bedienelement. Nicht einfach `activeElement` — Safari
     // fokussiert Knöpfe beim Klick nicht, dann stünde dort `body`.
     const anchor = ref.current?.parentElement ?? null;
-    const active = document.activeElement;
+    // In der Wurzel des Ankers: im Config-Modal wäre `document.activeElement`
+    // nur der Shadow Host.
+    const active = anchor === null ? document.activeElement : activeElementOf(anchor);
     opener.current =
       active instanceof HTMLElement && anchor?.contains(active) === true
         ? active

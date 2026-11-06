@@ -21,6 +21,8 @@
 
 import React, { ReactElement, ReactNode, useEffect, useId, useRef, useState } from "react";
 
+import { eventRootOf } from "@shared/shadow-dom";
+
 export interface DisclosureProps {
   label: ReactNode;
   /** Zugänglicher Name, wenn `label` allein nicht reicht (z. B. mit Zähler). */
@@ -42,8 +44,11 @@ export function Disclosure({ label, ariaLabel, className, panelClassName, childr
       // `composedPath` reicht durch den Shadow Root des Content Designers; `contains` täte das nicht.
       if (rootRef.current !== null && !event.composedPath().includes(rootRef.current)) setOpen(false);
     };
-    document.addEventListener("pointerdown", onPointerDown);
-    return () => document.removeEventListener("pointerdown", onPointerDown);
+    // An der eigenen Wurzel: in der Vorschau des Plan-Editors (Config-Modal)
+    // endet jeder Klick am Shadow Host und erreichte `document` nie.
+    const root = eventRootOf(rootRef.current);
+    root.addEventListener("pointerdown", onPointerDown as EventListener);
+    return () => root.removeEventListener("pointerdown", onPointerDown as EventListener);
   }, [open]);
 
   const close = () => setOpen(false);

@@ -164,8 +164,12 @@ export function Combobox(props: ComboboxProps): ReactElement {
 
   useEffect(() => {
     const list = listRef.current;
+    // In der Liste gesucht, nicht im Dokument: im Shadow Root des
+    // Config-Modals fände `document.getElementById` die Option nicht.
     const option =
-      active >= 0 ? document.getElementById(optionId(active)) : null;
+      active >= 0 && list !== null
+        ? list.querySelector<HTMLElement>(`[id="${optionId(active)}"]`)
+        : null;
     if (list !== null && option !== null) scrollIntoContainer(list, option);
   });
 
