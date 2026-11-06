@@ -1548,6 +1548,79 @@
     grid-template-columns: minmax(0, 1fr);
     gap: 2px;
   }
+
+  // Die Liste als Karten statt als Tabelle. Sechs Spalten brauchten am
+  // 15.10.2026 bei 393x852 gemessene 649px: „Kategorie" stand angeschnitten
+  // am Rand, „Ebene", „Art" und „Inhalt" lagen ganz ausserhalb — und der
+  // waagerechte Schieber des Wrappers zeigte das nicht an. Jede Zeile wird
+  // deshalb ein Block, jede Zelle eine beschriftete Zeile darin.
+  //
+  // Die Tabelle bleibt im Markup eine Tabelle: Kopfzellen, `scope` und die
+  // Beschriftung tragen die Bedeutung weiter, auch wenn die Darstellung sie
+  // auflöst. Die Spaltenköpfe verschwinden dabei aus dem Bild, ihre Namen
+  // stehen als `data-label` an jeder Zelle wieder da.
+  .man-pt__list-wrap {
+    overflow-x: visible;
+  }
+
+  .man-pt__list,
+  .man-pt__list tbody,
+  .man-pt__list tbody th,
+  .man-pt__list td {
+    display: block;
+  }
+
+  .man-pt__list thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .man-pt__list tr {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--pt-border);
+  }
+
+  .man-pt__list th,
+  .man-pt__list td {
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  // Der Titel führt die Karte an, der Termin steht als Zeile darunter — in
+  // der Tabelle ist es umgekehrt, weil dort die Spalte sortiert. Auf der
+  // Karte sucht das Auge zuerst den Namen.
+  .man-pt__list tbody th {
+    order: -1;
+    margin-bottom: 2px;
+    font-size: 16px;
+  }
+
+  .man-pt__list td:empty {
+    display: none;
+  }
+
+  .man-pt__list td[data-label]::before {
+    content: attr(data-label) ": ";
+    color: var(--pt-muted);
+  }
+
+  // Der Termin trägt seine Beschriftung nicht: ein Datum erklärt sich, und
+  // die Karte beginnt dadurch ruhiger.
+  .man-pt__list-term::before {
+    content: none !important;
+  }
+
+  .man-pt__list-term {
+    color: var(--pt-muted);
+    font-size: 13px;
+    white-space: normal;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

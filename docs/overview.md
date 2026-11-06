@@ -74,9 +74,11 @@ Außerdem:
 - Die Bedienung funktioniert auch ohne Maus: Tab springt in den Plan, die
   Pfeiltasten wechseln zwischen den Einträgen, Enter öffnet die Details,
   **+** und **−** zoomen, **0** zeigt alles.
-- Auf schmalen Bildschirmen (unter 768 Pixel Breite) öffnen sich Filter und
-  Details als Blatt vom unteren Rand, und **Liste** und **Exportieren** stehen
-  im Menü **Mehr**.
+- Auf schmalen Bildschirmen (unter 768 Pixel Breite) beginnt der Plan in der
+  **Liste** — als Karten statt als Tabelle, weil der Zeitstrahl dort keine
+  Breite hat; der Umschalter im Menü **Mehr** führt jederzeit zum Zeitstrahl.
+  Ebenso öffnen sich Filter und Details als Blatt vom unteren Rand, und
+  **Liste** und **Exportieren** stehen im Menü **Mehr**.
 - **Vollbild** zeigt den Plan über den ganzen Bildschirm, mit derselben
   Bedienung; nur der Plan selbst rollt, Achse und Übersicht bleiben stehen.
   **Esc** oder **Vollbild beenden** kehrt zur Seite zurück. Wo der Browser kein

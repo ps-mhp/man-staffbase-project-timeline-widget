@@ -130,7 +130,12 @@ export function ProjectTimeline(props: ProjectTimelineProps): ReactElement | nul
 
   const [filterState, setFilter] = useState<PlanFilter>(EMPTY_FILTER);
   const [collapsed, setCollapsed] = useState<ReadonlySet<string>>(new Set());
-  const [view, setView] = useState<TimelineView>("timeline");
+  // Auf schmalen Schirmen beginnt der Plan als Liste. Der Balkenplan braucht
+  // Breite: bei 393px lagen am 15.10.2026 die Beschriftungen der Einträge
+  // übereinander und die Zeitachse war nur noch zu erraten. Die Liste zeigt
+  // dieselben Einträge lesbar; der Umschalter in der Leiste führt jederzeit
+  // zurück zum Balkenplan, die Wahl bleibt also beim Leser.
+  const [view, setView] = useState<TimelineView>(narrow ? "list" : "timeline");
   const [detailsId, setDetailsId] = useState<string | null>(null);
   /** Der Eintrag, dessen verknüpfter Inhalt im Modal offen ist. */
   const [contentId, setContentId] = useState<string | null>(null);

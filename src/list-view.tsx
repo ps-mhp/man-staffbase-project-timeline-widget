@@ -63,18 +63,18 @@ export function ListView({ plan, items, locale, matches, onOpenContent }: ListVi
         <tbody>
           {rows.map((row) => (
             <tr key={row.id}>
-              <td className="man-pt__list-term">{term(row, locale)}</td>
+              <td className="man-pt__list-term" data-label="Termin">{term(row, locale)}</td>
               <th scope="row">
                 {row.title}
                 {row.tentative && <span className="man-pt__tag">vorläufig</span>}
               </th>
-              <td>
+              <td data-label="Kategorie">
                 <SymbolGlyph symbol={symbols.get(row.id) ?? DEFAULT_SYMBOL} color={row.color} className="man-pt__legend-symbol" />
                 {row.category === "" ? "Ohne Kategorie" : row.category}
               </td>
-              <td>{row.lane}</td>
-              <td>{row.kindLabel}</td>
-              <td>
+              <td data-label="Ebene">{row.lane}</td>
+              <td data-label="Art">{row.kindLabel}</td>
+              <td data-label="Inhalt">
                 {row.content !== null && onOpenContent !== undefined && (
                   <button
                     type="button"
