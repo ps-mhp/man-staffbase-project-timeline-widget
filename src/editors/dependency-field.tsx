@@ -20,11 +20,10 @@
  */
 
 import * as React from "react";
-import { ReactElement, useId, useState } from "react";
-import { Search } from "lucide-react";
+import { ReactElement, useState } from "react";
 
 import { Checkbox } from "@man/config-ui/primitives/checkbox";
-import { Input } from "@man/config-ui/primitives/input";
+import { SearchField } from "@man/config-ui/form/search-field";
 
 import { LaneItem, Plan } from "../plan-model";
 import { dependencyCandidates, matchesSearch, scheduleLabel } from "./plan-queries";
@@ -37,7 +36,6 @@ export interface DependencyFieldProps {
 }
 
 export function DependencyField({ plan, item, locale, onChange }: DependencyFieldProps): ReactElement {
-  const searchId = useId();
   const [query, setQuery] = useState("");
   const candidates = dependencyCandidates(plan, item.id);
   const selected = item.dependsOn ?? [];
@@ -54,20 +52,7 @@ export function DependencyField({ plan, item, locale, onChange }: DependencyFiel
         <p className="text-[13px] text-muted-foreground">Es gibt noch keine anderen Meilensteine oder Zeiträume.</p>
       ) : (
         <>
-          <div className="relative">
-            <label className="sr-only" htmlFor={searchId}>
-              Vorgänger suchen
-            </label>
-            <Search aria-hidden className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              id={searchId}
-              type="search"
-              className="pl-9"
-              placeholder="Vorgänger suchen"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-            />
-          </div>
+          <SearchField aria-label="Vorgänger suchen" placeholder="Vorgänger suchen" value={query} onValueChange={setQuery} />
           {visible.length === 0 ? (
             <p className="text-[13px] text-muted-foreground">Kein Eintrag passt zur Suche.</p>
           ) : (

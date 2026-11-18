@@ -23,10 +23,10 @@
  */
 
 import * as React from "react";
-import { ReactElement, useId } from "react";
-import { ArrowLeftRight, Diamond, Flag, Search } from "lucide-react";
+import { ReactElement } from "react";
+import { ArrowLeftRight, Diamond, Flag } from "lucide-react";
 
-import { Input } from "@man/config-ui/primitives/input";
+import { SearchField } from "@man/config-ui/form/search-field";
 import { ItemList, type ListItem } from "@man/config-ui/sidebar/item-list";
 import { SidebarPanel, type SidebarAddOption } from "@man/config-ui/sidebar/sidebar-panel";
 
@@ -89,7 +89,6 @@ export function EntrySidebar({
   onSelect,
   onAdd,
 }: EntrySidebarProps): ReactElement {
-  const searchId = useId();
   const needsLane = plan.lanes.length === 0;
   const visible = visibleItems(plan, kind, query);
   const counts = kindCounts(plan, query);
@@ -107,20 +106,12 @@ export function EntrySidebar({
   return (
     <SidebarPanel title="Einträge" count={plan.items.length} max={LIMITS.items} addMenu={addMenu}>
       <div className="sticky top-0 z-10 flex flex-col gap-2 bg-muted px-2 pt-1 pb-2">
-        <div className="relative">
-          <label htmlFor={searchId} className="sr-only">
-            Einträge durchsuchen
-          </label>
-          <Search aria-hidden className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            id={searchId}
-            type="search"
-            className="h-10 bg-background pl-9"
-            placeholder="Einträge durchsuchen"
-            value={query}
-            onChange={(event) => onQueryChange(event.target.value)}
-          />
-        </div>
+        <SearchField
+          aria-label="Einträge durchsuchen"
+          placeholder="Einträge durchsuchen"
+          value={query}
+          onValueChange={onQueryChange}
+        />
         <div className="flex items-center justify-between gap-3">
           <SelectBox
             aria-label="Art filtern"
