@@ -26,12 +26,15 @@ import Form from "@rjsf/mui";
 import validator from "@rjsf/validator-ajv8";
 import { JSONSchema7 } from "json-schema";
 
-import { modalRoot, settleModal } from "@shared/ui/config-modal.testing";
+import { modalRoot, clickElement, settleEditor } from "@shared/ui/config-modal.testing";
 
 import { examplePlan } from "./example-plan";
 import { encodePlanAttribute, parsePlan } from "./plan-model";
 import { planEditorShell, startPlanEditorInjector } from "./plan-editor-injector";
 import { PlanEditorValue } from "./plan-editor-rules";
+
+const EDITOR_SELECTOR = '[data-testid="plan-editor"]';
+const EDITOR_ROUNDS = 6;
 
 jest.mock("./project-timeline", () => jest.requireActual("./editors/project-timeline.mock"));
 
@@ -45,13 +48,6 @@ const schema: JSONSchema7 = {
 
 const field = (container: HTMLElement): HTMLInputElement => container.querySelector<HTMLInputElement>("#root_plan")!;
 
-/** Das Modal lädt nach, der Editor darin noch einmal: so oft warten, bis er da ist. */
-async function settleEditor(): Promise<void> {
-  for (let round = 0; round < 6 && modalRoot()?.querySelector('[data-testid="plan-editor"]') == null; round += 1) {
-    await settleModal();
-  }
-}
-
 async function open(
   plan: string,
   flags: Record<string, boolean> = {},
@@ -61,15 +57,8 @@ async function open(
   await act(async () => {
     stop = startPlanEditorInjector(container);
   });
-  await settleEditor();
+  await settleEditor(EDITOR_SELECTOR, EDITOR_ROUNDS);
   return { container, stop };
-}
-
-async function click(element: Element | null): Promise<void> {
-  if (element === null) throw new Error("Nichts zum Klicken gefunden");
-  await act(async () => {
-    (element as HTMLElement).click();
-  });
 }
 
 const inModal = (selector: string): HTMLElement | null => modalRoot()?.querySelector<HTMLElement>(selector) ?? null;
@@ -101,7 +90,7 @@ describe("startPlanEditorInjector", () => {
     const raw = encodePlanAttribute(examplePlan());
     const { container, stop } = await open(raw);
 
-    await click(inModal('[data-testid="config-shell-apply"]'));
+    await clickElement(inModal('[data-testid="config-shell-apply"]'));
 
     expect(field(container).value).toBe(raw);
 
@@ -112,8 +101,8 @@ describe("startPlanEditorInjector", () => {
     const raw = encodePlanAttribute(examplePlan());
     const { container, stop } = await open(raw);
 
-    await click(inModal('[role="switch"][aria-labelledby]:not([aria-checked="false"])'));
-    await click(inModal('[data-testid="config-shell-apply"]'));
+    await clickElement(inModal('[role="switch"][aria-labelledby]:not([aria-checked="false"])'));
+    await clickElement(inModal('[data-testid="config-shell-apply"]'));
 
     const written = parsePlan(field(container).value);
     expect(written.showToday).toBe(false);
