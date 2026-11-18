@@ -155,6 +155,14 @@ export interface Plan {
   /** `JJJJ-MM-TT`; der Editor setzt es bei jeder Änderung. */
   updatedAt?: string;
   view?: PlanView;
+  /**
+   * Heute-Linie zeigen? Fehlt der Schlüssel, gilt das Attribut `show-today`
+   * des Blocks (Vorgabe an) — so lesen Pläne aus der Zeit vor dem Vollbild-
+   * Editor unverändert weiter. Erst ein Schalter im Editor schreibt ihn.
+   */
+  showToday?: boolean;
+  /** Excel-Export anbieten? Fehlt der Schlüssel, gilt `allow-export`; sonst wie `showToday`. */
+  allowExport?: boolean;
   lanes: Lane[];
   categories: Category[];
   items: PlanItem[];
@@ -234,7 +242,17 @@ export function todayIso(now: Date = new Date()): string {
 // ---------------------------------------------------------------------------
 // Lesen
 
-const KNOWN_PLAN_KEYS = new Set(["version", "title", "updatedAt", "view", "lanes", "categories", "items"]);
+const KNOWN_PLAN_KEYS = new Set([
+  "version",
+  "title",
+  "updatedAt",
+  "view",
+  "showToday",
+  "allowExport",
+  "lanes",
+  "categories",
+  "items",
+]);
 const KNOWN_LANE_KEYS = new Set(["id", "title"]);
 const KNOWN_CATEGORY_KEYS = new Set(["id", "title", "color", "symbol"]);
 const KNOWN_ITEM_KEYS = new Set([
@@ -484,6 +502,8 @@ export function readPlanAttribute(raw: string): PlanReadResult {
   if (updatedAt !== undefined) plan.updatedAt = updatedAt;
   const view = readView(value.view);
   if (view !== undefined) plan.view = view;
+  if (typeof value.showToday === "boolean") plan.showToday = value.showToday;
+  if (typeof value.allowExport === "boolean") plan.allowExport = value.allowExport;
   const unknown = unknownOf(value, KNOWN_PLAN_KEYS);
   if (unknown !== undefined) plan.unknown = unknown;
 

@@ -34,7 +34,7 @@ import {
   PLAN_ATTRIBUTE,
   SHOW_TODAY_ATTRIBUTE,
   configurationSchema,
-  readBooleanAttribute,
+  resolveDisplayFlags,
   uiSchema,
 } from "./configuration-schema";
 import { intlLocale } from "./format";
@@ -63,11 +63,13 @@ export type ProjectTimelineWidgetProps = BlockAttributes & {
  */
 export const ProjectTimelineWidget = (props: ProjectTimelineWidgetProps): ReactElement => {
   const rawPlan = props[PLAN_ATTRIBUTE];
+  const plan = parsePlan(typeof rawPlan === "string" ? rawPlan : "");
+  const { showToday, allowExport } = resolveDisplayFlags(plan, props);
   return (
     <ProjectTimeline
-      plan={parsePlan(typeof rawPlan === "string" ? rawPlan : "")}
-      showToday={readBooleanAttribute(props[SHOW_TODAY_ATTRIBUTE], true)}
-      allowExport={readBooleanAttribute(props[ALLOW_EXPORT_ATTRIBUTE], true)}
+      plan={plan}
+      showToday={showToday}
+      allowExport={allowExport}
       locale={intlLocale(props.contentLanguage)}
     />
   );

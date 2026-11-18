@@ -19,6 +19,15 @@ export const SHOW_TODAY_ATTRIBUTE = "show-today";
 export const ALLOW_EXPORT_ATTRIBUTE = "allow-export";
 
 /**
+ * Die Schalter, die bis 0.1.0-rc.5 eigene Felder des Studio-Dialogs waren. Sie
+ * stehen weiter im Schema, damit alte Blöcke ihre Werte behalten und der
+ * Dialog sie führt; gepflegt werden sie seither im Vollbild-Editor und liegen
+ * im Plan (`plan.showToday`, `plan.allowExport`). Im eigenen Dialog sind die
+ * Zeilen ausgeblendet (`legacy-fields.ts`).
+ */
+export const LEGACY_ATTRIBUTES = [SHOW_TODAY_ATTRIBUTE, ALLOW_EXPORT_ATTRIBUTE] as const;
+
+/**
  * Das Schema des Konfigurationsdialogs.
  *
  * `plan` steht als gewöhnliches Textfeld, obwohl es niemand von Hand
@@ -27,9 +36,11 @@ export const ALLOW_EXPORT_ATTRIBUTE = "allow-export";
  * (`plan-editor-injector.ts`). Fällt er aus, bleibt das Textfeld sichtbar und
  * die Konfiguration damit reparierbar statt unerreichbar.
  *
- * Heute-Linie und Export steuern nur die Darstellung und sind deshalb echte
- * Felder des Dialogs, nicht Teil des Plans — bedienbar auch dann, wenn der
- * Editor einmal nicht greift.
+ * Heute-Linie und Export steuern nur die Darstellung. Bis 0.1.0-rc.5 waren sie
+ * echte Felder dieses Dialogs; im Content Designer lassen sich Dialogfelder
+ * nicht verlässlich lesen, und zwei Wege zum selben Wert laden zu
+ * Widersprüchen ein. Der Editor pflegt sie deshalb im Plan; die Felder bleiben
+ * als Rückfall für Blöcke, deren Plan sie nicht trägt (`resolveDisplayFlags`).
  *
  * Die Überschrift dagegen steht im Plan (`plan.title`), nicht in einem
  * eigenen Attribut: `title` ist ein globales HTML-Attribut, am Element des
@@ -94,4 +105,25 @@ export function readBooleanAttribute(raw: unknown, fallback: boolean): boolean {
   if (raw === true || raw === "true") return true;
   if (raw === false || raw === "false") return false;
   return fallback;
+}
+
+/** Was die Leseansicht von den beiden Schaltern wissen muss. */
+export interface DisplayFlags {
+  showToday: boolean;
+  allowExport: boolean;
+}
+
+/**
+ * Welche Schalter gelten: je Schlüssel der Wert aus dem Plan, sonst der des
+ * alten Attributs, sonst die Vorgabe (beide an). Ein Block ohne Schalter im
+ * Plan zeigt damit genau, was er vor dem Vollbild-Editor zeigte.
+ */
+export function resolveDisplayFlags(
+  plan: { showToday?: boolean; allowExport?: boolean },
+  attributes: { [SHOW_TODAY_ATTRIBUTE]?: unknown; [ALLOW_EXPORT_ATTRIBUTE]?: unknown },
+): DisplayFlags {
+  return {
+    showToday: plan.showToday ?? readBooleanAttribute(attributes[SHOW_TODAY_ATTRIBUTE], true),
+    allowExport: plan.allowExport ?? readBooleanAttribute(attributes[ALLOW_EXPORT_ATTRIBUTE], true),
+  };
 }

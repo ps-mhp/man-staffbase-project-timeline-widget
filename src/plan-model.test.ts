@@ -160,6 +160,34 @@ describe("readPlanAttribute", () => {
   });
 });
 
+describe("Anzeige-Schalter im Plan", () => {
+  it("lässt sie weg, solange der Plan sie nicht trägt", () => {
+    const { plan } = read(basePlan());
+    expect(plan).not.toHaveProperty("showToday");
+    expect(plan).not.toHaveProperty("allowExport");
+  });
+
+  it("liest wahre und falsche Werte und ignoriert Zeichenketten", () => {
+    const { plan } = read({ ...basePlan(), showToday: false, allowExport: true });
+    expect(plan.showToday).toBe(false);
+    expect(plan.allowExport).toBe(true);
+    const odd = read({ ...basePlan(), showToday: "false", allowExport: 0 }).plan;
+    expect(odd).not.toHaveProperty("showToday");
+    expect(odd).not.toHaveProperty("allowExport");
+  });
+
+  it("übersteht den Rundlauf und landet nicht im Beutel", () => {
+    const { plan } = read({ ...basePlan(), showToday: false });
+    expect(plan.unknown).toBeUndefined();
+    expect(readPlanAttribute(encodePlanAttribute(plan)).plan.showToday).toBe(false);
+  });
+
+  it("schreibt einen Plan ohne Schalter byteweise wie bisher", () => {
+    const { plan } = read(basePlan());
+    expect(JSON.parse(decodePayload(encodePlanAttribute(plan)) as string)).not.toHaveProperty("showToday");
+  });
+});
+
 describe("encodePlanAttribute", () => {
   it("schreibt eine Payload, die im Rundlauf gleich bleibt", () => {
     const plan = parsePlan(JSON.stringify(basePlan()));

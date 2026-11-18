@@ -96,6 +96,12 @@ describe("ProjectTimelineWidget", () => {
     expect(lastProps()).toMatchObject({ showToday: false, allowExport: true });
   });
 
+  it("lässt Schalter im Plan die alten Attribute übertrumpfen — je Schlüssel", () => {
+    const plan = encodePlanAttribute({ ...examplePlan(), showToday: false });
+    render(<ProjectTimelineWidget contentLanguage="de_DE" plan={plan} show-today="true" allow-export="false" />);
+    expect(lastProps()).toMatchObject({ showToday: false, allowExport: false });
+  });
+
   it("scheitert ohne Attribute nicht, sondern reicht einen leeren Plan weiter", () => {
     render(<ProjectTimelineWidget contentLanguage="de_DE" />);
     expect(lastProps().plan).toMatchObject({ lanes: [], categories: [], items: [] });

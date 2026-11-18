@@ -16,7 +16,9 @@ import {
   PLAN_ATTRIBUTE,
   SHOW_TODAY_ATTRIBUTE,
   configurationSchema,
+  LEGACY_ATTRIBUTES,
   readBooleanAttribute,
+  resolveDisplayFlags,
   uiSchema,
 } from "./configuration-schema";
 
@@ -39,8 +41,8 @@ describe("configurationSchema", () => {
   });
 
   it("bietet Heute-Linie und Export als Schalter an, beide vorab an", () => {
-    // Echte Felder des Dialogs statt Teil des Plans: so bleiben sie bedienbar,
-    // auch wenn der injizierte Editor einmal nicht greift.
+    // Die Felder bleiben im Schema, damit alte Blöcke ihre Werte behalten;
+    // sichtbar sind sie im eigenen Dialog nicht mehr (`legacy-fields.ts`).
     const properties = configurationSchema.properties ?? {};
     expect(properties[SHOW_TODAY_ATTRIBUTE]).toMatchObject({
       type: "boolean",
@@ -82,5 +84,32 @@ describe("readBooleanAttribute", () => {
       expect(readBooleanAttribute(raw, true)).toBe(true);
       expect(readBooleanAttribute(raw, false)).toBe(false);
     }
+  });
+});
+
+describe("LEGACY_ATTRIBUTES", () => {
+  it("nennt genau die beiden Schalter, die der Editor jetzt im Plan führt", () => {
+    expect([...LEGACY_ATTRIBUTES]).toEqual([SHOW_TODAY_ATTRIBUTE, ALLOW_EXPORT_ATTRIBUTE]);
+  });
+});
+
+describe("resolveDisplayFlags", () => {
+  it("nimmt ohne Wert im Plan die alten Attribute, sonst die Vorgabe", () => {
+    expect(resolveDisplayFlags({}, {})).toEqual({ showToday: true, allowExport: true });
+    expect(resolveDisplayFlags({}, { "show-today": "false", "allow-export": false })).toEqual({
+      showToday: false,
+      allowExport: false,
+    });
+  });
+
+  it("lässt den Plan je Schlüssel gewinnen", () => {
+    expect(resolveDisplayFlags({ showToday: false }, { "show-today": "true", "allow-export": "false" })).toEqual({
+      showToday: false,
+      allowExport: false,
+    });
+    expect(resolveDisplayFlags({ allowExport: true }, { "show-today": "false", "allow-export": "false" })).toEqual({
+      showToday: false,
+      allowExport: true,
+    });
   });
 });
