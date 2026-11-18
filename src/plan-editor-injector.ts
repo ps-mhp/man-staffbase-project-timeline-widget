@@ -95,11 +95,11 @@ export function startPlanEditorInjector(root: ParentNode = document): () => void
     parse: (raw) => ({ ...readPlanAttribute(raw), legacy: readLegacyFlagsFromDialog(root) }),
     serialize: (value) => encodePlanAttribute(value.plan),
     shell: planEditorShell,
-    render: ({ value, onChange }) =>
+    render: ({ value, saved, onChange }) =>
       React.createElement(
         React.Suspense,
         { fallback: LOADING },
-        React.createElement(LazyPlanEditor, { value, onChange }),
+        React.createElement(LazyPlanEditor, { value, saved, onChange }),
       ),
   });
   const stopHiding = startHiddenFields(LEGACY_ATTRIBUTES, PLAN_ATTRIBUTE, root);

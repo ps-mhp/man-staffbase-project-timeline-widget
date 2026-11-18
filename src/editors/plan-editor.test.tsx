@@ -111,6 +111,16 @@ describe("PlanEditor: Rahmen", () => {
     );
   });
 
+  it("nimmt den Hinweis zurück, sobald der übernommene Stand nichts Verworfenes mehr hat", () => {
+    const withDropped = { plan: testPlan(), dropped: 2, droppedLinks: 1 };
+    const { rerender } = render(<Harness initial={withDropped} saved={withDropped} />);
+    expect(screen.getByRole("alert")).toBeInTheDocument();
+
+    // Nach dem Übernehmen liest `parse` das Feld neu: nichts ist mehr verworfen.
+    rerender(<Harness initial={withDropped} saved={{ ...withDropped, dropped: 0, droppedLinks: 0 }} />);
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
   it("warnt nicht ohne verworfene Einträge", () => {
     render(<Harness />);
     expect(screen.queryByText(/nicht gelesen werden/)).not.toBeInTheDocument();

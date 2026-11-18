@@ -49,6 +49,8 @@ import { startEmpty, startWithTemplate } from "./plan-structure-edits";
 
 export interface PlanEditorProps {
   value: PlanEditorValue;
+  /** Der zuletzt übernommene Stand, neu aus dem Feld gelesen. */
+  saved: PlanEditorValue;
   onChange: (value: PlanEditorValue) => void;
 }
 
@@ -66,8 +68,12 @@ function droppedMessage(dropped: number): string {
 
 const sameViewport = (a: Viewport | null, b: Viewport): boolean => a !== null && a.start === b.start && a.end === b.end;
 
-export function PlanEditor({ value, onChange }: PlanEditorProps): ReactElement {
-  const { plan, dropped, droppedLinks = 0 } = value;
+export function PlanEditor({ value, saved, onChange }: PlanEditorProps): ReactElement {
+  const { plan } = value;
+  // Verworfen wurde beim Lesen, nicht im Entwurf: Erst das Übernehmen
+  // schreibt ohne die Einträge ins Feld, `saved` liest es danach neu und
+  // zählt sie nicht mehr – im Entwurf `value` bliebe der Hinweis stehen.
+  const { dropped, droppedLinks = 0 } = saved;
   const rootRef = useRef<HTMLDivElement>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [viewport, setViewport] = useState<Viewport | null>(null);

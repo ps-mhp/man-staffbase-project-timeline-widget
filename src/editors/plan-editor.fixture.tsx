@@ -30,12 +30,15 @@ import { testPlan } from "./test-plan.fixture";
 
 export interface HarnessProps {
   initial?: PlanEditorValue;
+  /** Der übernommene Stand; vorgegeben der Anfangsentwurf. */
+  saved?: PlanEditorValue;
   view?: ConfigView;
   onChange?: jest.Mock;
 }
 
 export function Harness({
   initial = { plan: testPlan(), dropped: 0 },
+  saved = initial,
   view = "editor",
   onChange = jest.fn(),
 }: HarnessProps): React.ReactElement {
@@ -44,6 +47,7 @@ export function Harness({
     <ConfigShellProvider value={{ view, setView: () => undefined, preview: true, issuesVisible: false }}>
       <PlanEditor
         value={value}
+        saved={saved}
         onChange={(next) => {
           onChange(next);
           setValue(next);
