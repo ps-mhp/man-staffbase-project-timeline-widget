@@ -5,14 +5,21 @@ Ebenen untereinander, darin Meilensteine und Zeiträume, darüber Stichtage, die
 durch alle Ebenen laufen, dazwischen Abhängigkeiten als gestrichelte Linien.
 Leser:innen zoomen stufenlos von mehreren Jahren bis auf einzelne Tage,
 filtern nach Kategorie, Ebene, Zeitraum und Text und laden das Ergebnis als
-Excel-Tabelle herunter. Gepflegt wird der Plan in einem eigenen Editor, der im
-Konfigurationsdialog an die Stelle des Felds `plan` tritt.
+Excel-Tabelle herunter. Gepflegt wird der Plan in einem Vollbild-Editor im
+gemeinsamen Rahmen von `@man/config-ui` (Seitenleiste mit den Einträgen,
+Formular, Panel „Plan“, Vorschau in Gerätebreite), der im Konfigurationsdialog
+an die Stelle des Felds `plan` tritt.
 
 | Attribut       | Typ     | Bedeutung                                                            |
 | -------------- | ------- | -------------------------------------------------------------------- |
-| `plan`         | JSON, verpackt als `b64:`-Payload | Überschrift, Ebenen, Kategorien, Einträge, Startansicht |
-| `show-today`   | Boolean | Heute-Linie zeigen; Vorgabe an                                       |
-| `allow-export` | Boolean | Excel-Export für Leser:innen anbieten; Vorgabe an                    |
+| `plan`         | JSON, verpackt als `b64:`-Payload | Überschrift, Ebenen, Kategorien, Einträge, Startansicht, optional `showToday` und `allowExport` |
+| `show-today`   | Boolean | Rückfall: Heute-Linie zeigen, wenn der Plan `showToday` nicht trägt; Vorgabe an |
+| `allow-export` | Boolean | Rückfall: Excel-Export anbieten, wenn der Plan `allowExport` nicht trägt; Vorgabe an |
+
+Die beiden Schalter pflegt der Editor im Plan; ihre alten Felder sind im
+Studio-Dialog ausgeblendet (`src/legacy-fields.ts`). Je Schlüssel gilt der Wert
+aus dem Plan, sonst der des Attributs, sonst die Vorgabe
+(`resolveDisplayFlags`): Blöcke aus der Zeit davor rendern unverändert.
 
 Die Überschrift steht im Plan (`plan.title`), nicht in einem eigenen
 Attribut: `title` ist ein globales HTML-Attribut (Tooltip über dem ganzen

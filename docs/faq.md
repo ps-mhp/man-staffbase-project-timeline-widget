@@ -75,25 +75,22 @@ einmal.
 Eintrag.“
 
 Antwort: Der Plan hat noch keinen Eintrag, deshalb gibt es nichts zu zeigen.
-Wählen Sie im Reiter **Einträge** über der Liste eine Art und legen Sie mit
-**+** einen Eintrag an.
+Legen Sie links über **Neu** einen Eintrag an. Ohne Ebene geht zunächst nur
+ein Stichtag; Ebenen entstehen rechts im Reiter **Ebenen**.
 
 **Frage:** Der Plan-Editor verdeckt den ganzen Bildschirm, auch die Leiste
 des Studios.
 
-Antwort: Das ist gewollt: Vorschau, Liste und Formular brauchen Platz. Sie
-verlassen den Editor oben rechts über **Übernehmen** oder **Abbrechen**; danach
-ist der Konfigurationsdialog wieder zu sehen, und **Plan bearbeiten …** öffnet
-den Editor erneut.
+Antwort: Das ist gewollt: Liste, Formular, Panel und Vorschau brauchen Platz.
+Sie verlassen den Editor über das Kreuz, **Abbrechen** oder **Übernehmen**
+(mit **Übernehmen und schließen**); danach ist der Konfigurationsdialog
+wieder zu sehen, und **Plan bearbeiten …** öffnet den Editor erneut.
 
-**Frage:** Die Vorschau nimmt mir zu viel Platz weg.
+**Frage:** Wo ist die Vorschau? Im Editor sehe ich nur das Formular.
 
-Antwort: Ziehen Sie die schmale Leiste unter der Vorschau nach oben, oder
-klappen Sie die Vorschau mit einem Klick auf **Vorschau** ganz ein. Ebenso
-lässt sich die Eintragsliste an der Leiste zwischen Liste und Formular
-schmaler oder breiter ziehen. Ein Doppelklick auf eine Leiste stellt die
-ursprüngliche Größe wieder her. Der Browser merkt sich die Größen; in einem
-privaten Fenster gelten beim nächsten Öffnen wieder die Vorgaben.
+Antwort: Die Vorschau steht in den Ansichten **Desktop**, **Tablet** und
+**Mobil** oben im Kopf — dort ersetzt sie das Formular, und das Panel **Plan**
+rechts bleibt stehen. **Editor** führt zum Formular zurück.
 
 **Frage:** Wo erfahren Leser:innen, was die Zeichen im Plan bedeuten?
 
@@ -115,7 +112,7 @@ Shift und dem Mausrad oder über den Rahmen in der Übersicht unter dem Plan.
 
 **Frage:** Warum sehe ich den Knopf „Exportieren“ nicht?
 
-Antwort: Entweder ist in den Einstellungen des Widgets **Excel-Export
+Antwort: Entweder ist im Plan-Editor unter **Einstellungen** **Excel-Export
 anbieten** ausgeschaltet, oder der Bildschirm ist schmal (unter 768 Pixel
 Breite): dann steht **Exportieren** im Menü **Mehr** der Werkzeugleiste.
 
@@ -158,7 +155,7 @@ Prüfen Sie im Formular jedes Eintrags das Feld **Serie** und seine **Ebene**.
 
 **Frage:** Die Heute-Linie ist nicht zu sehen.
 
-Antwort: Prüfen Sie, ob **Heute-Linie zeigen** eingeschaltet ist. Die Linie
+Antwort: Prüfen Sie im Plan-Editor unter **Einstellungen**, ob **Heute-Linie zeigen** eingeschaltet ist. Die Linie
 erscheint außerdem nur, wenn der heutige Tag im sichtbaren Ausschnitt liegt;
 bei einem Plan, der ganz in der Zukunft beginnt, ist sie erst nach dem
 Verschieben oder mit **Alles zeigen** zu sehen — falls heute überhaupt im
@@ -174,24 +171,30 @@ seinen Termin verlieren.
 nicht.“ (oder dasselbe für 20 Ebenen oder 24 Kategorien).
 
 Antwort: Ein Plan trägt höchstens 300 Einträge, 20 Ebenen und
-24 Kategorien; an der Grenze lässt sich nichts mehr hinzufügen. Der Editor
-zeigt oben rechts, wie viele Einträge der Plan schon trägt. Für sehr große
+24 Kategorien; an der Grenze lässt sich nichts mehr hinzufügen. Die
+Seitenleiste zeigt oben, wie viele Einträge der Plan schon trägt („12 von 300“). Für sehr große
 Vorhaben empfiehlt es sich, den Plan auf mehrere Widgets aufzuteilen, etwa
 eines je Baureihe.
 
-**Frage:** Der Knopf **+** lässt sich bei **Meilensteine** und **Zeiträume**
-nicht anklicken.
+**Frage:** Im Menü **Neu** fehlen **Meilenstein** und **Zeitraum**.
 
 Antwort: Der Plan hat keine Ebene mehr, und ohne Ebene hat ein Meilenstein
-oder Zeitraum keinen Platz; der Plan-Editor weist darunter darauf hin. Legen
-Sie im Reiter **Ebenen** über **Neue Ebene** mindestens eine an. Stichtage lassen sich auch ohne Ebene anlegen.
+oder Zeitraum keinen Platz; die Seitenleiste weist darauf hin. Legen Sie rechts
+im Reiter **Ebenen** über **Neue Ebene** mindestens eine an. Stichtage lassen
+sich auch ohne Ebene anlegen.
 
 **Frage:** Wo ist der Papierkorb in der Eintragsliste?
 
-Antwort: Er erscheint, wenn Sie mit der Maus über eine Zeile fahren oder eine
-Zeile per Tastatur den Fokus hat; auf Touch-Geräten ist er immer zu sehen.
-Gelöscht wird erst nach der Rückfrage. Hängen andere Einträge vom gelöschten
-ab, nennt die Rückfrage ihre Zahl; ihre Verbindungen werden entfernt.
+Antwort: Es gibt keinen mehr in der Liste. Gelöscht wird im Formular des
+gewählten Eintrags über **Eintrag löschen**, nach einer Rückfrage. Hängen andere
+Einträge vom gelöschten ab, nennt die Rückfrage ihre Zahl; ihre Verbindungen
+werden entfernt.
+
+**Frage:** Die Schalter für Heute-Linie und Export fehlen im Dialog.
+
+Antwort: Sie stehen seit dem Vollbild-Editor nicht mehr im Dialog von Staffbase,
+sondern rechts im Panel **Plan** unter **Einstellungen**. Ein Block, an dem sie
+nie im Editor umgelegt wurden, behält die Einstellung, die er vorher hatte.
 
 **Frage:** Beim Anlegen einer Ebene oder Kategorie steht „Eine Ebene „X“ gibt
 es schon.“ bzw. „Eine Kategorie „X“ gibt es schon.“

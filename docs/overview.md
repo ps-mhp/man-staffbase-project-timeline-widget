@@ -94,7 +94,9 @@ Außerdem:
 
 ## Was Sie im CMS-Editor sehen
 
-Der Plan-Editor enthält oben eine **Vorschau**: derselbe Zeitstrahl wie auf
-der Seite, mit Zoom, aber ohne Filter, Liste und Export. Ein Klick auf einen
-Eintrag in der Vorschau wählt ihn zum Bearbeiten aus. Wie Leser:innen den Plan
-mit allen Filtern und dem Export erleben, prüfen Sie in der Vorschau der Seite.
+Der Plan-Editor zeigt die **Vorschau** in den Ansichten **Desktop**, **Tablet**
+und **Mobil** oben im Kopf: derselbe Zeitstrahl wie auf der Seite, in der
+Breite des Geräts, mit Zoom, aber ohne Filter, Liste und Export. Ein Klick auf
+einen Eintrag in der Vorschau wählt ihn zum Bearbeiten aus. Wie Leser:innen den
+Plan mit allen Filtern und dem Export erleben, prüfen Sie in der Vorschau der
+Seite.

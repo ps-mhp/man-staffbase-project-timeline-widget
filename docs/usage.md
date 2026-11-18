@@ -10,17 +10,19 @@
 3. Ein leerer Plan bietet zwei Wege an: **Leer beginnen** legt eine Ebene
    „Ebene 1“ an; wer lieber von einer fertigen Vorlage ausgeht, folgt dem
    Abschnitt „Mit einer Vorlage beginnen“.
-4. Tragen Sie in der Kopfleiste des Plan-Editors unter **Überschrift**
-   optional einen Titel für den Plan ein. Er steht über dem Plan und gibt der
+4. Tragen Sie rechts im Panel **Plan** unter **Einstellungen** bei **Titel des
+   Plans** optional einen Titel ein. Er steht über dem Plan und gibt der
    Excel-Datei ihren Namen.
-5. Legen Sie im Reiter **Ebenen** die Ebenen an — siehe „Ebenen pflegen“.
-6. Legen Sie im Reiter **Kategorien** die Kategorien mit ihren Farben an —
-   siehe „Kategorien pflegen“.
-7. Legen Sie im Reiter **Einträge** die Meilensteine, Zeiträume und Stichtage
-   an — siehe die folgenden Abschnitte.
-8. Klicken Sie oben rechts auf **Übernehmen**.
-9. Prüfen Sie im Dialog die Schalter **Heute-Linie zeigen** und
+5. Legen Sie rechts im Reiter **Ebenen** die Ebenen an — siehe „Ebenen
+   pflegen“.
+6. Legen Sie rechts im Reiter **Kategorien** die Kategorien mit ihren Farben
+   an — siehe „Kategorien pflegen“.
+7. Legen Sie links über **Neu** die Meilensteine, Zeiträume und Stichtage an —
+   siehe die folgenden Abschnitte.
+8. Prüfen Sie unter **Einstellungen** die Schalter **Heute-Linie zeigen** und
    **Excel-Export anbieten**; beide sind vorab eingeschaltet.
+9. Klicken Sie oben rechts auf **Übernehmen**. Mit **Übernehmen und
+   schließen** (⌘/Strg ↵) schließt der Editor dabei.
 10. Speichern Sie die Seite und prüfen Sie das Ergebnis in der Vorschau.
 
 ## Mit einer Vorlage beginnen
@@ -41,60 +43,56 @@
    oder löschen Sie, was Sie nicht brauchen.
 5. Klicken Sie oben rechts auf **Übernehmen** und speichern Sie die Seite.
 
-## Den Plan-Editor einrichten
+## Die Ansichten des Plan-Editors
 
-- **Vorschau einklappen:** Ein Klick auf **Vorschau** klappt den Zeitstrahl
-  ein und gibt den Platz den Reitern darunter. Ausgeklappt hat er wieder die
-  zuletzt gewählte Höhe.
-- **Größe ändern:** Die Trennlinie zwischen Vorschau und Reitern ändert die
-  Höhe der Vorschau (mindestens so hoch, dass der Zeitstrahl sichtbar bleibt),
-  die zwischen Eintragsliste und Formular die Breite der Liste. Ziehen Sie sie mit der Maus oder setzen Sie den Fokus darauf und
-  nutzen Sie die Pfeiltasten (mit Shift in größeren Schritten). Ein
-  Doppelklick stellt die ursprüngliche Größe wieder her. Der Browser merkt
-  sich die Größen für das nächste Öffnen.
-- Liste, Formular, Ebenen und Kategorien rollen jeweils für sich; Kopfleiste,
-  Reiter und die Knöpfe über jedem Bereich bleiben stehen.
+- **Editor** zeigt links die Einträge, in der Mitte das Formular des gewählten
+  und rechts das Panel **Plan**.
+- **Desktop**, **Tablet** und **Mobil** (oben im Kopf) zeigen statt des
+  Formulars den Plan so, wie er auf einem Gerät dieser Breite erscheint: mit
+  Zoom, ohne Filter und Export. Ein Klick auf einen Eintrag wählt ihn; er
+  steht danach im Formular der Ansicht **Editor** bereit. Das Panel rechts
+  bleibt dabei stehen.
+- **Rückgängig** und **Wiederholen** im Kopf nehmen Änderungen schrittweise
+  zurück; **Hilfe** (F1) erklärt die Bedienung. Liste, Formular und Panel
+  rollen jeweils für sich.
 
-## Die Eintragsliste
+## Die Seitenleiste
 
-- Über der Liste steht oben **Einträge durchsuchen**, darunter ein Umschalter
-  für die Art: **Meilensteine**, **Zeiträume** oder **Stichtage**, jeweils mit
-  ihrer Anzahl. Die Liste zeigt nur Einträge dieser Art.
-- Der Knopf **+** rechts neben dem Umschalter legt einen Eintrag der
-  gewählten Art an.
-- Vor jedem Titel steht klein die Form in der Farbe seiner Kategorie — so
-  findet man einen Eintrag aus dem Zeitstrahl in der Liste wieder.
-- Die Suche wirkt innerhalb der gewählten Art; die Zahlen im Umschalter
-  zeigen dann, wie viele Treffer es in jeder Art gibt.
-- Wählen Sie in der Vorschau einen Eintrag einer anderen Art, wechselt der
-  Umschalter mit.
-- Zum Löschen fahren Sie mit der Maus über eine Zeile und klicken auf den
-  Papierkorb rechts (auf Touch-Geräten ist er immer zu sehen). Eine kleine
-  Rückfrage nennt auch, wie viele Einträge vom gelöschten abhängen; bestätigen
-  Sie mit **Löschen**.
+- Oben steht **Einträge** mit der Zahl („12 von 300“). **Neu** öffnet ein Menü:
+  **Meilenstein**, **Zeitraum** oder **Stichtag**. Ohne Ebene bietet es nur
+  den Stichtag an — Meilensteine und Zeiträume brauchen eine Ebene.
+- Darunter stehen **Einträge durchsuchen** und eine Auswahl der Art (**Alle
+  Arten**, **Meilensteine**, **Zeiträume**, **Stichtage**, je mit Anzahl; bei
+  aktiver Suche die Treffer). Die Liste steht immer nach Termin.
+- Jede Zeile zeigt Titel, Art, Termin und „vorläufig“, davor die Form in der
+  Farbe der Kategorie — so findet man einen Eintrag aus dem Zeitstrahl in der
+  Liste wieder.
+- Der neue Eintrag liegt in der Mitte des Ausschnitts, den Sie zuletzt in der
+  Vorschau gesehen haben, sonst heute.
+- Gelöscht wird über **Eintrag löschen** im Formular (mit Rückfrage), nicht
+  mehr in der Liste.
 
 ## Das Formular eines Eintrags
 
-Rechts neben der Liste steht das Formular des gewählten Eintrags. Oben stehen
-sein Titel und die Knöpfe **Duplizieren** und **Löschen**, darunter fünf
-Reiter:
+In der Mitte steht das Formular des gewählten Eintrags. Oben stehen
+„Eintrag 4 von 12“, die Art und die Knöpfe **Eintrag duplizieren** und
+**Eintrag löschen**, darunter fünf Reiter:
 
-- **Allgemein** — Art, Titel, Beschreibung
+- **Allgemein** — Art, Titel, Beschreibung, Vorläufig
 - **Einordnung** — Ebene, Kategorie, Serie
-- **Termin** — Datum bzw. Beginn und Ende, beim Zeitraum Pfeil am Ende,
-  Vorläufig
+- **Termin** — Datum bzw. Beginn und Ende, beim Zeitraum Pfeil am Ende
 - **Abhängigkeiten** — die Vorgänger; die Zahl dahinter nennt, wie viele
   gewählt sind. Stichtage haben diesen Reiter nicht.
 - **Inhalt** — die Staffbase-Seite oder der News-Beitrag, den ein Klick auf
-  den Eintrag öffnet
+  den Eintrag öffnet, und die Anhänge
 
 Der gewählte Reiter bleibt offen, wenn Sie zu einem anderen Eintrag wechseln
 — wer die Termine mehrerer Einträge pflegt, bleibt auf **Termin**. Hält ein
-Reiter eine ungültige Eingabe, zeigt er einen roten Punkt.
+Reiter eine ungültige Eingabe, steht „(Fehler)“ hinter seinem Namen.
 
 ## Ebenen pflegen
 
-1. Öffnen Sie im Plan-Editor den Reiter **Ebenen**.
+1. Öffnen Sie rechts im Panel **Plan** den Reiter **Ebenen**.
 2. Um eine Ebene anzulegen, klicken Sie auf **Neue Ebene** und tragen Sie
    ihren Namen ein. Ebenso geht es direkt im Formular eines Eintrags: unter
    **Einordnung** im Feld **Ebene** die Option **Neue Ebene …** wählen, den
@@ -114,7 +112,7 @@ Reiter eine ungültige Eingabe, zeigt er einen roten Punkt.
 
 ## Kategorien pflegen
 
-1. Öffnen Sie im Plan-Editor den Reiter **Kategorien**.
+1. Öffnen Sie rechts im Panel **Plan** den Reiter **Kategorien**.
 2. Um eine Kategorie anzulegen, klicken Sie auf **Neue Kategorie** und
    tragen Sie ihren Namen ein — oder wählen Sie im Formular eines Eintrags
    unter **Einordnung** im Feld **Kategorie** die Option **Neue Kategorie …**;
@@ -135,17 +133,16 @@ Reiter eine ungültige Eingabe, zeigt er einen roten Punkt.
 
 ## Einen Meilenstein anlegen
 
-1. Öffnen Sie im Plan-Editor den Reiter **Einträge**.
-2. Wählen Sie über der Liste **Meilensteine** und klicken Sie auf **+**. Der
-   neue Eintrag heißt „Neuer Meilenstein“, liegt in der Mitte der Vorschau
-   und in der ersten Ebene; rechts erscheint sein Formular im Reiter
-   **Allgemein**, der Titel ist markiert.
-3. Tragen Sie den **Titel** ein und optional eine **Beschreibung**. Die
+1. Klicken Sie links auf **Neu** und wählen Sie **Meilenstein**. Der neue
+   Eintrag heißt „Neuer Meilenstein“, liegt in der Mitte des Ausschnitts der
+   Vorschau (sonst heute) und in der ersten Ebene; in der Mitte erscheint sein
+   Formular im Reiter **Allgemein**, der Titel ist markiert.
+2. Tragen Sie den **Titel** ein und optional eine **Beschreibung**. Die
    Beschreibung erscheint in den Details, Zeilenumbrüche bleiben erhalten.
-4. Wählen Sie unter **Einordnung** die **Ebene** und die **Kategorie** —
+3. Wählen Sie unter **Einordnung** die **Ebene** und die **Kategorie** —
    oder „Ohne Kategorie“.
-5. Tragen Sie unter **Termin** das **Datum** ein.
-6. Form und Farbe des Meilensteins kommen von seiner Kategorie; ohne
+4. Tragen Sie unter **Termin** das **Datum** ein.
+5. Form und Farbe des Meilensteins kommen von seiner Kategorie; ohne
    Kategorie erscheint er als graue Raute. Unter **Einordnung** steht dazu ein
    Hinweis mit der Form, die er gerade trägt.
 7. Setzen Sie **Vorläufig**, wenn der Termin noch nicht feststeht.
@@ -154,23 +151,23 @@ Reiter eine ungültige Eingabe, zeigt er einen roten Punkt.
 
 ## Einen Zeitraum anlegen
 
-1. Wählen Sie im Reiter **Einträge** über der Liste **Zeiträume** und klicken
-   Sie auf **+**. Der neue Eintrag heißt „Neuer Zeitraum“.
+1. Klicken Sie links auf **Neu** und wählen Sie **Zeitraum**. Der neue
+   Eintrag heißt „Neuer Zeitraum“.
 2. Tragen Sie unter **Allgemein** den **Titel** und optional eine
    **Beschreibung** ein, unter **Einordnung** **Ebene** und **Kategorie**.
 3. Tragen Sie unter **Termin** **Beginn** und **Ende** ein. Beide Tage
    gehören zum Zeitraum.
 4. Setzen Sie **Pfeil am Ende**, wenn der Zeitraum über das Ende hinaus
    weiterläuft.
-5. Setzen Sie **Vorläufig**, wenn Beginn oder Ende noch nicht feststehen.
+5. Legen Sie unter **Allgemein** den Schalter **Vorläufig** um, wenn Beginn
+   oder Ende noch nicht feststehen.
 
 Ein Meilenstein lässt sich unter **Art** jederzeit in einen Zeitraum umstellen
 und umgekehrt.
 
 ## Einen Stichtag anlegen
 
-1. Wählen Sie im Reiter **Einträge** über der Liste **Stichtage** und klicken
-   Sie auf **+**.
+1. Klicken Sie links auf **Neu** und wählen Sie **Stichtag**.
 2. Tragen Sie **Titel**, optional **Beschreibung**, **Kategorie** und
    **Datum** ein. Eine Ebene gibt es hier nicht: Ein Stichtag gilt für den
    ganzen Plan und läuft durch alle Ebenen.
@@ -180,7 +177,7 @@ Ebene.
 
 ## Einträge zu einer Serie zusammenfassen
 
-1. Wählen Sie im Reiter **Einträge** den ersten Eintrag der Serie aus und
+1. Wählen Sie in der Liste den ersten Eintrag der Serie aus und
    öffnen Sie **Einordnung**.
 2. Klicken Sie in das Feld **Serie**. Es klappt die Serien auf, die es in
    dieser Ebene schon gibt, jeweils mit der Zahl ihrer Einträge. Tippen Sie
@@ -198,7 +195,7 @@ MY26“ und „TG-Assist MY26“ sind zwei verschiedene Serien.
 
 ## Eine Abhängigkeit setzen
 
-1. Wählen Sie im Reiter **Einträge** den Eintrag aus, der von einem anderen
+1. Wählen Sie in der Liste den Eintrag aus, der von einem anderen
    abhängt (den Nachfolger), und öffnen Sie **Abhängigkeiten**.
 2. Suchen und wählen Sie unter **Hängt ab von** den Vorgänger. Mehrere
    Vorgänger sind möglich.
@@ -215,7 +212,7 @@ Pro Eintrag lässt sich eine Staffbase-Seite oder ein News-Beitrag verknüpfen �
 etwa die Seite mit allen Infos zu einem Software-Update. Der Plan bleibt der
 Überblick, die Einzelheiten stehen dort, wo sie ohnehin gepflegt werden.
 
-1. Wählen Sie den Eintrag im Reiter **Einträge** aus und öffnen Sie den
+1. Wählen Sie den Eintrag in der Liste aus und öffnen Sie den
    Reiter **Inhalt**.
 2. Wählen Sie unter **Verknüpfung** **Seite** oder **News-Beitrag**.
 3. Bei einer Seite wählen Sie sie unter **Seite** aus. Bei einem Beitrag
@@ -262,22 +259,23 @@ Details seine Anhänge. Mit
 
 ## Einträge duplizieren und löschen
 
-1. Wählen Sie den Eintrag im Reiter **Einträge** aus.
-2. **Duplizieren** (oben rechts im Formular) legt eine Kopie an, die Sie
-   anschließend anpassen.
-3. **Löschen** (daneben) fragt nach und entfernt dann den Eintrag und alle
-   Abhängigkeiten, die auf ihn zeigen. Dieselbe Rückfrage erscheint am
-   Papierkorb in der Liste. Danach ist der nächste Eintrag der Liste gewählt.
+1. Wählen Sie den Eintrag in der Liste aus.
+2. **Eintrag duplizieren** (oben rechts im Formular) legt eine Kopie an, die
+   Sie anschließend anpassen.
+3. **Eintrag löschen** (daneben) fragt nach und entfernt dann den Eintrag und
+   alle Abhängigkeiten, die auf ihn zeigen; die Rückfrage nennt, wie viele
+   Einträge von ihm abhängen. Danach ist der nächste Eintrag der Liste gewählt.
 
 ## Die Startansicht festlegen
 
 Ohne Startansicht zeigt das Widget beim Laden den ganzen Plan. Soll es
 stattdessen einen bestimmten Ausschnitt zeigen, etwa die nächsten zwei Jahre:
 
-1. Zoomen und verschieben Sie die **Vorschau** im Plan-Editor, bis der
-   gewünschte Ausschnitt zu sehen ist.
-2. Klicken Sie auf **Diesen Ausschnitt als Startansicht**. Gespeichert wird
-   monatsgenau.
+1. Wechseln Sie oben im Kopf zu **Desktop**, **Tablet** oder **Mobil** und
+   zoomen und verschieben Sie den Plan, bis der gewünschte Ausschnitt zu sehen
+   ist.
+2. Klicken Sie rechts unter **Einstellungen** im Abschnitt **Startansicht** auf
+   **Diesen Ausschnitt übernehmen**. Gespeichert wird monatsgenau.
 3. Um wieder den ganzen Plan zu zeigen, klicken Sie auf **Startansicht
    entfernen**.
 4. **Übernehmen**, speichern, in der Vorschau der Seite prüfen.
@@ -289,16 +287,15 @@ Leser:innen können von der Startansicht aus jederzeit weiter zoomen oder mit
 
 1. Öffnen Sie die Einstellungen des Widgets erneut. Der Plan-Editor zeigt den
    gespeicherten Plan.
-2. Wählen Sie den Eintrag in der Liste des Reiters **Einträge** oder durch
-   einen Klick in der Vorschau aus und ändern Sie sein Formular. Ein Klick in
-   der Vorschau wechselt dabei in den Reiter **Einträge** und holt den
-   Eintrag in der Liste in Sicht.
+2. Wählen Sie den Eintrag in der Liste oder durch einen Klick in der Vorschau
+   (Desktop, Tablet, Mobil) aus und ändern Sie sein Formular.
 3. Klicken Sie oben rechts auf **Übernehmen** und speichern Sie die Seite.
    Das Datum hinter „Stand:“ wird dabei auf den Tag der Änderung gesetzt.
 
-Solange Änderungen noch nicht übernommen sind, steht in der Kopfleiste
-„Ungespeicherte Änderungen“. Über **Abbrechen** verwerfen Sie alle Änderungen
-seit dem letzten Öffnen des Plan-Editors; der Editor fragt vorher nach.
+Solange Änderungen noch nicht übernommen sind, steht im Kopf, was sich
+geändert hat („3 Einträge geändert“). Über **Abbrechen** verwerfen Sie alle
+Änderungen seit dem letzten Öffnen des Plan-Editors; der Editor fragt vorher
+nach.
 
 ## Den Plan als Excel-Tabelle herunterladen (als Leser:in)
 
@@ -326,10 +323,11 @@ den aktiven Filtern.
    Eintrag. Öffnen Sie die Einstellungen und legen Sie mindestens einen
    Meilenstein, Zeitraum oder Stichtag an.
 2. **Der Plan-Editor öffnet sich nicht.** Unter **Plan** steht dann nur ein
-   Textfeld. Schließen Sie die Einstellungen und öffnen Sie sie erneut. Ändern
+   Textfeld; die Schalter für Heute-Linie und Export sind im Dialog
+   ausgeblendet und stehen nur im Editor zur Verfügung. Schließen Sie die Einstellungen und öffnen Sie sie erneut. Ändern
    Sie den Inhalt des Textfelds nicht von Hand — er ist die technische
    Rohfassung des Plans.
-3. **Oben im Plan-Editor steht, dass Einträge nicht gelesen werden konnten.**
+3. **Im Plan-Editor steht, dass Einträge nicht gelesen werden konnten.**
    Siehe die FAQ zu dieser Meldung.
 4. **Leser:innen finden den Knopf „Exportieren“ nicht.** Prüfen Sie, ob
-   **Excel-Export anbieten** eingeschaltet ist.
+   **Excel-Export anbieten** unter **Einstellungen** im Plan-Editor eingeschaltet ist.
