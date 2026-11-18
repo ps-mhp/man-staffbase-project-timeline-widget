@@ -345,3 +345,15 @@ export function startEmpty(plan: Plan, now: Date = new Date()): Plan {
     now,
   );
 }
+
+// ---------------------------------------------------------------------------
+// Anzeige-Schalter
+
+/**
+ * Setzt einen der Schalter des Plans (Heute-Linie, Export). Ohne `touch`:
+ * sie ändern nur die Darstellung, nicht den Stand der Einträge — „Stand:“ auf
+ * der Seite soll davon nicht vorrücken.
+ */
+export function setDisplayFlag(plan: Plan, flag: "showToday" | "allowExport", value: boolean): Plan {
+  return { ...plan, [flag]: value };
+}

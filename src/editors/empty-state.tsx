@@ -19,6 +19,8 @@
 import * as React from "react";
 import { ReactElement, useEffect, useId, useRef, useState } from "react";
 
+import { Button } from "@man/config-ui/primitives/button";
+
 import { PLAN_TEMPLATES, PlanTemplate } from "../plan-templates";
 import { TemplateGallery } from "./template-gallery";
 
@@ -54,26 +56,21 @@ export function EmptyState({ onTemplate, onEmpty }: EmptyStateProps): ReactEleme
   }
 
   return (
-    <section className="man-pt-editor__empty" aria-labelledby={headingId}>
-      <h3 id={headingId} className="man-pt-editor__empty-title">
+    <section className="mx-auto flex max-w-[560px] flex-col items-start gap-3 px-6 py-12" aria-labelledby={headingId}>
+      <h3 id={headingId} className="text-xl font-semibold text-foreground">
         Der Plan ist noch leer
       </h3>
-      <p className="man-pt-editor__hint">
+      <p className="text-sm text-muted-foreground">
         Eine Vorlage bringt Ebenen, Kategorien und Einträge mit und lässt sich danach frei umbauen. Leer beginnt der
         Plan mit einer Ebene.
       </p>
-      <div className="man-pt-editor__actions">
-        <button
-          ref={startRef}
-          type="button"
-          className="man-pt-editor__button man-pt-editor__button--primary"
-          onClick={() => setChoosing(true)}
-        >
+      <div className="flex flex-wrap gap-2">
+        <Button ref={startRef} type="button" size="lg" onClick={() => setChoosing(true)}>
           Mit Vorlage beginnen
-        </button>
-        <button type="button" className="man-pt-editor__button" onClick={onEmpty}>
+        </Button>
+        <Button type="button" variant="outline" size="lg" onClick={onEmpty}>
           Leer beginnen
-        </button>
+        </Button>
       </div>
     </section>
   );

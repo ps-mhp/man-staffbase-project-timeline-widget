@@ -30,6 +30,7 @@ import {
   removeCategory,
   removeLane,
   renameLane,
+  setDisplayFlag,
   setStartView,
   startEmpty,
   startWithTemplate,
@@ -361,5 +362,20 @@ describe("Anlegen mit Namen", () => {
 
   it("schlägt die erste freie Farbe vor", () => {
     expect(nextFreeColor(basePlan())).toBe(CATEGORY_PALETTE[1]);
+  });
+});
+
+describe("setDisplayFlag", () => {
+  it("setzt den Schalter, ohne den Stand zu verschieben und ohne den Plan zu verändern", () => {
+    const plan = basePlan();
+    const next = setDisplayFlag(plan, "showToday", false);
+    expect(next).toEqual({ ...plan, showToday: false });
+    expect(next.updatedAt).toBe(plan.updatedAt);
+    expect(plan).not.toHaveProperty("showToday");
+  });
+
+  it("lässt den anderen Schalter unberührt", () => {
+    const next = setDisplayFlag(setDisplayFlag(basePlan(), "allowExport", true), "showToday", false);
+    expect(next).toMatchObject({ allowExport: true, showToday: false });
   });
 });

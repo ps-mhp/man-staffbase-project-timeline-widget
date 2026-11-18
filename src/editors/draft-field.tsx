@@ -24,6 +24,11 @@
 import * as React from "react";
 import { ReactElement, useEffect, useId, useRef, useState } from "react";
 
+import { Field } from "@man/config-ui/form/field";
+import { Input } from "@man/config-ui/primitives/input";
+import { Textarea } from "@man/config-ui/primitives/textarea";
+import { cn } from "@man/config-ui/primitives/utils";
+
 import { useReportValidity } from "./field-validity";
 
 /** Liefert die Fehlermeldung, oder `null`, wenn die Eingabe gültig ist. */
@@ -77,6 +82,10 @@ export interface DraftFieldProps {
   hideLabel?: boolean;
   /** Sichtbarer Hinweis im leeren Feld — wo das Label verborgen ist, sagt er, wofür es da ist. */
   placeholder?: string;
+  /** Dauerhafte Erklärung unter dem Feld. */
+  hint?: React.ReactNode;
+  /** Pflichtfeld: Sternchen am Label. Gespeichert wird nur Gültiges, `validate` sagt, was fehlt. */
+  required?: boolean;
   className?: string;
   /**
    * Fokus beim Erscheinen, Inhalt markiert: nach dem Anlegen steht dort
@@ -96,6 +105,8 @@ export function DraftField({
   list,
   hideLabel = false,
   placeholder,
+  hint,
+  required = false,
   className,
   autoFocus = false,
 }: DraftFieldProps): ReactElement {
@@ -121,47 +132,47 @@ export function DraftField({
     onCommit(committed);
   };
 
-  // Ohne diese Verknüpfung läse ein Screenreader die Meldung neben dem Feld
-  // beim Betreten nicht mit vor.
-  const shared = {
-    id,
-    ref: fieldRef,
-    value: draft.text,
-    "aria-invalid": error !== null,
-    "aria-describedby": error !== null ? errorId : undefined,
-  };
+  const control = multiline ? (
+    <Textarea
+      ref={fieldRef}
+      rows={3}
+      value={draft.text}
+      onChange={(event) => change(event.target.value)}
+    />
+  ) : (
+    <Input
+      ref={fieldRef}
+      type={type}
+      list={list}
+      placeholder={placeholder}
+      value={draft.text}
+      onChange={(event) => change(event.target.value)}
+    />
+  );
+
+  if (hideLabel) {
+    // Ohne sichtbares Label: der Name steht im `aria-label`, die Meldung
+    // darunter ist über `aria-describedby` verbunden.
+    return (
+      <div className={cn("flex min-w-0 flex-col gap-1", className)}>
+        {React.cloneElement(control, {
+          id,
+          "aria-label": label,
+          "aria-invalid": error !== null,
+          "aria-describedby": error !== null ? errorId : undefined,
+        })}
+        {error !== null && (
+          <p id={errorId} role="alert" className="text-[13px] text-destructive">
+            {error}
+          </p>
+        )}
+      </div>
+    );
+  }
 
   return (
-    <div className={`man-pt-editor__field${className ? ` ${className}` : ""}`}>
-      <label
-        className={
-          hideLabel ? "man-pt-editor__sr-only" : "man-pt-editor__label"
-        }
-        htmlFor={id}
-      >
-        {label}
-      </label>
-      {multiline ? (
-        <textarea
-          {...shared}
-          className="man-pt-editor__textarea"
-          onChange={(event) => change(event.target.value)}
-        />
-      ) : (
-        <input
-          {...shared}
-          type={type}
-          list={list}
-          placeholder={placeholder}
-          className="man-pt-editor__input"
-          onChange={(event) => change(event.target.value)}
-        />
-      )}
-      {error !== null && (
-        <p id={errorId} className="man-pt-editor__error">
-          {error}
-        </p>
-      )}
-    </div>
+    <Field label={label} hint={hint} error={error} required={required} className={cn("min-w-0", className)}>
+      {control}
+    </Field>
   );
 }

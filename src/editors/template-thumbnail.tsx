@@ -68,7 +68,7 @@ export function TemplateThumbnail({ plan }: { plan: Plan }): ReactElement {
 
   return (
     <svg
-      className="man-pt-editor__template-thumb"
+      className="man-pt-editor__template-thumb block h-auto w-full rounded-md border bg-muted"
       viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
       aria-hidden="true"
       focusable="false"
@@ -76,7 +76,7 @@ export function TemplateThumbnail({ plan }: { plan: Plan }): ReactElement {
       {plan.lanes.slice(1).map((lane, index) => (
         <line
           key={lane.id}
-          className="man-pt-editor__thumb-rule"
+          className="man-pt-editor__thumb-rule" stroke="var(--border)" strokeWidth={1}
           x1={0}
           x2={WIDTH}
           y1={PAD_Y + (index + 1) * row}
@@ -92,7 +92,7 @@ export function TemplateThumbnail({ plan }: { plan: Plan }): ReactElement {
             return (
               <line
                 key={item.id}
-                className="man-pt-editor__thumb-deadline"
+                className="man-pt-editor__thumb-deadline" strokeWidth={1} strokeDasharray="2 2"
                 x1={at}
                 x2={at}
                 y1={0}

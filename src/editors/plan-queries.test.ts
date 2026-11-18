@@ -160,6 +160,13 @@ describe("Arten", () => {
     ).toEqual(["m3", "m2"]);
   });
 
+  it("zeigt mit „alle“ jede Art in einer Liste nach Termin", () => {
+    expect(visibleItems(plan, "all", "").map((item) => item.id)).toEqual(
+      itemsByDate(plan.items).map((item) => item.id),
+    );
+    expect(visibleItems(plan, "all", "euro").map((item) => item.id)).toEqual(["d1"]);
+  });
+
   it("zählt je Art, bei aktiver Suche nur die Treffer", () => {
     expect(kindCounts(plan, "")).toEqual({ milestone: 3, bar: 1, deadline: 1 });
     expect(kindCounts(plan, "euro")).toEqual({

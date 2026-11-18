@@ -76,7 +76,7 @@ export const configurationSchema: JSONSchema7 = {
 export const uiSchema: UiSchema = {
   [PLAN_ATTRIBUTE]: {
     "ui:help":
-      "Überschrift, Ebenen, Kategorien und Einträge des Plans. Der Plan-Editor öffnet sich von selbst; " +
+      "Überschrift, Ebenen, Kategorien, Einträge und Schalter des Plans. Der Plan-Editor öffnet sich von selbst; " +
       "das Textfeld dahinter ist die Rohfassung und muss nicht angefasst werden.",
   },
   [SHOW_TODAY_ATTRIBUTE]: {

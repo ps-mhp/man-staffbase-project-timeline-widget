@@ -132,14 +132,18 @@ export function scheduleLabel(item: PlanItem, locale: string): string {
   return shortTermText(item, locale);
 }
 
-/** Die Einträge einer Art, die zur Suche passen, nach Termin — so wie die Liste sie zeigt. */
+/** Welche Einträge die Liste zeigt: eine Art oder alle. */
+export type KindFilter = ItemKind | "all";
+
+/** Die Einträge einer Art (oder aller), die zur Suche passen, nach Termin — so wie die Liste sie zeigt. */
 export function visibleItems(
   plan: Plan,
-  kind: ItemKind,
+  kind: KindFilter,
   query: string,
 ): PlanItem[] {
   return itemsByDate(plan.items).filter(
-    (item) => item.kind === kind && matchesSearch(plan, item, query),
+    (item) =>
+      (kind === "all" || item.kind === kind) && matchesSearch(plan, item, query),
   );
 }
 

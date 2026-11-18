@@ -21,6 +21,8 @@
 import * as React from "react";
 import { ReactElement, Ref, useEffect, useId, useMemo, useRef } from "react";
 
+import { Button } from "@man/config-ui/primitives/button";
+
 import { formatMonthYear } from "../format";
 import { Plan } from "../plan-model";
 import type { PlanTemplate } from "../plan-templates";
@@ -57,19 +59,19 @@ function TemplateCard({ template, onPick, buttonRef }: TemplateCardProps): React
     <button
       ref={buttonRef}
       type="button"
-      className="man-pt-editor__template"
+      className="flex h-full w-full cursor-pointer flex-col items-stretch gap-2 rounded-lg border bg-background p-3 text-left whitespace-normal text-foreground outline-none transition-colors hover:border-primary-soft-border hover:bg-primary-soft focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
       aria-labelledby={`${id}-title`}
       aria-describedby={`${id}-description ${id}-facts`}
       onClick={() => onPick(template)}
     >
       <TemplateThumbnail plan={plan} />
-      <span id={`${id}-title`} className="man-pt-editor__template-title">
+      <span id={`${id}-title`} className="block text-sm font-semibold text-foreground">
         {template.title}
       </span>
-      <span id={`${id}-description`} className="man-pt-editor__template-description">
+      <span id={`${id}-description`} className="block text-[13px] text-muted-foreground">
         {template.description}
       </span>
-      <span id={`${id}-facts`} className="man-pt-editor__template-facts">
+      <span id={`${id}-facts`} className="mt-auto block text-xs text-muted-foreground">
         {describeTemplatePlan(plan)}
       </span>
     </button>
@@ -93,26 +95,26 @@ export function TemplateGallery({ templates, onPick, onBack }: TemplateGalleryPr
   }, []);
 
   return (
-    <section className="man-pt-editor__empty man-pt-editor__empty--gallery" aria-labelledby={headingId}>
-      <h3 id={headingId} className="man-pt-editor__empty-title">
+    <section className="mx-auto flex max-w-[760px] flex-col items-stretch gap-4 px-6 py-8" aria-labelledby={headingId}>
+      <h3 id={headingId} className="text-xl font-semibold text-foreground">
         Vorlage wählen
       </h3>
-      <p className="man-pt-editor__hint">
+      <p className="text-sm text-muted-foreground">
         Ein Klick übernimmt die Vorlage; danach lässt sich alles frei umbauen. Eine schon eingegebene Überschrift
         bleibt.
       </p>
       {/* `role="list"`: Safari nimmt einer Liste ohne Aufzählungszeichen sonst die Rolle. */}
-      <ul className="man-pt-editor__templates" role="list" aria-label="Vorlagen">
+      <ul className="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-3 p-0" role="list" aria-label="Vorlagen">
         {templates.map((template, index) => (
-          <li key={template.id} className="man-pt-editor__templates-item">
+          <li key={template.id} className="m-0 p-0">
             <TemplateCard template={template} onPick={onPick} buttonRef={index === 0 ? firstRef : undefined} />
           </li>
         ))}
       </ul>
-      <div className="man-pt-editor__actions">
-        <button type="button" className="man-pt-editor__button" onClick={onBack}>
+      <div>
+        <Button type="button" variant="outline" size="lg" onClick={onBack}>
           Zurück
-        </button>
+        </Button>
       </div>
     </section>
   );

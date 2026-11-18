@@ -12,7 +12,7 @@
  */
 
 /**
- * Das Formular eines Eintrags in einem Halter, der Plan und Unterreiter trägt
+ * Die Hauptfläche eines Eintrags in einem Halter, der Plan und Unterreiter trägt
  * wie der Editor — damit Eingaben nacheinander wirken. Geteilt von den Tests
  * des Formulars.
  */
@@ -22,7 +22,7 @@ import { useState } from "react";
 import { fireEvent, screen } from "@testing-library/react";
 
 import { Plan } from "../plan-model";
-import { FormTab, ItemForm } from "./item-form";
+import { EntryMain, FormTab } from "./entry-main";
 import { findItem, testPlan } from "./test-plan.fixture";
 
 export interface FormHarnessProps {
@@ -45,7 +45,7 @@ export function FormHarness({
   const [plan, setPlan] = useState(initial);
   const [tab, setTab] = useState<FormTab>(initialTab);
   return (
-    <ItemForm
+    <EntryMain
       plan={plan}
       item={findItem(plan, id)}
       locale="de-DE"

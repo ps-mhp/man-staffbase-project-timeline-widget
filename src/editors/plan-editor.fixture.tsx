@@ -11,51 +11,49 @@
  * limitations under the License.
  */
 
+
 /**
  * Der Editor in einem Halter, der den Entwurf trägt wie das Modal — damit
- * Eingaben nacheinander wirken. Geteilt von den Tests des Editors.
+ * Eingaben nacheinander wirken — und im Rahmen von `@man/config-ui` sitzt:
+ * die Ansicht (Editor, Desktop …) lässt sich vorgeben. Geteilt von den Tests
+ * des Editors.
  */
 
 import * as React from "react";
 import { useState } from "react";
+import { ConfigShellProvider, type ConfigView } from "@man/config-ui";
 
 import { Plan } from "../plan-model";
-import { PlanEditorValue } from "../plan-editor-injector";
+import { PlanEditorValue } from "../plan-editor-rules";
 import { PlanEditor } from "./plan-editor";
 import { testPlan } from "./test-plan.fixture";
 
 export interface HarnessProps {
   initial?: PlanEditorValue;
-  dirty?: boolean;
+  view?: ConfigView;
   onChange?: jest.Mock;
-  onSave?: jest.Mock;
-  onClose?: jest.Mock;
 }
 
 export function Harness({
   initial = { plan: testPlan(), dropped: 0 },
+  view = "editor",
   onChange = jest.fn(),
-  onSave = jest.fn(),
-  onClose = jest.fn(),
-  dirty = false,
 }: HarnessProps): React.ReactElement {
   const [value, setValue] = useState(initial);
   return (
-    <PlanEditor
-      value={value}
-      onChange={(next) => {
-        onChange(next);
-        setValue(next);
-      }}
-      onSave={onSave}
-      onClose={onClose}
-      dirty={dirty}
-    />
+    <ConfigShellProvider value={{ view, setView: () => undefined, preview: true, issuesVisible: false }}>
+      <PlanEditor
+        value={value}
+        onChange={(next) => {
+          onChange(next);
+          setValue(next);
+        }}
+      />
+    </ConfigShellProvider>
   );
 }
 
-export const lastPlan = (spy: jest.Mock): Plan =>
-  (spy.mock.calls[spy.mock.calls.length - 1][0] as PlanEditorValue).plan;
+export const lastPlan = (spy: jest.Mock): Plan => (spy.mock.calls[spy.mock.calls.length - 1][0] as PlanEditorValue).plan;
 
 export const emptyPlan = (): Plan => ({
   version: 1,

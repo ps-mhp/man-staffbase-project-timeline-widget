@@ -25,6 +25,8 @@
 import * as React from "react";
 import { KeyboardEvent, ReactElement, useId, useRef } from "react";
 
+import { Button } from "@man/config-ui/primitives/button";
+
 import { MILESTONE_SYMBOLS, MilestoneSymbol } from "../plan-model";
 import { SymbolGlyph } from "../symbol-glyph";
 import { SYMBOL_LABELS } from "../symbols";
@@ -68,20 +70,20 @@ export function SymbolField({
   };
 
   return (
-    <div className="man-pt-editor__symbols-field">
-      <span id={labelId} className="man-pt-editor__label">
+    <div className="flex flex-col gap-1.5">
+      <span id={labelId} className="text-[13px] font-semibold text-foreground">
         {label}
       </span>
       <div
         role="radiogroup"
         aria-labelledby={labelId}
-        className="man-pt-editor__symbols"
+        className="grid grid-cols-4 gap-1"
         onKeyDown={onKeyDown}
       >
         {MILESTONE_SYMBOLS.map((symbol) => {
           const checked = symbol === value;
           return (
-            <button
+            <Button
               key={symbol}
               ref={(element) => {
                 if (element === null) buttons.current.delete(symbol);
@@ -93,11 +95,13 @@ export function SymbolField({
               aria-label={SYMBOL_LABELS[symbol]}
               title={SYMBOL_LABELS[symbol]}
               tabIndex={checked ? 0 : -1}
-              className={`man-pt-editor__button man-pt-editor__button--icon man-pt-editor__symbol${checked ? " man-pt-editor__symbol--checked" : ""}`}
+              variant="outline"
+              size="icon"
+              className={checked ? "border-primary bg-primary-soft" : undefined}
               onClick={() => onChange(symbol)}
             >
               <SymbolGlyph symbol={symbol} color={color} size={16} />
-            </button>
+            </Button>
           );
         })}
       </div>

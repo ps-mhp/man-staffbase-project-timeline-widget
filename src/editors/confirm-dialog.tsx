@@ -31,6 +31,7 @@ import {
   useRef,
 } from "react";
 
+import { Button } from "@man/config-ui/primitives/button";
 import { activeElementOf } from "@shared/shadow-dom";
 
 const FOCUSABLE =
@@ -80,7 +81,7 @@ export function ConfirmDialog({
     // Gibt es eine Auswahl, ist sie das Erste, was zu entscheiden ist; sonst
     // steht der Fokus auf dem harmlosen Knopf, damit Enter nichts löscht.
     const choice = dialogRef.current?.querySelector<HTMLElement>(
-      ".man-pt-editor__dialog-choices " + FOCUSABLE,
+      "[data-dialog-choices] " + FOCUSABLE,
     );
     (choice ?? cancelRef.current)?.focus();
     return () => {
@@ -116,41 +117,34 @@ export function ConfirmDialog({
   };
 
   return (
-    <div className="man-pt-editor__scrim">
+    <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/55 p-4">
       <div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={messageId}
-        className="man-pt-editor__dialog"
+        className="flex w-full max-w-[460px] flex-col gap-3 rounded-lg bg-background p-5 shadow-xl"
         onKeyDown={onKeyDown}
       >
-        <h3 id={titleId} className="man-pt-editor__dialog-title">
+        <h3 id={titleId} className="text-base font-semibold text-foreground">
           {title}
         </h3>
-        <p id={messageId} className="man-pt-editor__dialog-message">
+        <p id={messageId} className="text-sm text-muted-foreground">
           {message}
         </p>
         {children !== undefined && (
-          <div className="man-pt-editor__dialog-choices">{children}</div>
+          <div data-dialog-choices="" className="flex flex-col gap-2">
+            {children}
+          </div>
         )}
-        <div className="man-pt-editor__dialog-actions">
-          <button
-            ref={cancelRef}
-            type="button"
-            className="man-pt-editor__button"
-            onClick={onCancel}
-          >
+        <div className="flex justify-end gap-2 pt-2">
+          <Button ref={cancelRef} type="button" variant="outline" size="lg" onClick={onCancel}>
             Abbrechen
-          </button>
-          <button
-            type="button"
-            className="man-pt-editor__button man-pt-editor__button--danger"
-            onClick={onConfirm}
-          >
+          </Button>
+          <Button type="button" variant="destructive" size="lg" onClick={onConfirm}>
             {confirmLabel}
-          </button>
+          </Button>
         </div>
       </div>
     </div>

@@ -22,14 +22,18 @@
  */
 
 import * as React from "react";
-import { ReactElement, useId, useMemo, useState } from "react";
+import { ReactElement, useMemo, useState } from "react";
+import { ArrowDown, ArrowUp, X } from "lucide-react";
+
+import { FormSection } from "@man/config-ui/form/form-section";
+import { Button } from "@man/config-ui/primitives/button";
 
 import { createMediaClient, extensionOf } from "@shared/media/media-client";
 import { MediaPicker, PickedMedia } from "@shared/media/media-picker";
 
 import { Attachment, LIMITS } from "../plan-model";
 import { DraftField } from "./draft-field";
-import { PanelProps } from "./item-form-panels";
+import { PanelProps } from "./entry-panels";
 import { addAttachment, moveAttachment, removeAttachment, setAttachmentLabel } from "./link-edits";
 
 const kindLabel = (attachment: Attachment): string =>
@@ -43,7 +47,6 @@ function toAttachment(media: PickedMedia): Attachment {
 }
 
 export function AttachmentsField({ plan, item, onPlanChange }: PanelProps): ReactElement {
-  const headingId = useId();
   const client = useMemo(() => createMediaClient(), []);
   const [picking, setPicking] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
@@ -67,81 +70,86 @@ export function AttachmentsField({ plan, item, onPlanChange }: PanelProps): Reac
   };
 
   return (
-    <section className="man-pt-editor__attachments" aria-labelledby={headingId}>
-      <h4 id={headingId} className="man-pt-editor__subheading">
-        Anhänge
-      </h4>
-      {attachments.length === 0 ? (
-        <p className="man-pt-editor__hint">Keine Anhänge.</p>
-      ) : (
-        // `role="list"`: ohne Aufzählungszeichen nähme Safari der Liste sonst die Rolle.
-        <ul className="man-pt-editor__attachment-list" role="list" aria-label="Anhänge">
-          {attachments.map((attachment, index) => (
-            <li key={attachment.mediaId} className="man-pt-editor__attachment">
-              <span className="man-pt-editor__attachment-kind">{kindLabel(attachment)}</span>
-              <span className="man-pt-editor__attachment-name">{attachment.fileName}</span>
-              <DraftField
-                label={`Beschriftung von „${attachment.fileName}“`}
-                hideLabel
-                placeholder="Beschriftung (optional)"
-                value={attachment.label ?? ""}
-                className="man-pt-editor__attachment-label"
-                onCommit={(text) => onPlanChange(setAttachmentLabel(plan, item.id, attachment.mediaId, text))}
-              />
-              <span className="man-pt-editor__attachment-actions">
-                <button
-                  type="button"
-                  className="man-pt-editor__button man-pt-editor__button--icon"
-                  aria-label={`„${attachment.fileName}“ nach oben`}
-                  disabled={index === 0}
-                  onClick={() => onPlanChange(moveAttachment(plan, item.id, attachment.mediaId, index - 1))}
-                >
-                  ↑
-                </button>
-                <button
-                  type="button"
-                  className="man-pt-editor__button man-pt-editor__button--icon"
-                  aria-label={`„${attachment.fileName}“ nach unten`}
-                  disabled={index === attachments.length - 1}
-                  onClick={() => onPlanChange(moveAttachment(plan, item.id, attachment.mediaId, index + 1))}
-                >
-                  ↓
-                </button>
-                <button
-                  type="button"
-                  className="man-pt-editor__button man-pt-editor__button--icon"
-                  aria-label={`„${attachment.fileName}“ entfernen`}
-                  onClick={() => onPlanChange(removeAttachment(plan, item.id, attachment.mediaId))}
-                >
-                  ×
-                </button>
-              </span>
-            </li>
-          ))}
-        </ul>
-      )}
-      <div className="man-pt-editor__actions">
-        <button
-          type="button"
-          className="man-pt-editor__button"
-          disabled={full}
-          onClick={() => {
-            setNotice(null);
-            setPicking(true);
-          }}
-        >
-          Datei oder Bild hinzufügen …
-        </button>
+    <FormSection title="Anhänge">
+      <div className="flex flex-col gap-3">
+        {attachments.length === 0 ? (
+          <p className="text-[13px] text-muted-foreground">Keine Anhänge.</p>
+        ) : (
+          // `role="list"`: ohne Aufzählungszeichen nähme Safari der Liste sonst die Rolle.
+          <ul className="flex flex-col gap-2" role="list" aria-label="Anhänge">
+            {attachments.map((attachment, index) => (
+              <li key={attachment.mediaId} className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-lg border bg-background p-2.5">
+                <span className="rounded bg-muted px-1.5 py-0.5 text-xs font-semibold text-muted-foreground">
+                  {kindLabel(attachment)}
+                </span>
+                <span className="min-w-0 flex-1 truncate text-sm font-semibold text-foreground">{attachment.fileName}</span>
+                <span className="flex items-center gap-0.5">
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon-sm"
+                    aria-label={`„${attachment.fileName}“ nach oben`}
+                    disabled={index === 0}
+                    onClick={() => onPlanChange(moveAttachment(plan, item.id, attachment.mediaId, index - 1))}
+                  >
+                    <ArrowUp aria-hidden />
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon-sm"
+                    aria-label={`„${attachment.fileName}“ nach unten`}
+                    disabled={index === attachments.length - 1}
+                    onClick={() => onPlanChange(moveAttachment(plan, item.id, attachment.mediaId, index + 1))}
+                  >
+                    <ArrowDown aria-hidden />
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon-sm"
+                    aria-label={`„${attachment.fileName}“ entfernen`}
+                    className="text-destructive hover:text-destructive"
+                    onClick={() => onPlanChange(removeAttachment(plan, item.id, attachment.mediaId))}
+                  >
+                    <X aria-hidden />
+                  </Button>
+                </span>
+                <DraftField
+                  label={`Beschriftung von „${attachment.fileName}“`}
+                  hideLabel
+                  placeholder="Beschriftung (optional)"
+                  value={attachment.label ?? ""}
+                  className="w-full basis-full"
+                  onCommit={(text) => onPlanChange(setAttachmentLabel(plan, item.id, attachment.mediaId, text))}
+                />
+              </li>
+            ))}
+          </ul>
+        )}
+        <div>
+          <Button
+            type="button"
+            variant="outline"
+            disabled={full}
+            onClick={() => {
+              setNotice(null);
+              setPicking(true);
+            }}
+          >
+            Datei oder Bild hinzufügen …
+          </Button>
+        </div>
+        {full && <p className="text-[13px] text-muted-foreground">Höchstens {LIMITS.attachments} Anhänge je Eintrag.</p>}
+        {notice !== null && (
+          <p className="text-[13px] text-muted-foreground" role="status">
+            {notice}
+          </p>
+        )}
       </div>
-      {full && <p className="man-pt-editor__hint">Höchstens {LIMITS.attachments} Anhänge je Eintrag.</p>}
-      {notice !== null && (
-        <p className="man-pt-editor__hint" role="status">
-          {notice}
-        </p>
-      )}
       {picking && (
         <MediaPicker client={client} accept="all" publish={false} onSelect={pick} onClose={() => setPicking(false)} />
       )}
-    </section>
+    </FormSection>
   );
 }

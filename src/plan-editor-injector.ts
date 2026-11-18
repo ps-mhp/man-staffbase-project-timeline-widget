@@ -11,50 +11,84 @@
  * limitations under the License.
  */
 
+
 /**
  * Setzt den Plan-Editor an die Stelle des Feldes `plan`.
  *
  * Staffbase baut den Konfigurationsdialog selbst und kennt nur die Feldtypen
  * von RJSF; ein Zeitstrahl mit Ebenen, Kategorien und Abhängigkeiten ist
- * keiner davon. Der Editor wird deshalb neben das Feld gehängt, sobald der
- * Dialog erscheint. Das Feld selbst bleibt stehen: geht der Einbau schief,
- * ist die Konfiguration noch von Hand zu retten.
+ * keiner davon. Der Editor wird deshalb im gemeinsamen Vollbild-Rahmen
+ * (`@man/config-ui`) neben das Feld gehängt, sobald der Dialog erscheint. Das
+ * Feld selbst bleibt stehen: geht der Einbau schief, ist die Konfiguration
+ * noch von Hand zu retten.
+ *
+ * Die alten Schalter `show-today` und `allow-export` sind im eigenen Dialog
+ * ausgeblendet; der Editor pflegt sie im Plan (`legacy-fields.ts`).
  */
 
 import * as React from "react";
+import { CalendarRange } from "lucide-react";
 
-import { startFieldModalInjector } from "@shared/config-modal";
+import { FieldModalShellOptions, startFieldModalInjector } from "@shared/config-modal";
 
 import { PLAN_ATTRIBUTE } from "./configuration-schema";
-import { PlanEditor } from "./editors/plan-editor";
-import { Plan, encodePlanAttribute, readPlanAttribute } from "./plan-model";
+import { readLegacyFlagsFromDialog, startHiddenLegacyFields } from "./legacy-fields";
+import { encodePlanAttribute, readPlanAttribute } from "./plan-model";
+import { PLAN_EDITOR_HELP } from "./plan-editor-help";
+import { PlanEditorValue, planChangesStatus, validatePlan } from "./plan-editor-rules";
+
+export type { PlanEditorValue } from "./plan-editor-rules";
 
 /**
- * Was der Editor bearbeitet: der Plan und die Zahl der Einträge, die beim
- * Lesen verworfen wurden. Die Zahl reist mit, damit der Editor warnen kann,
- * dass sie beim Speichern endgültig verloren gehen; geschrieben wird sie nie.
+ * Der Editor kommt erst, wenn ein Dialog ihn zeigt: er baut auf
+ * `@man/config-ui` und damit auf react-aria, und das hat im Seitenbündel,
+ * das jede Leserin lädt, nichts verloren. Hier bleiben nur Prüfung, Status
+ * und Hilfe — sie braucht der Rahmen, bevor der Editor da ist.
  */
-export interface PlanEditorValue {
-  plan: Plan;
-  dropped: number;
-  /** Verknüpfungen und Anhänge, die beim Lesen wegfielen; ihr Eintrag blieb. */
-  droppedLinks?: number;
-}
+const LazyPlanEditor = React.lazy(() => import("./editors/plan-editor").then((module) => ({ default: module.PlanEditor })));
 
-export function startPlanEditorInjector(): () => void {
-  return startFieldModalInjector<PlanEditorValue>({
+const LOADING = React.createElement(
+  "p",
+  { className: "p-6 text-sm text-muted-foreground" },
+  "Editor wird geladen …",
+);
+
+/** Was der gemeinsame Rahmen vom Projektplan wissen muss. Offengelegt für Tests. */
+export const planEditorShell: FieldModalShellOptions<PlanEditorValue> = {
+  widgetName: "Projektplan",
+  title: "Plan bearbeiten",
+  icon: CalendarRange,
+  preview: true,
+  help: PLAN_EDITOR_HELP,
+  statusText: planChangesStatus,
+  validate: validatePlan,
+};
+
+/**
+ * @param root der zu beobachtende Teilbaum; standardmäßig das Dokument.
+ * Offengelegt, damit Tests den Beobachter auf einen Container begrenzen.
+ * @returns eine Funktion, die die Beobachtung beendet und alles abbaut.
+ */
+export function startPlanEditorInjector(root: ParentNode = document): () => void {
+  const stopModal = startFieldModalInjector<PlanEditorValue>({
     fieldKey: PLAN_ATTRIBUTE,
-    root: document,
+    root,
     reopenLabel: "Plan bearbeiten …",
-    parse: readPlanAttribute,
-    serialize: (value) => encodePlanAttribute(value.plan),
-    render: (props) => React.createElement(PlanEditor, props),
     modalTestId: "plan-editor-modal",
     reopenTestId: "plan-editor-reopen",
-    // Vollbild: Vorschau, Liste und Formular brauchen Breite und Höhe, und
-    // ein Plan mit Hunderten Einträgen ist Arbeit für eine ganze Sitzung. Die
-    // Leiste des Staffbase-Studios darüber verschwindet dabei — gewollt, der
-    // Dialog ist ohnehin modal. Rahmen und Abstand zeichnet der Editor selbst.
-    panelClassName: "h-screen w-screen max-h-none max-w-none rounded-none p-0 shadow-none",
+    parse: (raw) => ({ ...readPlanAttribute(raw), legacy: readLegacyFlagsFromDialog(root) }),
+    serialize: (value) => encodePlanAttribute(value.plan),
+    shell: planEditorShell,
+    render: ({ value, onChange }) =>
+      React.createElement(
+        React.Suspense,
+        { fallback: LOADING },
+        React.createElement(LazyPlanEditor, { value, onChange }),
+      ),
   });
+  const stopHiding = startHiddenLegacyFields(root);
+  return () => {
+    stopModal();
+    stopHiding();
+  };
 }

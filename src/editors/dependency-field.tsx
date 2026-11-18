@@ -21,13 +21,13 @@
 
 import * as React from "react";
 import { ReactElement, useId, useState } from "react";
+import { Search } from "lucide-react";
+
+import { Checkbox } from "@man/config-ui/primitives/checkbox";
+import { Input } from "@man/config-ui/primitives/input";
 
 import { LaneItem, Plan } from "../plan-model";
-import {
-  dependencyCandidates,
-  matchesSearch,
-  scheduleLabel,
-} from "./plan-queries";
+import { dependencyCandidates, matchesSearch, scheduleLabel } from "./plan-queries";
 
 export interface DependencyFieldProps {
   plan: Plan;
@@ -36,72 +36,57 @@ export interface DependencyFieldProps {
   onChange: (ids: string[]) => void;
 }
 
-export function DependencyField({
-  plan,
-  item,
-  locale,
-  onChange,
-}: DependencyFieldProps): ReactElement {
+export function DependencyField({ plan, item, locale, onChange }: DependencyFieldProps): ReactElement {
   const searchId = useId();
   const [query, setQuery] = useState("");
   const candidates = dependencyCandidates(plan, item.id);
   const selected = item.dependsOn ?? [];
-  const visible = candidates.filter((candidate) =>
-    matchesSearch(plan, candidate, query),
-  );
+  const visible = candidates.filter((candidate) => matchesSearch(plan, candidate, query));
 
   const toggle = (id: string, checked: boolean): void => {
-    onChange(
-      checked ? [...selected, id] : selected.filter((entry) => entry !== id),
-    );
+    onChange(checked ? [...selected, id] : selected.filter((entry) => entry !== id));
   };
 
   return (
-    <fieldset className="man-pt-editor__deps">
-      <legend className="man-pt-editor__label">Hängt ab von</legend>
+    <fieldset className="flex min-w-0 flex-col gap-3">
+      <legend className="mb-1.5 text-[13px] font-semibold text-foreground">Hängt ab von</legend>
       {candidates.length === 0 ? (
-        <p className="man-pt-editor__hint">
-          Es gibt noch keine anderen Meilensteine oder Zeiträume.
-        </p>
+        <p className="text-[13px] text-muted-foreground">Es gibt noch keine anderen Meilensteine oder Zeiträume.</p>
       ) : (
         <>
-          <label className="man-pt-editor__sr-only" htmlFor={searchId}>
-            Vorgänger suchen
-          </label>
-          <input
-            id={searchId}
-            type="search"
-            className="man-pt-editor__input"
-            placeholder="Vorgänger suchen"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-          />
+          <div className="relative">
+            <label className="sr-only" htmlFor={searchId}>
+              Vorgänger suchen
+            </label>
+            <Search aria-hidden className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              id={searchId}
+              type="search"
+              className="pl-9"
+              placeholder="Vorgänger suchen"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+            />
+          </div>
           {visible.length === 0 ? (
-            <p className="man-pt-editor__hint">Kein Eintrag passt zur Suche.</p>
+            <p className="text-[13px] text-muted-foreground">Kein Eintrag passt zur Suche.</p>
           ) : (
-            <ul className="man-pt-editor__checklist">
+            <ul className="flex max-h-[360px] flex-col gap-0.5 overflow-auto rounded-md border p-1">
               {visible.map((candidate) => (
                 <li key={candidate.id}>
-                  <label className="man-pt-editor__check">
-                    <input
-                      type="checkbox"
+                  <label className="flex min-h-10 cursor-pointer items-center gap-3 rounded-md px-2 hover:bg-muted">
+                    <Checkbox
                       checked={selected.includes(candidate.id)}
-                      onChange={(event) =>
-                        toggle(candidate.id, event.target.checked)
-                      }
+                      onCheckedChange={(checked) => toggle(candidate.id, checked === true)}
                     />
-                    <span className="man-pt-editor__check-title">
-                      {candidate.title}
-                    </span>
-                    <span className="man-pt-editor__meta">
-                      {scheduleLabel(candidate, locale)}
-                    </span>
+                    <span className="min-w-0 flex-1 truncate text-sm font-semibold text-foreground">{candidate.title}</span>
+                    <span className="shrink-0 text-xs text-muted-foreground">{scheduleLabel(candidate, locale)}</span>
                   </label>
                 </li>
               ))}
             </ul>
           )}
-          <p className="man-pt-editor__hint" aria-live="polite">
+          <p className="text-[13px] text-muted-foreground" aria-live="polite">
             {selected.length} gewählt
           </p>
         </>

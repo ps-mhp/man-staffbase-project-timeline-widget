@@ -24,6 +24,8 @@
 import * as React from "react";
 import { ReactElement } from "react";
 
+import { SwitchRow } from "@man/config-ui/form/switch-row";
+
 import { parseIsoDate } from "../calendar";
 import { BarItem, PlanItem } from "../plan-model";
 import { DraftField, Validator } from "./draft-field";
@@ -54,48 +56,31 @@ export interface ScheduleFieldsProps {
   onChange: (item: PlanItem) => void;
 }
 
-function BarDates({
-  item,
-  onChange,
-}: {
-  item: BarItem;
-  onChange: (item: PlanItem) => void;
-}): ReactElement {
+function BarDates({ item, onChange }: { item: BarItem; onChange: (item: PlanItem) => void }): ReactElement {
   return (
     <>
       <DraftField
         label="Beginn"
         type="date"
         value={item.start}
-        validate={validateAgainst(
-          item.end,
-          (day, end) => day <= end,
-          "Der Beginn liegt nach dem Ende.",
-        )}
+        validate={validateAgainst(item.end, (day, end) => day <= end, "Der Beginn liegt nach dem Ende.")}
         onCommit={(start) => onChange({ ...item, start })}
       />
       <DraftField
         label="Ende"
         type="date"
         value={item.end}
-        validate={validateAgainst(
-          item.start,
-          (day, start) => day >= start,
-          "Das Ende liegt vor dem Beginn.",
-        )}
+        validate={validateAgainst(item.start, (day, start) => day >= start, "Das Ende liegt vor dem Beginn.")}
         onCommit={(end) => onChange({ ...item, end })}
       />
     </>
   );
 }
 
-export function ScheduleFields({
-  item,
-  onChange,
-}: ScheduleFieldsProps): ReactElement {
+export function ScheduleFields({ item, onChange }: ScheduleFieldsProps): ReactElement {
   return (
     <>
-      <div className="man-pt-editor__row">
+      <div className="grid grid-cols-2 gap-4 max-md:grid-cols-1">
         {item.kind === "bar" ? (
           <BarDates item={item} onChange={onChange} />
         ) : (
@@ -109,22 +94,13 @@ export function ScheduleFields({
         )}
       </div>
       {item.kind === "bar" && (
-        <label className="man-pt-editor__check">
-          <input
-            type="checkbox"
-            checked={item.arrow === true}
-            onChange={(event) =>
-              onChange(
-                withOptional(
-                  item,
-                  "arrow",
-                  event.target.checked ? true : undefined,
-                ),
-              )
-            }
-          />
-          Pfeil am Ende
-        </label>
+        <SwitchRow
+          label="Pfeil am Ende"
+          hint="Der Zeitraum endet in einer Pfeilspitze: er läuft weiter."
+          checked={item.arrow === true}
+          onCheckedChange={(checked) => onChange(withOptional(item, "arrow", checked ? true : undefined))}
+          className="max-w-[520px]"
+        />
       )}
     </>
   );

@@ -22,11 +22,6 @@
 
 import timelineCss from "./project-timeline.scss";
 import overviewCss from "./overview.scss";
-import editorCss from "./plan-editor.scss";
-import controlsCss from "./plan-editor-controls.scss";
-import formsCss from "./plan-editor-forms.scss";
-import listsCss from "./plan-editor-lists.scss";
-import overlaysCss from "./plan-editor-overlays.scss";
 import { LABEL_FONT } from "../text-measure";
 
 const plain = (css: string) => css.replace(/\/\*[\s\S]*?\*\//g, "");
@@ -65,11 +60,6 @@ describe("Eckige Form auf der Seite", () => {
   it.each([
     ["project-timeline.scss", timelineCss],
     ["overview.scss", overviewCss],
-    ["plan-editor.scss", editorCss],
-    ["plan-editor-controls.scss", controlsCss],
-    ["plan-editor-forms.scss", formsCss],
-    ["plan-editor-lists.scss", listsCss],
-    ["plan-editor-overlays.scss", overlaysCss],
   ])("vermischt in %s keine Selektorliste mit man-outshine-host", (_name, css) => {
     const mixed = [...plain(css).matchAll(/^([^{}\n@][^{}]*)\{/gm)]
       .flatMap((match) => match[1].split(",").map((part) => part.trim()))

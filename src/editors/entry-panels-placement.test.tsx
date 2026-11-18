@@ -15,7 +15,7 @@ import * as React from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 
 import { LIMITS, Plan } from "../plan-model";
-import { FormHarness as Harness, lastPlan } from "./item-form.fixture";
+import { FormHarness as Harness, lastPlan } from "./entry-main.fixture";
 import { findItem, testPlan } from "./test-plan.fixture";
 
 const openCreate = (field: string, option: string): HTMLElement => {
@@ -28,7 +28,7 @@ const openCreate = (field: string, option: string): HTMLElement => {
   return select;
 };
 
-describe("ItemForm: Einordnung — neue Ebene oder Kategorie", () => {
+describe("EntryMain: Einordnung — neue Ebene oder Kategorie", () => {
   it("legt eine Ebene aus dem Auswahlfeld an und weist sie dem Eintrag zu", () => {
     const onPlanChange = jest.fn();
     render(<Harness id="m1" tab="placement" onPlanChange={onPlanChange} />);
@@ -126,7 +126,7 @@ describe("ItemForm: Einordnung — neue Ebene oder Kategorie", () => {
   });
 });
 
-describe("ItemForm: Serie", () => {
+describe("EntryMain: Serie", () => {
   it("wählt eine Serie derselben Ebene aus den Vorschlägen", () => {
     const onPlanChange = jest.fn();
     render(<Harness id="m2" tab="placement" onPlanChange={onPlanChange} />);

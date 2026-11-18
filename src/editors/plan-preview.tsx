@@ -11,152 +11,61 @@
  * limitations under the License.
  */
 
+
 /**
- * Die Vorschau über dem Formular: derselbe Zeitstrahl wie auf der Seite, im
- * Editor-Modus — ein Klick wählt den Eintrag, statt Details zu öffnen.
+ * Die Vorschau in den Geräteansichten (Desktop · Tablet · Mobil): derselbe
+ * Zeitstrahl wie auf der Seite, im Editor-Modus — ohne Filter, Liste und
+ * Export, und ein Klick wählt den Eintrag, statt Details oder den verknüpften
+ * Inhalt zu öffnen. Es entsteht also nichts, was die Seite oder Staffbase
+ * berührt.
  *
- * Einklappbar, weil sie auf kleinen Bildschirmen die halbe Höhe braucht und
- * wer gerade Kategorien pflegt, sie nicht vor Augen haben muss.
+ * Gezoomt und verschoben wird wie auf der Seite; der Ausschnitt geht an den
+ * Editor zurück und wird dort zur Startansicht (`PlanSettings`).
  */
 
 import * as React from "react";
-import { ReactElement, Ref, useState } from "react";
+import { ReactElement } from "react";
 
-import { Viewport, firstDayOfMonth, parseIsoMonth } from "../calendar";
-import { formatMonthYear } from "../format";
-import { Plan, PlanView } from "../plan-model";
+import { Viewport } from "../calendar";
+import { Plan } from "../plan-model";
 import { ProjectTimeline } from "../project-timeline";
-import { PaneEmpty, PaneHead } from "./pane";
 import { EDITOR_LOCALE } from "./plan-queries";
 
 export interface PlanPreviewProps {
   plan: Plan;
-  /** Ausgeklappt? Der Zustand liegt beim Editor, der den Ziehgriff darunter nur ausgeklappt zeigt. */
-  open: boolean;
-  onToggle: () => void;
-  /** Die Höhe der Fläche mit dem Zeitstrahl, vom Ziehgriff darunter verstellt. */
-  stageHeight: number;
-  /** `id` der Fläche — der Ziehgriff nennt sie in `aria-controls`. */
-  stageId: string;
-  rootRef?: Ref<HTMLDivElement>;
-  stageRef?: Ref<HTMLDivElement>;
+  showToday: boolean;
   selectedId: string | null;
-  /** Der zuletzt von der Vorschau gemeldete Ausschnitt. */
-  viewport: Viewport | null;
   onSelectItem: (id: string) => void;
   onViewportChange: (viewport: Viewport) => void;
-  onSetStartView: () => void;
-  onClearStartView: () => void;
-}
-
-const monthLabel = (month: string): string => {
-  const parsed = parseIsoMonth(month);
-  return parsed === null
-    ? month
-    : formatMonthYear(firstDayOfMonth(parsed), EDITOR_LOCALE);
-};
-
-function describeView(view: PlanView | undefined): string {
-  if (view === undefined)
-    return "Ohne Startansicht zeigt das Widget beim Laden den ganzen Plan.";
-  return `Startansicht: ${monthLabel(view.start)} bis ${monthLabel(view.end)}`;
 }
 
 export function PlanPreview({
   plan,
-  open,
-  onToggle,
-  stageHeight,
-  stageId,
-  rootRef,
-  stageRef,
+  showToday,
   selectedId,
-  viewport,
   onSelectItem,
   onViewportChange,
-  onSetStartView,
-  onClearStartView,
 }: PlanPreviewProps): ReactElement {
-  // Der Platz für die Zoom-Knöpfe des Zeitstrahls im Kopf: ein Callback-Ref
-  // über den State, damit der Zeitstrahl neu rendert, sobald es ihn gibt.
-  const [toolbarHost, setToolbarHost] = useState<HTMLElement | null>(null);
-  const toggle = (
-    <button
-      type="button"
-      className="man-pt-editor__disclosure"
-      aria-expanded={open}
-      aria-controls={stageId}
-      onClick={onToggle}
-    >
-      Vorschau
-    </button>
-  );
-  const actions = (
-    <>
-      {/* Eingeklappt gibt es keinen Zeitstrahl, der hier zoomen könnte. */}
-      {open && (
-        <div
-          ref={setToolbarHost}
-          className="man-pt-editor__preview-tools"
-          data-testid="preview-tools"
+  // Die Fläche hat eine feste Höhe: der Zeitstrahl füllt im Editor-Modus die
+  // Höhe seines Elternteils und rollt nur seine Bühne selbst.
+  return (
+    <div className="h-[min(72vh,680px)] min-h-[360px] text-foreground" data-testid="plan-preview">
+      {/* Ohne Einträge zeichnet der Zeitstrahl nichts — wie auf der Seite.
+          Eine leere Fläche sähe hier aber nach einem Fehler aus. */}
+      {plan.items.length === 0 ? (
+        <p className="px-8 py-10 text-sm text-muted-foreground">Die Vorschau erscheint mit dem ersten Eintrag.</p>
+      ) : (
+        <ProjectTimeline
+          plan={plan}
+          mode="editor"
+          selectedId={selectedId}
+          onSelectItem={onSelectItem}
+          onViewportChange={onViewportChange}
+          showToday={showToday}
+          allowExport={false}
+          locale={EDITOR_LOCALE}
         />
       )}
-      {/* Eingeklappt ist nicht zu sehen, was als Startansicht gespeichert würde. */}
-      <button
-        type="button"
-        className="man-pt-editor__button"
-        disabled={!open || viewport === null}
-        onClick={onSetStartView}
-      >
-        Diesen Ausschnitt als Startansicht
-      </button>
-      {plan.view !== undefined && (
-        <button
-          type="button"
-          className="man-pt-editor__button"
-          onClick={onClearStartView}
-        >
-          Startansicht entfernen
-        </button>
-      )}
-    </>
-  );
-
-  return (
-    <div ref={rootRef} className="man-pt-editor__pane man-pt-editor__preview">
-      <PaneHead
-        title={toggle}
-        hint={describeView(plan.view)}
-        actions={actions}
-      />
-      {/* Die Fläche hat eine feste Höhe: der Zeitstrahl füllt im Editor-Modus
-          die Höhe seines Elternteils und rollt nur seine Bühne selbst. */}
-      <div
-        ref={stageRef}
-        id={stageId}
-        className="man-pt-editor__preview-stage"
-        style={{ height: stageHeight }}
-        hidden={!open}
-      >
-        {/* Ohne Einträge zeichnet der Zeitstrahl nichts — wie auf der Seite.
-            Eine leere Fläche sähe hier aber nach einem Fehler aus. */}
-        {open && plan.items.length === 0 && (
-          <PaneEmpty>Die Vorschau erscheint mit dem ersten Eintrag.</PaneEmpty>
-        )}
-        {open && plan.items.length > 0 && (
-          <ProjectTimeline
-            plan={plan}
-            mode="editor"
-            selectedId={selectedId}
-            onSelectItem={onSelectItem}
-            onViewportChange={onViewportChange}
-            showToday
-            allowExport={false}
-            locale={EDITOR_LOCALE}
-            toolbarTarget={toolbarHost}
-          />
-        )}
-      </div>
     </div>
   );
 }

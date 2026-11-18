@@ -11,73 +11,46 @@
  * limitations under the License.
  */
 
+
 /**
- * Der Redaktionsdialog des Projektplans, im Vollbild.
+ * Der Redaktionsdialog des Projektplans, im Rahmen von `@man/config-ui`.
  *
- * Von oben: Kopfleiste mit Überschrift, Zähler und „Übernehmen“ · Hinweis auf
- * verworfene Einträge · Hauptbereich mit Vorschau und Arbeitsbereich (Reiter
- * für Einträge, Ebenen und Kategorien). Jede Stufe reicht ihre Höhe per
- * `min-height: 0` nach unten durch, damit am Ende jeder Bereich selbst rollt:
- * das Modal um den Editor rollt absichtlich nicht.
+ * Links die Einträge (nach Termin, mit Suche und Auswahl der Art), in der
+ * Mitte das Formular des gewählten, rechts das Panel „Plan“ mit
+ * Einstellungen, Ebenen und Kategorien. In Desktop, Tablet und Mobil steht
+ * statt des Formulars die Vorschau in Gerätebreite; ein Klick dort wählt den
+ * Eintrag.
  *
- * Fachlichen Zustand außer Auswahl, Reiter und letztem Ausschnitt trägt er
- * nicht — der Plan steckt im Entwurf des Dialogs (`value`), und jede Änderung
- * geht über die reinen Funktionen in `plan-edits.ts`.
+ * Er schreibt nichts selbst zurück und zeichnet keine Knöpfe zum Übernehmen
+ * oder Abbrechen: Kopf, Status, Rückgängig und Rückfrage kommen aus dem
+ * Rahmen, das Zurückschreiben ins Formularfeld aus `@shared/config-modal`.
+ * Fachlichen Zustand außer Auswahl, Reiter, Filter und letztem Ausschnitt
+ * trägt er nicht — der Plan steckt im Entwurf des Rahmens (`value`), und jede
+ * Änderung geht über die reinen Funktionen in `plan-edits.ts`.
  */
 
 import * as React from "react";
-import {
-  ReactElement,
-  useCallback,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from "react";
+import { ReactElement, useCallback, useEffect, useRef, useState } from "react";
 
-import { FieldModalContentProps } from "@shared/config-modal";
-import { useHotStyle } from "@shared/hot-style";
+import { ConfigWorkspace } from "@man/config-ui/layout/config-workspace";
 
 import { Viewport } from "../calendar";
-import { Plan } from "../plan-model";
-import type { PlanEditorValue } from "../plan-editor-injector";
-import { CategoryEditor } from "./category-editor";
-import { EditorHeader } from "./editor-header";
-import { EditorTabs, TabDefinition } from "./editor-tabs";
+import { PlanEditorValue, effectiveFlags } from "../plan-editor-rules";
+import { ItemKind, Plan } from "../plan-model";
 import { EmptyState } from "./empty-state";
-import { EntriesTab } from "./entries-tab";
+import { EntryMain } from "./entry-main";
+import { EntrySidebar } from "./entry-sidebar";
 import { useEntriesView } from "./entries-view";
-import { LaneEditor } from "./lane-editor";
-import { newItemDate, setTitle } from "./plan-edits";
-import {
-  clearStartView,
-  setStartView,
-  startEmpty,
-  startWithTemplate,
-} from "./plan-structure-edits";
-import { PREVIEW, defaultPreviewHeight, previewSpace } from "./editor-layout";
+import { addItem, duplicateItem, newItemDate, removeItem } from "./plan-edits";
+import { PlanInspector } from "./plan-inspector";
 import { PlanPreview } from "./plan-preview";
-import { Splitter } from "./splitter";
-import { useSplitSize } from "./use-split-size";
-import planEditorCss from "../styles/plan-editor.scss";
-import planEditorControlsCss from "../styles/plan-editor-controls.scss";
-import planEditorFormsCss from "../styles/plan-editor-forms.scss";
-import planEditorListsCss from "../styles/plan-editor-lists.scss";
-import planEditorOverlaysCss from "../styles/plan-editor-overlays.scss";
+import { EDITOR_LOCALE, visibleItems } from "./plan-queries";
+import { startEmpty, startWithTemplate } from "./plan-structure-edits";
 
-// Ein Alias statt `interface … extends … {}`: eine leere Schnittstelle wäre
-// nach der hiesigen ESLint-Regel `no-empty-object-type` ein Fehler.
-export type PlanEditorProps = FieldModalContentProps<PlanEditorValue>;
-
-type EditorTab = "items" | "lanes" | "categories";
-
-const WIDGET = "project-timeline-widget";
-
-const TABS: readonly TabDefinition<EditorTab>[] = [
-  { id: "items", label: "Einträge" },
-  { id: "lanes", label: "Ebenen" },
-  { id: "categories", label: "Kategorien" },
-];
+export interface PlanEditorProps {
+  value: PlanEditorValue;
+  onChange: (value: PlanEditorValue) => void;
+}
 
 function droppedLinksMessage(droppedLinks: number): string {
   return droppedLinks === 1
@@ -91,185 +64,142 @@ function droppedMessage(dropped: number): string {
     : `${dropped} Einträge konnten nicht gelesen werden und gehen beim Speichern verloren.`;
 }
 
-const sameViewport = (a: Viewport | null, b: Viewport): boolean =>
-  a !== null && a.start === b.start && a.end === b.end;
+const sameViewport = (a: Viewport | null, b: Viewport): boolean => a !== null && a.start === b.start && a.end === b.end;
 
-export function PlanEditor({
-  value,
-  onChange,
-  onSave,
-  onClose,
-  dirty,
-}: PlanEditorProps): ReactElement {
-  const sheets = [
-    useHotStyle(planEditorCss, WIDGET, "styles/plan-editor.scss"),
-    useHotStyle(
-      planEditorControlsCss,
-      WIDGET,
-      "styles/plan-editor-controls.scss",
-    ),
-    useHotStyle(planEditorFormsCss, WIDGET, "styles/plan-editor-forms.scss"),
-    useHotStyle(planEditorListsCss, WIDGET, "styles/plan-editor-lists.scss"),
-    useHotStyle(
-      planEditorOverlaysCss,
-      WIDGET,
-      "styles/plan-editor-overlays.scss",
-    ),
-  ];
+export function PlanEditor({ value, onChange }: PlanEditorProps): ReactElement {
   const { plan, dropped, droppedLinks = 0 } = value;
   const rootRef = useRef<HTMLDivElement>(null);
-  const [tab, setTab] = useState<EditorTab>("items");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [viewport, setViewport] = useState<Viewport | null>(null);
-  const [focusTabs, setFocusTabs] = useState(false);
-  const [previewOpen, setPreviewOpen] = useState(true);
-  const mainRef = useRef<HTMLDivElement>(null);
-  const previewRef = useRef<HTMLDivElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-  const stageId = useId();
+  // Der Eintrag, dessen Titel beim Erscheinen den Fokus bekommt: nur ein
+  // gerade angelegter. Wer einen bestehenden wählt, will erst lesen.
+  const [focusId, setFocusId] = useState<string | null>(null);
+  // Zählt die Löschungen: danach gehört der Fokus auf die gewählte Zeile.
+  const [removals, setRemovals] = useState(0);
   const empty = plan.lanes.length === 0 && plan.items.length === 0;
 
-  // Eingeklappt merkt sich die Vorschau ihre Höhe; ausgeklappt kehrt sie zu ihr zurück.
-  const previewHeight = useSplitSize({
-    storageKey: PREVIEW.storageKey,
-    fallback: defaultPreviewHeight,
-    min: PREVIEW.min,
-    reserve: PREVIEW.reserve,
-    observe: mainRef,
-    measure: () =>
-      previewSpace(mainRef.current, previewRef.current, stageRef.current),
-    remeasureKey: previewOpen && !empty,
-  });
-
-  const changePlan = (next: Plan): void => onChange({ plan: next, dropped, droppedLinks });
+  const changePlan = (next: Plan): void => onChange({ ...value, plan: next });
 
   // Beständig, damit eine Vorschau, die in einem Effekt meldet, nicht bei
   // jedem Rendern neu meldet — und ein gleicher Ausschnitt rendert nichts neu.
   const onViewportChange = useCallback(
-    (next: Viewport) =>
-      setViewport((previous) =>
-        sameViewport(previous, next) ? previous : next,
-      ),
+    (next: Viewport) => setViewport((previous) => (sameViewport(previous, next) ? previous : next)),
     [],
   );
-  const onSelectItem = useCallback((id: string) => {
-    setSelectedId(id);
-    setTab("items");
-  }, []);
 
-  // Nach dem Beginn verschwinden die Knöpfe des Leerzustands samt Fokus; er
-  // gehört dann auf die Reiter, die an ihre Stelle treten.
+  // Gewählt ist immer etwas, solange es Einträge gibt: das Formular wäre
+  // sonst leer. Ohne Wahl (oder nach dem Löschen) der erste der Liste.
+  const [view, setView] = useEntriesView(plan, selectedId);
+  const visible = visibleItems(plan, view.kind, view.query);
+  const chosen = plan.items.some((item) => item.id === selectedId)
+    ? selectedId
+    : (visible[0]?.id ?? plan.items[0]?.id ?? null);
+  const selected = plan.items.find((item) => item.id === chosen);
+  if (focusId !== null && focusId !== chosen) setFocusId(null);
+
   useEffect(() => {
-    if (!focusTabs) return;
-    rootRef.current
-      ?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]')
-      ?.focus();
-    setFocusTabs(false);
-  }, [focusTabs]);
+    if (removals === 0) return;
+    rootRef.current?.querySelector<HTMLElement>('[role="row"][aria-selected="true"]')?.focus();
+  }, [removals]);
+
+  // Nach dem Anlegen: „Allgemein“, Fokus im Titel. Die Suche weicht, sonst
+  // stünde der neue Eintrag nicht in der Liste.
+  const created = (next: Plan, id: string | null, kind: ItemKind): void => {
+    if (id === null) return;
+    changePlan(next);
+    setSelectedId(id);
+    setFocusId(id);
+    setView({ formTab: "general", query: "", kind: view.kind === "all" ? "all" : kind });
+  };
+
+  const remove = (id: string): void => {
+    const order = visible.map((item) => item.id);
+    const index = order.indexOf(id);
+    const neighbor = index === -1 ? null : (order[index + 1] ?? order[index - 1] ?? null);
+    changePlan(removeItem(plan, id));
+    setSelectedId(neighbor);
+    setRemovals((count) => count + 1);
+  };
 
   const begin = (next: Plan): void => {
     changePlan(next);
-    setTab("items");
-    setFocusTabs(true);
+    setSelectedId(next.items[0]?.id ?? null);
   };
 
-  /**
-   * Nach dem Speichern steht im Feld der Plan ohne die verworfenen Einträge;
-   * der Hinweis auf sie wäre danach falsch. `onSave` schreibt den Plan aus
-   * dem Entwurf dieses Renderns — die Zahl daneben zählt dafür nicht.
-   */
-  const save = (): void => {
-    onChange({ plan, dropped: 0, droppedLinks: 0 });
-    onSave();
-  };
-
-  const selected = plan.items.some((item) => item.id === selectedId)
-    ? selectedId
-    : null;
-  const [entriesView, setEntriesView] = useEntriesView(plan, selected);
-
-  const panel =
-    tab === "items" ? (
-      <EntriesTab
-        plan={plan}
-        selectedId={selected}
-        onSelect={setSelectedId}
-        onPlanChange={changePlan}
-        newDate={() => newItemDate(viewport)}
-        view={entriesView}
-        onViewChange={setEntriesView}
-      />
-    ) : tab === "lanes" ? (
-      <LaneEditor plan={plan} onPlanChange={changePlan} />
-    ) : (
-      <CategoryEditor plan={plan} onPlanChange={changePlan} />
-    );
+  const flags = effectiveFlags(value);
+  const notice =
+    dropped > 0 || droppedLinks > 0
+      ? [dropped > 0 ? droppedMessage(dropped) : null, droppedLinks > 0 ? droppedLinksMessage(droppedLinks) : null]
+          .filter((message) => message !== null)
+          .join(" ")
+      : null;
 
   return (
-    <div ref={rootRef} className="man-pt-editor">
-      {sheets.map((sheet, index) => (
-        <style key={index}>{sheet}</style>
-      ))}
-      <EditorHeader
-        plan={plan}
-        dirty={dirty}
-        onTitleChange={(title) => changePlan(setTitle(plan, title))}
-        onCancel={onClose}
-        onSave={save}
-      />
-      {(dropped > 0 || droppedLinks > 0) && (
-        <p className="man-pt-editor__notice" role="alert">
-          {[
-            dropped > 0 ? droppedMessage(dropped) : null,
-            droppedLinks > 0 ? droppedLinksMessage(droppedLinks) : null,
-          ]
-            .filter((message) => message !== null)
-            .join(" ")}
+    // `man-pt-editor` ist die Bezugsfläche der Popover (`anchored-popover.tsx`)
+    // und der Rückfragen (`confirm-dialog.tsx`), die über dem Editor liegen.
+    <div ref={rootRef} className="man-pt-editor relative flex h-full min-h-0 w-full flex-col" data-testid="plan-editor">
+      {notice !== null && (
+        <p className="shrink-0 border-b border-warning/30 bg-warning/10 px-5 py-2 text-[13px] text-foreground" role="alert">
+          {notice}
         </p>
       )}
-      <div ref={mainRef} className="man-pt-editor__main">
-        {empty ? (
-          <EmptyState
-            onTemplate={(template) => begin(startWithTemplate(plan, template))}
-            onEmpty={() => begin(startEmpty(plan))}
-          />
-        ) : (
-          <>
+      <div className="min-h-0 flex-1">
+        <ConfigWorkspace
+          sidebar={
+            <EntrySidebar
+              plan={plan}
+              selectedId={chosen}
+              kind={view.kind}
+              query={view.query}
+              onKindChange={(kind) => setView({ kind })}
+              onQueryChange={(query) => setView({ query })}
+              onSelect={setSelectedId}
+              onAdd={(kind) => {
+                const result = addItem(plan, kind, newItemDate(viewport));
+                created(result.plan, result.id, kind);
+              }}
+            />
+          }
+          inspector={<PlanInspector value={value} viewport={viewport} onPlanChange={changePlan} />}
+          preview={
             <PlanPreview
               plan={plan}
-              open={previewOpen}
-              onToggle={() => setPreviewOpen(!previewOpen)}
-              stageHeight={previewHeight.size}
-              stageId={stageId}
-              rootRef={previewRef}
-              stageRef={stageRef}
-              selectedId={selected}
-              viewport={viewport}
-              onSelectItem={onSelectItem}
+              showToday={flags.showToday}
+              selectedId={chosen}
+              onSelectItem={(id) => {
+                setSelectedId(id);
+              }}
               onViewportChange={onViewportChange}
-              onSetStartView={() =>
-                viewport !== null && changePlan(setStartView(plan, viewport))
-              }
-              onClearStartView={() => changePlan(clearStartView(plan))}
             />
-            {previewOpen && (
-              <Splitter
-                orientation="horizontal"
-                label="Höhe der Vorschau ändern"
-                controls={stageId}
-                split={previewHeight}
-              />
-            )}
-            <EditorTabs
-              tabs={TABS}
-              active={tab}
-              onChange={setTab}
-              label="Bereiche des Plans"
-            >
-              {panel}
-            </EditorTabs>
-          </>
-        )}
+          }
+        >
+          {empty ? (
+            <EmptyState
+              onTemplate={(template) => begin(startWithTemplate(plan, template))}
+              onEmpty={() => begin(startEmpty(plan))}
+            />
+          ) : selected === undefined ? (
+            <p className="px-10 py-6 text-sm text-muted-foreground">Links einen Eintrag wählen oder einen neuen anlegen.</p>
+          ) : (
+            <EntryMain
+              // Je Eintrag eine eigene Instanz: ein Feld hält eine noch
+              // ungültige Eingabe fest, und die gehört nicht in den nächsten.
+              key={selected.id}
+              plan={plan}
+              item={selected}
+              locale={EDITOR_LOCALE}
+              onPlanChange={changePlan}
+              onDuplicate={() => {
+                const result = duplicateItem(plan, selected.id);
+                created(result.plan, result.id, selected.kind);
+              }}
+              onRemove={() => remove(selected.id)}
+              tab={view.formTab}
+              onTabChange={(formTab) => setView({ formTab })}
+              autoFocusTitle={selected.id === focusId}
+            />
+          )}
+        </ConfigWorkspace>
       </div>
     </div>
   );

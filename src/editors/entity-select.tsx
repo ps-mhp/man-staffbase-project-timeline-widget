@@ -11,6 +11,7 @@
  * limitations under the License.
  */
 
+
 /**
  * Ein Auswahlfeld für Ebene oder Kategorie, dessen letzte Option eine neue
  * anlegt. Die Option setzt keinen Wert: sie öffnet das Popover, und das Feld
@@ -18,10 +19,13 @@
  */
 
 import * as React from "react";
-import { ReactElement, ReactNode, useId, useState } from "react";
+import { ReactElement, ReactNode, useState } from "react";
+
+import { Field } from "@man/config-ui/form/field";
 
 import { MilestoneSymbol } from "../plan-model";
 import { CreateEntityPopover, NewEntity } from "./create-entity-popover";
+import { SelectBox } from "./select-field";
 
 /**
  * Der Wert der Option „Neue …“. Die `id`s im Plan entstehen per `newId` mit
@@ -58,39 +62,34 @@ export function EntitySelect({
   onChange,
   onCreate,
 }: EntitySelectProps): ReactElement {
-  const id = useId();
   const [creating, setCreating] = useState(false);
 
   return (
-    <div className="man-pt-editor__field man-pt-editor__anchor">
-      <label className="man-pt-editor__label" htmlFor={id}>
-        {label}
-      </label>
-      <select
-        id={id}
-        className="man-pt-editor__select"
-        value={value}
-        aria-haspopup="dialog"
-        aria-expanded={creating}
-        onChange={(event) => {
-          if (event.target.value === CREATE) setCreating(true);
-          else onChange(event.target.value);
-        }}
-      >
-        {leading}
-        {entities.map((entity) => (
-          <option key={entity.id} value={entity.id}>
-            {entity.title}
-          </option>
-        ))}
-        <optgroup label="Anlegen">
-          <option value={CREATE} disabled={!canCreate}>
-            {canCreate
-              ? `Neue ${noun} …`
-              : `Neue ${noun} … (Obergrenze erreicht)`}
-          </option>
-        </optgroup>
-      </select>
+    // Der Anker des Popovers (`anchored-popover.tsx` misst sein Elternelement).
+    <div className="relative min-w-0">
+      <Field label={label}>
+        <SelectBox
+          value={value}
+          aria-haspopup="dialog"
+          aria-expanded={creating}
+          onChange={(event) => {
+            if (event.target.value === CREATE) setCreating(true);
+            else onChange(event.target.value);
+          }}
+        >
+          {leading}
+          {entities.map((entity) => (
+            <option key={entity.id} value={entity.id}>
+              {entity.title}
+            </option>
+          ))}
+          <optgroup label="Anlegen">
+            <option value={CREATE} disabled={!canCreate}>
+              {canCreate ? `Neue ${noun} …` : `Neue ${noun} … (Obergrenze erreicht)`}
+            </option>
+          </optgroup>
+        </SelectBox>
+      </Field>
       {creating && (
         <CreateEntityPopover
           noun={noun}

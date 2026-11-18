@@ -37,7 +37,10 @@ import { CreateTarget } from "@shared/studio-create/studio-paths";
 import { contentHref } from "../linked-content";
 import { LinkedContent } from "../plan-model";
 import { AttachmentsField } from "./attachments-field";
-import { PanelProps, SelectField } from "./item-form-panels";
+import { Button } from "@man/config-ui/primitives/button";
+
+import { PanelProps } from "./entry-panels";
+import { SelectField } from "./select-field";
 import { setContent } from "./link-edits";
 import {
   CHANNEL_TYPE_LABELS,
@@ -69,10 +72,10 @@ function stale(id: string, title: string | undefined, ready: boolean, where: str
 /** Der Knopf, der den Staffbase-Editor zum Anlegen öffnet. */
 function CreateButton({ label, onClick }: { label: string; onClick: () => void }): ReactElement {
   return (
-    <div className="man-pt-editor__actions">
-      <button type="button" className="man-pt-editor__button" onClick={onClick}>
+    <div>
+      <Button type="button" variant="outline" onClick={onClick}>
         {label}
-      </button>
+      </Button>
     </div>
   );
 }
@@ -109,7 +112,7 @@ function PagePicker({
           </option>
         ))}
       </SelectField>
-      {ready && pages.items.length === 0 && <p className="man-pt-editor__hint">Keine Seiten gefunden.</p>}
+      {ready && pages.items.length === 0 && <p className="text-[13px] text-muted-foreground">Keine Seiten gefunden.</p>}
       <CreateButton label="Neue Seite …" onClick={onCreate} />
     </>
   );
@@ -146,7 +149,7 @@ function NewsPicker({
           </option>
         ))}
       </SelectField>
-      {channelsReady && channels.items.length === 0 && <p className="man-pt-editor__hint">Keine News-Kanäle gefunden.</p>}
+      {channelsReady && channels.items.length === 0 && <p className="text-[13px] text-muted-foreground">Keine News-Kanäle gefunden.</p>}
       {channelId !== "" && (
         <SelectField
           label="Beitrag"
@@ -178,9 +181,9 @@ function Summary({ content }: { content: LinkedContent }): ReactElement {
   const posts = useChannelPosts(content.kind === "news" ? (content.channelId ?? "") : "");
   const draft = content.kind === "news" && posts.items.some((post) => post.id === content.id && isDraft(post));
   return (
-    <p className="man-pt-editor__hint">
+    <p className="text-[13px] text-muted-foreground">
       {draft && "Entwurf — Leser:innen sehen ihn erst nach dem Veröffentlichen. "}
-      <a href={contentHref(content)} target="_blank" rel="noopener noreferrer">
+      <a href={contentHref(content)} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2">
         In neuem Tab öffnen
       </a>
     </p>

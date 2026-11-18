@@ -28,7 +28,7 @@ import { DEFAULT_SYMBOL } from "../symbols";
 import { ColorPicker } from "./color-picker";
 import { ConfirmDialog } from "./confirm-dialog";
 import { EntityRow } from "./entity-row";
-import { Pane, PaneEmpty } from "./pane";
+import { EntityPanel } from "./entity-panel";
 import { SymbolPicker } from "./symbol-picker";
 import {
   addCategory,
@@ -74,69 +74,20 @@ export function CategoryEditor({
   ): void => onPlanChange(updateCategory(plan, category.id, changes));
 
   return (
-    <Pane
-      className="man-pt-editor__entities"
+    <EntityPanel
       hint={
         full
           ? `Mehr als ${LIMITS.categories} Kategorien trägt ein Plan nicht.`
           : "In dieser Reihenfolge stehen die Kategorien in der Legende. Meilensteine tragen Form und Farbe ihrer Kategorie, Balken die Farbe — der Text nie."
       }
-      actions={
-        <button
-          ref={addRef}
-          type="button"
-          className="man-pt-editor__button"
-          disabled={full}
-          onClick={add}
-        >
-          Neue Kategorie
-        </button>
-      }
-    >
-      {plan.categories.length === 0 ? (
-        <PaneEmpty>
-          Noch keine Kategorien. Einträge ohne Kategorie erscheinen grau.
-        </PaneEmpty>
-      ) : (
-        <ol className="man-pt-editor__entity-list" aria-label="Kategorien">
-          {plan.categories.map((category, index) => (
-            <EntityRow
-              key={category.id}
-              noun="Kategorie"
-              existing={plan.categories.map((entry) => entry.title)}
-              position={index + 1}
-              title={category.title}
-              count={countInCategory(plan, category.id)}
-              isFirst={index === 0}
-              isLast={index === plan.categories.length - 1}
-              autoFocus={category.id === focusId}
-              onRename={(title) => change(category, { title })}
-              onMove={(offset) =>
-                onPlanChange(moveCategory(plan, category.id, offset))
-              }
-              onRemove={() => setRemovingId(category.id)}
-              leading={
-                <>
-                  <ColorPicker
-                    title={category.title}
-                    value={category.color}
-                    onChange={(color) => change(category, { color })}
-                  />
-                  <SymbolPicker
-                    title={category.title}
-                    value={category.symbol ?? DEFAULT_SYMBOL}
-                    color={category.color}
-                    onChange={(symbol) =>
-                      onPlanChange(setCategorySymbol(plan, category.id, symbol))
-                    }
-                  />
-                </>
-              }
-            />
-          ))}
-        </ol>
-      )}
-      {removing !== undefined && (
+      addLabel="Neue Kategorie"
+      addRef={addRef}
+      full={full}
+      onAdd={add}
+      empty={plan.categories.length === 0 ? "Noch keine Kategorien. Einträge ohne Kategorie erscheinen grau." : undefined}
+      listLabel="Kategorien"
+      dialog={
+        removing !== undefined && (
         <ConfirmDialog
           title={`Kategorie „${removing.title}“ löschen?`}
           message={removalMessage(countInCategory(plan, removing.id))}
@@ -148,7 +99,40 @@ export function CategoryEditor({
           onCancel={() => setRemovingId(null)}
           fallbackFocus={() => addRef.current}
         />
-      )}
-    </Pane>
+      )
+      }
+    >
+      {plan.categories.map((category, index) => (
+        <EntityRow
+          key={category.id}
+          noun="Kategorie"
+          existing={plan.categories.map((entry) => entry.title)}
+          position={index + 1}
+          title={category.title}
+          count={countInCategory(plan, category.id)}
+          isFirst={index === 0}
+          isLast={index === plan.categories.length - 1}
+          autoFocus={category.id === focusId}
+          onRename={(title) => change(category, { title })}
+          onMove={(offset) => onPlanChange(moveCategory(plan, category.id, offset))}
+          onRemove={() => setRemovingId(category.id)}
+          leading={
+            <>
+              <ColorPicker
+                title={category.title}
+                value={category.color}
+                onChange={(color) => change(category, { color })}
+              />
+              <SymbolPicker
+                title={category.title}
+                value={category.symbol ?? DEFAULT_SYMBOL}
+                color={category.color}
+                onChange={(symbol) => onPlanChange(setCategorySymbol(plan, category.id, symbol))}
+              />
+            </>
+          }
+        />
+      ))}
+    </EntityPanel>
   );
 }

@@ -22,10 +22,12 @@
 import * as React from "react";
 import { ReactElement, useId, useRef, useState } from "react";
 
+import { SelectBox } from "./select-field";
+
 import { LIMITS, Lane, Plan } from "../plan-model";
 import { ConfirmDialog } from "./confirm-dialog";
 import { EntityRow } from "./entity-row";
-import { Pane, PaneEmpty } from "./pane";
+import { EntityPanel } from "./entity-panel";
 import {
   addLane,
   moveLane,
@@ -68,22 +70,22 @@ function RemoveLaneDialog({
     count === 0 ? undefined : (
       <>
         {others.length > 0 && (
-          <div className="man-pt-editor__choice">
-            <label className="man-pt-editor__check">
+          <div className="flex flex-col gap-2">
+            <label className="flex min-h-10 cursor-pointer items-center gap-2 text-sm">
               <input
                 type="radio"
                 name={choiceName}
+                className="size-4 accent-primary"
                 checked={mode === "move"}
                 onChange={() => setMode("move")}
               />
               {countLabel(count)} verschieben nach
             </label>
-            <label className="man-pt-editor__sr-only" htmlFor={targetId}>
+            <label className="sr-only" htmlFor={targetId}>
               Ziel-Ebene
             </label>
-            <select
+            <SelectBox
               id={targetId}
-              className="man-pt-editor__select"
               value={target}
               onChange={(event) => {
                 setTarget(event.target.value);
@@ -95,13 +97,14 @@ function RemoveLaneDialog({
                   {entry.title}
                 </option>
               ))}
-            </select>
+            </SelectBox>
           </div>
         )}
-        <label className="man-pt-editor__check">
+        <label className="flex min-h-10 cursor-pointer items-center gap-2 text-sm">
           <input
             type="radio"
             name={choiceName}
+            className="size-4 accent-primary"
             checked={mode === "delete"}
             onChange={() => setMode("delete")}
           />
@@ -146,50 +149,20 @@ export function LaneEditor({
   };
 
   return (
-    <Pane
-      className="man-pt-editor__entities"
+    <EntityPanel
       hint={
         full
           ? `Mehr als ${LIMITS.lanes} Ebenen trägt ein Plan nicht.`
           : "Die Ebenen stehen im Plan in dieser Reihenfolge untereinander."
       }
-      actions={
-        <button
-          ref={addRef}
-          type="button"
-          className="man-pt-editor__button"
-          disabled={full}
-          onClick={add}
-        >
-          Neue Ebene
-        </button>
-      }
-    >
-      {plan.lanes.length === 0 ? (
-        <PaneEmpty>Noch keine Ebenen.</PaneEmpty>
-      ) : (
-        <ol className="man-pt-editor__entity-list" aria-label="Ebenen">
-          {plan.lanes.map((lane, index) => (
-            <EntityRow
-              key={lane.id}
-              noun="Ebene"
-              existing={plan.lanes.map((entry) => entry.title)}
-              position={index + 1}
-              title={lane.title}
-              count={countInLane(plan, lane.id)}
-              isFirst={index === 0}
-              isLast={index === plan.lanes.length - 1}
-              autoFocus={lane.id === focusId}
-              onRename={(title) =>
-                onPlanChange(renameLane(plan, lane.id, title))
-              }
-              onMove={(offset) => onPlanChange(moveLane(plan, lane.id, offset))}
-              onRemove={() => setRemovingId(lane.id)}
-            />
-          ))}
-        </ol>
-      )}
-      {removing !== undefined && (
+      addLabel="Neue Ebene"
+      addRef={addRef}
+      full={full}
+      onAdd={add}
+      empty={plan.lanes.length === 0 ? "Noch keine Ebenen." : undefined}
+      listLabel="Ebenen"
+      dialog={
+        removing !== undefined && (
         <RemoveLaneDialog
           plan={plan}
           lane={removing}
@@ -200,7 +173,25 @@ export function LaneEditor({
           onCancel={() => setRemovingId(null)}
           fallbackFocus={() => addRef.current}
         />
-      )}
-    </Pane>
+      )
+      }
+    >
+      {plan.lanes.map((lane, index) => (
+        <EntityRow
+          key={lane.id}
+          noun="Ebene"
+          existing={plan.lanes.map((entry) => entry.title)}
+          position={index + 1}
+          title={lane.title}
+          count={countInLane(plan, lane.id)}
+          isFirst={index === 0}
+          isLast={index === plan.lanes.length - 1}
+          autoFocus={lane.id === focusId}
+          onRename={(title) => onPlanChange(renameLane(plan, lane.id, title))}
+          onMove={(offset) => onPlanChange(moveLane(plan, lane.id, offset))}
+          onRemove={() => setRemovingId(lane.id)}
+        />
+      ))}
+    </EntityPanel>
   );
 }

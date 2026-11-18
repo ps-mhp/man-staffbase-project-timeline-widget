@@ -21,6 +21,10 @@
 import * as React from "react";
 import { KeyboardEvent, ReactElement, useId, useRef, useState } from "react";
 
+import { Field } from "@man/config-ui/form/field";
+import { Button } from "@man/config-ui/primitives/button";
+import { Input } from "@man/config-ui/primitives/input";
+
 import { MilestoneSymbol, UNCATEGORIZED_COLOR } from "../plan-model";
 import { AnchoredPopover } from "./anchored-popover";
 import { ColorField } from "./color-field";
@@ -55,8 +59,6 @@ export function CreateEntityPopover({
   onCancel,
 }: CreateEntityPopoverProps): ReactElement {
   const titleId = useId();
-  const nameId = useId();
-  const errorId = useId();
   const nameRef = useRef<HTMLInputElement>(null);
   const [name, setName] = useState("");
   const [color, setColor] = useState(initialColor);
@@ -83,25 +85,18 @@ export function CreateEntityPopover({
       labelledBy={titleId}
       onClose={onCancel}
       initialFocus={nameRef}
-      className="man-pt-editor__create"
+      className="w-[280px]"
     >
       {({ close }) => (
         <>
-          <p id={titleId} className="man-pt-editor__popover-title">
+          <p id={titleId} className="font-semibold text-foreground">
             Neue {noun}
           </p>
-          <div className="man-pt-editor__field">
-            <label className="man-pt-editor__label" htmlFor={nameId}>
-              Name
-            </label>
-            <input
+          <Field label="Name" error={error}>
+            <Input
               ref={nameRef}
-              id={nameId}
               type="text"
-              className="man-pt-editor__input"
               value={name}
-              aria-invalid={error !== null}
-              aria-describedby={error !== null ? errorId : undefined}
               onChange={(event) => {
                 setName(event.target.value);
                 setTouched(true);
@@ -112,12 +107,7 @@ export function CreateEntityPopover({
                 submit(close);
               }}
             />
-            {error !== null && (
-              <p id={errorId} className="man-pt-editor__error">
-                {error}
-              </p>
-            )}
-          </div>
+          </Field>
           {color !== undefined && (
             <ColorField label="Farbe" value={color} onChange={setColor} />
           )}
@@ -129,21 +119,13 @@ export function CreateEntityPopover({
               onChange={setSymbol}
             />
           )}
-          <div className="man-pt-editor__popover-actions">
-            <button
-              type="button"
-              className="man-pt-editor__button"
-              onClick={() => close(true)}
-            >
+          <div className="flex justify-end gap-2">
+            <Button type="button" variant="outline" onClick={() => close(true)}>
               Abbrechen
-            </button>
-            <button
-              type="button"
-              className="man-pt-editor__button man-pt-editor__button--primary"
-              onClick={() => submit(close)}
-            >
+            </Button>
+            <Button type="button" onClick={() => submit(close)}>
               Anlegen
-            </button>
+            </Button>
           </div>
         </>
       )}

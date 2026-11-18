@@ -27,22 +27,14 @@
 
 import { useCallback, useState } from "react";
 
-import { ItemKind, Plan } from "../plan-model";
-import type { FormTab } from "./item-form";
-import { ITEM_KINDS } from "./plan-queries";
+import { Plan } from "../plan-model";
+import type { FormTab } from "./entry-main";
+import type { KindFilter } from "./plan-queries";
 
 export interface EntriesView {
-  kind: ItemKind;
+  kind: KindFilter;
   query: string;
   formTab: FormTab;
-}
-
-/** Die erste Art, von der es Einträge gibt — sonst Meilensteine. */
-function initialKind(plan: Plan): ItemKind {
-  return (
-    ITEM_KINDS.find((kind) => plan.items.some((item) => item.kind === kind)) ??
-    "milestone"
-  );
 }
 
 export function useEntriesView(
@@ -50,7 +42,7 @@ export function useEntriesView(
   selectedId: string | null,
 ): [EntriesView, (patch: Partial<EntriesView>) => void] {
   const [view, setView] = useState<EntriesView>(() => ({
-    kind: initialKind(plan),
+    kind: "all",
     query: "",
     formTab: "general",
   }));
@@ -60,7 +52,7 @@ export function useEntriesView(
   const [followed, setFollowed] = useState(followKey);
   if (followKey !== followed) {
     setFollowed(followKey);
-    if (selected !== undefined && selected.kind !== view.kind) {
+    if (selected !== undefined && view.kind !== "all" && selected.kind !== view.kind) {
       setView({ ...view, kind: selected.kind });
     }
   }

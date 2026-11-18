@@ -34,6 +34,8 @@ import {
   useState,
 } from "react";
 
+import { Button } from "@man/config-ui/primitives/button";
+
 /** Worauf der Fokus beim Aufklappen fällt: die gewählte Möglichkeit, sonst die erste. */
 const CHOSEN =
   'input[type="radio"]:checked, [role="radio"][aria-checked="true"]';
@@ -63,7 +65,7 @@ export function InlinePicker({
   useEffect(() => {
     if (!open) return;
     const root = rootRef.current;
-    const popover = root?.querySelector(".man-pt-editor__picker-popover");
+    const popover = root?.querySelector("[data-picker-popover]");
     (
       popover?.querySelector<HTMLElement>(CHOSEN) ??
       popover?.querySelector<HTMLElement>(ANY)
@@ -91,23 +93,25 @@ export function InlinePicker({
   return (
     <div
       ref={rootRef}
-      className={`man-pt-editor__picker${className ? ` ${className}` : ""}`}
+      className={`relative shrink-0${className ? ` ${className}` : ""}`}
     >
-      <button
+      <Button
         ref={buttonRef}
         type="button"
-        className="man-pt-editor__button man-pt-editor__button--icon"
+        variant="outline"
+        size="icon"
         aria-label={label}
         aria-expanded={open}
         aria-controls={open ? popoverId : undefined}
         onClick={() => setOpen(!open)}
       >
         {face}
-      </button>
+      </Button>
       {open && (
         <div
           id={popoverId}
-          className="man-pt-editor__picker-popover"
+          data-picker-popover=""
+          className="absolute top-[calc(100%+4px)] left-0 z-20 w-max rounded-md border bg-popover p-3 shadow-md"
           onKeyDown={onKeyDown}
         >
           {children}

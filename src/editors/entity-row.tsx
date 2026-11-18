@@ -12,14 +12,17 @@
  */
 
 /**
- * Eine Zeile im Reiter „Ebenen“ oder „Kategorien“, einzeilig:
- * [Farbe] · Name · Zahl der Einträge · ↑ · ↓ · Löschen. Beide Reiter sehen
- * gleich aus und bedienen sich gleich; der Unterschied steckt in dem, was sie
- * mit den Knöpfen tun.
+ * Eine Zeile im Reiter „Ebenen“ oder „Kategorien“ des Panels: oben
+ * [Farbe] [Form] · Name, darunter die Zahl der Einträge und die Knöpfe
+ * ↑ · ↓ · Löschen. Beide Reiter sehen gleich aus und bedienen sich gleich; der
+ * Unterschied steckt in dem, was sie mit den Knöpfen tun.
  */
 
 import * as React from "react";
 import { ReactElement, ReactNode } from "react";
+import { ChevronDown, ChevronUp, Trash2 } from "lucide-react";
+
+import { Button } from "@man/config-ui/primitives/button";
 
 import { DraftField } from "./draft-field";
 import { validateName } from "./entity-names";
@@ -44,6 +47,8 @@ export interface EntityRowProps {
   leading?: ReactNode;
 }
 
+const ICON_BUTTON = "text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:ring-ring/40";
+
 export function EntityRow({
   noun,
   existing,
@@ -60,46 +65,60 @@ export function EntityRow({
 }: EntityRowProps): ReactElement {
   const name = `${noun} „${title}“`;
   return (
-    <li className="man-pt-editor__entity">
-      {leading}
-      <DraftField
-        label={`Name der ${noun} ${position}`}
-        hideLabel
-        value={title}
-        validate={validateName(noun, existing, title)}
-        onCommit={onRename}
-        autoFocus={autoFocus}
-        className="man-pt-editor__entity-name"
-      />
-      <span className="man-pt-editor__entity-count">{countLabel(count)}</span>
-      {/* Pfeile statt „Nach oben“: drei Wörter je Zeile drängten den Namen
-          zusammen. Der zugängliche Name sagt, was sie tun und woran. */}
-      <button
-        type="button"
-        className="man-pt-editor__button man-pt-editor__button--icon"
-        aria-label={`${name} nach oben`}
-        disabled={isFirst}
-        onClick={() => onMove(-1)}
-      >
-        <span aria-hidden="true">↑</span>
-      </button>
-      <button
-        type="button"
-        className="man-pt-editor__button man-pt-editor__button--icon"
-        aria-label={`${name} nach unten`}
-        disabled={isLast}
-        onClick={() => onMove(1)}
-      >
-        <span aria-hidden="true">↓</span>
-      </button>
-      <button
-        type="button"
-        className="man-pt-editor__button"
-        aria-label={`${name} löschen`}
-        onClick={onRemove}
-      >
-        Löschen
-      </button>
+    <li className="flex flex-col gap-1.5 rounded-lg border bg-background p-2.5">
+      <div className="flex items-center gap-2">
+        {leading}
+        <DraftField
+          label={`Name der ${noun} ${position}`}
+          hideLabel
+          value={title}
+          validate={validateName(noun, existing, title)}
+          onCommit={onRename}
+          autoFocus={autoFocus}
+          className="flex-1"
+        />
+      </div>
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-[13px] text-muted-foreground">{countLabel(count)}</span>
+        {/* Pfeile statt „Nach oben“: der zugängliche Name sagt, was sie tun und woran. */}
+        <div className="flex items-center gap-0.5">
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon-sm"
+            className={ICON_BUTTON}
+            aria-label={`${name} nach oben`}
+            title={`${name} nach oben`}
+            disabled={isFirst}
+            onClick={() => onMove(-1)}
+          >
+            <ChevronUp aria-hidden />
+          </Button>
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon-sm"
+            className={ICON_BUTTON}
+            aria-label={`${name} nach unten`}
+            title={`${name} nach unten`}
+            disabled={isLast}
+            onClick={() => onMove(1)}
+          >
+            <ChevronDown aria-hidden />
+          </Button>
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon-sm"
+            className={`${ICON_BUTTON} text-destructive hover:text-destructive`}
+            aria-label={`${name} löschen`}
+            title={`${name} löschen`}
+            onClick={onRemove}
+          >
+            <Trash2 aria-hidden />
+          </Button>
+        </div>
+      </div>
     </li>
   );
 }

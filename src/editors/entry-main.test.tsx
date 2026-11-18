@@ -15,14 +15,14 @@ import * as React from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 
 import { Plan } from "../plan-model";
-import { FormHarness as Harness, lastPlan, openTab } from "./item-form.fixture";
+import { FormHarness as Harness, lastPlan, openTab } from "./entry-main.fixture";
 import { findItem, testPlan } from "./test-plan.fixture";
 
-describe("ItemForm: Felder", () => {
+describe("EntryMain: Felder", () => {
   it("zeigt für einen Meilenstein Datum, Serie und Vorgänger — die Form nicht", () => {
     render(<Harness id="m1" />);
-    expect(screen.getByLabelText("Art")).toHaveValue("milestone");
-    expect(screen.getByLabelText("Titel")).toHaveValue("Bauma");
+    expect(screen.getByRole("radio", { name: "Meilenstein" })).toBeChecked();
+    expect(screen.getByLabelText(/^Titel \*/)).toHaveValue("Bauma");
     openTab("Einordnung");
     expect(screen.getByLabelText("Ebene")).toHaveValue("l1");
     expect(screen.getByLabelText("Kategorie")).toHaveValue("c1");
@@ -33,9 +33,8 @@ describe("ItemForm: Felder", () => {
     expect(screen.getByLabelText("Datum")).toHaveValue("2025-04-07");
     // Die Form gehört der Kategorie; am Meilenstein gibt es kein Feld dafür.
     expect(screen.queryByLabelText("Symbol")).not.toBeInTheDocument();
-    expect(
-      screen.getByRole("checkbox", { name: "Vorläufig" }),
-    ).not.toBeChecked();
+    openTab("Allgemein");
+    expect(screen.getByRole("switch", { name: "Vorläufig" })).not.toBeChecked();
     openTab("Abhängigkeiten");
     expect(
       screen.getByRole("group", { name: "Hängt ab von" }),
@@ -47,7 +46,7 @@ describe("ItemForm: Felder", () => {
     expect(screen.getByLabelText("Beginn")).toHaveValue("2028-01-01");
     expect(screen.getByLabelText("Ende")).toHaveValue("2030-06-30");
     expect(
-      screen.getByRole("checkbox", { name: "Pfeil am Ende" }),
+      screen.getByRole("switch", { name: "Pfeil am Ende" }),
     ).toBeChecked();
     expect(screen.queryByLabelText("Symbol")).not.toBeInTheDocument();
   });
@@ -69,7 +68,7 @@ describe("ItemForm: Felder", () => {
   it("übernimmt einen neuen Titel und setzt das Stand-Datum", () => {
     const onPlanChange = jest.fn();
     render(<Harness id="m1" onPlanChange={onPlanChange} />);
-    fireEvent.change(screen.getByLabelText("Titel"), {
+    fireEvent.change(screen.getByLabelText(/^Titel \*/), {
       target: { value: "Bauma 2025" },
     });
     expect(findItem(lastPlan(onPlanChange), "m1").title).toBe("Bauma 2025");
@@ -79,7 +78,7 @@ describe("ItemForm: Felder", () => {
   it("hält einen leeren Titel als Entwurf mit Fehler am Feld", () => {
     const onPlanChange = jest.fn();
     render(<Harness id="m1" onPlanChange={onPlanChange} />);
-    const title = screen.getByLabelText("Titel");
+    const title = screen.getByLabelText(/^Titel \*/);
     fireEvent.change(title, { target: { value: "" } });
     expect(onPlanChange).not.toHaveBeenCalled();
     expect(title).toHaveAttribute("aria-invalid", "true");
@@ -126,9 +125,7 @@ describe("ItemForm: Felder", () => {
   it("wechselt die Art: aus dem Meilenstein wird ein Zeitraum", () => {
     const onPlanChange = jest.fn();
     render(<Harness id="m1" onPlanChange={onPlanChange} />);
-    fireEvent.change(screen.getByLabelText("Art"), {
-      target: { value: "bar" },
-    });
+    fireEvent.click(screen.getByRole("radio", { name: "Zeitraum" }));
     expect(findItem(lastPlan(onPlanChange), "m1")).toMatchObject({
       kind: "bar",
       start: "2025-04-07",
@@ -138,20 +135,19 @@ describe("ItemForm: Felder", () => {
     expect(screen.getByLabelText("Beginn")).toHaveValue("2025-04-07");
   });
 
-  it("sperrt Meilenstein und Zeitraum für einen Stichtag, solange es keine Ebene gibt", () => {
+  it("lässt einen Stichtag ohne Ebene einen Stichtag bleiben und sagt, warum", () => {
+    const onPlanChange = jest.fn();
     const plan: Plan = {
       ...testPlan(),
       lanes: [],
       items: [findItem(testPlan(), "d1")],
     };
-    render(<Harness id="d1" initial={plan} />);
-    const kind = screen.getByLabelText("Art");
-    expect(
-      within(kind).getByRole("option", { name: "Meilenstein" }),
-    ).toBeDisabled();
-    expect(
-      within(kind).getByRole("option", { name: "Zeitraum" }),
-    ).toBeDisabled();
+    render(<Harness id="d1" initial={plan} onPlanChange={onPlanChange} />);
+    expect(screen.getByText(/brauchen eine Ebene/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("radio", { name: "Zeitraum" }));
+    // Der Plan bleibt, wie er war: der Wechsel hat nichts zu tun.
+    expect(lastPlan(onPlanChange)).toEqual(plan);
+    expect(screen.getByRole("radio", { name: "Stichtag" })).toBeChecked();
   });
 
   it("setzt Ebene und Kategorie, auch „Ohne Kategorie“", () => {
@@ -177,7 +173,7 @@ describe("ItemForm: Felder", () => {
       screen.getByText("Form und Farbe kommen von der Kategorie."),
     ).toBeInTheDocument();
     // Die Form der Kategorie „General“, in ihrer Farbe.
-    const glyph = container.querySelector(".man-pt-editor__look svg");
+    const glyph = container.querySelector("svg[data-symbol]");
     expect(glyph).toHaveAttribute("data-symbol", "square");
     expect(glyph?.querySelector("path")).toHaveAttribute("fill", "#E40045");
     fireEvent.change(screen.getByLabelText("Kategorie"), {
@@ -190,12 +186,12 @@ describe("ItemForm: Felder", () => {
 
   it("setzt „Vorläufig“", () => {
     const onPlanChange = jest.fn();
-    render(<Harness id="m1" tab="term" onPlanChange={onPlanChange} />);
-    fireEvent.click(screen.getByRole("checkbox", { name: "Vorläufig" }));
+    render(<Harness id="m1" onPlanChange={onPlanChange} />);
+    fireEvent.click(screen.getByRole("switch", { name: "Vorläufig" }));
     expect(findItem(lastPlan(onPlanChange), "m1")).toMatchObject({
       tentative: true,
     });
-    fireEvent.click(screen.getByRole("checkbox", { name: "Vorläufig" }));
+    fireEvent.click(screen.getByRole("switch", { name: "Vorläufig" }));
     expect(findItem(lastPlan(onPlanChange), "m1")).not.toHaveProperty(
       "tentative",
     );
@@ -204,7 +200,7 @@ describe("ItemForm: Felder", () => {
   it("nimmt dem Zeitraum den Pfeil", () => {
     const onPlanChange = jest.fn();
     render(<Harness id="b1" tab="term" onPlanChange={onPlanChange} />);
-    fireEvent.click(screen.getByRole("checkbox", { name: "Pfeil am Ende" }));
+    fireEvent.click(screen.getByRole("switch", { name: "Pfeil am Ende" }));
     expect(findItem(lastPlan(onPlanChange), "b1")).not.toHaveProperty("arrow");
   });
 
@@ -226,9 +222,9 @@ describe("ItemForm: Felder", () => {
     const onDuplicate = jest.fn();
     const onRemove = jest.fn();
     render(<Harness id="m1" onDuplicate={onDuplicate} onRemove={onRemove} />);
-    fireEvent.click(screen.getByRole("button", { name: "Duplizieren" }));
+    fireEvent.click(screen.getByRole("button", { name: "Eintrag duplizieren" }));
     expect(onDuplicate).toHaveBeenCalledTimes(1);
-    fireEvent.click(screen.getByRole("button", { name: "Löschen" }));
+    fireEvent.click(screen.getByRole("button", { name: "Eintrag löschen" }));
     expect(onRemove).not.toHaveBeenCalled();
     const dialog = screen.getByRole("dialog", { name: "„Bauma“ löschen?" });
     fireEvent.click(within(dialog).getByRole("button", { name: "Löschen" }));

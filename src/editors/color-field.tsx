@@ -54,15 +54,15 @@ export function ColorField({
   const current = value.toUpperCase();
 
   return (
-    <fieldset className="man-pt-editor__colors">
-      <legend className="man-pt-editor__label">{label}</legend>
-      <div className="man-pt-editor__swatches">
+    <fieldset className="m-0 flex min-w-0 flex-col gap-2 border-0 p-0">
+      <legend className="mb-1.5 text-[13px] font-semibold text-foreground">{label}</legend>
+      <div className="grid grid-cols-6 gap-2">
         {CATEGORY_PALETTE.map((color) => (
           <input
             key={color}
             type="radio"
             name={name}
-            className="man-pt-editor__swatch"
+            className="size-6 cursor-pointer appearance-none rounded border border-black/15 outline-none checked:ring-2 checked:ring-foreground checked:ring-offset-2 focus-visible:ring-[3px] focus-visible:ring-ring/50"
             style={{ backgroundColor: color }}
             aria-label={color}
             checked={current === color}
@@ -76,7 +76,7 @@ export function ColorField({
         validate={validateHex}
         normalize={(text) => normalizeHex(text) as string}
         onCommit={onChange}
-        className="man-pt-editor__hex"
+        className="max-w-40"
       />
     </fieldset>
   );

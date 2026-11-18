@@ -14,10 +14,10 @@
 import * as React from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 
-import { FormHarness as Harness, openTab } from "./item-form.fixture";
+import { FormHarness as Harness, openTab } from "./entry-main.fixture";
 
-describe("ItemForm: Unterreiter", () => {
-  it("gliedert die Felder in fünf Reiter der zweiten Ebene", () => {
+describe("EntryMain: Reiter", () => {
+  it("gliedert die Felder in fünf Reiter", () => {
     render(<Harness id="b1" />);
     const list = screen.getByRole("tablist", { name: "Felder des Eintrags" });
     expect(
@@ -25,9 +25,7 @@ describe("ItemForm: Unterreiter", () => {
         .getAllByRole("tab")
         .map((tab) => tab.textContent),
     ).toEqual(["Allgemein", "Einordnung", "Termin", "Abhängigkeiten (1)", "Inhalt"]);
-    expect(
-      screen.getByRole("tabpanel", { name: "Allgemein" }),
-    ).toContainElement(screen.getByLabelText("Titel"));
+    expect(screen.getByRole("tabpanel", { name: "Allgemein" })).toContainElement(screen.getByLabelText(/^Titel \*/));
   });
 
   it("wechselt mit den Pfeiltasten und nimmt den Fokus mit", () => {
@@ -47,7 +45,7 @@ describe("ItemForm: Unterreiter", () => {
     fireEvent.change(screen.getByLabelText("Datum"), { target: { value: "" } });
     openTab("Allgemein");
     expect(
-      screen.getByRole("tab", { name: "Termin, enthält Fehler" }),
+      screen.getByRole("tab", { name: "Termin (Fehler)" }),
     ).toBeInTheDocument();
     openTab(/^Termin/);
     expect(screen.getByLabelText("Datum")).toHaveValue("");
@@ -85,27 +83,21 @@ describe("ItemForm: Unterreiter", () => {
   });
 });
 
-describe("ItemForm: Löschen", () => {
+describe("EntryMain: Löschen", () => {
   it("fragt nach, nennt die abhängigen Einträge und setzt den Fokus auf „Abbrechen“", () => {
     render(<Harness id="m1" />);
-    const remove = screen.getByRole("button", { name: "Löschen" });
-    expect(remove).toHaveAttribute("aria-haspopup", "dialog");
+    const remove = screen.getByRole("button", { name: "Eintrag löschen" });
     remove.focus();
     fireEvent.click(remove);
-    expect(remove).toHaveAttribute("aria-expanded", "true");
     const dialog = screen.getByRole("dialog", { name: "„Bauma“ löschen?" });
-    expect(dialog).toHaveAccessibleDescription(
-      "1 Eintrag hängt davon ab; die Verbindung wird entfernt.",
-    );
-    expect(
-      within(dialog).getByRole("button", { name: "Abbrechen" }),
-    ).toHaveFocus();
+    expect(dialog).toHaveAccessibleDescription("1 Eintrag hängt davon ab; die Verbindung wird entfernt.");
+    expect(within(dialog).getByRole("button", { name: "Abbrechen" })).toHaveFocus();
   });
 
   it("schließt mit Esc, löscht nichts und gibt den Fokus zurück", () => {
     const onRemove = jest.fn();
     render(<Harness id="m1" onRemove={onRemove} />);
-    const remove = screen.getByRole("button", { name: "Löschen" });
+    const remove = screen.getByRole("button", { name: "Eintrag löschen" });
     remove.focus();
     fireEvent.click(remove);
     fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
@@ -114,18 +106,14 @@ describe("ItemForm: Löschen", () => {
     expect(remove).toHaveFocus();
   });
 
-  it("schließt bei einem Klick daneben", () => {
-    render(<Harness id="m1" />);
-    fireEvent.click(screen.getByRole("button", { name: "Löschen" }));
-    fireEvent.pointerDown(screen.getByLabelText("Titel"));
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
-  });
-
-  it("nennt ohne abhängige Einträge keinen Zusatz", () => {
-    render(<Harness id="m2" />);
-    fireEvent.click(screen.getByRole("button", { name: "Löschen" }));
-    expect(
-      screen.getByRole("dialog", { name: "„SOP“ löschen?" }),
-    ).not.toHaveAttribute("aria-describedby");
+  it("löscht erst nach der Bestätigung", () => {
+    const onRemove = jest.fn();
+    render(<Harness id="m2" onRemove={onRemove} />);
+    fireEvent.click(screen.getByRole("button", { name: "Eintrag löschen" }));
+    const dialog = screen.getByRole("dialog", { name: "„SOP“ löschen?" });
+    expect(dialog).toHaveAccessibleDescription("Der Eintrag wird aus dem Plan entfernt.");
+    expect(onRemove).not.toHaveBeenCalled();
+    fireEvent.click(within(dialog).getByRole("button", { name: "Löschen" }));
+    expect(onRemove).toHaveBeenCalledTimes(1);
   });
 });

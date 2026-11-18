@@ -167,7 +167,8 @@ export function AnchoredPopover({
       role="dialog"
       aria-labelledby={labelledBy}
       aria-describedby={describedBy}
-      className={`man-pt-editor__popover man-pt-editor__popover--${position?.side ?? "below"}${className ? ` ${className}` : ""}`}
+      data-side={position?.side ?? "below"}
+      className={`fixed z-30 flex w-max max-w-[320px] flex-col gap-2 overflow-y-auto rounded-md border bg-popover p-3 text-left whitespace-normal text-popover-foreground shadow-lg${className ? ` ${className}` : ""}`}
       // Bis zur ersten Messung unsichtbar, sonst blitzte es oben links auf.
       style={
         position === null

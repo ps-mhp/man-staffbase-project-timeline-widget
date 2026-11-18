@@ -39,7 +39,7 @@ export function ColorPicker({
       label={`Farbe von „${title}“: ${value.toUpperCase()}`}
       face={
         <span
-          className="man-pt-editor__color-chip"
+          className="block size-4 rounded-[4px] border border-black/15"
           style={{ backgroundColor: value }}
           aria-hidden="true"
         />

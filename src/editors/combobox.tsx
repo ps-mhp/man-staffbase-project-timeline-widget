@@ -27,6 +27,7 @@
  */
 
 import * as React from "react";
+import { ChevronDown } from "lucide-react";
 import {
   FocusEvent,
   KeyboardEvent,
@@ -45,6 +46,10 @@ import {
   comboboxOptions,
   resolveTyped,
 } from "./combobox-options";
+import { Button } from "@man/config-ui/primitives/button";
+import { Input } from "@man/config-ui/primitives/input";
+import { cn } from "@man/config-ui/primitives/utils";
+
 import { scrollIntoContainer } from "./scroll-into-container";
 
 export interface ComboboxProps {
@@ -69,7 +74,7 @@ function highlight(text: string, match: [number, number] | null): ReactNode {
   return (
     <>
       {text.slice(0, start)}
-      <mark className="man-pt-editor__match">{text.slice(start, end)}</mark>
+      <mark className="bg-transparent p-0 font-semibold text-inherit">{text.slice(start, end)}</mark>
       {text.slice(end)}
     </>
   );
@@ -84,7 +89,7 @@ function optionContent(
   return (
     <>
       {highlight(option.value, option.match)}
-      <span className="man-pt-editor__meta">
+      <span className="text-xs text-muted-foreground">
         {" · "}
         {props.describe(option)}
       </span>
@@ -108,7 +113,7 @@ const MIN_LIST_HEIGHT = 96;
  * Bereich, der sie sonst abschnitte.
  */
 function fitList(list: HTMLElement): ListFit {
-  const scroller = list.closest<HTMLElement>(".man-pt-editor__pane-body");
+  const scroller = list.closest<HTMLElement>("main");
   const anchor = list.parentElement;
   if (scroller === null || anchor === null) return { placement: "below" };
   const box = scroller.getBoundingClientRect();
@@ -231,12 +236,12 @@ export function Combobox(props: ComboboxProps): ReactElement {
   };
 
   return (
-    <div className="man-pt-editor__field">
-      <label className="man-pt-editor__label" htmlFor={inputId}>
+    <div className="flex flex-col gap-1.5">
+      <label className="text-[13px] font-semibold text-foreground" htmlFor={inputId}>
         {label}
       </label>
-      <div ref={rootRef} className="man-pt-editor__combobox">
-        <input
+      <div ref={rootRef} className="relative">
+        <Input
           ref={inputRef}
           id={inputId}
           type="text"
@@ -245,11 +250,9 @@ export function Combobox(props: ComboboxProps): ReactElement {
           aria-autocomplete="list"
           aria-expanded={expanded}
           aria-controls={listId}
-          aria-activedescendant={
-            expanded && active >= 0 ? optionId(active) : undefined
-          }
+          aria-activedescendant={expanded && active >= 0 ? optionId(active) : undefined}
           aria-describedby={hint === undefined ? undefined : hintId}
-          className="man-pt-editor__input man-pt-editor__combobox-input"
+          className="pr-9"
           value={text}
           onFocus={openList}
           onClick={openList}
@@ -262,11 +265,13 @@ export function Combobox(props: ComboboxProps): ReactElement {
           onKeyDown={onKeyDown}
           onBlur={onBlur}
         />
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon-sm"
           tabIndex={-1}
           aria-label={`Vorschläge für „${label}“ zeigen`}
-          className="man-pt-editor__button man-pt-editor__button--icon man-pt-editor__combobox-toggle"
+          className="absolute top-0.5 right-0.5 size-8 text-muted-foreground"
           // Der Fokus bleibt im Feld; sonst übernähme sein Verlassen den Text.
           onMouseDown={(event) => event.preventDefault()}
           onClick={() => {
@@ -275,32 +280,31 @@ export function Combobox(props: ComboboxProps): ReactElement {
             else openList();
           }}
         >
-          <span aria-hidden="true" className="man-pt-editor__chevron" />
-        </button>
+          <ChevronDown aria-hidden />
+        </Button>
         <ul
           ref={listRef}
           id={listId}
           role="listbox"
           aria-label={label}
           hidden={!expanded}
-          className={`man-pt-editor__listbox man-pt-editor__listbox--${fit.placement}`}
-          style={
-            fit.maxHeight === undefined
-              ? undefined
-              : { maxHeight: fit.maxHeight }
-          }
+          className={cn(
+            "absolute inset-x-0 z-20 max-h-60 overflow-y-auto rounded-md border bg-popover p-1 shadow-md",
+            fit.placement === "below" ? "top-[calc(100%+2px)]" : "bottom-[calc(100%+2px)]",
+          )}
+          style={fit.maxHeight === undefined ? undefined : { maxHeight: fit.maxHeight }}
         >
           {options.map((option, index) => (
             <li
-              key={
-                option.type === "none"
-                  ? "none"
-                  : `${option.type}:${option.value}`
-              }
+              key={option.type === "none" ? "none" : `${option.type}:${option.value}`}
               id={optionId(index)}
               role="option"
               aria-selected={index === active}
-              className={`man-pt-editor__option man-pt-editor__option--${option.type}${index === active ? " man-pt-editor__option--active" : ""}`}
+              className={cn(
+                "min-h-9 cursor-pointer truncate rounded px-2.5 py-2 text-sm text-foreground hover:bg-muted",
+                option.type !== "existing" && "text-primary",
+                index === active && "bg-primary-soft",
+              )}
               onMouseDown={(event) => event.preventDefault()}
               onClick={() => choose(option)}
             >
@@ -310,7 +314,7 @@ export function Combobox(props: ComboboxProps): ReactElement {
         </ul>
       </div>
       {hint !== undefined && (
-        <p id={hintId} className="man-pt-editor__hint">
+        <p id={hintId} className="text-[13px] text-muted-foreground">
           {hint}
         </p>
       )}
