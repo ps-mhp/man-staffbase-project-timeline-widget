@@ -4,7 +4,7 @@ Ce widget affiche un plan de projet sous forme de **frise chronologique** — pa
 du lancement d'un véhicule, avec les salons, les démarrages de production en série (SOP) et
 les étapes clés du projet sur plusieurs années. Il remplace la diapositive PowerPoint
 qui était jusqu’à présent utilisée pour ce type de plans et intégrée sous forme d’image : le plan
-figure directement sur la page, peut être modifié à tout moment, et les lecteurs et lectrices
+apparaît directement sur la page, peut être modifié à tout moment, et les lecteurs
 peuvent l’explorer eux-mêmes, le filtrer et le télécharger sous forme de tableau Excel.
 
 L’ensemble du plan est géré dans l’**éditeur de plan**, qui s’affiche automatiquement à l’ouverture des
@@ -46,8 +46,8 @@ De haut en bas :
    **Plein écran** et **Aide**.
 3. **Légende** — les catégories et leurs couleurs. Un clic masque une
    catégorie ou la réaffiche.
-4. **Le plan** — à gauche, les titres des calques ; à droite, la chronologie avec les
-   entrées ; sous le dernier calque, les titres des dates clés. La flèche située à côté du
+4. **Le plan** — à gauche, les titres des niveaux ; à droite, la chronologie avec les
+   entrées ; sous le dernier niveau, les titres des dates clés. La flèche située à côté du
    titre permet de réduire un niveau ; **Tout réduire**, au-dessus des titres, permet de
    tous les réduire d’un seul coup, puis de les afficher à nouveau.
 5. **Aperçu** — une fine bande couvrant toute la période. Un cadre
@@ -56,13 +56,13 @@ De haut en bas :
 De plus :
 
 - Le **zoom** est continu : à l’aide des boutons **−** et **+**, en maintenant enfoncée la
-  touche Ctrl (Mac : ⌘) et en utilisant la molette de la souris, ou avec deux doigts sur le trackpad et
+  touche Ctrl (Mac : ⌘) et en utilisant la molette de la souris ou deux doigts sur le trackpad et
   l’écran tactile. L’axe passe alors des années aux trimestres et aux mois, puis
   aux semaines calendaires et aux jours individuels.
 - Le **déplacement** s’effectue en faisant glisser avec la souris, avec la touche Maj et la molette de la souris,
   par un balayage horizontal ou en faisant glisser le cadre dans la vue d’ensemble.
 - Un **clic sur une entrée** ouvre ses détails : type et date,
-  catégorie, niveau, série, description ainsi que les événements précédents et suivants.
+  catégorie, niveau, série, description, ainsi que les événements précédents et suivants.
 - Les **filtres** et la **recherche** ne s’appliquent qu’à votre propre visite ; rien n’est enregistré ni
   partagé avec d’autres.
 - **Liste** affiche les mêmes entrées sous forme de tableau, triées par date — la
@@ -75,7 +75,7 @@ De plus :
   touches fléchées permettent de passer d'une entrée à l'autre, la touche Entrée ouvre les détails,
   **+** et **−** permettent de zoomer, **0** affiche tout.
 - Sur les écrans étroits (moins de 768 pixels de largeur), le planning s’affiche dans la
-  **liste** — sous forme de cartes plutôt que de tableau, car la chronologie n’y a pas
+  **Liste** — sous forme de cartes plutôt que de tableau, car la chronologie n’y a pas
   de largeur ; le bouton de basculement dans le menu **Plus** permet d’accéder à tout moment à la chronologie.
   De même, les filtres et les détails s’ouvrent sous forme de volet depuis le bas de l’écran, et
   **Liste** et **Exporter** se trouvent dans le menu **Plus**.
@@ -94,7 +94,9 @@ De plus :
 
 ## Ce que vous voyez dans l’éditeur CMS
 
-L’éditeur de plan comporte en haut un **aperçu** : la même frise chronologique que sur
-la page, avec le zoom, mais sans filtre, liste ni exportation. Un clic sur une
-entrée dans l’aperçu la sélectionne pour la modifier. Pour vérifier comment les lecteurs et lectrices perçoivent le plan
-avec tous les filtres et la fonction d’exportation, consultez l’aperçu de la page.
+L’éditeur de plan affiche l’**aperçu** dans les vues **Ordinateur de bureau**, **Tablette**
+et **Mobile** en haut de l’écran : la même chronologie que sur la page, dans la
+largeur de l’appareil, avec zoom, mais sans filtre, liste ni exportation. Un clic sur
+une entrée de l’aperçu la sélectionne pour la modifier. Pour vérifier comment les lecteurs et lectrices perçoivent le
+plan avec tous les filtres et l’exportation, consultez l’aperçu de la
+page.

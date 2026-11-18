@@ -47,7 +47,7 @@
       "variant": "postponement"
     },
     {
-      "title": "Senza la linea “Oggi” e senza esportazione",
+      "title": "Senza la linea \"Oggi\" e senza esportazione",
       "attributes": {
         "show-today": "false",
         "allow-export": "false"

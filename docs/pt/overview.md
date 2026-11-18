@@ -5,7 +5,7 @@ do lançamento de um veículo, incluindo feiras, arranques de produção em sér
 marcos do projeto ao longo de vários anos. Substitui o slide do PowerPoint,
 que até agora era atualizado para estes planos e incorporado como imagem: o plano
 aparece diretamente na página, pode ser alterado a qualquer momento e os leitores
-podem explorá-lo, filtrá-lo e descarregá-lo como uma folha de cálculo do Excel.
+podem explorá-lo por conta própria, filtrá-lo e descarregá-lo como uma folha de cálculo do Excel.
 
 Todo o plano é gerido no **Editor de Planos**, que aparece automaticamente ao abrir as
 configurações.
@@ -33,7 +33,7 @@ configurações.
 - **Dependências** — linhas tracejadas com seta do predecessor para o
   sucessor, por exemplo, de «C4S» para o SOP correspondente.
 - **Provisório** — uma entrada cuja data ainda não está definida. Aparece
-  apenas como um contorno ou preenchida com uma cor clara e com uma borda tracejada.
+  apenas como contorno ou preenchida com uma cor clara e com uma borda tracejada.
 
 ## O que os leitores veem
 
@@ -87,14 +87,16 @@ Além disso:
 - **Ajuda** explica aos leitores, diretamente na página, o que os símbolos
   significam (separador **Legenda**, com as categorias deste plano) e como utilizar o
   plano com o rato, o trackpad, o ecrã tátil e o teclado (separador **Utilização**).
-  A partir do plano, a tecla **?** também abre a ajuda. No editor do plano,
+  A partir do mapa, a tecla **?** também abre a ajuda. No editor de mapas,
   esse botão não existe.
 - **Sem entradas, o widget não mostra absolutamente nada** — nem uma moldura vazia nem
   uma mensagem de erro.
 
 ## O que vê no Editor do CMS
 
-O Editor do Plano inclui, na parte superior, uma **Pré-visualização**: a mesma linha do tempo que na
-página, com zoom, mas sem filtros, lista nem exportação. Um clique numa
-entrada na pré-visualização seleciona-a para edição. Para verificar como os leitores
-vêem o plano com todos os filtros e a opção de exportação, consulte a pré-visualização da página.
+O Editor de Planos apresenta a **Pré-visualização** nas vistas **Desktop**, **Tablet**
+e **Móvel** na parte superior do cabeçalho: a mesma linha do tempo que na página, na
+largura do dispositivo, com zoom, mas sem filtros, lista nem exportação. Ao clicar
+numa entrada na pré-visualização, esta é selecionada para edição. Para verificar como os leitores
+visualizam o plano com todos os filtros e a exportação, consulte a pré-visualização da
+página.

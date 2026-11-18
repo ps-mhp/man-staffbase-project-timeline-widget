@@ -92,9 +92,11 @@ Además:
 - **Sin entradas, el widget no muestra nada**: ni un marco vacío ni
   ningún mensaje de error.
 
-## Lo que verá en el editor del CMS
+## Lo que verás en el editor del CMS
 
-El editor de planes incluye una **vista previa** en la parte superior: la misma línea de tiempo que en
-la página, con zoom, pero sin filtros, lista ni exportación. Al hacer clic en una
-entrada de la vista previa, esta se selecciona para su edición. Para comprobar cómo ven los lectores el plan
-con todos los filtros y la opción de exportación, consulta la vista previa de la página.
+El editor de planes muestra la **vista previa** en las vistas **Ordenador**, **Tableta**
+y **Móvil** en la parte superior: la misma línea de tiempo que en la página, en la
+ancho del dispositivo, con zoom, pero sin filtros, lista ni exportación. Al hacer clic en
+una entrada de la vista previa, esta queda seleccionada para su edición. Para comprobar cómo ven los lectores el
+plan con todos los filtros y la opción de exportación, consulte la vista previa de la
+página.

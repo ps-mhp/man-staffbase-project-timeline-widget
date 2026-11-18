@@ -27,7 +27,7 @@ settings.
     regulation. It appears as a dashed vertical line running through the entire
     plan, with the title below it.
 - **Series** — Milestones and time periods at the same level with the same
-  series name appear on a shared line. If a time period is part of the series,
+  series name appear on a single line. If a time period is part of the series,
   the milestones are placed on its bar; otherwise, a narrow
   line connects the first to the last.
 - **Dependencies** — Dotted lines with arrows from the predecessor to the
@@ -71,12 +71,12 @@ Additionally:
   exporting is enabled in the settings.
 - A dark line labeled **“Today”** highlights today’s date, provided that
   the feature is enabled and the date is within the visible section.
-- You can navigate without a mouse: Press Tab to jump to the schedule, use the
-  arrow keys to switch between entries, press Enter to open the details,
-  **+** and **−** to zoom, and **0** to show everything.
+- You can navigate without a mouse: Tab moves to the schedule, the
+  arrow keys switch between entries, Enter opens the details,
+  **+** and **−** zoom in and out, and **0** shows everything.
 - On narrow screens (less than 768 pixels wide), the schedule starts in the
-  **List** view—as cards instead of a table, because the timeline doesn’t take up any
-  width there; the toggle in the **More** menu takes you to the timeline at any time.
+  **List** view—as cards instead of a table, because the timeline doesn’t take up
+  any width there; the toggle in the **More** menu takes you to the timeline at any time.
   Similarly, filters and details open as a panel from the bottom edge, and
   **List** and **Export** are available in the **More** menu.
 - **Full Screen** displays the plan across the entire screen, with the same
@@ -94,7 +94,9 @@ Additionally:
 
 ## What You See in the CMS Editor
 
-The Plan Editor includes a **Preview** at the top: the same timeline as on
-the page, with zoom, but without filters, the list, or export. Clicking on an
-entry in the preview selects it for editing. To see how readers experience the plan
-with all filters and the export feature, check the page preview.
+The plan editor displays the **preview** in the **Desktop**, **Tablet**,
+and **Mobile** views at the top of the header: the same timeline as on the page, in the
+device’s width, with zoom, but without filters, the list, or export. Clicking on
+an entry in the preview selects it for editing. To see how readers experience the
+plan with all filters and the export feature, check the preview of the
+page.

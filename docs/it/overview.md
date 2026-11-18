@@ -15,7 +15,7 @@ impostazioni.
 - **Titolo** — facoltativo; si trova sopra il piano e dà al file Excel
   il suo nome.
 - **Livelli** — righe orizzontali una sotto l’altra, ad esempio «Misurazioni»,
-  «Lanci / SOP» e «Tappe fondamentali del progetto». A sinistra compare il titolo di ciascuna.
+  «Lanci / SOP» e «Tappe fondamentali del progetto». A sinistra è riportato il rispettivo titolo.
 - **Categorie** — assegnano un colore alle voci e appaiono come legenda
   sopra il piano, ad esempio «MY26 TG Assist» in viola.
 - **Voci** di tre tipi:
@@ -57,8 +57,8 @@ Inoltre:
 
 - Lo **zoom** è continuo: tramite i pulsanti **−** e **+**, tenendo premuto il
   tasto Ctrl (Mac: ⌘) e utilizzando la rotellina del mouse o con due dita sul trackpad e
-  sul touchscreen. L’asse passa da anni a trimestri e mesi fino
-  a settimane di calendario e singoli giorni.
+  sul touchscreen. L’asse passa da anni a trimestri e mesi fino a
+  settimane di calendario e singoli giorni.
 - È possibile **spostare** trascinando con il mouse, con il tasto Maiusc e la rotellina del mouse,
   scorrendo orizzontalmente o trascinando la cornice nella panoramica.
 - Un **clic su una voce** ne apre i dettagli: tipo e data,
@@ -87,14 +87,16 @@ Inoltre:
 - **Aiuto** spiega ai lettori direttamente nella pagina il significato dei simboli
   (scheda **Legenda**, con le categorie di questa mappa) e come utilizzare la
   mappa con mouse, trackpad, touch e tastiera (scheda **Funzionamento**).
-  Anche dal piano, il tasto **?** apre la guida. Nell’editor del piano
+  Anche dal piano stesso, il tasto **?** apre la guida. Nell’editor del piano
   questo pulsante non è presente.
-- **Senza voci, il widget non mostra nulla** — né una cornice vuota né
+- **Senza voci inserite, il widget non mostra nulla** — né una cornice vuota né
   un messaggio di errore.
 
-## Cosa vedete nell’editor CMS
+## Cosa si vede nell’editor CMS
 
-L’editor del piano contiene in alto un’**anteprima**: la stessa timeline presente sulla
-pagina, con lo zoom, ma senza filtri, elenco ed esportazione. Cliccando su una
-voce nell’anteprima, questa viene selezionata per la modifica. Per verificare come i lettori vedranno il piano
-con tutti i filtri e la funzione di esportazione, controllate l’anteprima della pagina.
+L’editor del piano mostra l’**anteprima** nelle visualizzazioni **Desktop**, **Tablet**
+e **Mobile** nella parte superiore dell’intestazione: la stessa linea temporale presente nella pagina, nella
+larghezza del dispositivo, con lo zoom, ma senza filtri, elenco ed esportazione. Cliccando su
+una voce nell’anteprima, questa viene selezionata per la modifica. Per verificare come i lettori
+vedranno il piano con tutti i filtri e l’esportazione, controllate l’anteprima della
+pagina.

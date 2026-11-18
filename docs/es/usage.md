@@ -10,18 +10,20 @@
 3. Un plan vacío ofrece dos opciones: **Empezar desde cero** crea una capa
    denominada «Capa 1»; quien prefiera partir de una plantilla ya preparada, que siga la
    sección «Empezar con una plantilla».
-4. En la barra de encabezado del editor de planos, en **Título**,
-   introduce, si lo deseas, un título para el plano. Aparecerá encima del plano y dará
-   nombre al archivo de Excel.
-5. Crea los niveles en la pestaña **Niveles**; consulta «Gestionar niveles».
-6. Crea las categorías con sus colores en la pestaña **Categorías**;
+4. A la derecha, en el panel **Plan**, en **Configuración**, en **Título del
+   plan**, introduzca un título (opcional). Aparecerá encima del plan y dará nombre al
+   archivo de Excel.
+5. Crea las capas en la pestaña **Capas** de la derecha; consulta «Gestionar
+   capas».
+6. Crea las categorías con sus colores en la pestaña **Categorías** de la derecha;
    consulta «Gestionar categorías».
-7. En la pestaña **Entradas**, cree los hitos, los periodos y las fechas clave
-   — véanse las secciones siguientes.
-8. Haga clic en **Aplicar**, en la esquina superior derecha.
-9. En el cuadro de diálogo, comprueba que las casillas **Mostrar línea de hoy** y
-   **Ofrecer exportación a Excel** estén marcadas; ambas vienen activadas por defecto.
-10. Guarda la página y comprueba el resultado en la vista previa.
+7. Cree a la izquierda, mediante **Nuevo**, los hitos, los periodos y las fechas clave —
+   véanse las secciones siguientes.
+8. En **Configuración**, compruebe que las casillas **Mostrar línea de hoy** y
+   **Ofrecer exportación a Excel** estén marcadas; ambas están activadas por defecto.
+9. Haga clic en **Aplicar**, en la esquina superior derecha. Con **Aplicar y
+   cerrar** (⌘/Ctrl ↵) se cierra el editor.
+10. Guarde la página y compruebe el resultado en la vista previa.
 
 ## Empezar con una plantilla
 
@@ -32,76 +34,72 @@
    - **Hoja de ruta del producto**: varios años y líneas de productos siguiendo el modelo
      del plan «Sales Truck Launch»: tres niveles, siete categorías y todo
      tipo de entradas.
-   - **Aplazamiento de fecha**: una fecha aplazada durante unos meses:
+   - **Aplazamiento de fecha**: un aplazamiento de unos pocos meses:
      fecha anterior y nueva como fechas de referencia, un nivel por cada función afectada.
-3. Haz clic en la ficha correspondiente. El editor se rellena con la plantilla;
-   se mantiene cualquier título que ya se haya introducido. **Atrás** te lleva, sin realizar cambios,
-   a las dos opciones anteriores.
-4. Adapta el título, los niveles, las categorías y las entradas a tu proyecto
-   o elimina lo que no necesites.
-5. Haz clic en **Aplicar**, en la esquina superior derecha, y guarda la página.
+3. Haga clic en la ficha correspondiente. El editor se rellena con la plantilla;
+   se mantiene cualquier título que ya se haya introducido. **Atrás** le lleva de vuelta a las dos rutas
+   sin realizar ningún cambio.
+4. Adapte el título, los niveles, las categorías y las entradas a su proyecto
+   o elimine lo que no necesite.
+5. Haga clic en **Aplicar**, en la esquina superior derecha, y guarde la página.
 
-## Configurar el editor de planos
+## Las vistas del editor de planos
 
-- **Ocultar la vista previa:** Al hacer clic en **Vista previa**, se oculta la línea de tiempo
-  y se libera espacio para las pestañas situadas debajo. Al volver a mostrarla, recupera la
-  altura seleccionada por última vez.
-- **Cambiar el tamaño:** La línea divisoria entre la vista previa y las pestañas cambia la
-  altura de la vista previa (como mínimo, lo suficiente para que la línea de tiempo siga siendo visible),
-  mientras que la que hay entre la lista de entradas y el formulario cambia la anchura de la lista. Arrástrala con el ratón o selecciona esa línea y
-  utiliza las teclas de flecha (con la tecla Mayús para dar pasos más grandes). Un
-  doble clic restablece el tamaño original. El navegador recuerda
-  los tamaños para la próxima vez que se abra.
-- La lista, el formulario, los niveles y las categorías se desplazan por separado; la barra de encabezado,
-  las pestañas y los botones situados encima de cada área permanecen fijos.
+- **Editor** muestra a la izquierda las entradas, en el centro el formulario de la opción seleccionada
+  y a la derecha el panel **Plano**.
+- **Ordenador**, **Tableta** y **Móvil** (en la parte superior del encabezado) muestran, en lugar del
+  formulario, el plano tal y como aparece en un dispositivo de ese ancho: con
+  zoom, sin filtros y sin opción de exportación. Al hacer clic en una entrada, esta queda seleccionada; a continuación,
+  aparece en el formulario de la vista **Editor**. El panel de la derecha
+  permanece fijo.
+- **Deshacer** y **Rehacer** en el encabezado permiten revertir los cambios paso a paso;
+   **Ayuda** (F1) explica el funcionamiento. La lista, el formulario y el panel
+  se desplazan cada uno por separado.
 
-## La lista de entradas
+## La barra lateral
 
-- Encima de la lista aparece **Buscar entradas**; debajo, un selector
-  para el tipo: **Hitos**, **Períodos** o **Fechas clave**, cada uno con
-  su número correspondiente. La lista solo muestra entradas de ese tipo.
-- El botón **+** situado a la derecha del selector crea una entrada del
-  tipo seleccionado.
-- Delante de cada título aparece en letra pequeña el símbolo del tipo en el color de su categoría; así
-  se puede localizar en la lista una entrada de la línea de tiempo.
-- La búsqueda se realiza dentro del tipo seleccionado; los números del selector
-  indican entonces cuántos resultados hay en cada tipo.
-- Si selecciona en la vista previa una entrada de otro tipo, el
-  selector cambia automáticamente.
-- Para eliminar una entrada, pase el ratón por encima de una línea y haga clic en la
-  papelera de la derecha (en dispositivos táctiles siempre está visible). Un pequeño
-  mensaje de confirmación indica también cuántas entradas dependen de la eliminada; confirme
-  con **Eliminar**.
+- En la parte superior aparece **Entradas** con el número («12 de 300»). **Nuevo** abre un menú:
+  **Hito**, **Período** o **Fecha de referencia**. Sin nivel, solo ofrece
+  la fecha de referencia; los hitos y los períodos requieren un nivel.
+- Debajo aparecen **Buscar entradas** y una selección del tipo (**Todos los
+  tipos**, **Hitos**, **Periodos**, **Fechas clave**, cada uno con su número; si
+  la búsqueda está activa, los resultados). La lista siempre se ordena por fecha.
+- Cada fila muestra el título, el tipo, la fecha y «provisional», precedido de la forma en el
+  color de la categoría; así se puede volver a encontrar una entrada de la línea de tiempo en la
+  lista.
+- La nueva entrada se encuentra en el centro del fragmento que ha visto por última vez en la
+  vista previa; de lo contrario, en la de hoy.
+- La eliminación se realiza mediante **Eliminar entrada** en el formulario (con confirmación), ya no
+  en la lista.
 
 ## El formulario de una entrada
 
-A la derecha de la lista se encuentra el formulario de la entrada seleccionada. En la parte superior aparecen
-su título y los botones **Duplicar** y **Eliminar**; debajo, cinco
-pestañas:
+En el centro se encuentra el formulario de la entrada seleccionada. En la parte superior aparecen
+«Entrada 4 de 12», el tipo y los botones **Duplicar entrada** y
+**Eliminar entrada**; debajo, cinco pestañas:
 
-- **General** — Tipo, título, descripción
+- **General** — Tipo, título, descripción, provisional
 - **Clasificación** — Nivel, categoría, serie
-- **Fecha** — Fecha o inicio y fin; en el caso de un periodo, una flecha al final,
-  Provisional
-- **Dependencias** — los predecesores; el número que aparece detrás indica cuántos
-  están seleccionados. Las fechas clave no tienen esta pestaña.
-- **Contenido** — la página de Staffbase o la noticia que se abre al hacer clic en
-  la entrada
+- **Fecha** — Fecha o inicio y fin; en el caso de un periodo, hay una flecha al final
+- **Dependencias** — los predecesores; el número que aparece detrás indica cuántas
+  están seleccionadas. Las fechas clave no tienen esta pestaña.
+- **Contenido**: la página de Staffbase o la noticia que se abre al hacer clic en
+  la entrada, y los archivos adjuntos
 
 La pestaña seleccionada permanece abierta cuando se cambia a otra entrada
-— quien gestione las fechas de varias entradas, permanecerá en **Fecha**. Si una
-pestaña contiene una entrada no válida, muestra un punto rojo.
+— quien gestione las fechas de varias entradas, debe permanecer en **Fecha**. Si una
+pestaña contiene una entrada no válida, aparecerá «(Error)» detrás de su nombre.
 
 ## Gestionar niveles
 
-1. Abre la pestaña **Niveles** en el editor de planes.
+1. Abre la pestaña **Niveles** en el panel **Plan** de la derecha.
 2. Para crear un nivel, haz clic en **Nuevo nivel** e introduce
    su nombre. También se puede hacer directamente en el formulario de una entrada: en
    **Clasificación**, en el campo **Nivel**, seleccione la opción **Nuevo nivel…**, introduzca el
    nombre y haga clic en **Crear**; el nuevo nivel quedará asignado inmediatamente
    a la entrada.
-3. Para renombrar una capa, cambie su nombre directamente en la lista.
-   Junto a cada nombre aparece el número de entradas que contiene la capa. Cada nombre
+3. Para renombrar un nivel, modifique su nombre directamente en la lista.
+   Junto a cada nombre aparece el número de entradas que contiene el nivel. Cada nombre
    solo puede aparecer una vez (sin distinción entre mayúsculas y minúsculas).
 4. Para cambiar el orden, desplaza el nivel con las flechas
    hacia arriba o hacia abajo. El orden aquí es el mismo que el de la
@@ -114,14 +112,14 @@ pestaña contiene una entrada no válida, muestra un punto rojo.
 
 ## Gestionar categorías
 
-1. En el editor de planos, abra la pestaña **Categorías**.
+1. Abra la pestaña **Categorías** en el panel **Plan** de la derecha.
 2. Para crear una categoría, haga clic en **Nueva categoría** e
-   introduzca su nombre, o bien seleccione en el formulario de una entrada
+   introduzca su nombre; o bien, en el formulario de una entrada
    en el campo **Categoría** de la sección **Clasificación** la opción **Nueva categoría…**;
-   allí introduzca el nombre, el color y la forma.
+   allí indique el nombre, el color y la forma.
 3. Haga clic en el campo de color situado delante del nombre. Se desplegarán los doce colores;
-   seleccione uno de ellos o introduzca un color propio en **Valor hexadecimal**,
-   por ejemplo, `#E40045`. Pulse Esc o haga clic junto a él para cerrar la
+   elija uno de ellos o introduzca un color propio en el campo **Valor hexadecimal**,
+   por ejemplo, `#E40045`. Pulse Esc o haga clic junto al campo para cerrar la
    selección.
 4. Haga clic en el botón de forma situado junto a él y seleccione la forma con la que
    aparecerán los hitos de esta categoría: rombo, triángulo, triángulo con el vértice hacia abajo, cuadrado, círculo, hexágono, estrella o cruz. Las teclas de flecha
@@ -130,22 +128,21 @@ pestaña contiene una entrada no válida, muestra un punto rojo.
 5. Para cambiar el orden de la leyenda, desplaza la categoría
    hacia arriba o hacia abajo con las flechas.
 6. Para eliminar una categoría, haga clic en **Eliminar**. Sus entradas
-   se conservarán y aparecerán como «sin categoría» (en gris); el mensaje de confirmación indicará
+   se conservarán y aparecerán como «sin categoría» (en gris); el mensaje de confirmación indica
    a cuántas entradas afecta.
 
 ## Crear un hito
 
-1. En el editor de planes, abre la pestaña **Entradas**.
-2. Selecciona **Hitos** encima de la lista y haz clic en **+**. La
-   nueva entrada se llama «Nuevo hito», se encuentra en el centro de la vista previa
-   y en el primer nivel; a la derecha aparece su formulario en la pestaña
-   **General**, con el título resaltado.
-3. Introduzca el **Título** y, opcionalmente, una **Descripción**. La
-   descripción aparecerá en los detalles; se conservarán los saltos de línea.
-4. En **Clasificación**, seleccione el **nivel** y la **categoría** —
+1. Haga clic a la izquierda en **Nuevo** y seleccione **Hito**. La nueva
+   entrada se llama «Nuevo hito», se encuentra en el centro del recorte de la
+   vista previa (de lo contrario, hoy) y en el primer nivel; en el centro aparece su
+   formulario en la pestaña **General**, con el título resaltado.
+2. Introduzca el **Título** y, si lo desea, una **Descripción**. La
+   descripción aparecerá en los detalles; los saltos de línea se conservan.
+3. En **Clasificación**, seleccione el **nivel** y la **categoría** —
    o «Sin categoría».
-5. Introduzca la **fecha** en **Fecha**.
-6. La forma y el color del hito dependen de su categoría; si no tiene
+4. Introduzca la **fecha** en **Fecha**.
+5. La forma y el color del hito dependen de su categoría; si no tiene
    categoría, aparecerá como un rombo gris. En **Clasificación** hay una
    nota que indica la forma que tiene en ese momento.
 7. Marque **Provisional** si la fecha aún no está fijada.
@@ -154,25 +151,25 @@ pestaña contiene una entrada no válida, muestra un punto rojo.
 
 ## Crear un periodo
 
-1. En la pestaña **Entradas**, seleccione **Periodos** en la parte superior de la lista y haga clic
-   en **+**. La nueva entrada se llama «Nuevo periodo».
-2. En **General**, introduce el **Título** y, si lo deseas, una
-   **Descripción**; en **Clasificación**, introduce el **Nivel** y la **Categoría**.
-3. En **Fecha**, introduzca la **Fecha de inicio** y la **Fecha de finalización**. Ambos días
+1. Haga clic en **Nuevo**, a la izquierda, y seleccione **Periodo**. La nueva
+   entrada se llamará «Nuevo periodo».
+2. En **General**, introduzca el **título** y, opcionalmente, una
+   **descripción**; en **Clasificación**, introduzca el **nivel** y la **categoría**.
+3. En **Fecha**, introduce la **Fecha de inicio** y la **Fecha de finalización**. Ambos días
    forman parte del periodo.
-4. Marque **Flecha al final** si el periodo se prolonga más allá de la fecha de finalización
+4. Marca la casilla **Flecha al final** si el periodo se prolonga más allá de la fecha de finalización
   .
-5. Marque **Provisional** si aún no se han fijado el inicio o el final.
+5. En **General**, active la casilla **Provisional** si el inicio
+   o el final aún no están fijados.
 
 Un hito se puede convertir en un periodo en cualquier momento en **Tipo**
 y viceversa.
 
-## Crear una fecha clave
+## Crear una fecha de referencia
 
-1. En la pestaña **Entradas**, selecciona **Fechas clave** en la parte superior de la lista y haz clic
-   en **+**.
-2. Introduce el **Título**, opcionalmente la **Descripción**, **Categoría** y
-   **Fecha**. Aquí no hay niveles: una fecha clave se aplica a
+1. Haga clic en **Nuevo** a la izquierda y seleccione **Fecha de referencia**.
+2. Introduzca el **Título**, opcionalmente la **Descripción**, la **Categoría** y
+   la **Fecha**. Aquí no hay niveles: una fecha clave se aplica a
    todo el plan y abarca todos los niveles.
 
 Si un hito o un periodo se convierte en fecha clave en **Tipo**, su
@@ -180,16 +177,16 @@ nivel deja de existir.
 
 ## Agrupar entradas en una serie
 
-1. En la pestaña **Entradas**, selecciona la primera entrada de la serie y
+1. Selecciona en la lista la primera entrada de la serie y
    abre **Clasificación**.
 2. Haz clic en el campo **Serie**. Se desplegarán las series que ya
    este nivel, junto con el número de entradas de cada una. Escriba
    un nuevo nombre, por ejemplo, «TG Assist MY26», y seleccione
-   **«Crear una nueva serie llamada TG Assist MY26»** (o pulse Intro).
-3. Selecciona la siguiente entrada del mismo nivel y, en
-   **Serie**, selecciona de la lista la serie que acabas de crear.
-4. Repite el paso 3 para todas las entradas de la serie. **Sin serie**, en la
-   parte superior de la lista, elimina una entrada; la tecla Esc restaura el
+   **«Crear una nueva serie: TG Assist MY26»** (o pulse Intro).
+3. Seleccione la siguiente entrada del mismo nivel y, en
+   **Serie**, elija de la lista la serie que acaba de crear.
+4. Repita el paso 3 para todas las entradas de la serie. **Sin serie** «Todo
+   arriba» de la lista elimina una entrada; la tecla Esc restaura el
    valor anterior.
 
 Las series solo son válidas dentro de un mismo nivel. Las mayúsculas y minúsculas no
@@ -198,9 +195,9 @@ MY26» y «TG-Assist MY26» son dos series diferentes.
 
 ## Establecer una dependencia
 
-1. En la pestaña **Entradas**, seleccione la entrada que depende de otra
+1. Seleccione en la lista la entrada que depende de otra
    (la sucesora) y abra **Dependencias**.
-2. En **Depende de**, busque y seleccione el predecesor. Se pueden seleccionar varios
+2. Busque y seleccione el predecesor en **Depende de**. Se pueden seleccionar varios
    predecesores.
 3. En la página, una línea discontinua con una flecha conectará ahora el
    predecesor con el sucesor.
@@ -215,12 +212,12 @@ Por cada entrada se puede vincular una página de Staffbase o una noticia —
 por ejemplo, la página con toda la información sobre una actualización de software. El plan sigue siendo la
 vista general; los detalles se encuentran donde se gestionan habitualmente.
 
-1. Seleccione la entrada en la pestaña **Entradas** y abra la
+1. Seleccione la entrada de la lista y abra la
    pestaña **Contenido**.
 2. En **Enlace**, seleccione **Página** o **Entrada de noticias**.
-3. Si se trata de una página, selecciónela en **Página**. Si se trata de una entrada,
-   seleccione primero el **Canal** y, a continuación, la **Entrada**. Los borradores están marcados con
-   «(Borrador)»; ya se pueden enlazar, pero los lectores
+3. Si se trata de una página, selecciónela en **Página**. Si se trata de una noticia,
+   seleccione primero el **canal** y, a continuación, la **noticia**. Los borradores están marcados con
+   «(borrador)»; ya se pueden enlazar, pero los lectores
    solo podrán verlos una vez publicados.
 4. **Abrir en una pestaña nueva** muestra lo que se ha enlazado.
 
@@ -258,54 +255,54 @@ Al hacer clic en él, se abre la página o la entrada en una ventana sobre el
 mapa, en lugar de en la sección de detalles; **Abrir en una nueva pestaña** aparece siempre en la parte superior, y los
 archivos adjuntos se muestran junto a ella. En el caso de una entrada sin contenido vinculado, los
 detalles muestran sus archivos adjuntos. Con
-**Vínculo: Ninguno** se desactiva el vínculo.
+**Enlace: Ninguno** se desactiva el enlace.
 
 ## Duplicar y eliminar entradas
 
-1. Seleccione la entrada en la pestaña **Entradas**.
-2. **Duplicar** (arriba a la derecha del formulario) crea una copia que podrá
-   modificar posteriormente.
-3. **Eliminar** (junto a ella) solicita confirmación y, a continuación, elimina la entrada y todas las
-   dependencias que apuntan a ella. La misma solicitud de confirmación aparece en la
-   papelera de la lista. A continuación, se selecciona la siguiente entrada de la lista.
+1. Seleccione la entrada de la lista.
+2. **Duplicar entrada** (arriba a la derecha del formulario) crea una copia que
+   podrá modificar a continuación.
+3. **Eliminar entrada** (junto a ella) le pide confirmación y, a continuación, elimina la entrada y
+   todas las dependencias que apuntan a ella; la ventana de confirmación indica cuántas
+   entradas dependen de ella. A continuación, se selecciona la siguiente entrada de la lista.
 
-## Establecer la vista inicial
+## Configurar la vista inicial
 
-Sin una vista inicial, el widget muestra todo el plan al cargarse. Si desea
+Sin una vista inicial, el widget muestra el plan completo al cargarse. Si desea
 que muestre, en su lugar, un fragmento concreto, por ejemplo, los dos próximos años:
 
-1. Amplíe o reduzca y desplace la **vista previa** en el editor del plan hasta que
-   se vea la sección deseada.
-2. Haga clic en **Establecer esta sección como vista inicial**. Se guardará
-   con precisión mensual.
-3. Para volver a mostrar el plan completo, haz clic en **Eliminar vista inicial**.
+1. En la parte superior, en el encabezado, seleccione **Ordenador**, **Tableta** o **Móvil** y
+   amplíe o desplace el plan hasta que se vea la sección deseada
   .
-4. **Aplicar**, guardar y comprobar en la vista previa de la página.
+2. A la derecha, en **Configuración**, en la sección **Vista inicial**, haz clic en
+   **Aplicar esta sección**. Se guardará con precisión mensual.
+3. Para volver a mostrar el plan completo, haz clic en **Eliminar vista inicial**.
+  
+4. **Aplicar**, guardar y comprobarlo en la vista previa de la página.
 
 Los lectores pueden seguir ampliando la vista desde la vista inicial en cualquier momento o ver
 el plano completo con **Mostrar todo**.
 
 ## Modificar posteriormente
 
-1. Vuelve a abrir la configuración del widget. El editor de planos muestra el
-   plano guardado.
-2. Seleccione la entrada en la lista de la pestaña **Entradas** o haciendo
-   clic en la vista previa y modifique su formulario. Al hacer clic en
-   la vista previa, se pasa a la pestaña **Entradas** y se muestra la
-   entrada de la lista a la vista.
-3. Haz clic en **Aplicar**, en la esquina superior derecha, y guarda la página.
+1. Vuelva a abrir la configuración del widget. El editor de planes muestra el
+   plan guardado.
+2. Seleccione la entrada de la lista o haga clic en la vista previa
+   (ordenador, tableta, móvil) y modifique su formato.
+3. Haga clic en **Aplicar**, en la esquina superior derecha, y guarde la página.
    La fecha que aparece detrás de «Fecha de última actualización:» se establecerá en la fecha de la modificación.
 
-Mientras los cambios no se hayan aplicado, aparecerá en la barra de encabezado
-«Cambios no guardados». Con **Cancelar** descartará todos los cambios
-realizados desde la última vez que abrió el editor de planos; el editor le pedirá confirmación previamente.
+Mientras los cambios no se hayan aplicado, en el encabezado aparecerá lo que
+se ha modificado («3 entradas modificadas»). Con **Cancelar** descartará todos los
+cambios realizados desde la última vez que abrió el editor de planes; el editor le preguntará
+antes de hacerlo.
 
-## Descargar el plano como hoja de cálculo de Excel (como lector/a)
+## Descargar el plan como hoja de cálculo de Excel (como lector/a)
 
-1. Filtra y amplía el plano para que se vea lo que necesitas.
+1. Filtra y amplía el plan para que se vea lo que necesitas.
 2. Haz clic en **Exportar** en la barra de herramientas. En pantallas estrechas,
    el botón se encuentra en el menú **Más**.
-3. Seleccione el alcance:
+3. Selecciona el alcance:
    - **Vista actual**: solo las entradas de la sección visible que
      cumplan todos los filtros activos; si hay una búsqueda activa, solo los resultados.
    - **Plan completo**: todas las entradas, sin filtros ni sección.
@@ -323,13 +320,14 @@ los filtros activos.
 ## Si algo no funciona
 
 1. **El widget no muestra nada en la página.** El plan aún no tiene ninguna
-   entrada. Abra la configuración y cree al menos un
+   entrada. Abre la configuración y crea al menos un
    hito, un periodo o una fecha límite.
-2. **El editor del plan no se abre.** En **Plan** solo aparece un
-   campo de texto. Cierra la configuración y vuelve a abrirla. No modifiques
-   manualmente el contenido del campo de texto: es el borrador técnico
-   del plan.
-3. **En la parte superior del editor de planes aparece un mensaje indicando que no se han podido leer las entradas.**
+2. **El editor de planes no se abre.** En **Plan** solo aparece un
+   campo de texto; los botones de «Línea de hoy» y «Exportar» están ocultos en el cuadro de diálogo
+   y solo están disponibles en el editor. Cierre los ajustes y vuelva a abrirlos. No modifique
+   manualmente el contenido del campo de texto, ya que se trata de la
+   versión técnica preliminar del plan.
+3. **En el editor del plan aparece un mensaje indicando que no se han podido leer las entradas.**
    Consulte las preguntas frecuentes sobre este mensaje.
-4. **Los lectores no encuentran el botón «Exportar».** Compruebe si
-   la opción **Ofrecer exportación a Excel** está activada.
+4. **Los usuarios no encuentran el botón «Exportar».** Compruebe si
+   la opción **Ofrecer exportación a Excel** está activada en **Configuración**, en el editor de planes.

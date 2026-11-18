@@ -81,20 +81,22 @@ Bovendien:
   **Lijst** en **Exporteren** staan in het menu **Meer**.
 - **Volledig scherm** toont het plan over het hele scherm, met dezelfde
   bediening; alleen het plan zelf scrolt, de as en het overzicht blijven op hun plaats.
-  Met **Esc** of **Volledig scherm afsluiten** keer je terug naar de pagina. Wanneer de browser geen
-  echt volledig scherm toestaat (zoals Safari op de iPhone), wordt het plan over
+  Met **Esc** of **Volledig scherm afsluiten** keer je terug naar de pagina. Waar de browser geen
+  echt volledig scherm toestaat (bijvoorbeeld Safari op de iPhone), wordt het plan over
   de hele pagina weergegeven.
 - **Help** legt lezers direct op de pagina uit wat de symbolen
   betekenen (tabblad **Legenda**, met de categorieën van dit plan) en hoe je het
   plan bedient met muis, trackpad, touchscreen en toetsenbord (tabblad **Bediening**).
-  Vanuit de tijdlijn opent ook de knop **?** de hulp. In de tijdlijn-editor is
+  Vanuit de plattegrond opent ook de knop **?** de hulp. In de plattegrond-editor is
   deze knop niet aanwezig.
 - **Zonder invoer toont de widget helemaal niets** — geen leeg kader en
   geen foutmelding.
 
 ## Wat u in de CMS-editor ziet
 
-De plan-editor bevat bovenaan een **voorbeeld**: dezelfde tijdlijn als op
-de pagina, met zoomfunctie, maar zonder filters, lijst en export. Als u op een
-item in het voorbeeld klikt, wordt dit geselecteerd om te bewerken. Hoe lezers het plan
-met alle filters en de exportfunctie zien, kunt u controleren in het voorbeeld van de pagina.
+De plan-editor toont het **voorbeeld** in de weergaven **Desktop**, **Tablet**
+en **Mobiel** bovenaan in de koptekst: dezelfde tijdlijn als op de pagina, in de
+breedte van het apparaat, met zoom, maar zonder filters, lijst en export. Een klik op
+een item in het voorbeeld selecteert het voor bewerking. Hoe lezers het
+plan met alle filters en de export ervaren, kunt u controleren in het voorbeeld van de
+pagina.

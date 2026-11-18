@@ -4,7 +4,7 @@
 
 Resposta: Os filtros selecionados não deixam nenhuma entrada visível — por exemplo, porque todas as
 categorias na legenda estão ocultas, uma camada foi desmarcada ou o
-filtro de período não abrange nenhum registo. Clique em ****Reiniciar filtros**
+filtro de período não abrange nenhuma entrada. Clique em ****Reiniciar filtros**
 ; assim, voltará a ver o plano na íntegra. Os filtros aplicam-se apenas à
 sua própria visita; os outros leitores veem o plano sem filtros.
 
@@ -71,53 +71,49 @@ ficaria preso ao rolar o plano. Para ampliar, mantenha premida a tecla Ctrl
 (Mac: ⌘) enquanto gira a roda do rato. A mensagem aparece apenas
 uma vez.
 
-**Pergunta:** No editor do plano aparece «A pré-visualização surge com a primeira
+**Pergunta:** No Editor de Planos aparece «A pré-visualização surge com a primeira
 entrada.»
 
 Resposta: O plano ainda não tem nenhuma entrada, por isso não há nada para mostrar.
-Na separador **Entradas**, acima da lista, selecione um tipo e crie uma entrada com
-**+**.
+Crie uma entrada à esquerda, através de **Novo**. Sem um nível, inicialmente só é possível
+definir uma data de referência; os níveis são criados à direita, no separador **Níveis**.
 
 **Pergunta:** O Editor de Planos ocupa todo o ecrã, incluindo a barra
 do Studio.
 
-Resposta: Isso é intencional: a pré-visualização, a lista e o formulário precisam de espaço. Pode
-sair do editor no canto superior direito através de **Aplicar** ou **Cancelar**; depois disso,
-a caixa de diálogo de configuração volta a ficar visível e **Editar plano…** abre
-novamente o editor.
+Resposta: Isso é intencional: a lista, o formulário, o painel e a pré-visualização precisam de espaço.
+Pode sair do editor clicando na cruz, em **Cancelar** ou em **Aplicar**
+(com **Aplicar e fechar**); depois disso, a caixa de diálogo de configuração
+volta a ficar visível e **Editar plano…** abre novamente o editor.
 
-**Pergunta:** A pré-visualização ocupa demasiado espaço.
+**Pergunta:** Onde está a pré-visualização? No editor, só vejo o formulário.
 
-Resposta: Arraste a barra estreita por baixo da pré-visualização para cima ou
-oculte totalmente a pré-visualização clicando em **Pré-visualização**. Da mesma forma,
-é possível ajustar a largura da lista de entradas na barra entre a lista e o formulário,
-tornando-a mais estreita ou mais larga. Um duplo-clique numa barra restaura o
-tamanho original. O navegador guarda os tamanhos; numa
-janela privada, as predefinições voltam a aplicar-se na próxima vez que for aberta.
+Resposta: A pré-visualização encontra-se nas vistas **Desktop**, **Tablet** e
+**Móvel**, na parte superior do cabeçalho — aí substitui o formulário, e o painel **Plano**
+à direita permanece visível. **Editor** leva de volta ao formulário.
 
 **Pergunta:** Onde é que os leitores podem saber o que significam os símbolos no plano?
 
 **Resposta:** Através do botão **Ajuda** na barra de ferramentas (em ecrãs estreitos,
 um **?**). O separador **Legenda** mostra cada símbolo como um pequeno
-padrão com explicação e as categorias deste plano; o separador **Utilização**
+símbolo com explicação e as categorias deste plano; o separador **Utilização**
 explica o zoom, o deslocamento, os filtros e todos os atalhos de teclado. Se o foco estiver no
 plano, a tecla **?** também abre a ajuda.
 
 **Pergunta:** Como faço para ampliar?
 
-Resposta: De quatro formas: com os botões **−** e **+** na
+Resposta: De quatro maneiras: com os botões **−** e **+** na
 barra de ferramentas; mantendo premida a tecla Ctrl (Mac: ⌘) e rodando a roda do rato, o que faz com que
 o plano amplie a área sob o cursor do rato; com dois dedos no
-no trackpad ou no ecrã tátil; ou com o teclado através das teclas **+** e **−**, assim que
-a planta tiver o foco. **Mostrar tudo** (tecla **0**) volta a mostrar toda a
-planta. É possível deslocar a secção arrastando com o rato, com
+trackpad ou ecrã tátil; ou com o teclado através das teclas **+** e **−**, assim que
+a planta tiver o foco. **Mostrar tudo** (tecla **0**) volta a mostrar a planta na totalidade
+. É possível deslocar a secção arrastando com o rato, com
 a tecla Shift e a roda do rato ou através da moldura na visão geral por baixo do plano.
 
 **Pergunta:** Porque é que não vejo o botão «Exportar»?
 
-Resposta: Ou a opção **Oferecer exportação para Excel** está desativada nas definições do widget,
-ou o ecrã é estreito (menos de 768 píxeis
-de largura): nesse caso, **Exportar** aparece no menu **Mais** da barra de ferramentas.
+Resposta: Ou a opção **Oferecer exportação para o Excel** está desativada no Editor de Planos, em **Definições**, **ou a tela é estreita (menos de 768 píxeis**
+de largura): nesse caso, a opção **Exportar** aparece no menu **Mais** da barra de ferramentas.
 
 **Pergunta:** Onde defino a forma de um marco?
 
@@ -158,51 +154,58 @@ Verifique no formulário de cada entrada o campo **Série** e o seu **nível**.
 
 **Pergunta:** A linha «Hoje» não está visível.
 
-Resposta: Verifique se a opção **Mostrar linha «Hoje»** está ativada. Além disso, a linha
+Resposta: No Editor de Planos, em **Definições**, verifique se a opção **Mostrar linha de hoje** está ativada. Além disso, a linha
 só aparece se o dia de hoje estiver na secção visível;
-num plano que comece inteiramente no futuro, só é visível após
-deslocar a linha do tempo ou com a opção **Mostrar tudo** — caso o dia de hoje se encontre, de todo, no
+num plano que comece inteiramente no futuro, só será visível após
+deslocá-la ou ao utilizar **Mostrar tudo** — caso é que o dia de hoje se encontre, de todo, no
 período do plano.
 
 **Pergunta:** Posso deslocar entradas na linha do tempo com o rato?
 
 Resposta: Não. Os compromissos são criados e alterados no formulário do Editor de Planos.
-Desta forma, nenhuma entrada perde acidentalmente a sua data ao ampliar ou deslocar a visualização.
+Desta forma, nenhum registo perde acidentalmente a sua data
+ao ampliar ou deslocar a visualização.
 
-**Pergunta:** No Editor de Planos aparece «Um plano não suporta mais de 300 entradas
+**Pergunta:** No Editor de Planos aparece «Um plano não suporta mais de 300 registos
 .» (ou o mesmo para 20 níveis ou 24 categorias).
 
 Resposta: Um plano suporta, no máximo, 300 entradas, 20 níveis e
-24 categorias; quando se atinge o limite, não é possível adicionar mais nada. O Editor
-mostra, no canto superior direito, quantas entradas o plano já contém. Para projetos muito grandes,
+24 categorias; quando se atinge o limite, não é possível adicionar mais nada. A
+barra lateral mostra, na parte superior, quantas entradas o plano já contém («12 de 300»). Para projetos muito grandes,
 recomenda-se dividir o plano em vários widgets, por exemplo,
-um por série de construção.
+um por série.
 
-**Pergunta:** O botão **+** não pode ser clicado em **Marcos** e **Períodos**
-.
+**Pergunta:** No menu **Novo** faltam **Marco** e **Período**.
 
-Resposta: O plano já não tem mais nenhum nível e, sem um nível, um marco
-ou período não tem espaço; o editor do plano indica isso na parte inferior. Crie
-pelo menos uma camada no separador **Camadas**, através de **Nova camada**. As datas-chave podem ser criadas mesmo sem camada.
+Resposta: O plano já não tem nenhum nível e, sem um nível, um marco
+ou período não tem onde ser colocado; a barra lateral indica isso. Crie, à direita,
+no separador **Níveis**, pelo menos um nível através de **Novo nível**. As datas-chave podem
+ser criadas mesmo sem um nível.
 
-**Pergunta:** Onde fica a lixeira na lista de entradas?
+**Pergunta:** Onde está a lixeira na lista de entradas?
 
-Resposta: Aparece quando passa o rato por cima de uma linha ou quando uma
-linha tem o foco através do teclado; em dispositivos táteis, está sempre visível.
-A eliminação só ocorre após a confirmação. Se outras entradas estiverem ligadas à entrada eliminada,
-a mensagem de confirmação indica o seu número; as ligações são removidas.
+Resposta: Já não existe na lista. A eliminação é feita no formulário da
+entrada selecionada através de **Eliminar entrada**, após uma confirmação. Se outras
+entradas estiverem ligadas à entrada eliminada, a mensagem de confirmação indicará o seu número; as ligações
+serão removidas.
+
+**Pergunta:** Os botões para a linha «Hoje» e «Exportar» não aparecem na caixa de diálogo.
+
+Resposta: Desde a introdução do editor em ecrã inteiro que já não se encontram na caixa de diálogo do Staffbase,
+mas sim à direita no painel **Plano**, em **Definições**. Um bloco em que estas opções
+nunca tenham sido alteradas no editor mantém a configuração que tinha anteriormente.
 
 **Pergunta:** Ao criar um nível ou uma categoria, aparece a mensagem «Já existe um nível «X»»
 ou «Já existe uma categoria «X»».
 
 Resposta: Cada nome só pode aparecer uma vez; caso contrário, os níveis e
-as categorias nos campos de seleção, na legenda e na exportação para o Excel não seriam
-distinguíveis. As maiúsculas, minúsculas e espaços à margem não são
-tidos em conta. Escolha outro nome ou utilize o nível existente.
+as categorias não seriam distinguíveis nos campos de seleção, na legenda e na exportação para o Excel.
+As maiúsculas, minúsculas e espaços à margem não são tidos em conta
+neste contexto. Escolha outro nome ou utilize o nível já existente.
 
 **Pergunta:** Um separador no formulário apresenta um ponto vermelho.
 
-Resposta: Um campo neste separador contém uma entrada inválida, por exemplo, uma
+Resposta: Um campo nesse separador contém uma entrada inválida, por exemplo, uma
 data em branco. O plano mantém aí o último valor válido. Abra o
 separador e corrija o campo; o ponto desaparecerá.
 
@@ -216,7 +219,7 @@ permanecer, o plano mantém o último valor válido — ou seja, nada se
 perde, mas a alteração também ainda não foi aplicada. Corrija
 a entrada; assim que estiver válida, a mensagem desaparecerá. No caso de um
 período, altere primeiro a data que restabelece a ordem:
-se quiser que comece e termine mais tarde, altere primeiro a **data de fim** e, em seguida, a **data de início**.
+se tiver de começar e terminar mais tarde, primeiro a **data de fim**, depois a **data de início**.
 
 **Pergunta:** O que acontece ao plano durante a tradução automática da
 página?
@@ -235,5 +238,5 @@ Resposta: O serviço de tradução não conseguiu aceder ao plano. O resto do
 artigo está traduzido, mas o plano ainda se encontra no idioma de origem. Traduza
 os textos manualmente no editor de planos ou reinicie a tradução
 . O mesmo se aplica à mensagem «Plano do projeto: O conteúdo traduzido
-não pôde ser inserido. Permanece no idioma de origem e tem de ser
+não pôde ser inserido. Permanece na língua de origem e tem de ser
 traduzido manualmente.»

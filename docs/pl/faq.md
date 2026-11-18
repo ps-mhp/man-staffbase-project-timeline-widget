@@ -75,33 +75,30 @@ raz.
 wpisem”.
 
 Odpowiedź: Plan nie ma jeszcze żadnego wpisu, dlatego nie ma czego wyświetlać.
-W zakładce **Wpisy** nad listą wybierz typ i utwórz wpis za pomocą
-przycisku **+**.
+Utwórz wpis po lewej stronie, klikając **Nowy**. Bez warstwy można na początku wprowadzić tylko
+jedną datę kluczową; warstwy tworzy się po prawej stronie w zakładce **Warstwy**.
 
 **Pytanie:** Edytor planu zasłania cały ekran, w tym pasek
 studia.
 
-Odpowiedź: Jest to zamierzone: podgląd, lista i formularz wymagają miejsca. Można
-opuścić edytor w prawym górnym rogu, klikając **Zastosuj** lub **Anuluj**; po tym
-ponownie pojawi się okno dialogowe konfiguracji, a opcja **Edytuj plan…** ponownie
-otworzy edytor.
+Odpowiedź: Jest to zamierzone: lista, formularz, panel i podgląd wymagają miejsca.
+Można zamknąć edytor, klikając krzyżyk, **Anuluj** lub **Zastosuj**
+(z opcją **Zastosuj i zamknij**); po tym okno dialogowe konfiguracji
+znów będzie widoczne, a opcja **Edytuj plan…** ponownie otworzy edytor.
 
-**Pytanie:** Podgląd zajmuje mi zbyt dużo miejsca.
+**Pytanie:** Gdzie jest podgląd? W edytorze widzę tylko formularz.
 
-Odpowiedź: Przeciągnij wąski pasek pod podglądem w górę lub
-całkowicie zwinąć podgląd, klikając **Podgląd**. Podobnie
-listę wpisów można przeciągnąć w pasku między listą a formularzem,
-zmniejszając lub zwiększając jej szerokość. Podwójne kliknięcie na pasku przywraca
-pierwotny rozmiar. Przeglądarka zapamiętuje rozmiary; w
-oknie prywatnym przy następnym otwarciu ponownie obowiązują ustawienia domyślne.
+Odpowiedź: Podgląd znajduje się w widokach **Komputer stacjonarny**, **Tablet** i
+**Urządzenie mobilne** u góry w nagłówku — tam zastępuje formularz, a panel **Plan**
+po prawej stronie pozostaje widoczny. Przycisk **Edytor** powoduje powrót do formularza.
 
 **Pytanie:** Gdzie czytelnicy mogą dowiedzieć się, co oznaczają symbole na planie?
 
 **Odpowiedź:** Za pomocą przycisku **Pomoc** na pasku narzędzi (na wąskich
 ekranach jest to symbol **?**). Zakładka **Legenda** pokazuje każdy symbol jako mały
 wzór wraz z objaśnieniem oraz kategorie tego planu; zakładka **Obsługa**
-wyjaśnia powiększanie, przesuwanie, filtrowanie oraz wszystkie skróty klawiszowe. Jeśli kursor znajduje się na
-mapie, klawisz **?** również otwiera pomoc.
+wyjaśnia powiększanie, przesuwanie, filtrowanie i wszystkie skróty klawiszowe. Jeśli kursor znajduje się na
+planie, pomoc otwiera się również po naciśnięciu klawisza **?**.
 
 **Pytanie:** Jak powiększyć widok?
 
@@ -110,19 +107,19 @@ pasku narzędzi; przytrzymując klawisz Ctrl (Mac: ⌘) i obracając kółkiem m
 powiększenie planu w miejscu pod kursorem myszy; dwoma palcami na
 trackpada lub ekranu dotykowego; albo za pomocą klawiatury przyciskami **+** i **−**, gdy tylko
 plan ma fokus. Przycisk **Pokaż wszystko** (klawisz **0**) ponownie wyświetla cały
-plan. Wycinek można przesuwać, przeciągając go myszą, za pomocą
-klawisza Shift i kółka myszy lub za pomocą ramki w podglądzie pod planem.
+plan. Wycinek można przesuwać, przeciągając go myszą, przytrzymując klawisz
+Shift i obracając kółkiem myszy lub za pomocą ramki w podglądzie pod planem.
 
 **Pytanie:** Dlaczego nie widzę przycisku „Eksportuj”?
 
-Odpowiedź: Albo w ustawieniach widżetu opcja **Oferuj eksport do Excela**
-jest wyłączona, albo ekran jest wąski (szerokość poniżej 768 pikseli
+Odpowiedź: Albo w edytorze planu w sekcji **Ustawienia** opcja **Oferuj eksport do
+Excela** jest wyłączona, albo ekran jest wąski (szerokość poniżej 768 pikseli
 ): w takim przypadku przycisk **Eksportuj** znajduje się w menu **Więcej** na pasku narzędzi.
 
 **Pytanie:** Gdzie ustawiam kształt kamienia milowego?
 
 Odpowiedź: W jego kategorii, a nie w samym kamieniu milowym: w zakładce **Kategorie**
-za pomocą przycisku kształtu obok pola koloru. Do wyboru są: romb, trójkąt, trójkąt z wierzchołkiem skierowanym w dół, kwadrat, okrąg, sześciokąt, gwiazdka lub krzyżyk. Wszystkie
+za pomocą przycisku kształtu obok pola koloru. Do wyboru są: romb, trójkąt, trójkąt z wierzchołkiem skierowanym w dół, kwadrat, okrąg, sześciokąt, gwiazda lub krzyż. Wszystkie
 kamienie milowe w danej kategorii mają ten sam kształt i kolor — dzięki temu można rozpoznać
 kategorię na osi czasu nawet bez koloru. Kamienie milowe bez kategorii
 wyświetlają się jako szary romb.
@@ -130,7 +127,7 @@ wyświetlają się jako szary romb.
 **Pytanie:** Co oznacza przerywana krawędź lub kształt, który pojawia się tylko jako
 kontur?
 
-Odpowiedź: Wpis jest oznaczony jako **wstępny** — jego termin nie jest jeszcze
+Odpowiedź: Wpis jest oznaczony jako **wstępny** — jego termin nie został jeszcze
 ustalony, w szablonie widniało w tym miejscu „tbd”. Kamienie milowe pojawiają się wtedy tylko
 jako kontur, a okresy są wypełnione jaśniejszym kolorem z przerywaną krawędzią. W szczegółach
 znajduje się dodatkowo adnotacja „wstępny”.
@@ -147,7 +144,7 @@ z trójkątem i tytułem, oznacza termin, który dotyczy całego planu
 
 Odpowiedź: Linia pojawia się tylko wtedy, gdy widoczne są oba jej końce. Jeśli
 poprzednik lub następnik jest ukryty przez filtr lub jego poziom
-został odznaczony, linia nie jest widoczna. Jeśli jeden z tych dwóch wpisów został usunięty,
+nie jest zaznaczony, linia nie jest widoczna. Jeśli jeden z tych dwóch wpisów został usunięty,
 zależność zostaje trwale usunięta.
 
 **Pytanie:** Wpisy z tej samej serii nie znajdują się w jednym wierszu.
@@ -158,58 +155,64 @@ Sprawdź w formularzu każdego wpisu pole **Seria** i jego **Poziom**.
 
 **Pytanie:** Linia „Dzisiaj” nie jest widoczna.
 
-Odpowiedź: Sprawdź, czy opcja **Pokaż linię „Dzisiaj”** jest włączona. Linia ta
+Odpowiedź: W edytorze planu w sekcji **Ustawienia** sprawdź, czy opcja **Pokaż linię „Dzisiaj”** jest włączona. Linia ta
 pojawia się ponadto tylko wtedy, gdy dzisiejszy dzień znajduje się w widocznym fragmencie;
-w przypadku planu, który rozpoczyna się całkowicie w przyszłości, jest ona widoczna dopiero po
-przesunięciu lub po użyciu opcji **Pokaż wszystko** — o ile dzisiejszy dzień w ogóle mieści się w
-okresie planu.
+w przypadku planu, który rozpoczyna się całkowicie w przyszłości, będzie ona widoczna dopiero po
+przesunięcia lub po użyciu opcji **Pokaż wszystko** — o ile dzisiejszy dzień w ogóle znajduje się w
+okresie objętym planem.
 
 **Pytanie:** Czy mogę przesuwać wpisy na osi czasu za pomocą myszki?
 
 Odpowiedź: Nie. Terminy są tworzone i modyfikowane w formularzu edytora planu.
-Dzięki temu żaden wpis nie straci przypadkowo swojego terminu podczas powiększania lub przesuwania widoku
+Dzięki temu żaden wpis nie straci przypadkowo swojej daty podczas powiększania lub przesuwania widoku
 .
 
-**Pytanie:** W edytorze planu widnieje komunikat: „Plan nie może zawierać więcej niż 300 wpisów
-” (lub to samo dotyczy 20 poziomów lub 24 kategorii).
+**Pytanie:** W edytorze planu widnieje komunikat „Plan nie może zawierać więcej niż 300 wpisów
+” (lub to samo w odniesieniu do 20 poziomów lub 24 kategorii).
 
 Odpowiedź: Plan może zawierać maksymalnie 300 wpisów, 20 poziomów i
-24 kategorie; po osiągnięciu limitu nie można już nic dodać. Edytor
-wyświetla w prawym górnym rogu liczbę wpisów zawartych w planie. W przypadku bardzo dużych
+24 kategorie; po osiągnięciu limitu nie można już nic dodać.
+Pasek boczny u góry pokazuje, ile wpisów zawiera już plan („12 z 300”). W przypadku bardzo dużych
 projektów zaleca się podzielenie planu na kilka widżetów, na przykład
-po jednym na każdą serię budowlaną.
+po jednym na każdą serię.
 
-**Pytanie:** Przycisk **+** nie daje się kliknąć w sekcjach **Kamienie milowe** i **Okresy**
-.
+**Pytanie:** W menu **Nowy** brakuje opcji **Kamień milowy** i **Okres**.
 
-Odpowiedź: Plan nie ma już żadnych poziomów, a bez poziomu kamień milowy
-lub okres nie mają gdzie się znaleźć; edytor planu wyświetla poniżej odpowiednią informację. Utwórz
-co najmniej jedną warstwę w zakładce **Warstwy**, korzystając z opcji **Nowa warstwa**. Terminy kluczowe można tworzyć również bez warstwy.
+Odpowiedź: Plan nie ma już żadnego poziomu, a bez poziomu kamień milowy
+lub okres nie mają gdzie się znaleźć; wskazuje na to pasek boczny. Utwórz co najmniej jeden poziom po prawej stronie
+w zakładce **Poziomy**, korzystając z opcji **Nowy poziom**. Terminy kluczowe można
+tworzyć również bez poziomu.
 
-**Pytanie:** Gdzie znajduje się kosz na liście wpisów?
+**Pytanie:** Gdzie w liście wpisów znajduje się kosz?
 
-Odpowiedź: Pojawia się, gdy najedziesz myszką na wiersz lub gdy
-wiersz ma fokus za pomocą klawiatury; na urządzeniach dotykowych jest zawsze widoczny.
-Usunięcie nastąpi dopiero po potwierdzeniu. Jeśli inne wpisy są powiązane z usuniętym,
-w oknie potwierdzenia podana zostanie ich liczba; powiązania zostaną usunięte.
+Odpowiedź: Nie ma go już na liście. Usuwanie odbywa się w formularzu
+wybranego wpisu poprzez opcję **Usuń wpis**, po wyświetleniu monitu. Jeśli inne
+wpisy są powiązane z usuniętym, w oknie potwierdzenia podana zostanie ich liczba; powiązania te
+zostaną usunięte.
+
+**Pytanie:** W oknie dialogowym brakuje przycisków „Linia dzisiejsza” i „Eksport”.
+
+Odpowiedź: Od czasu wprowadzenia edytora pełnoekranowego nie znajdują się one już w oknie dialogowym Staffbase,
+ale po prawej stronie w panelu **Plan** w sekcji **Ustawienia**. Blok, w którym
+nigdy nie zostały one przełączone w edytorze, zachowuje poprzednie ustawienie.
 
 **Pytanie:** Podczas tworzenia poziomu lub kategorii pojawia się komunikat „Poziom „X” już
 istnieje” lub „Kategoria „X” już istnieje”.
 
-Odpowiedź: Każda nazwa może pojawić się tylko raz, w przeciwnym razie nie dałoby się
+Odpowiedź: Każda nazwa może wystąpić tylko raz, w przeciwnym razie nie dałoby się
 rozróżnić poziomów i
-kategorii w polach wyboru, legendzie i eksporcie do Excela. Wielkość liter i spacje na początku lub końcu nie mają
+kategorii w polach wyboru, legendzie i eksporcie do programu Excel. Wielkość liter i spacje na początku lub końcu nazwy nie mają
 znaczenia. Wybierz inną nazwę lub użyj istniejącego poziomu.
 
 **Pytanie:** Jedna z zakładek w formularzu jest oznaczona czerwoną kropką.
 
-Odpowiedź: Pole w tej zakładce zawiera nieprawidłową wartość, na przykład
-pustą datę. Plan zachowuje tam ostatnią prawidłową wartość. Otwórz tę
-zakładkę i popraw pole; wtedy kropka zniknie.
+Odpowiedź: W jednym z pól tej zakładki znajduje się nieprawidłowa wartość, na przykład
+pusta data. Plan zachowuje tam ostatnią prawidłową wartość. Otwórz tę
+zakładkę i popraw pole; wówczas kropka zniknie.
 
-**Pytanie:** W formularzu widnieje komunikat „Proszę podać tytuł”, „Proszę podać
+**Pytanie:** W formularzu widnieje komunikat „Podaj tytuł”, „Podaj
 nazwę”, „Proszę podać datę”, „Proszę podać prawidłową datę”,
-„Koniec jest przed początkiem”, „Początek jest po
+„Koniec przypada przed początkiem”, „Początek przypada po
 końcu” lub „Proszę podać kolor w formacie #RRGGBB, na przykład #E40045”.
 
 Odpowiedź: Wpis w polu nie jest w tej postaci poprawny. Dopóki komunikat

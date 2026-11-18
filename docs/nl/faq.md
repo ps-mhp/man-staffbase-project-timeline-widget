@@ -74,39 +74,36 @@ zou je tijdens het scrollen vastlopen in het plan. Om in te zoomen houdt u de Ct
 **Vraag:** In de plattegrond-editor staat „Het voorbeeld verschijnt bij het eerste
 item.“
 
-Antwoord: Het plan heeft nog geen vermelding, daarom is er niets te zien.
-Kies in het tabblad **Vermeldingen** boven de lijst een type en maak met
-**+** een vermelding aan.
+Antwoord: Het plan heeft nog geen invoer, daarom is er niets te zien.
+Maak links via **Nieuw** een invoer aan. Zonder laag is in eerste instantie alleen
+een peildatum mogelijk; lagen worden rechts in het tabblad **Lagen** aangemaakt.
 
 **Vraag:** De plan-editor bedekt het hele scherm, ook de balk
 van de Studio.
 
-Antwoord: Dat is de bedoeling: het voorbeeld, de lijst en het formulier hebben ruimte nodig. Je
-verlaat de editor rechtsboven via **Toepassen** of **Annuleren**; daarna
-is het configuratievenster weer zichtbaar en opent **Plan bewerken …**
-de editor opnieuw.
+Antwoord: Dat is de bedoeling: de lijst, het formulier, het paneel en het voorbeeld hebben ruimte nodig.
+U verlaat de editor via het kruisje, **Annuleren** of **Toepassen**
+(met **Toepassen en sluiten**); daarna is het configuratievenster
+weer zichtbaar en opent **Plan bewerken …** de editor opnieuw.
 
-**Vraag:** Het voorbeeld neemt te veel ruimte in beslag.
+**Vraag:** Waar is het voorbeeld? In de editor zie ik alleen het formulier.
 
-Antwoord: Sleep de smalle balk onder het voorbeeld naar boven, of
-vouw het voorbeeld volledig in door op **Voorbeeld** te klikken. Ook
-kan de invoerlijst aan de balk tussen de lijst en het formulier
-smaller of breder worden getrokken. Door te dubbelklikken op een balk wordt de
-oorspronkelijke grootte hersteld. De browser onthoudt de afmetingen; in een
-privévenster gelden bij de volgende keer openen weer de standaardinstellingen.
+Antwoord: Het voorbeeld staat in de weergaven **Desktop**, **Tablet** en
+**Mobiel** bovenaan in de koptekst — daar vervangt het het formulier, en het paneel **Plan**
+aan de rechterkant blijft staan. **Editor** brengt je terug naar het formulier.
 
 **Vraag:** Waar kunnen lezers zien wat de symbolen in het plan betekenen?
 
 **Antwoord:** Via de knop **Help** in de werkbalk (op smalle
 schermen een **?**). Het tabblad **Legenda** toont elk symbool als een klein
-voorbeeld met uitleg en de categorieën van dit plan; het tabblad **Bediening**
-legt zoomen, verschuiven, filters en alle sneltoetsen uit. Als de focus op de
+patroontje met uitleg en de categorieën van dit plan; het tabblad **Bediening**
+legt zoomen, verplaatsen, filters en alle sneltoetsen uit. Als de focus op de
 plattegrond ligt, opent ook de toets **?** de hulp.
 
-**Vraag:** Hoe zoom ik in?
+**Vraag:** Hoe kan ik in- of uitzoomen?
 
 Antwoord: Op vier manieren: met de knoppen **−** en **+** in de
-werkbalk; met de Ctrl-toets (Mac: ⌘) ingedrukt en het muiswiel, dan
+werkbalk; met ingedrukte Ctrl-toets (Mac: ⌘) en het muiswiel, dan
 wordt er ingezoomd op de plek onder de muisaanwijzer; met twee vingers op
 het trackpad of touchscreen; of met het toetsenbord via **+** en **−**, zodra
 de focus op de plattegrond ligt. **Alles weergeven** (toets **0**) toont weer de volledige
@@ -115,14 +112,14 @@ Shift en het muiswiel of via de randen in het overzicht onder de plattegrond.
 
 **Vraag:** Waarom zie ik de knop „Exporteren“ niet?
 
-Antwoord: Ofwel is in de instellingen van de widget **Excel-export
+Antwoord: Ofwel is in de plan-editor onder **Instellingen** de optie **Excel-export
 aanbieden** uitgeschakeld, ofwel is het scherm smal (minder dan 768 pixels
 breed): dan staat **Exporteren** in het menu **Meer** van de werkbalk.
 
 **Vraag:** Waar stel ik de vorm van een mijlpaal in?
 
-Antwoord: Bij de categorie, niet bij de mijlpaal zelf: in het tabblad **Categorieën**
-via de vormknop naast het kleurveld. Je kunt kiezen uit een ruit, driehoek, driehoek met de punt naar beneden, vierkant, cirkel, zeshoek, ster of kruis. Alle
+Antwoord: Bij de categorie, niet bij de mijlpaal zelf: op het tabblad **Categorieën**
+via de vormknop naast het kleurveld. Je kunt kiezen uit een ruit, driehoek, omgekeerde driehoek, vierkant, cirkel, zeshoek, ster of kruis. Alle
 mijlpalen van een categorie hebben dezelfde vorm en kleur — zo herken je
 de categorie in de tijdlijn ook zonder kleur. Mijlpalen zonder categorie
 worden weergegeven als een grijze ruit.
@@ -158,40 +155,46 @@ Controleer in het formulier van elke vermelding het veld **Serie** en het **nive
 
 **Vraag:** De ‘Vandaag’-lijn is niet zichtbaar.
 
-Antwoord: Controleer of **‘Vandaag’-lijn weergeven** is ingeschakeld. De lijn
+Antwoord: Controleer in de plan-editor onder **Instellingen** of **Lijn ‘Vandaag’ weergeven** is ingeschakeld. De lijn
 verschijnt bovendien alleen als de huidige dag binnen het zichtbare gedeelte valt;
 bij een plan dat volledig in de toekomst begint, is deze pas te zien na het
-verslepen of met **Alles weergeven** — als vandaag überhaupt binnen de
-periode van het plan valt.
+verplaatsen of met **Alles weergeven** te zien — als vandaag überhaupt binnen
+de periode van het plan valt.
 
-**Vraag:** Kan ik items in de tijdlijn met de muis verplaatsen?
+**Vraag:** Kan ik vermeldingen in de tijdlijn met de muis verplaatsen?
 
 Antwoord: Nee. Afspraken worden aangemaakt en gewijzigd in het formulier van de plan-editor.
 Zo kan geen enkel item per ongeluk zijn datum kwijtraken bij het inzoomen of
-verplaatsen van het beeld.
+verschuiven van de weergave.
 
 **Vraag:** In de plan-editor staat „Een plan bevat niet meer dan 300 items
-.“ (of hetzelfde voor 20 niveaus of 24 categorieën).
+.” (of hetzelfde voor 20 niveaus of 24 categorieën).
 
-Antwoord: Een plan bevat maximaal 300 items, 20 niveaus en
-24 categorieën; bij het bereiken van deze limiet kan er niets meer worden toegevoegd. De editor
-geeft rechtsboven aan hoeveel items het plan al bevat. Voor zeer grote
+Antwoord: Een plan kan maximaal 300 items, 20 niveaus en
+24 categorieën bevatten; bij het bereiken van deze limiet kan er niets meer worden toegevoegd. De
+zijbalk geeft bovenaan aan hoeveel items het plan al bevat („12 van 300“). Voor zeer grote
 projecten is het raadzaam om het plan over meerdere widgets te verdelen, bijvoorbeeld
 één per bouwreeks.
 
-**Vraag:** De knop **+** kan bij **Mijlpalen** en **Periodes**
-niet worden aangeklikt.
+**Vraag:** In het menu **Nieuw** ontbreken **Mijlpaal** en **Periode**.
 
-Antwoord: Het plan heeft geen niveau meer, en zonder niveau heeft een mijlpaal
-of periode geen plaats; de plan-editor wijst hieronder op. Maak
-in het tabblad **Lagen** via **Nieuwe laag** ten minste één laag aan. Streefdata kunnen ook zonder laag worden aangemaakt.
+Antwoord: Het plan heeft geen niveau meer, en zonder niveau is er geen plaats voor een mijlpaal
+of periode; de zijbalk wijst hierop. Maak rechts
+in het tabblad **Niveaus** via **Nieuw niveau** ten minste één niveau aan. Mijlpalen kunnen
+ook zonder niveau worden aangemaakt.
 
-**Vraag:** Waar is de prullenbak in de invoerlijst?
+**Vraag:** Waar is de prullenbak in de lijst met vermeldingen?
 
-Antwoord: Deze verschijnt wanneer u met de muis over een regel beweegt of een
-regel via het toetsenbord selecteert; op touch-apparaten is deze altijd zichtbaar.
-Verwijdering vindt pas plaats na de bevestigingsvraag. Als andere vermeldingen afhankelijk zijn van de verwijderde
-vermelding, wordt in de bevestigingsvraag het aantal vermeld; de koppelingen worden verwijderd.
+Antwoord: Die staat niet meer in de lijst. Verwijderen gebeurt in het formulier van de
+geselecteerde vermelding via **Vermelding verwijderen**, na een bevestigingsvraag. Als er andere
+vermeldingen aan de verwijderde zijn gekoppeld, wordt in de bevestigingsvraag het aantal daarvan vermeld; hun koppelingen
+worden verwijderd.
+
+**Vraag:** De schakelaars voor de ‘Vandaag’-regel en ‘Exporteren’ ontbreken in het dialoogvenster.
+
+Antwoord: Sinds de volledig-scherm-editor staan ze niet meer in het dialoogvenster van Staffbase,
+maar rechts in het paneel **Plan** onder **Instellingen**. Een blok waarvoor ze
+nooit in de editor zijn gewijzigd, behoudt de instelling die het eerder had.
 
 **Vraag:** Bij het aanmaken van een niveau of categorie verschijnt de melding „Er bestaat al een niveau „X““
 of „Er bestaat al een categorie „X““.
@@ -213,7 +216,7 @@ op.“, „Het einde ligt vóór het begin.“, „Het begin ligt na het
 einde.“ of „Geef een kleur op als #RRGGBB, bijvoorbeeld #E40045.“
 
 Antwoord: De invoer in het veld is in deze vorm niet bruikbaar. Zolang de melding
-wordt weergegeven, behoudt het plan de laatste geldige waarde — er gaat dus niets
+verschijnt, behoudt het plan de laatste geldige waarde — er gaat dus niets
 verloren, maar de wijziging is ook nog niet doorgevoerd. Corrigeer
 de invoer; zodra deze geldig is, verdwijnt de melding. Bij een
 periode wijzigt u eerst de datum die de volgorde herstelt:

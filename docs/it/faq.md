@@ -13,8 +13,8 @@ riprovare».
 
 Risposta: Non è stato possibile generare il file Excel. Lo strumento necessario viene
 caricato solo dopo aver cliccato su **Esporta**; spesso la connessione
-si è interrotta brevemente in quel momento. Clicchi nuovamente su **Scarica Excel
-**. Se continua a non funzionare, aggiorni la pagina.
+si è interrotta brevemente in quel momento. Clicchi nuovamente su **Scarica Excel**.
+Se continua a non funzionare, ricarichi la pagina.
 
 **Domanda:** Nella parte superiore dell’editor del piano compare il messaggio «N voci non sono state lette
 e andranno perse al momento del salvataggio.»
@@ -68,46 +68,43 @@ pagina o il post nella scheda **Contenuto**.
 
 Risposta: La rotellina del mouse da sola fa scorrere la pagina, come ovunque altrove — altrimenti
 ci si bloccherebbe durante lo scorrimento del piano. Per ingrandire, tenete premuto il tasto Ctrl
-(Mac: ⌘) e ruotate la rotellina del mouse. L’avviso appare solo
+(Mac: ⌘) e ruotate contemporaneamente la rotellina del mouse. L’avviso appare solo
 una volta.
 
 **Domanda:** Nell’editor della mappa compare il messaggio «L’anteprima appare con la prima
 voce».
 
 Risposta: Il piano non ha ancora alcuna voce, quindi non c’è nulla da mostrare.
-Selezionate un tipo nella scheda **Voci** sopra l’elenco e create una voce con
-**+**.
+Crea una voce a sinistra tramite **Nuovo**. Senza un livello, inizialmente è possibile inserire solo
+una data di riferimento; i livelli si creano a destra nella scheda **Livelli**.
 
 **Domanda:** L’editor del piano copre l’intero schermo, compresa la barra
 dello Studio.
 
-Risposta: È intenzionale: l’anteprima, l’elenco e il modulo richiedono spazio. È possibile
-uscire dall’editor in alto a destra tramite **Applica** o **Annulla**; dopodiché
-la finestra di dialogo di configurazione torna visibile e **Modifica piano …** riapre
-l’editor.
+Risposta: È un comportamento previsto: l’elenco, il modulo, il pannello e l’anteprima richiedono spazio.
+È possibile uscire dall’editor tramite la croce, **Annulla** o **Applica**
+(con **Applica e chiudi**); dopodiché la finestra di dialogo di configurazione
+torna visibile e **Modifica piano …** riapre l’editor.
 
-**Domanda:** L’anteprima occupa troppo spazio.
+**Domanda:** Dov’è l’anteprima? Nell’editor vedo solo il modulo.
 
-Risposta: Trascini verso l’alto la barra sottile sotto l’anteprima oppure
-chiuda completamente l’anteprima cliccando su **Anteprima**. Allo stesso modo,
-è possibile restringere o allargare l’elenco delle voci trascinando la barra tra l’elenco e il modulo
-. Un doppio clic su una barra ripristina le
-dimensioni originali. Il browser memorizza le dimensioni; in una
-finestra privata, alla successiva apertura verranno applicate nuovamente le impostazioni predefinite.
+Risposta: L’anteprima si trova nelle visualizzazioni **Desktop**, **Tablet** e
+**Mobile** nella parte superiore dell’intestazione — lì sostituisce il modulo, mentre il pannello **Piano**
+a destra rimane visibile. **Editor** riporta al modulo.
 
-**Domanda:** Dove possono trovare i lettori il significato dei simboli presenti nel piano?
+**Domanda:** Dove possono scoprire i lettori il significato dei simboli presenti nel piano?
 
 **Risposta:** Tramite il pulsante **Aiuto** nella barra degli strumenti (su schermi stretti
-un **?**). La scheda **Legenda** mostra ogni simbolo come un piccolo
-campione con la spiegazione e le categorie di questa mappa; la scheda **Funzionamento**
-spiega lo zoom, lo spostamento, i filtri e tutte le scorciatoie da tastiera. Se il focus è sulla
+un **?**). La scheda **Legenda** mostra ogni simbolo sotto forma di piccolo
+esempio con spiegazione e le categorie di questa mappa; la scheda **Funzionamento**
+spiega lo zoom, lo spostamento, i filtri e tutte le scorciatoie da tastiera. Se il cursore si trova sulla
 mappa, anche il tasto **?** apre la guida.
 
 **Domanda:** Come si esegue lo zoom?
 
 Risposta: In quattro modi: con i pulsanti **−** e **+** nella
 barra degli strumenti; tenendo premuto il tasto Ctrl (Mac: ⌘) e ruotando la rotellina del mouse, in modo che
-la mappa ingrandisca l’area sotto il cursore del mouse; con due dita sul
+la mappa venga ingrandita intorno al punto sotto il cursore del mouse; con due dita sul
 trackpad o sul touchscreen; oppure con la tastiera tramite **+** e **−**, non appena
 il progetto è attivo. **Mostra tutto** (tasto **0**) riporta in visualizzazione l’intero
 progetto. È possibile spostare l’area selezionata trascinandola con il mouse, con
@@ -115,13 +112,13 @@ il tasto Maiusc e la rotellina del mouse oppure tramite il bordo nella panoramic
 
 **Domanda:** Perché non vedo il pulsante «Esporta»?
 
-Risposta: O l’opzione **Offri esportazione in Excel** è disattivata nelle impostazioni del widget,
-oppure lo schermo è stretto (meno di 768 pixel
+Risposta: O nell’editor del piano, in **Impostazioni**, l’opzione **Offri esportazione in Excel**
+è disattivata, oppure lo schermo è stretto (meno di 768 pixel
 di larghezza): in tal caso, **Esporta** si trova nel menu **Altro** della barra degli strumenti.
 
-**Domanda:** Dove si imposta la forma di una milestone?
+**Domanda:** Dove si imposta la forma di una pietra miliare?
 
-Risposta: A livello della categoria, non della singola milestone: nella scheda **Categorie**
+Risposta: Nella sua categoria, non sulla pietra miliare stessa: nella scheda **Categorie**
 tramite il pulsante di forma accanto al campo colore. È possibile scegliere tra rombo, triangolo, triangolo con la punta rivolta verso il basso, quadrato, cerchio, esagono, stella o croce. Tutti i
 punti di riferimento di una categoria hanno la stessa forma e lo stesso colore — in questo modo è possibile riconoscere
 la categoria nella linea temporale anche senza colore. Le tappe fondamentali senza categoria
@@ -154,52 +151,58 @@ dipendenza viene rimossa definitivamente.
 
 Risposta: Una serie è valida solo all’interno di un livello e il nome deve corrispondere esattamente
 — «TG Assist MY26» e «TG-Assist MY26» sono due serie diverse.
-Controlli nel modulo di ogni voce il campo **Serie** e il relativo **Livello**.
+Controllate nel modulo di ogni voce il campo **Serie** e il relativo **Livello**.
 
 **Domanda:** La linea “Oggi” non è visibile.
 
-Risposta: Verifichi se l’opzione **Mostra linea “Oggi”** è attivata. La linea
-appare inoltre solo se la data odierna rientra nella sezione visibile;
-nel caso di un piano che inizia interamente nel futuro, è visibile solo dopo averlo
-spostato o utilizzando **Mostra tutto** — ammesso che la data odierna rientri effettivamente nel
-periodo del piano.
+Risposta: Nell’editor del piano, alla voce **Impostazioni**, verifichi se l’opzione **Mostra linea “Oggi”** sia attivata. La linea
+appare inoltre solo se la data odierna rientra nell’area visibile;
+nel caso di un piano che inizia interamente nel futuro, sarà visibile solo dopo averlo
+spostamento o con **Mostra tutto** — ammesso che oggi rientri nel
+periodo di validità del piano.
 
 **Domanda:** Posso spostare le voci nella linea temporale con il mouse?
 
 Risposta: No. Gli appuntamenti vengono creati e modificati nel modulo dell’editor del piano.
-In questo modo, nessuna voce può perdere accidentalmente la propria data
+In questo modo nessuna voce può perdere accidentalmente la propria data
 durante lo zoom o lo spostamento della visualizzazione.
 
-**Domanda:** Nell’editor del piano compare la scritta «Un piano non può contenere più di 300 voci
+**Domanda:** Nell’editor del piano c’è scritto «Un piano non può contenere più di 300 voci
 » (o lo stesso per 20 livelli o 24 categorie).
 
 Risposta: Un piano può contenere al massimo 300 voci, 20 livelli e
-24 categorie; una volta raggiunto il limite, non è più possibile aggiungere nulla. L’editor
-mostra in alto a destra quante voci contiene già il piano. Per progetti di grandi dimensioni
+24 categorie; una volta raggiunto il limite, non è più possibile aggiungere nulla. La
+barra laterale in alto mostra quante voci contiene già il piano (“12 su 300”). Per progetti di grandi dimensioni
 si consiglia di suddividere il piano in più widget, ad esempio
 uno per ogni serie.
 
-**Domanda:** Il pulsante **+** non è cliccabile nelle sezioni **Traguardi** e **Periodi**
-.
+**Domanda:** Nel menu **Nuovo** mancano **Traguardo** e **Periodo**.
 
-Risposta: Il piano non ha più livelli e, senza un livello, un traguardo
-o un periodo non ha spazio; l’editor del piano lo segnala sotto. Creare
-almeno un livello nella scheda **Livelli** tramite **Nuovo livello**. Le date di riferimento possono essere create anche senza un livello.
+Risposta: Il piano non ha più alcun livello e, senza un livello, una pietra miliare
+o un periodo non hanno spazio; la barra laterale lo segnala. Creane almeno uno a destra
+nella scheda **Livelli** tramite **Nuovo livello**. Le date di riferimento possono
+essere create anche senza un livello.
 
 **Domanda:** Dov’è il cestino nell’elenco delle voci?
 
-Risposta: Appare quando si passa il mouse su una riga o quando una
-riga è selezionata tramite tastiera; sui dispositivi touch è sempre visibile.
-L’eliminazione avviene solo dopo la richiesta di conferma. Se altre voci dipendono da quella eliminata
-, la richiesta di conferma ne indica il numero; i collegamenti vengono rimossi.
+Risposta: Non c’è più nell’elenco. L’eliminazione avviene nel modulo della
+voce selezionata tramite **Elimina voce**, previa conferma. Se altre
+voci dipendono da quella eliminata, la richiesta di conferma ne indicherà il numero; i collegamenti
+verranno rimossi.
 
-**Domanda:** Quando si crea un livello o una categoria, compare il messaggio «Esiste già un livello "X"»
-o «Esiste già una categoria "X"».
+**Domanda:** I pulsanti per la riga “Oggi” e l’esportazione mancano nella finestra di dialogo.
 
-Risposta: Ogni nome deve comparire una sola volta, altrimenti i livelli e le
-categorie nei campi di selezione, nella legenda e nell’esportazione in Excel non sarebbero
-distinguibili. Le maiuscole, le minuscole e gli spazi ai margini non vengono
-considerati. Scegliere un altro nome oppure utilizzare il livello esistente.
+Risposta: A partire dall’editor a schermo intero, non si trovano più nella finestra di dialogo di Staffbase,
+ma a destra nel pannello **Piano** sotto **Impostazioni**. Un blocco in cui non
+sono mai state modificate nell’editor mantiene l’impostazione che aveva in precedenza.
+
+**Domanda:** Quando si crea un livello o una categoria, compare il messaggio “Esiste già un livello “X””
+o “Esiste già una categoria “X””.
+
+Risposta: Ogni nome può essere utilizzato una sola volta, altrimenti i livelli e le
+categorie non sarebbero distinguibili nei campi di selezione, nella legenda e nell’esportazione in Excel.
+Le maiuscole, le minuscole e gli spazi iniziali non vengono
+considerati. Scegliete un altro nome oppure utilizzate il livello esistente.
 
 **Domanda:** Una scheda nel modulo presenta un punto rosso.
 
@@ -217,15 +220,15 @@ rimane visualizzato, il piano mantiene l’ultimo valore valido — quindi nulla
 va perso, ma la modifica non è ancora stata applicata. Corregga
 l’inserimento; non appena sarà valido, il messaggio scomparirà. Nel caso di un
 periodo, modifichi prima la data che ripristina l’ordine:
-se deve iniziare e terminare più tardi, prima **Fine**, poi **Inizio**.
+se deve iniziare e terminare più tardi, prima la **Fine**, poi l’**Inizio**.
 
 **Domanda:** Cosa succede al piano durante la traduzione automatica della
 pagina?
 
 Risposta: Vengono tradotti il titolo del piano, i titoli dei livelli e delle
-categorie, nonché il titolo e la descrizione di ogni voce. Le date, i colori,
-le dipendenze e i nomi delle serie rimangono invariati: un nome di serie è
-una chiave, e due versioni tradotte in modo diverso smembrerebbero una serie
+categorie, nonché il titolo e la descrizione di ogni voce. Le date, i colori, le
+dipendenze e i nomi delle serie rimangono invariati: un nome di serie è
+una chiave e due versioni tradotte in modo diverso smembrerebbero una serie
 .
 
 **Domanda:** Dopo la traduzione compare «Piano di progetto: il contenuto non ha potuto

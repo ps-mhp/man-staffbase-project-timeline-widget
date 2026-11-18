@@ -51,7 +51,7 @@ for linking. Otherwise, select the new page under **Page**.
 
 Answer: Attachments come from the Staffbase media library and are loaded with
 the permissions of the person viewing them. If the file has been deleted from there or is
-not visible to that person, the file will fail to open. Check the
+not visible to that person, the attempt to open it will fail. Check the
 file in the media library and reattach it if necessary.
 
 **Question:** At the top of the Schedule Editor, it says, “N links could not be read
@@ -71,42 +71,39 @@ you’d get stuck on the plan while scrolling. To zoom, hold down the Ctrl key
 (Mac: ⌘) while scrolling the mouse wheel. The prompt appears only
 once.
 
-**Question:** In the Map Editor, it says “The preview appears with the first
+**Question:** In the Plan Editor, it says “The preview appears with the first
 entry.”
 
 Answer: The plan doesn’t have any entries yet, so there’s nothing to show.
-In the **Entries** tab above the list, select a type and use
-**+** to create an entry.
+Create an entry on the left using **New**. Without a level, you can initially only
+add a due date; levels are created on the right in the **Levels** tab.
 
 **Question:** The Plan Editor covers the entire screen, including the Studio
 toolbar.
 
-Answer: This is by design: the preview, list, and form require space. You
-can exit the editor in the top-right corner by clicking **Apply** or **Cancel**; after that,
-the configuration dialog will be visible again, and **Edit Plan…** will open
-the editor once more.
+Answer: This is by design: the list, form, panel, and preview all require space.
+You can exit the editor by clicking the X, **Cancel**, or **Apply**
+(using **Apply and Close**); afterward, the configuration dialog
+will be visible again, and **Edit Plan…** will reopen the editor.
 
-**Question:** The preview is taking up too much space.
+**Question:** Where is the preview? In the editor, I only see the form.
 
-Answer: Drag the narrow bar below the preview upward, or
-collapse the preview completely by clicking **Preview**. Similarly,
-you can drag the entry list on the bar between the list and the form
-to make it narrower or wider. Double-clicking a bar restores it to its
-original size. The browser remembers the sizes; in a
-private window, the default settings will apply again the next time it’s opened.
+Answer: The preview appears at the top of the **Desktop**, **Tablet**, and
+**Mobile** views—there, it replaces the form, and the **Plan** panel
+on the right remains. **Editor** takes you back to the form.
 
 **Question:** Where can readers find out what the symbols in the plan mean?
 
-**Answer:** Via the **Help** button in the toolbar (on narrow
-screens, a **?**). The **Legend** tab shows each symbol as a small
-sample with an explanation and the categories in this plan; the **Usage** tab
-explains zooming, panning, filters, and all keyboard shortcuts. If the focus is on the
-map, pressing the **?** key also opens the help.
+**Answer:** Via the **Help** button in the toolbar (a **?** on narrow
+screens). The **Legend** tab shows each symbol as a small
+icon with an explanation and the categories in this plan; the **Usage** tab
+explains zooming, panning, filtering, and all keyboard shortcuts. If the focus is on the
+map, the **?** key also opens the help.
 
 **Question:** How do I zoom?
 
 Answer: There are four ways: using the **−** and **+** buttons in the
-toolbar; holding down the Ctrl key (Mac: ⌘) and using the mouse wheel, which
+toolbar; by holding down the Ctrl key (Mac: ⌘) and using the mouse wheel, which
 zooms the map around the location under the mouse pointer; using two fingers on
 the trackpad or touchscreen; or using the keyboard with **+** and **−** once
 the plan has focus. **Show All** (key **0**) displays the entire
@@ -115,13 +112,13 @@ Shift and the mouse wheel, or via the frame in the overview below the plan.
 
 **Question:** Why don’t I see the “Export” button?
 
-Answer: Either **Offer Excel Export** is turned off in the widget’s settings,
+Answer: Either **Offer Excel Export** is turned off in the Plan Editor under **Settings**,
 or the screen is narrow (less than 768 pixels
 wide): in that case, **Export** appears in the **More** menu on the toolbar.
 
 **Question:** Where do I set the shape of a milestone?
 
-Answer: You set it for the category, not for the milestone itself: in the **Categories** tab
+Answer: In its category, not on the milestone itself: in the **Categories** tab
 using the shape button next to the color field. You can choose from a diamond, triangle, downward-pointing triangle, square, circle, hexagon, star, or cross. All
 milestones in a category share the same shape and color—this makes it easy to
 recognize the category on the timeline even without color. Milestones without a category
@@ -133,7 +130,7 @@ outline mean?
 Answer: The entry is marked as **tentative**—its date has not yet
 been set; the template used “tbd” for this. Milestones then appear only
 as outlines, with time periods filled in lighter and having a dashed border. In the details,
-“tentative” is also noted.
+“tentative” is also indicated.
 
 **Question:** What do the dashed lines mean?
 
@@ -150,56 +147,62 @@ predecessor or successor is hidden by a filter or its level
 is deselected, the line is missing. If one of the two entries has been deleted, the
 dependency is permanently removed.
 
-**Question:** The entries in a series are not on the same row.
+**Question:** The entries for a series are not on the same row.
 
 Answer: A series applies only within a single level, and the name must match exactly
 — “TG Assist MY26” and “TG-Assist MY26” are two different series.
 Check the **Series** field and its **Level** in the form for each entry.
 
-**Question:** The Today line is not visible.
+**Question:** The “Today” line is not visible.
 
-Answer: Check whether **Show Today Line** is enabled. The line
+Answer: In the Schedule Editor, under **Settings**, check whether **Show Today Line** is enabled. The line
 also only appears if today’s date is within the visible section;
-for a plan that begins entirely in the future, it will only be visible after
-moving the timeline or using **Show All**—if today is even within
-the plan’s timeframe at all.
+for a schedule that begins entirely in the future, it will only be visible after
+you move the view or use **Show All**—if today is even within
+the plan’s timeframe.
 
 **Question:** Can I move entries on the timeline with the mouse?
 
-Answer: No. Dates are created and modified in the Plan Editor form.
-This prevents any entry from accidentally losing its date when zooming or
-moving the view.
+Answer: No. Appointments are created and modified in the Plan Editor form.
+This prevents any entry from accidentally losing its date
+when zooming or moving the view.
 
 **Question:** The Plan Editor says, “A plan cannot contain more than 300 entries
 .” (or the same for 20 levels or 24 categories).
 
 Answer: A plan can contain a maximum of 300 entries, 20 levels, and
-24 categories; once this limit is reached, nothing more can be added. The Editor
-displays the number of entries the plan already contains in the upper-right corner. For very large
+24 categories; once this limit is reached, nothing more can be added. The
+sidebar at the top shows how many entries the plan already contains (“12 of 300”). For very large
 projects, it is recommended to split the plan across multiple widgets, such as
-one per building series.
+one per product series.
 
-**Question:** The **+** button cannot be clicked for **Milestones** and **Time Periods**
-.
+**Question:** **Milestone** and **Time Period** are missing from the **New** menu.
 
-Answer: The plan has no more levels, and without a level, a milestone
-or time period has no place; the plan editor indicates this below. Create
-at least one level in the **Levels** tab using **New Level**. Key dates can be created even without a level.
+Answer: The plan no longer has any levels, and without a level, a milestone
+or time period has no place; the sidebar indicates this. Create at least one level on the right
+in the **Levels** tab using **New Level**. Key dates can
+be created even without a level.
 
 **Question:** Where is the trash can in the entry list?
 
-Answer: It appears when you hover over a row with the mouse or when a
-row has focus via the keyboard; on touch devices, it is always visible.
-Deletion occurs only after confirmation. If other entries depend on the deleted
-one, the confirmation prompt will indicate their number; their connections will be removed.
+Answer: There is no longer one in the list. Deletion is performed in the form for the
+selected entry via **Delete Entry**, after a confirmation prompt. If other
+entries depend on the deleted one, the confirmation prompt will indicate their number; their links
+will be removed.
 
-**Question:** When creating a level or category, the message “A level ‘X’ already
-exists” or “A category ‘X’ already exists” appears.
+**Question:** The buttons for “Today Line” and “Export” are missing from the dialog.
 
-Answer: Each name may appear only once; otherwise, levels and
-categories in drop-down menus, the legend, and the Excel export would be
-indistinguishable. Uppercase and lowercase letters and leading spaces do not
-matter. Choose a different name or use the existing level.
+Answer: Since the full-screen editor was introduced, they are no longer in the Staffbase dialog,
+but are located on the right side of the **Schedule** panel under **Settings**. A block where they
+were never toggled in the editor retains the setting it had previously.
+
+**Question:** When creating a level or category, the message “A level named ‘X’ already
+exists” or “A category named ‘X’ already exists” appears.
+
+Answer: Each name can only be used once; otherwise, levels and
+categories would be indistinguishable in selection fields, the legend, and Excel exports.
+Uppercase and lowercase letters and leading spaces do not matter
+in this context. Choose a different name or use the existing level.
 
 **Question:** A tab in the form has a red dot next to it.
 

@@ -75,54 +75,50 @@ une seule fois.
 entrée. »
 
 Réponse : Le plan ne contient encore aucune entrée, il n’y a donc rien à afficher.
-Dans l’onglet **Entrées** situé au-dessus de la liste, sélectionnez un type et créez une entrée à l’aide du
-**+**.
+Créez une entrée à gauche via **Nouveau**. Sans niveau, vous ne pouvez dans un premier temps définir qu’
+une seule date de référence ; les niveaux se créent à droite dans l’onglet **Niveaux**.
 
-**Question :** L'éditeur de plan recouvre tout l'écran, y compris la barre
+**Question :** L’éditeur de plan recouvre tout l’écran, y compris la barre
 du Studio.
 
-Réponse : C'est voulu : l'aperçu, la liste et le formulaire ont besoin d'espace. Vous
-pouvez quitter l’éditeur en haut à droite via **Appliquer** ou **Annuler** ; ensuite,
-la boîte de dialogue de configuration réapparaît, et **Modifier le plan…** ouvre
-à nouveau l’éditeur.
+Réponse : C’est normal : la liste, le formulaire, le panneau et l’aperçu ont besoin d’espace.
+Vous quittez l’éditeur via la croix, **Annuler** ou **Appliquer**
+(avec **Appliquer et fermer**) ; la boîte de dialogue de configuration
+réapparaît alors, et **Modifier le plan…** rouvre l’éditeur.
 
-**Question :** L’aperçu prend trop de place.
+**Question :** Où se trouve l’aperçu ? Dans l’éditeur, je ne vois que le formulaire.
 
-Réponse : Faites glisser vers le haut la fine barre située sous l’aperçu, ou
-réduisez complètement l’aperçu en cliquant sur **Aperçu**. De même,
-vous pouvez ajuster la largeur de la liste des entrées à l’aide de la barre située entre la liste et le formulaire
-. Un double-clic sur une barre permet de
-rétablir la taille d’origine. Le navigateur mémorise les tailles ; dans une
-fenêtre privée, les paramètres par défaut s’appliquent à la prochaine ouverture.
+Réponse : L’aperçu se trouve en haut de l’en-tête dans les vues **Bureau**, **Tablette** et
+**Mobile** — il remplace alors le formulaire, tandis que le panneau **Plan**
+à droite reste affiché. **Éditeur** permet de revenir au formulaire.
 
 **Question :** Où les lecteurs peuvent-ils découvrir la signification des symboles du plan ?
 
-**Réponse :** Via le bouton **Aide** dans la barre d’outils (sur les écrans étroits,
-un **?**). L’onglet **Légende** présente chaque symbole sous forme de petit
-échantillon accompagné d’une explication, ainsi que les catégories de ce plan ; l’onglet **Utilisation**
+**Réponse :** Via le bouton **Aide** dans la barre d’outils (un **?** sur les
+écrans étroits). L’onglet **Légende** affiche chaque symbole sous forme de petit
+exemple accompagné d’une explication, ainsi que les catégories de ce plan ; l’onglet **Utilisation**
 explique le zoom, le déplacement, les filtres et tous les raccourcis clavier. Lorsque le curseur se trouve sur le
 plan, la touche **?** ouvre également l’aide.
 
 **Question :** Comment zoomer ?
 
-Réponse : De quatre façons : avec les boutons **−** et **+** de la
-barre d’outils ; en maintenant la touche Ctrl (Mac : ⌘) enfoncée et en utilisant la molette de la souris, ce qui
+Réponse : De quatre façons : à l’aide des boutons **−** et **+** de la
+barre d’outils ; en maintenant la touche Ctrl enfoncée (Mac : ⌘) et en utilisant la molette de la souris, ce qui
 permet de zoomer sur la zone située sous le curseur ; avec deux doigts sur
 sur le trackpad ou l'écran tactile ; ou à l'aide du clavier avec les touches **+** et **−**, dès que
-le plan est actif. La touche **0** (**Tout afficher**) permet de revenir à l'affichage complet
-du plan. Vous pouvez déplacer la section en la faisant glisser avec la souris, à l’aide de la
+le plan est sélectionné. La touche **0** (**Tout afficher**) permet de revenir à l'affichage complet
+du plan. Vous pouvez déplacer la vue en la faisant glisser avec la souris, à l’aide de la
 touche Maj et de la molette de la souris, ou via le cadre situé dans l’aperçu sous le plan.
 
 **Question :** Pourquoi le bouton « Exporter » n’apparaît-il pas ?
 
-Réponse : Soit l’option **Proposer l’exportation vers Excel** est désactivée dans les paramètres du widget,
-soit l’écran est étroit (moins de 768 pixels
+Réponse : Soit l’option **Proposer l’exportation vers Excel** est désactivée dans l’éditeur de plan sous **Paramètres**, **soit l’écran est étroit (moins de 768 pixels**
 de largeur) : dans ce cas, **Exporter** se trouve dans le menu **Plus** de la barre d’outils.
 
 **Question :** Où puis-je définir la forme d’un jalon ?
 
 Réponse : Au niveau de sa catégorie, et non du jalon lui-même : dans l’onglet **Catégories**,
-à l’aide du bouton de forme situé à côté du champ de couleur. Vous avez le choix entre un losange, un triangle, un triangle pointant vers le bas, un carré, un cercle, un hexagone, une étoile ou une croix. Tous les
+via le bouton de forme situé à côté du champ de couleur. Vous avez le choix entre un losange, un triangle, un triangle pointant vers le bas, un carré, un cercle, un hexagone, une étoile ou une croix. Tous les
 jalons d’une même catégorie ont la même forme et la même couleur — cela permet de reconnaître
 la catégorie sur la frise chronologique même sans couleur. Les jalons sans catégorie
 apparaissent sous la forme d’un losange gris.
@@ -156,54 +152,60 @@ Réponse : Une série n’est valable qu’au sein d’un même niveau, et le no
 — « TG Assist MY26 » et « TG-Assist MY26 » sont deux séries différentes.
 Vérifiez dans le formulaire de chaque entrée le champ **Série** et son **niveau**.
 
-**Question :** La ligne « Aujourd’hui » n’est pas visible.
+**Question :** La ligne « Aujourd’hui » n’apparaît pas.
 
-Réponse : Vérifiez si l’option **Afficher la ligne « Aujourd’hui »** est activée. La ligne
-n’apparaît en outre que si la date du jour se trouve dans la partie visible ;
-dans le cas d’un planning dont le début se situe entièrement dans le futur, elle n’est visible qu’après
-avoir déplacé la vue ou utilisé l’option **Tout afficher** — à condition que la date du jour se trouve bien
-dans la période couverte par le planning.
+Réponse : Dans l’éditeur de plan, sous **Paramètres**, vérifiez si l’option **Afficher la ligne « Aujourd’hui »** est activée. De plus, cette ligne
+n’apparaît que si la date du jour se trouve dans la partie visible de l’écran ;
+dans le cas d’un plan dont le début se situe entièrement dans le futur, elle n’est visible qu’après
+déplacement ou en utilisant **Tout afficher** — à condition que la date d’aujourd’hui se trouve bien dans la
+période couverte par le plan.
 
-**Question :** Puis-je déplacer des entrées sur la frise chronologique à l’aide de la souris ?
+**Question :** Puis-je déplacer des entrées dans la chronologie à l’aide de la souris ?
 
-Réponse : Non. Les dates sont créées et modifiées dans le formulaire de l’éditeur de plan.
+Réponse : Non. Les rendez-vous sont créés et modifiés dans le formulaire de l’éditeur de plan.
 Ainsi, aucune entrée ne peut perdre sa date par inadvertance lors d’un zoom ou d’un déplacement de la vue
 .
 
 **Question :** Dans l’éditeur de plan, il est indiqué « Un plan ne peut pas contenir plus de 300 entrées
 » (ou la même chose pour 20 niveaux ou 24 catégories).
 
-Réponse : Un plan contient au maximum 300 entrées, 20 niveaux et
-24 catégories ; une fois cette limite atteinte, il n’est plus possible d’ajouter quoi que ce soit. L’éditeur
-affiche en haut à droite le nombre d’entrées que le plan contient déjà. Pour les très grands
+Réponse : Un plan peut contenir au maximum 300 entrées, 20 niveaux et
+24 catégories ; une fois cette limite atteinte, il n’est plus possible d’ajouter quoi que ce soit. La
+barre latérale indique en haut le nombre d’entrées que le plan contient déjà (« 12 sur 300 »). Pour les très grands
 projets, il est recommandé de répartir le plan sur plusieurs widgets, par exemple
 un par série.
 
-**Question :** Le bouton **+** n’est pas cliquable dans les sections **Jalons** et **Périodes**
-.
+**Question :** Dans le menu **Nouveau**, les options **Jalon** et **Période** sont absentes.
 
-Réponse : Le plan n’a plus de niveau, et sans niveau, un jalon
-ou une période n’a pas sa place ; l’éditeur de plan le signale en dessous. Créez
-au moins un niveau dans l’onglet **Niveaux** via **Nouveau niveau**. Les dates clés peuvent également être créées sans niveau.
+Réponse : Le plan ne comporte plus de niveau, et sans niveau, un jalon
+ou une période n’a pas sa place ; la barre latérale le signale. Créez-en au moins un à droite
+dans l’onglet **Niveaux** via **Nouveau niveau**. Les dates clés peuvent
+également être créées sans niveau.
 
 **Question :** Où se trouve la corbeille dans la liste des entrées ?
 
-Réponse : Elle apparaît lorsque vous passez la souris sur une ligne ou qu’une
-ligne est sélectionnée à l’aide du clavier ; sur les appareils tactiles, elle est toujours visible.
-La suppression n’a lieu qu’après confirmation. Si d’autres entrées dépendent de celle supprimée,
-la fenêtre de confirmation indique leur nombre ; leurs liens sont supprimés.
+Réponse : Il n’y en a plus dans la liste. La suppression s’effectue dans le formulaire de l’
+entrée sélectionnée via **Supprimer l’entrée**, après une demande de confirmation. Si d’autres
+entrées dépendent de celle supprimée, la fenêtre de confirmation indique leur nombre ; leurs liens
+sont supprimés.
 
-**Question :** Lors de la création d’un niveau ou d’une catégorie, le message « Un niveau « X »
-existe déjà » ou « Une catégorie « X » existe déjà » s’affiche.
+**Question :** Les boutons pour la ligne « Aujourd’hui » et l’exportation ne figurent pas dans la boîte de dialogue.
+
+Réponse : Depuis l’éditeur plein écran, ils ne se trouvent plus dans la boîte de dialogue de Staffbase,
+mais à droite dans le panneau **Plan**, sous **Paramètres**. Un bloc pour lequel ils
+n’ont jamais été activés dans l’éditeur conserve le paramètre qu’il avait auparavant.
+
+**Question :** Lors de la création d'un niveau ou d'une catégorie, le message « Un niveau « X »
+existe déjà. » ou « Une catégorie « X » existe déjà. » s'affiche.
 
 Réponse : Chaque nom ne doit apparaître qu'une seule fois, sinon il serait impossible de distinguer les niveaux et
 les catégories dans les listes déroulantes, la légende et l'exportation vers Excel.
 La distinction entre majuscules et minuscules ainsi que les espaces en début ou en fin de nom ne sont
-pas pris en compte. Choisissez un autre nom ou conservez le niveau existant.
+pas pris en compte. Choisissez un autre nom ou utilisez le niveau existant.
 
-**Question :** Un onglet du formulaire est marqué d’un point rouge.
+**Question :** Un onglet du formulaire est signalé par un point rouge.
 
-Réponse : Un champ de cet onglet contient une entrée non valide, par exemple une
+Réponse : Un champ de cet onglet contient une saisie non valide, par exemple une
 date vide. Le plan conserve à cet endroit la dernière valeur valide. Ouvrez l’
 onglet et corrigez le champ ; le point disparaîtra alors.
 
@@ -225,7 +227,7 @@ page ?
 Réponse : Sont traduits le titre du planning, les titres des niveaux et
 des catégories, ainsi que le titre et la description de chaque entrée. Les dates, les couleurs,
 les dépendances et les noms de séries restent inchangés — un nom de série est
-une clé, et deux versions traduites différemment décomposeraient une série
+une clé, et deux versions traduites différemment entraîneraient la fragmentation d’une série
 .
 
 **Question :** Après la traduction, le message « Plan du projet : le contenu n’a

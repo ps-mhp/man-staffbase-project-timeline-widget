@@ -19,10 +19,10 @@ Si sigue sin funcionar, actualiza la página.
 **Pregunta:** En la parte superior del editor de planes aparece «No se han podido leer N entradas
 y se perderán al guardar».
 
-Respuesta: El plan guardado contiene entradas que el widget no
-puede procesar —por ejemplo, sin título, con una fecha no válida o en un nivel que
-ya no existe—. La página publicada
-ya no muestra este tipo de entradas. Si guarda el plan, desaparecerán definitivamente. Si desea
+Respuesta: El plan guardado contiene entradas con las que el widget no
+sabe qué hacer —por ejemplo, sin título, con una fecha no válida o en un nivel que
+ya no existe—. La página publicada ya no muestra este tipo de entradas.
+Si guarda el plan, desaparecerán definitivamente. Si desea
 recuperarlas, haga clic en **Cancelar** en lugar de aplicar los cambios y póngase
 en contacto con la persona que modificó el plano por última vez; normalmente, el contenido
 del campo de texto **Plano** se ha editado manualmente.
@@ -33,7 +33,7 @@ no está disponible o no está publicada».
 Respuesta: La ventana carga la entrada según tus propios permisos. El mensaje
 aparece si la entrada aún es un borrador, se ha eliminado o se encuentra en un
 canal al que no tienes acceso. Publica la entrada o
-comprueba la visibilidad del canal. **Abrir en una nueva pestaña** muestra lo que
+comprueba la visibilidad del canal. **Abrir en una pestaña nueva** muestra lo que
 dice la propia Staffbase al respecto.
 
 **Pregunta:** He creado una página con **Nueva página…**, pero en la parte superior
@@ -71,52 +71,48 @@ uno se quedaría atascado al desplazarse por el plan. Para hacer zoom, mantenga 
 (Mac: ⌘) mientras gira la rueda del ratón. La indicación solo aparece
 una vez.
 
-**Pregunta:** En el editor de planos aparece «La vista previa se muestra con la primera
+**Pregunta:** En el editor de planes aparece «La vista previa se muestra con la primera
 entrada».
 
 Respuesta: El plan aún no tiene ninguna entrada, por lo que no hay nada que mostrar.
-En la pestaña **Entradas**, situada encima de la lista, selecciona un tipo y crea una entrada con
-**+**.
+Crea una entrada a la izquierda, en **Nuevo**. Sin un nivel, al principio solo es posible
+introducir una fecha de referencia; los niveles se crean a la derecha, en la pestaña **Niveles**.
 
 **Pregunta:** El editor de planes ocupa toda la pantalla, incluida la barra
 del estudio.
 
-Respuesta: Es a propósito: la vista previa, la lista y el formulario necesitan espacio. Puede
-salir del editor en la esquina superior derecha pulsando **Aplicar** o **Cancelar**; a continuación,
-volverá a verse el cuadro de diálogo de configuración, y **Editar plan…** abrirá
-de nuevo el editor.
+Respuesta: Es a propósito: la lista, el formulario, el panel y la vista previa necesitan espacio.
+Para salir del editor, haz clic en la cruz, en **Cancelar** o en **Aplicar**
+(con **Aceptar y cerrar**); a continuación, volverá a aparecer el cuadro de diálogo de configuración
+y **Editar plan…** volverá a abrir el editor.
 
-**Pregunta:** La vista previa me quita demasiado espacio.
+**Pregunta:** ¿Dónde está la vista previa? En el editor solo veo el formulario.
 
-Respuesta: Arrastre hacia arriba la barra estrecha situada debajo de la vista previa o
-oculte completamente la vista previa haciendo clic en **Vista previa**. Del mismo modo,
-la lista de entradas se puede ajustar para que sea más estrecha o más ancha
-arrastrando la barra situada entre la lista y el formulario. Al hacer doble clic en una barra, se
-restablece el tamaño original. El navegador recuerda los tamaños; en una
-ventana privada, la próxima vez que se abra se volverán a aplicar los valores predeterminados.
+Respuesta: La vista previa se encuentra en las vistas **Ordenador**, **Tableta** y
+**Móvil**, en la parte superior del encabezado; allí sustituye al formulario, y el panel **Plan**
+permanece a la derecha. **Editor** te lleva de vuelta al formulario.
 
-**Pregunta:** ¿Dónde pueden los lectores y lectoras averiguar qué significan los símbolos del plano?
+**Pregunta:** ¿Dónde pueden los lectores averiguar qué significan los símbolos del plano?
 
 **Respuesta:** A través del botón **Ayuda** de la barra de herramientas (en pantallas estrechas,
 un **?**). La pestaña **Leyenda** muestra cada símbolo como un pequeño
-ejemplo con su explicación y las categorías de este plano; la pestaña **Manejo**
-explica cómo hacer zoom, desplazarse, aplicar filtros y todos los atajos de teclado. Si el foco está en el
+símbolo con su explicación y las categorías de este plano; la pestaña **Uso**
+explica cómo hacer zoom, desplazarse, aplicar filtros y todos los atajos de teclado. Si el cursor está situado en el
 plano, la tecla **?** también abre la ayuda.
 
-**Pregunta:** ¿Cómo hago zoom?
+**Pregunta:** ¿Cómo puedo ampliar o reducir la imagen?
 
 Respuesta: De cuatro maneras: con los botones **−** y **+** de la
 barra de herramientas; manteniendo pulsada la tecla Ctrl (Mac: ⌘) y girando la rueda del ratón, con lo que
-el plano se amplía en torno al punto situado bajo el puntero del ratón; con dos dedos en
+el plano se amplía o reduce en torno al punto situado bajo el puntero del ratón; con dos dedos en
 el trackpad o la pantalla táctil; o con el teclado mediante **+** y **−**, en cuanto
 el plano tenga el foco. **Mostrar todo** (tecla **0**) vuelve a mostrar todo el
-plano. La sección se puede desplazar arrastrándola con el ratón, con
+plano. La vista se puede desplazar arrastrando con el ratón, con
 la tecla Mayús y la rueda del ratón, o mediante el marco de la vista general situado debajo del plano.
 
 **Pregunta:** ¿Por qué no veo el botón «Exportar»?
 
-Respuesta: O bien la opción **Ofrecer exportación a Excel** está desactivada en la configuración del widget,
-o bien la pantalla es estrecha (menos de 768 píxeles
+Respuesta: O bien la opción **Ofrecer exportación a Excel** está desactivada en el editor de planes, en **Configuración**, **o bien la pantalla es estrecha (menos de 768 píxeles**
 de ancho): en ese caso, **Exportar** aparece en el menú **Más** de la barra de herramientas.
 
 **Pregunta:** ¿Dónde configuro la forma de un hito?
@@ -158,57 +154,63 @@ Compruebe en el formulario de cada entrada el campo **Serie** y su **Nivel**.
 
 **Pregunta:** No se ve la línea de «Hoy».
 
-Respuesta: Compruebe si la opción **Mostrar línea de «Hoy»** está activada. Además, la línea
+Respuesta: Comprueba en el editor de planes, en **Configuración**, si la opción **Mostrar línea de hoy** está activada. Además, la línea
 solo aparece si el día de hoy se encuentra dentro del fragmento visible;
-en el caso de un plan que comience íntegramente en el futuro, solo se verá tras
-desplazarlo o al seleccionar **Mostrar todo** — siempre que el día de hoy se encuentre,
-en su caso, dentro del periodo del plan.
+en un plan que comience íntegramente en el futuro, solo se verá tras
+desplazarla o al utilizar **Mostrar todo** — siempre que hoy se encuentre, de hecho, dentro del
+periodo del plan.
 
-**Pregunta:** ¿Puedo mover entradas en la línea de tiempo con el ratón?
+**Pregunta:** ¿Puedo desplazar entradas en la línea de tiempo con el ratón?
 
-Respuesta: No. Las fechas se crean y se modifican en el formulario del editor de planes.
+Respuesta: No. Las citas se crean y se modifican en el formulario del editor de planes.
 De este modo, ninguna entrada puede perder su fecha por error al hacer zoom o desplazar la vista
 .
 
-**Pregunta:** En el editor de planes aparece «Un plan no admite más de 300 entradas»
-(o lo mismo para 20 niveles o 24 categorías).
+**Pregunta:** En el editor de planes aparece «Un plan no admite más de 300 entradas
+» (o lo mismo para 20 niveles o 24 categorías).
 
-Respuesta: Un plan admite como máximo 300 entradas, 20 niveles y
-24 categorías; una vez alcanzado el límite, no se puede añadir nada más. El editor
-muestra en la esquina superior derecha cuántas entradas contiene ya el plan. Para proyectos muy grandes,
+Respuesta: Un plan admite un máximo de 300 entradas, 20 niveles y
+24 categorías; una vez alcanzado el límite, no se puede añadir nada más. La
+barra lateral muestra en la parte superior cuántas entradas contiene ya el plan («12 de 300»). Para proyectos muy grandes,
 se recomienda dividir el plan en varios widgets, por ejemplo,
-uno por serie de construcción.
+uno por serie.
 
-**Pregunta:** El botón **+** no se puede pulsar en **Hitos** y **Periodos**
-.
+**Pregunta:** En el menú **Nuevo** faltan **Hito** y **Periodo**.
 
-Respuesta: El plan ya no tiene ningún nivel, y sin nivel, un hito
-o un periodo no tiene espacio; el editor del plan lo indica debajo. Cree
-al menos una capa en la pestaña **Capas** mediante **Nueva capa**. Las fechas clave se pueden crear también sin capa.
+Respuesta: El plan ya no tiene ningún nivel, y sin nivel no hay espacio para un hito
+ni un periodo; la barra lateral lo indica. Cree al menos uno a la derecha,
+en la pestaña **Niveles**, mediante **Nuevo nivel**. Las fechas clave se pueden
+crear también sin nivel.
 
 **Pregunta:** ¿Dónde está la papelera de reciclaje en la lista de entradas?
 
-Respuesta: Aparece al pasar el ratón por encima de una línea o cuando una
-línea tiene el foco mediante el teclado; en dispositivos táctiles siempre está visible.
-La eliminación solo se lleva a cabo tras la confirmación. Si hay otras entradas dependientes de la eliminada,
-la ventana de confirmación indicará su número; sus vínculos se eliminarán.
+Respuesta: Ya no aparece en la lista. Para eliminar una entrada, hay que hacerlo en el formulario de la
+entrada seleccionada mediante **Eliminar entrada**, tras una confirmación. Si hay otras
+entradas vinculadas a la eliminada, la ventana de confirmación indicará su número; sus vínculos
+se eliminarán.
+
+**Pregunta:** Faltan los botones de la línea «Hoy» y «Exportar» en el cuadro de diálogo.
+
+Respuesta: Desde la introducción del editor a pantalla completa, ya no aparecen en el cuadro de diálogo de Staffbase,
+sino a la derecha, en el panel **Plan**, en **Configuración**. Un bloque en el que
+nunca se hayan activado en el editor conserva la configuración que tenía anteriormente.
 
 **Pregunta:** Al crear un nivel o una categoría, aparece el mensaje «Ya existe un nivel «X»»
 o «Ya existe una categoría «X»».
 
 Respuesta: Cada nombre solo puede aparecer una vez; de lo contrario, no se podrían
 distinguir los niveles y las
-categorías en los campos de selección, la leyenda y la exportación a Excel. Las mayúsculas, las minúsculas y los espacios al final no
-se tienen en cuenta. Elija otro nombre o utilice el nivel existente.
+categorías en los campos de selección, la leyenda y la exportación a Excel. Las mayúsculas, las minúsculas y los espacios al principio o al final no
+se tienen en cuenta. Elija otro nombre o utilice el nivel ya existente.
 
-**Pregunta:** Una pestaña del formulario tiene un punto rojo.
+**Pregunta:** Una pestaña del formulario aparece marcada con un punto rojo.
 
 Respuesta: Un campo de esa pestaña contiene una entrada no válida, como una
 fecha vacía. El plan conserva allí el último valor válido. Abra la
 pestaña y corrija el campo; entonces desaparecerá el punto.
 
 **Pregunta:** En el formulario aparece «Indique un título», «Indique un
-nombre», «Introduzca una fecha», «Introduzca una fecha válida»,
+nombre», «Indique una fecha», «Indique una fecha válida»,
 «El final es anterior al inicio», «El inicio es posterior al
 final» o «Indique un color en formato #RRGGBB, por ejemplo, #E40045».
 

@@ -7,94 +7,97 @@
    wąskiej kolumnie nadal będzie działać, ale wyświetli mniej informacji naraz.
 2. Otwórz ustawienia widżetu. Edytor planu otworzy się
    automatycznie, zajmując cały ekran; zakrywa przy tym również pasek studia.
-3. Pusty plan oferuje dwie możliwości: opcja **Zacznij od zera** tworzy warstwę
+3. Pusty plan oferuje dwie możliwości: opcja **Zacznij od pustego** tworzy warstwę
    „Warstwa 1”; osoby, które wolą zacząć od gotowego szablonu, powinny postępować zgodnie z
    sekcją „Zacznij od szablonu”.
-4. W pasku nagłówkowym edytora planu w polu **Nagłówek**
-   można opcjonalnie wpisać tytuł planu. Znajduje się on nad planem i nadaje
+4. W prawym panelu **Plan** w sekcji **Ustawienia** w polu **Tytuł
+   planu** wpisz opcjonalnie tytuł. Znajduje się on nad planem i nadaje
    nazwę plikowi Excel.
-5. W zakładce **Poziomy** utwórz poziomy — zobacz „Zarządzanie poziomami”.
-6. W zakładce **Kategorie** utwórz kategorie wraz z ich kolorami —
-   zobacz „Zarządzanie kategoriami”.
-7. W zakładce **Wpisy** utwórz kamienie milowe, okresy i terminy
-   — zobacz poniższe sekcje.
-8. Kliknij w prawym górnym rogu przycisk **Zastosuj**.
-9. W oknie dialogowym zaznacz pola wyboru **Pokaż linię dzisiejszą** i
-   **Oferuj eksport do Excela**; oba są domyślnie zaznaczone.
+5. Utwórz poziomy w zakładce **Poziomy** po prawej stronie — zobacz „Zarządzanie
+   poziomami”.
+6. Utwórz kategorie wraz z ich kolorami w zakładce **Kategorie** po prawej stronie
+   — zobacz „Zarządzanie kategoriami”.
+7. Po lewej stronie, za pomocą przycisku **Nowy**, utwórz kamienie milowe, okresy i terminy —
+   zobacz poniższe sekcje.
+8. W sekcji **Ustawienia** sprawdź, czy przełączniki **Pokaż linię dzisiejszą** i
+   **Oferuj eksport do Excela** są włączone; obie opcje są domyślnie włączone.
+9. Kliknij w prawym górnym rogu przycisk **Zastosuj**. Przycisk **Zastosuj i
+   zamknij** (⌘/Ctrl ↵) powoduje zamknięcie edytora.
 10. Zapisz stronę i sprawdź wynik w podglądzie.
 
 ## Rozpocznij od szablonu
 
 1. Otwórz ustawienia widżetu, którego plan jest jeszcze pusty.
-2. W edytorze planu kliknij **Zacznij od szablonu**. Edytor wyświetli
+2. W edytorze planu kliknij **Rozpocznij od szablonu**. Edytor wyświetli
    szablony w formie kart, z których każda zawiera miniaturę, opis oraz informacje o tym, co
-   oferuje:
-   - **Plan rozwoju produktu** — kilka lat i linie produktów na wzór
-     planu „Sales Truck Launch”: trzy poziomy, siedem kategorii i każdy
+   zawiera:
+   - **Plan rozwoju produktu** — wieloletni i obejmujący linie produktów, wzorowany
+     na planie „Sales Truck Launch”: trzy poziomy, siedem kategorii i każdy
      rodzaj wpisu.
-   - **Przesunięcie terminu** — przesunięty termin o kilka miesięcy:
-     stara i nowa data jako terminy kluczowe, po jednym poziomie dla każdej funkcji, której to dotyczy.
+   - **Przesunięcie terminu** — przesunięcie terminu o kilka miesięcy:
+     stary i nowy termin jako daty kluczowe, po jednym poziomie dla każdej funkcji, której to dotyczy.
 3. Kliknij odpowiednią kartę. Edytor wypełni się szablonem;
-   już wprowadzony nagłówek pozostanie. Przycisk **Wstecz** powoduje powrót bez wprowadzania zmian
-   do dwóch ścieżek.
+   już wprowadzony nagłówek pozostanie. **Wstecz** powoduje powrót bez wprowadzania zmian
+   do obu ścieżek.
 4. Dostosuj nagłówek, poziomy, kategorie i wpisy do swojego projektu
    lub usuń to, czego nie potrzebujesz.
-5. Kliknij **Zastosuj** w prawym górnym rogu i zapisz stronę.
+5. Kliknij w prawym górnym rogu **Zastosuj** i zapisz stronę.
 
-## Konfiguracja edytora planu
+## Widoki edytora planu
 
-- **Zwiń podgląd:** Kliknięcie przycisku **Podgląd** powoduje zwinięcie osi czasu
-  i zwolnienie miejsca dla zakładek poniżej. Po rozwinięciu osi czasu przywraca się
-  ostatnio wybrana wysokość.
-- **Zmiana rozmiaru:** Linia oddzielająca podgląd od zakładek zmienia
-  wysokość podglądu (przynajmniej na tyle, by oś czasu pozostała widoczna),
-  a linia między listą wpisów a formularzem — szerokość listy. Przeciągnij ją myszką lub zaznacz i
-  użyj klawiszy strzałek (z klawiszem Shift, aby zwiększyć krok).
-  Podwójne kliknięcie przywraca pierwotny rozmiar. Przeglądarka zapamiętuje
-  rozmiary na następne otwarcie.
-- Lista, formularz, poziomy i kategorie przewijają się niezależnie; pasek nagłówka,
-  zakładki i przyciski nad każdym obszarem pozostają w miejscu.
+- **Edytor** wyświetla po lewej stronie wpisy, pośrodku formularz wybranego
+  planu, a po prawej panel **Plan**.
+- Widoki **Komputer stacjonarny**, **Tablet** i **Telefon komórkowy** (u góry w nagłówku) wyświetlają zamiast
+  formularza plan tak, jak wygląda on na urządzeniu o danej szerokości: z
+  powiększeniem, bez filtrów i opcji eksportu. Kliknięcie wpisu powoduje jego zaznaczenie;
+  następnie jest on dostępny w formularzu widoku **Edytor**. Panel po prawej stronie
+  pozostaje przy tym na swoim miejscu.
+- Przyciski **Cofnij** i **Powtórz** w nagłówku cofają zmiany krok po kroku;
+  **Pomoc** (F1) wyjaśnia obsługę. Lista, formularz i panel
+  przewijają się niezależnie od siebie.
 
-## Lista wpisów
+## Pasek boczny
 
-- Nad listą znajduje się napis **Przeglądaj wpisy**, a poniżej przełącznik
-  do wyboru typu: **Kamienie milowe**, **Okresy** lub **Daty kluczowe**, wraz z
-  ich liczbą. Lista wyświetla tylko wpisy tego typu.
-- Przycisk **+** po prawej stronie przełącznika służy do utworzenia wpisu
-  wybranego typu.
-- Przed każdym tytułem znajduje się mały symbol w kolorze jego kategorii — dzięki temu
-  można odnaleźć na liście wpis z osi czasu.
-- Wyszukiwanie działa w obrębie wybranego typu; liczby na przełączniku
-  wskazują wówczas, ile wyników znajduje się w każdym typie.
-- Jeśli w podglądzie wybierzesz wpis innego typu,
-  przełącznik zmieni się odpowiednio.
-- Aby usunąć wpis, najedź myszką na wiersz i kliknij na
-  kosz po prawej stronie (na urządzeniach dotykowych jest on zawsze widoczny). Małe
-  okienko informacyjne podaje również, ile wpisów jest powiązanych z usuwanym; potwierdź
-  wybór, klikając **Usuń**.
+- U góry znajduje się **Wpisy** z liczbą („12 z”) **Pomoc** (F1) wyjaśnia obsługę. Lista, formularz i panel
+  przewijają się niezależnie od siebie.
+
+## Pasek boczny
+
+- U góry znajduje się pozycja **Wpisy** z liczbą („12 z 300”). **Nowe** otwiera menu:
+  **Kamień milowy**, **Okres** lub **Data kluczowa**. Bez poziomu oferuje tylko
+  datę kluczową — kamienie milowe i okresy wymagają poziomu.
+- Poniżej znajduje się opcja **Przeszukaj wpisy** oraz wybór typu (**Wszystkie
+  typy**, **Kamienie milowe**, **Okresy**, **Daty graniczne**, każda z liczbą; przy
+  aktywnym wyszukiwaniu — wyniki). Lista jest zawsze uporządkowana według terminu.
+- Każdy wiersz zawiera tytuł, rodzaj, termin i oznaczenie „wstępny”, a przed nim symbol w
+  kolorze kategorii — w ten sposób można odnaleźć wpis z osi czasu na
+  liście.
+- Nowy wpis znajduje się pośrodku fragmentu, który ostatnio widziałeś w
+  podglądzie, w przeciwnym razie dzisiaj.
+- Usuwanie odbywa się poprzez opcję **Usuń wpis** w formularzu (z potwierdzeniem), a nie
+  już na liście.
 
 ## Formularz wpisu
 
-Po prawej stronie listy znajduje się formularz wybranego wpisu. U góry widnieje
-jego tytuł oraz przyciski **Duplikuj** i **Usuń**, a poniżej pięć
-zakładek:
+Pośrodku znajduje się formularz wybranego wpisu. U góry widnieje
+„Wpis 4 z 12”, rodzaj oraz przyciski **Duplikuj wpis** i
+**Usuń wpis**, a poniżej pięć zakładek:
 
-- **Ogólne** — rodzaj, tytuł, opis
+- **Ogólne** — typ, tytuł, opis, tymczasowy
 - **Klasyfikacja** — poziom, kategoria, seria
-- **Termin** — data lub początek i koniec; w przypadku okresu — strzałka na końcu,
-  Wstępny
-- **Zależności** — poprzednicy; liczba obok wskazuje, ilu
+- **Termin** — data lub początek i koniec; w przypadku okresu — strzałka na końcu
+- **Zależności** — poprzedniki; liczba obok wskazuje, ile
   zostało wybranych. Terminy kluczowe nie mają tej zakładki.
 - **Treść** — strona Staffbase lub wpis w aktualnościach, który otwiera się po kliknięciu
-  na wpis
+  na wpis, oraz załączniki
 
 Wybrana zakładka pozostaje otwarta po przejściu do innego wpisu
 — osoby zarządzające terminami wielu wpisów pozostają na zakładce **Termin**. Jeśli w
-zakładce znajduje się nieprawidłowy wpis, wyświetla się czerwona kropka.
+zakładce znajduje się nieprawidłowy wpis, za jej nazwą pojawia się „(Błąd)”.
 
 ## Zarządzanie poziomami
 
-1. W edytorze planu otwórz zakładkę **Poziomy**.
+1. Otwórz zakładkę **Poziomy** w panelu **Plan** po prawej stronie.
 2. Aby utworzyć poziom, kliknij **Nowy poziom** i wprowadź
    jego nazwę. Można to również zrobić bezpośrednio w formularzu wpisu: w sekcji
    **Klasyfikacja** w polu **Poziom** wybierz opcję **Nowy poziom …**, wprowadź
@@ -108,13 +111,13 @@ zakładce znajduje się nieprawidłowy wpis, wyświetla się czerwona kropka.
    stronie oraz w eksporcie do programu Excel.
 5. Aby usunąć poziom, kliknij **Usuń**. Jeśli poziom zawiera jeszcze
    wpisy, edytor zapyta, czy mają one zostać przeniesione do innej warstwy
-   — wybierz ją w polu **Warstwa docelowa** — czy też mają zostać usunięte
+   — którą wybierasz w polu **Warstwa docelowa** — czy też mają zostać usunięte
    wraz z warstwą. Potwierdź, klikając **Usuń**, lub anuluj, klikając **Anuluj**
   .
 
 ## Zarządzanie kategoriami
 
-1. W edytorze planu otwórz zakładkę **Kategorie**.
+1. Otwórz zakładkę **Kategorie** w panelu **Plan** po prawej stronie.
 2. Aby utworzyć kategorię, kliknij **Nowa kategoria** i
    wprowadź jej nazwę — lub wybierz w formularzu wpisu
    w polu **Kategoria** w sekcji **Klasyfikacja** opcję **Nowa kategoria …**;
@@ -130,77 +133,76 @@ zakładce znajduje się nieprawidłowy wpis, wyświetla się czerwona kropka.
 5. Aby zmienić kolejność legendy, przesuń kategorię
    za pomocą strzałek w górę lub w dół.
 6. Aby usunąć kategorię, kliknij **Usuń**. Twoje wpisy
-   zostaną zachowane i otrzymają oznaczenie „bez kategorii” (szare); w oknie dialogowym pojawi się informacja,
-   ile wpisów to dotyczy.
+   zostaną zachowane i otrzymają oznaczenie „bez kategorii” (szare); w oknie dialogowym podana jest
+   liczba wpisów, których to dotyczy.
 
 ## Tworzenie kamienia milowego
 
-1. W edytorze planu otwórz zakładkę **Wpisy**.
-2. Nad listą wybierz opcję **Kamienie milowe** i kliknij **+**.
-   Nowy wpis nosi nazwę „Nowy kamień milowy”, znajduje się pośrodku podglądu
-   i na pierwszym poziomie; po prawej stronie pojawia się jego formularz w zakładce
-   **Ogólne**, a tytuł jest zaznaczony.
-3. Wprowadź **Tytuł** i opcjonalnie **Opis**.
+1. Kliknij po lewej stronie **Nowy** i wybierz **Kamień milowy**. Nowy
+   wpis nosi nazwę „Nowy kamień milowy”, znajduje się pośrodku fragmentu
+   podglądu (w przeciwnym razie dzisiaj) oraz na pierwszym poziomie; pośrodku pojawia się jego
+   formularz w zakładce **Ogólne**, a tytuł jest zaznaczony.
+2. Wprowadź **Tytuł** i opcjonalnie **Opis**.
    Opis pojawia się w szczegółach, a znaki końca linii pozostają zachowane.
-4. W sekcji **Klasyfikacja** wybierz **poziom** i **kategorię** —
+3. W sekcji **Klasyfikacja** wybierz **poziom** i **kategorię** —
    lub „Bez kategorii”.
-5. W sekcji **Termin** wprowadź **datę**.
-6. Kształt i kolor kamienia milowego zależą od jego kategorii; bez
+4. W sekcji **Termin** wprowadź **datę**.
+5. Kształt i kolor kamienia milowego zależą od jego kategorii; bez
    kategorii pojawia się on jako szary romb. W sekcji **Klasyfikacja** znajduje się
    informacja o aktualnym kształcie.
 7. Zaznacz opcję **Wstępnie**, jeśli termin nie jest jeszcze ustalony.
-8. Kliknij w prawym górnym rogu przycisk **Zastosuj**, gdy wszystkie wpisy będą już
+8. Kliknij w prawym górnym rogu **Zastosuj**, gdy wszystkie wpisy będą już
    gotowe.
 
 ## Tworzenie okresu
 
-1. W zakładce **Wpisy** nad listą wybierz opcję **Okresy** i kliknij
-   przycisk **+**. Nowy wpis nosi nazwę „Nowy okres”.
-2. W sekcji **Ogólne** wprowadź **Tytuł** oraz opcjonalnie
-   **Opis**, a w sekcji **Klasyfikacja** wybierz **Poziom** i **Kategorię**.
+1. Kliknij po lewej stronie **Nowy** i wybierz **Okres**. Nowy
+   wpis nosi nazwę „Nowy okres”.
+2. W sekcji **Ogólne** wprowadź **tytuł** oraz opcjonalnie
+   **opis**, a w sekcji **Klasyfikacja** – **poziom** i **kategorię**.
 3. W sekcji **Termin** wprowadź **Początek** i **Koniec**. Oba dni
    należą do tego okresu.
-4. Zaznacz opcję **Strzałka na końcu**, jeśli okres trwa
+4. Ustaw **strzałkę na końcu**, jeśli okres trwa
    dalej po upływie terminu końcowego.
-5. Zaznacz opcję **Wstępnie**, jeśli data rozpoczęcia lub zakończenia nie są jeszcze ustalone.
+5. W sekcji **Ogólne** włącz przełącznik **Wstępny**, jeśli data rozpoczęcia
+   lub zakończenia nie są jeszcze ustalone.
 
-Kamień milowy można w dowolnym momencie zmienić w przedział czasowy w sekcji **Rodzaj**
+Kamień milowy można w dowolnym momencie zmienić w sekcji **Rodzaj** na okres
 i odwrotnie.
 
 ## Tworzenie terminu
 
-1. W zakładce **Wpisy** nad listą wybierz **Terminy** i kliknij
-   **+**.
-2. Wprowadź **Tytuł**, opcjonalnie **Opis**, **kategorię** oraz
-   **datę**. Nie ma tu poziomu: termin obowiązuje dla
+1. Kliknij po lewej stronie **Nowy** i wybierz **Termin**.
+2. Wprowadź **Tytuł**, opcjonalnie **Opis**, **Kategorię** oraz
+   **Datę**. Nie ma tu poziomu: termin obowiązuje dla
    całego planu i obejmuje wszystkie poziomy.
 
-Jeśli kamień milowy lub okres w polu **Rodzaj** zostanie ustawiony jako termin, jego
-poziom zostanie pominięty.
+Jeśli kamień milowy lub okres w polu **Rodzaj** zostanie przekształcony w termin, jego
+poziom zostanie usunięty.
 
 ## Łączenie wpisów w serię
 
-1. W zakładce **Wpisy** wybierz pierwszy wpis z serii i
+1. Wybierz z listy pierwszy wpis serii i
    otwórz **Klasyfikację**.
-2. Kliknij w pole **Seria**. Wyświetlą się serie, które już istnieją na
-   już istnieją na tym poziomie, wraz z liczbą wpisów w każdej z nich. Wpisz
+2. Kliknij pole **Seria**. Wyświetlą się serie, które już istnieją na
+   na tym poziomie, wraz z liczbą wpisów w każdej z nich. Wpisz
    nową nazwę, na przykład „TG Assist MY26”, i wybierz
    **„Utwórz nową serię TG Assist MY26”** (lub naciśnij Enter).
-3. Wybierz następny wpis na tej samej poziomie i w sekcji
+3. Wybierz kolejną pozycję na tym samym poziomie i w sekcji
    **Seria** wybierz z listy właśnie utworzoną serię.
-4. Powtórz krok 3 dla wszystkich wpisów z tej serii. Opcja **Brak serii** znajdująca się
-   na samym szczycie listy usuwa wpis; Klawisz Esc przywraca
+4. Powtórz krok 3 dla wszystkich pozycji w serii. **Brak serii** „całkowicie”
+   na samym szczycie listy usuwa wpis; klawisz Esc przywraca
    poprzednią wartość.
 
-Seria obowiązuje tylko w obrębie jednego poziomu. Wielkość liter nie ma
-znaczenia przy wyszukiwaniu, natomiast znaczenie mają łączniki i akcenty: „TG Assist
+Seria ma zastosowanie tylko w obrębie jednego poziomu. Wielkość liter nie ma
+znaczenia przy wyszukiwaniu, natomiast łączniki i akcenty już tak: „TG Assist
 MY26” i „TG-Assist MY26” to dwie różne serie.
 
 ## Ustawianie zależności
 
-1. W zakładce **Wpisy** wybierz wpis, który jest zależny od innego
-   (następca), i otwórz okno **Zależności**.
-2. W sekcji **Zależy od** wyszukaj i wybierz poprzednik. Możliwe jest
+1. Wybierz z listy pozycję, która jest zależna od innej
+   (następca), i otwórz **Zależności**.
+2. W sekcji **Zależy od** wyszukaj i wybierz poprzednika. Możliwe jest
    wskazanie wielu poprzedników.
 3. Na stronie pojawi się teraz przerywana linia ze strzałką łącząca
    poprzednik z następcą.
@@ -211,11 +213,11 @@ zależności.
 
 ## Powiązanie strony lub wpisu
 
-Do każdego wpisu można powiązać stronę Staffbase lub wpis z aktualnościami —
+Do każdego wpisu można powiązać stronę Staffbase lub wpis w sekcji Aktualności —
 na przykład stronę zawierającą wszystkie informacje o aktualizacji oprogramowania. Plan pozostaje
 przeglądowym, a szczegóły znajdują się tam, gdzie i tak są aktualizowane.
 
-1. Wybierz wpis w zakładce **Wpisy** i otwórz
+1. Wybierz wpis z listy i otwórz
    zakładkę **Treść**.
 2. W sekcji **Link** wybierz **Strona** lub **Artykuł z aktualności**.
 3. W przypadku strony wybierz ją w sekcji **Strona**. W przypadku wpisu
@@ -240,7 +242,7 @@ wpis, zaproponuje ich powiązanie; w przeciwnym razie zapyta,
 czy naprawdę chcesz przerwać tworzenie — wszystko, co w edytorze Staffbase nie zostało jeszcze
 zapisane, zostanie utracone.
 
-Pod powiązaniem znajdują się **załączniki**: pliki i zdjęcia z
+Pod powiązaniem znajdują się **załączniki**: pliki i obrazy z
 biblioteki multimediów Staffbase, maksymalnie dziesięć na każdy wpis.
 
 1. W zakładce **Treść** kliknij **Dodaj plik lub obraz…** i
@@ -262,48 +264,48 @@ szczegółach wyświetlane są jego załączniki. Za pomocą
 
 ## Duplikowanie i usuwanie wpisów
 
-1. Wybierz wpis w zakładce **Wpisy**.
-2. Opcja **Duplikuj** (w prawym górnym rogu formularza) tworzy kopię, którą
+1. Wybierz wpis z listy.
+2. Opcja **Duplikuj wpis** (w prawym górnym rogu formularza) tworzy kopię, którą
    można następnie dostosować.
-3. Opcja **Usuń** (obok) wyświetla monit, a następnie usuwa wpis oraz wszystkie
-   zależności, które do niego odwołują się. Ten sam monit pojawia się przy
-   ikonie kosza na liście. Następnie zaznaczany jest kolejny wpis z listy.
+3. Opcja **Usuń wpis** (obok) wyświetla monit, a następnie usuwa wpis oraz
+   wszystkie zależności, które do niego odwołują się; monit podaje, ile
+   wpisów jest od niego zależnych. Następnie zaznaczany jest kolejny wpis z listy.
 
 ## Ustawianie widoku początkowego
 
 Bez widoku początkowego widżet wyświetla po załadowaniu cały plan. Jeśli ma
 zamiast tego pokazywać określony fragment, na przykład najbliższe dwa lata:
 
-1. Powiększaj i przesuwaj **podgląd** w edytorze planu, aż
-   pojawi się żądany fragment.
-2. Kliknij **Ten fragment jako widok początkowy**. Ustawienie zostanie zapisane
-   z dokładnością do miesiąca.
-3. Aby ponownie wyświetlić cały plan, kliknij **Usuń widok początkowy
-  **.
-4. **Zastosuj**, zapisz i sprawdź w podglądzie strony.
+1. W górnej części nagłówka przełącz na **Komputer stacjonarny**, **Tablet** lub **Telefon komórkowy**, a następnie
+   powiększaj i przesuwaj plan, aż pojawi się żądany fragment
+  .
+2. Po prawej stronie, w sekcji **Ustawienia**, w części **Widok początkowy** kliknij
+   **Zastosuj ten fragment**. Ustawienie jest zapisywane z dokładnością do miesiąca.
+3. Aby ponownie wyświetlić cały plan, kliknij **Usuń widok początkowy**.
+  
+4. **Zastosuj**, zapisz, sprawdź w podglądzie strony.
 
-Czytelnicy mogą w dowolnym momencie powiększyć widok początkowy lub wyświetlić
-cały plan, klikając **Pokaż wszystko**.
+Czytelnicy mogą w dowolnym momencie powiększyć widok z poziomu widoku początkowego lub
+wyświetlić cały plan, klikając **Pokaż wszystko**.
 
-## Późniejsza zmiana
+## Późniejsze zmiany
 
 1. Otwórz ponownie ustawienia widżetu. Edytor planu wyświetli
    zapisany plan.
-2. Wybierz pozycję z listy w zakładce **Pozycje** lub poprzez
-   kliknięcie w podglądzie i zmień jej formularz. Kliknięcie w
-   podglądzie powoduje przejście do zakładki **Pozycje** i wyświetlenie
-   pozycję na liście.
-3. Kliknij w prawym górnym rogu **Zastosuj** i zapisz stronę.
-   Data za „Stan:” zostanie ustawiona na dzień wprowadzenia zmian.
+2. Wybierz pozycję z listy lub kliknij w podglądzie
+   (komputer stacjonarny, tablet, urządzenie mobilne) i zmień jej wygląd.
+3. Kliknij **Zastosuj** w prawym górnym rogu i zapisz stronę.
+   Data obok „Stan:” zostanie ustawiona na dzień wprowadzenia zmian.
 
-Dopóki zmiany nie zostaną zatwierdzone, w pasku nagłówkowym widnieje komunikat
-„Niezapisane zmiany”. Przycisk **Anuluj** pozwala odrzucić wszystkie zmiany
-wprowadzone od ostatniego otwarcia edytora planu; edytor wyświetli wcześniej pytanie potwierdzające.
+Dopóki zmiany nie zostaną zastosowane, w nagłówku widoczne jest, co
+uległo zmianie („Zmieniono 3 wpisy”). Klikając **Anuluj**, odrzucasz wszystkie
+zmiany wprowadzone od ostatniego otwarcia edytora planu; edytor wyświetli wcześniej
+okno z pytaniem o potwierdzenie.
 
 ## Pobieranie planu jako arkusza kalkulacyjnego Excel (dla czytelników)
 
-1. Przefiltrowaj i powiększ plan tak, aby wyświetlić potrzebne informacje.
-2. Kliknij przycisk **Eksportuj** na pasku narzędzi. Na wąskich
+1. Przefiltrowaj i powiększ plan tak, aby widzieć to, czego potrzebujesz.
+2. Kliknij na pasku narzędzi przycisk **Eksportuj**. Na wąskich
    ekranach przycisk ten znajduje się w menu **Więcej**.
 3. Wybierz zakres:
    - **Aktualny widok** — tylko wpisy w widocznym fragmencie, które
@@ -326,10 +328,11 @@ aktywnymi filtrami.
    wpisu. Otwórz ustawienia i utwórz co najmniej jeden
    kamień milowy, okres lub termin.
 2. **Edytor planu się nie otwiera.** W sekcji **Plan** widoczne jest wówczas tylko jedno
-   pole tekstowe. Zamknij ustawienia i otwórz je ponownie. Nie zmieniaj
-   ręcznie zawartości tego pola tekstowego — jest to techniczna
+   pole tekstowe; przyciski linii „Dzisiaj” i eksportu są w oknie dialogowym
+   ukryte i dostępne są wyłącznie w edytorze. Zamknij ustawienia i otwórz je ponownie. Nie zmieniaj
+   ręcznie zawartości pola tekstowego — jest to techniczna
    wersja robocza planu.
-3. **W górnej części edytora planu pojawia się komunikat, że nie udało się odczytać wpisów.**
+3. **W edytorze planu pojawia się komunikat, że nie udało się odczytać wpisów.**
    Zobacz sekcję FAQ dotyczącą tego komunikatu.
 4. **Użytkownicy nie mogą znaleźć przycisku „Eksportuj”.** Sprawdź, czy
-   opcja **Eksport do Excela** jest włączona.
+   opcja **Eksport do Excela** w sekcji **Ustawienia** w edytorze planu jest włączona.

@@ -33,7 +33,7 @@ ustawień.
 - **Zależności** — przerywane linie ze strzałką od poprzednika do
   następcy, na przykład od „C4S” do powiązanego SOP.
 - **Wstępne** — wpis, którego termin nie został jeszcze ustalony. Pojawia się
-  tylko jako kontur lub jasno wypełniony z przerywaną ramką.
+  tylko jako kontur lub jasne wypełnienie z przerywaną ramką.
 
 ## Co widzą czytelnicy
 
@@ -46,7 +46,7 @@ Od góry do dołu:
   **Pełny ekran** i **Pomoc**.
 3. **Legenda** — kategorie wraz z ich kolorami. Jedno kliknięcie powoduje
    ukrycie lub ponowne wyświetlenie kategorii.
-4. **Plan** — po lewej stronie tytuły warstw, po prawej osi czasu z
+4. **Plan** — po lewej stronie tytuły warstw, po prawej osie czasu z
    wpisami, a pod ostatnią warstwą tytuły dat kluczowych. Strzałka przy
    nagłówku zwija daną warstwę; opcja **Zwiń wszystko** nad nagłówkami zwija
    wszystkie naraz, a następnie ponownie je rozwija.
@@ -62,7 +62,7 @@ Ponadto:
 - **Przesuwanie** odbywa się poprzez przeciągnięcie myszą, przytrzymaniem klawisza Shift i kółkiem myszy,
   przez przesunięcie w poziomie lub przeciągnięcie ramki w widoku ogólnym.
 - **Kliknięcie na wpis** otwiera jego szczegóły: rodzaj i termin,
-  kategorię, poziom, serię, opis oraz poprzednik i następnik.
+  kategorię, poziom, serię, opis, a także poprzednik i następca.
 - **Filtry** i **wyszukiwanie** dotyczą wyłącznie własnej wizyty; nic nie jest zapisywane ani
   udostępniane innym.
 - **Lista** wyświetla te same wpisy w formie tabeli, posortowanej według terminu — jest to
@@ -94,7 +94,9 @@ Ponadto:
 
 ## Co widać w edytorze CMS
 
-W górnej części edytora planu znajduje się **podgląd**: ta sama oś czasu, co na
-stronie, z funkcją powiększania, ale bez filtrów, listy i opcji eksportu. Kliknięcie
-wpisu w podglądzie zaznacza go do edycji. Aby sprawdzić, jak czytelnicy widzą plan
-z wszystkimi filtrami i opcją eksportu, należy skorzystać z podglądu strony.
+Edytor planu wyświetla **podgląd** w widokach **komputer stacjonarny**, **tablet**
+i **urządzenie mobilne** u góry w nagłówku: ta sama oś czasu, co na stronie, w
+szerokości urządzenia, z powiększeniem, ale bez filtrów, listy i opcji eksportu. Kliknięcie
+wpisu w podglądzie zaznacza go do edycji. Aby sprawdzić, jak czytelnicy
+widzą plan wraz ze wszystkimi filtrami i opcją eksportu, należy skorzystać z podglądu
+strony.
