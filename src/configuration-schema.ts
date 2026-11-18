@@ -23,7 +23,7 @@ export const ALLOW_EXPORT_ATTRIBUTE = "allow-export";
  * stehen weiter im Schema, damit alte Blöcke ihre Werte behalten und der
  * Dialog sie führt; gepflegt werden sie seither im Vollbild-Editor und liegen
  * im Plan (`plan.showToday`, `plan.allowExport`). Im eigenen Dialog sind die
- * Zeilen ausgeblendet (`legacy-fields.ts`).
+ * Zeilen ausgeblendet (`@shared/legacy-fields`).
  */
 export const LEGACY_ATTRIBUTES = [SHOW_TODAY_ATTRIBUTE, ALLOW_EXPORT_ATTRIBUTE] as const;
 

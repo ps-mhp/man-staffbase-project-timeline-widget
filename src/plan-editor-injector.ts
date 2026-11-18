@@ -23,19 +23,35 @@
  * noch von Hand zu retten.
  *
  * Die alten Schalter `show-today` und `allow-export` sind im eigenen Dialog
- * ausgeblendet; der Editor pflegt sie im Plan (`legacy-fields.ts`).
+ * ausgeblendet; der Editor pflegt sie im Plan (`@shared/legacy-fields`).
  */
 
 import * as React from "react";
 import { CalendarRange } from "lucide-react";
 
 import { FieldModalShellOptions, startFieldModalInjector } from "@shared/config-modal";
+import { LegacyFieldSpec, readLegacyFields, startHiddenFields } from "@shared/legacy-fields";
 
-import { PLAN_ATTRIBUTE } from "./configuration-schema";
-import { readLegacyFlagsFromDialog, startHiddenLegacyFields } from "./legacy-fields";
+import { ALLOW_EXPORT_ATTRIBUTE, LEGACY_ATTRIBUTES, PLAN_ATTRIBUTE, SHOW_TODAY_ATTRIBUTE } from "./configuration-schema";
 import { encodePlanAttribute, readPlanAttribute } from "./plan-model";
 import { PLAN_EDITOR_HELP } from "./plan-editor-help";
-import { PlanEditorValue, planChangesStatus, validatePlan } from "./plan-editor-rules";
+import { LegacyFlags, PlanEditorValue, planChangesStatus, validatePlan } from "./plan-editor-rules";
+
+const LEGACY_FIELDS: Record<string, LegacyFieldSpec> = {
+  [SHOW_TODAY_ATTRIBUTE]: { kind: "boolean" },
+  [ALLOW_EXPORT_ATTRIBUTE]: { kind: "boolean" },
+};
+
+/** Die alten Schalter, wie der eigene Dialog sie gerade führt; nicht Lesbares fehlt. */
+function readLegacyFlagsFromDialog(root: ParentNode): LegacyFlags {
+  const { values } = readLegacyFields(LEGACY_FIELDS, PLAN_ATTRIBUTE, root);
+  const showToday = values[SHOW_TODAY_ATTRIBUTE];
+  const allowExport = values[ALLOW_EXPORT_ATTRIBUTE];
+  return {
+    ...(typeof showToday === "boolean" ? { showToday } : {}),
+    ...(typeof allowExport === "boolean" ? { allowExport } : {}),
+  };
+}
 
 export type { PlanEditorValue } from "./plan-editor-rules";
 
@@ -86,7 +102,7 @@ export function startPlanEditorInjector(root: ParentNode = document): () => void
         React.createElement(LazyPlanEditor, { value, onChange }),
       ),
   });
-  const stopHiding = startHiddenLegacyFields(root);
+  const stopHiding = startHiddenFields(LEGACY_ATTRIBUTES, PLAN_ATTRIBUTE, root);
   return () => {
     stopModal();
     stopHiding();

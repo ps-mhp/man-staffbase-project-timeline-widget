@@ -42,7 +42,7 @@ describe("configurationSchema", () => {
 
   it("bietet Heute-Linie und Export als Schalter an, beide vorab an", () => {
     // Die Felder bleiben im Schema, damit alte Blöcke ihre Werte behalten;
-    // sichtbar sind sie im eigenen Dialog nicht mehr (`legacy-fields.ts`).
+    // sichtbar sind sie im eigenen Dialog nicht mehr (`@shared/legacy-fields`).
     const properties = configurationSchema.properties ?? {};
     expect(properties[SHOW_TODAY_ATTRIBUTE]).toMatchObject({
       type: "boolean",

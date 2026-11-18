@@ -19,8 +19,13 @@
 
 import type { ValidationIssue } from "@man/config-ui/shell/shell-context";
 
-import type { LegacyFlags } from "./legacy-fields";
 import { Plan, PlanItem } from "./plan-model";
+
+/** Was der Editor von den alten Feldern lesen konnte; fehlt ein Schlüssel, war das Feld nicht lesbar. */
+export interface LegacyFlags {
+  showToday?: boolean;
+  allowExport?: boolean;
+}
 
 /**
  * Was der Editor bearbeitet: der Plan, die Zahl der Einträge, die beim Lesen
