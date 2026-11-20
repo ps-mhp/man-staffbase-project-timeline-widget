@@ -118,3 +118,15 @@ describe("Craft auf der Seite", () => {
     expect(unquote(LABEL_FONT)).toBe(unquote(`${weight} ${size} ${family}`));
   });
 });
+
+describe("Auswahlkästchen gegen die Eingabefeld-Regel der Seite", () => {
+  // Staffbase: `input{width:100%;padding:5px}` — das Kästchen darf nicht mitwachsen.
+  it.each(["man-pt__check", "man-pt__radio"])("hält das Kästchen in %s klein und ohne Polster", (className) => {
+    const selector = `\\.${className.replace(/-/g, "\\-")}`.repeat(5);
+    const rule = plain(timelineCss).match(new RegExp(`${selector}\\s+input\\s*\\{([^}]*)\\}`))?.[1] ?? "";
+    expect(rule).toMatch(/flex:\s*none\s*!important/);
+    expect(rule).toMatch(/width:\s*var\(--craft-gl-size-5, 20px\)\s*!important/);
+    expect(rule).toMatch(/padding:\s*0\s*!important/);
+    expect(rule).toMatch(/margin:\s*0\s*!important/);
+  });
+});

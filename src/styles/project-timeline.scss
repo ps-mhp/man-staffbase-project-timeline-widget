@@ -372,6 +372,26 @@
   accent-color: var(--pt-accent);
 }
 
+// Staffbase gibt jedem `input` volle Breite, Polster und grauen Grund
+// (app.css: `input{width:100%;padding:5px;background:#eee}`). Im Flex-Label
+// stand das Kästchen dadurch mittig in einem breiten Kasten, die Beschriftung
+// wurde nach rechts gedrückt und brach um (Export-Dialog, 20.11.2026). Feste
+// Craft-Größe statt `auto`: ein Kästchen mit `appearance: none` (man-theme)
+// hätte ohne Breite keine Größe.
+@each $choice in (".man-pt__check", ".man-pt__radio") {
+  #{$choice} {
+    @include man-outshine-host {
+      input {
+        flex: none !important;
+        width: var(--craft-gl-size-5, 20px) !important;
+        height: var(--craft-gl-size-5, 20px) !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    }
+  }
+}
+
 .man-pt__period {
   display: grid;
   gap: 8px;
