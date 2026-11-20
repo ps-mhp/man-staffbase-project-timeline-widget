@@ -1,0 +1,108 @@
+{
+  "versions": [
+    {
+      "version": "0.1.0-rc.8",
+      "date": "2026-11-20",
+      "entries": [
+        {
+          "type": "fix",
+          "text": "Export-Dialog — Auswahlkästchen nicht mehr seitenbreit"
+        }
+      ]
+    },
+    {
+      "version": "0.1.0-rc.6",
+      "date": "2026-11-18",
+      "entries": [
+        {
+          "type": "feat",
+          "text": "Plan-Editor im Vollbild-Rahmen von @man/config-ui"
+        },
+        {
+          "type": "feat",
+          "text": "alte Schalter im Studio-Dialog ausblenden und lesen"
+        },
+        {
+          "type": "feat",
+          "text": "Heute-Linie und Export im Plan führen, alte Attribute als Rückfall"
+        },
+        {
+          "type": "fix",
+          "text": "Hinweis auf verworfene Einträge folgt dem übernommenen Stand"
+        }
+      ]
+    },
+    {
+      "version": "0.1.0-rc.5",
+      "date": "2026-11-06",
+      "entries": [
+        {
+          "type": "feat",
+          "text": "Projektplan beginnt schmal als Liste in Karten"
+        },
+        {
+          "type": "fix",
+          "text": "Fokus und Klick daneben im Shadow Root des Config-Modals"
+        }
+      ]
+    },
+    {
+      "version": "0.1.0-rc.3",
+      "date": "2026-10-05",
+      "entries": [
+        {
+          "type": "feat",
+          "text": "Seitenstyles nach Craft (MAN Design System)"
+        },
+        {
+          "type": "fix",
+          "text": "Farbe ohne Kategorie nach Craft"
+        }
+      ]
+    },
+    {
+      "version": "0.1.0-rc.2",
+      "date": "2026-10-02",
+      "entries": [
+        {
+          "type": "feat",
+          "text": "Seite oder Beitrag aus dem Reiter \"Inhalt\" neu anlegen"
+        },
+        {
+          "type": "feat",
+          "text": "Dateien und Bilder an Eintraege haengen"
+        },
+        {
+          "type": "feat",
+          "text": "Seiten und News-Beitraege mit Eintraegen verknuepfen"
+        },
+        {
+          "type": "feat",
+          "text": "Vorlagen-Galerie im leeren Editor, Vorlage \"Terminverschiebung\""
+        },
+        {
+          "type": "feat",
+          "text": "Plan-Editor neu gegliedert, Formen je Kategorie, Hilfe und Vollbild"
+        },
+        {
+          "type": "fix",
+          "text": "neu angelegte Seite steht sofort in der Seitenauswahl"
+        }
+      ]
+    },
+    {
+      "version": "0.1.0-rc.1",
+      "date": "2026-09-30",
+      "entries": [
+        {
+          "type": "feat",
+          "text": "Projektplan als Zeitstrahl"
+        },
+        {
+          "type": "feat",
+          "text": "scaffold project-timeline-widget widget"
+        }
+      ]
+    }
+  ]
+}
